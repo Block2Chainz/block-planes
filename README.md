@@ -1,4 +1,4 @@
-#Introduction
+# Introduction
 
 BlockPlanes is a top-scrolling aerial shooter with unique and player-specific planes that can be bought, sold, and shown off. 
 
