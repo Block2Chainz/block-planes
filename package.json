@@ -17,6 +17,11 @@
   },
   "homepage": "https://github.com/Block2Chainz/block-planes#readme",
   "dependencies": {
-    "react": "^16.3.2"
+    "axios": "^0.18.0",
+    "express": "^4.16.3",
+    "http": "0.0.0",
+    "path": "^0.12.7",
+    "react": "^16.3.2",
+    "socket.io": "^2.1.0"
   }
 }
