@@ -8,24 +8,32 @@ import "./helpers/safemath.sol";
 
 contract BlockPlanes is Ownable {
 
+    /// throws errors when overflow is going to occurr
     using SafeMath for uint256;
 
+    /// emits an event when a plane is created
     event NewPlane(uint planeId, uint attributes);
 
-    uint dnaDigits = 16;
-    uint dnaModulus = 10 ** dnaDigits;
+    /// limits the length of the attribute string
+    uint attrDigits = 16;
+    uint attrModulus = 10 ** attrDigits;
 
+    /// sets a fee for purchasing a new plane
     uint newPlaneFee = 0.001 ether;
 
     struct Plane {
         uint attributes;
     }
 
+    /// store all planes in an array
     Plane[] public planes;
 
+    /// map each plane to a single owner
     mapping (uint => address) public planeToOwner;
+    /// map each owner to a number of planes
     mapping (address => uint) public ownerPlaneCount;
 
+    /// takes in an attribute string and adds a plane struct to the planes array, then emits a new plane event
     function _createPlane(uint _attributes) internal {
         uint id = planes.push(Plane(_attributes)) - 1;
         planeToOwner[id] = msg.sender;
@@ -33,11 +41,14 @@ contract BlockPlanes is Ownable {
         emit NewPlane(id, _attributes);
     }
 
+    /// generates a random plane attribute string based on the sender's address and the current block/time
+    /// @dev now is not secure for RNG but this is a non-critical function so it is deemed acceptable
     function _generateRandomAttributes() private view returns (uint) {
         uint rand = uint(keccak256(msg.sender, now));
-        return rand % dnaModulus;
+        return rand % attrModulus;
     }
 
+    /// payable function for user to create a plane
     function createRandomPlane() external payable {
         require(msg.value == newPlaneFee);
         uint randDna = _generateRandomAttributes();
@@ -45,10 +56,13 @@ contract BlockPlanes is Ownable {
         _createPlane(randDna);
     }
 
+    /// methodology to re-set the purchase fee 
     function setPurchaseFee(uint _fee) external onlyOwner {
         newPlaneFee = _fee;
     }
 
+    /// takes owner address and iterates over all planes, returning an array of the plane IDs that they own 
+    /// (to get the planes themselves you will need to iterate through and get the planes themselves via the mapping getter function)
     function getPlanesByOwner(address _owner) external view returns(uint[]) {
         uint[] memory result = new uint[](ownerPlaneCount[_owner]);
         uint counter = 0;
@@ -61,9 +75,8 @@ contract BlockPlanes is Ownable {
         return result;
     }
 
-    /// @param withdraw funds to the owner's account
-    // function withdraw() external onlyOwner {
-    //     owner.transfer(this.balance);
-    // }
-
+    /// withdraw funds to the owner's account
+    function withdraw() external onlyOwner {
+        owner.transfer(this.balance);
+    }
 }

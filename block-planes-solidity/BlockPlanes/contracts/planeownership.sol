@@ -13,19 +13,26 @@ contract PlaneOwnership is BlockPlanes, ERC721 {
 
     mapping (uint => address) planeApprovals;
 
+    /// emits an event when a transfer occurs
+    event Transfer(address from, address to, uint planeId);
+
+    /// restricts functions to be called only by the owner of the plane;
     modifier onlyOwnerOf(uint _planeId) {
         require(msg.sender == planeToOwner[_planeId]);
         _;
     }
 
+    /// returns the number of planes a user owns
     function balanceOf(address _owner) public view returns (uint256 _balance) {
         return ownerPlaneCount[_owner];
     }
 
+    /// returns the owner of a particular plane
     function ownerOf(uint256 _tokenId) public view returns (address _owner) {
         return planeToOwner[_tokenId];
     }
 
+    /// transfers a plan from one address to another - private function to be called only by other functions
     function _transfer(address _from, address _to, uint256 _tokenId) private {
         ownerPlaneCount[_to] = ownerPlaneCount[_to].add(1);
         ownerPlaneCount[msg.sender] = ownerPlaneCount[msg.sender].sub(1);
@@ -33,15 +40,18 @@ contract PlaneOwnership is BlockPlanes, ERC721 {
         emit Transfer(_from, _to, _tokenId);
     }
 
+    /// transfers from one address to another, only to be called by the initial owner of the plane
     function transfer(address _to, uint256 _tokenId) public onlyOwnerOf(_tokenId) {
         _transfer(msg.sender, _to, _tokenId);
     }
 
+    /// approves the transfer of one plane to another person, to be called only by the origin owner
     function approve(address _to, uint256 _tokenId) public onlyOwnerOf(_tokenId) {
         planeApprovals[_tokenId] = _to;
         emit Approval(msg.sender, _to, _tokenId);
     }
 
+    /// takes ownership of a plane from another user, to be called by the intended recipient, requires prior approval by the original owner
     function takeOwnership(uint256 _tokenId) public {
         require(planeApprovals[_tokenId] == msg.sender);
         address owner = ownerOf(_tokenId);
