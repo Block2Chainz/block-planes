@@ -1,6 +1,8 @@
 pragma solidity ^0.4.17;
 
-contract BlockPlanes {
+import "./Ownable.sol";
+
+contract BlockPlanes is Ownable {
   address public owner;
 
   constructor () public {
