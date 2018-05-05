@@ -9,7 +9,6 @@ import Collection from '../collection/collection.jsx';
 import Marketplace from '../marketplace/marketplace.jsx';
 import Game from '../game/game.jsx';
 
-
 const Main = () => (
     <main>
         <Header />
