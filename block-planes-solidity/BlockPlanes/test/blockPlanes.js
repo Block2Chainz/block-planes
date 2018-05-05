@@ -1,36 +1,51 @@
 var BlockPlanes = artifacts.require("../contracts/BlockPlanes.sol");
 
-contract('BlockPlanes', function (accounts) {
+contract('BlockPlanes', function(accounts) {
     var planesInstance;
 
-    it('initializes with the owner in the store', function () {
-        return BlockPlanes.deployed().then(function (i) {
+    it('initializes with the owner in the store', function() {
+        return BlockPlanes.deployed().then(function(i) {
             return i.owner();
-        }).then(function (owner) {
+        }).then(function(owner) {
             assert.equal(owner, 0x68cf2F7CD18920a0FC73Eb87CE0E2eB396Ff2a0d, `owner should be the deployer`);
         });
     });
 
-    it('allows')
+    it('allows a user to purchase a random plane', function() {
+        return BlockPlanes.deployed().then(function(i) {
+            planesInstance = i;
+            return planesInstance;
+        }).then(function(contract) {
+            return contract.createRandomPlane({ from: accounts[0], value: web3.toWei(0.001, 'ether')});
+        }).then(function(receipt) {
+            let planeId = receipt.logs[0].args.planeId.toNumber();
+            assert.equal(receipt.logs.length, 1, 'an event was triggered');
+            assert.equal(receipt.logs[0].event, 'NewPlane', 'the event type is correct');
+            assert.equal(planeId, 0, 'the plane should have an id');
+            return planeId;
+        }).then(function(plane) {
+            return planesInstance.planeToOwner(plane);
+        }).then(function(owner) {
+            assert.equal(owner, accounts[0], 'the plane\'s owner should be the one who called the function');
+            return planesInstance;
+        }).then(function(contract) {
+            return contract.createRandomPlane({from: accounts[0], value: web3.toWei(0.0001, 'ether')});
+        }).then(assert.fail).catch(function(err) {
+            assert(err.message.indexOf('revert') >= 0, 'should throw and error if insufficient funds are provided');
+        });
+    });
 
-    // it("allows a voter to cast a vote", function () {
-    //     return Election.deployed().then(function (i) {
-    //         electionInstance = i;
-    //         candidateId = 1;
-    //         return electionInstance.vote(candidateId, { from: accounts[0] });
-    //     }).then(function (receipt) {
-    //         assert.equal(receipt.logs.length, 1, 'an event was triggered');
-    //         assert.equal(receipt.logs[0].event, 'votedEvent', 'the event type is correct');
-    //         assert.equal(receipt.logs[0].args._candidateId.toNumber(), candidateId, 'the candidateId is correct');
-    //         return electionInstance.voters(accounts[0]);
-    //     }).then(function (voted) {
-    //         assert(voted, "the voter was marked as voted");
-    //         return electionInstance.candidates(candidateId);
-    //     }).then(function (candidate) {
-    //         var voteCount = candidate[2];
-    //         assert.equal(voteCount, 1, "the candidate has a vote;")
-    //     });
-    // });
+    it('allows all of a user\'s planes to be retrieved', function() {
+        return BlockPlanes.deployed().then(function(i) {
+            planesInstance = i;
+            return planesInstance;
+        }).then(function(contract) {
+            return contract.getPlanesByOwner(accounts[0]);
+        }).then(function(planes) {
+            assert.equal(typeof planes, 'object', 'should return an array of the user\'s planes');
+            assert.equal(planes.length, 1, 'the array should have length of 1');
+        });
+    });
 
     // it('throws an exception for invalid candidates', function () {
     //     return Election.deployed().then(function (i) {
