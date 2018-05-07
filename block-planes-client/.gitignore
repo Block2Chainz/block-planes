@@ -2,12 +2,21 @@
 
 # dependencies
 /node_modules
+package-lock.json
+node_modules
+package-lock.json
+/client/package-lock.json
+bundle.js
+bundle.js.map
+
 
 # testing
 /coverage
 
 # production
 /build
+/public/bundle.js
+/public/bundle.js.map
 
 # misc
 .DS_Store

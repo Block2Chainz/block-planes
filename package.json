@@ -4,7 +4,7 @@
   "description": "Blockchain-integrated top scrolling shooter with unique plane avatars.",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "start": "node block-planes-api/rest-server/index.js"
   },
   "repository": {
     "type": "git",
