@@ -110,3 +110,11 @@
   .headbutt {
       margin-right: 10%;
   }
+
+  .userheader {
+    padding-top: 5%;
+    font-family: 'Orbitron';
+    color: white;
+      font-size: 100%;
+      text-align: left;
+  }

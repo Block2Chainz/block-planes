@@ -1,10 +1,24 @@
+require('dotenv').config();
 const express = require('express');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const session = require('cookie-session');
+const router = require('../routes/index.js');
 const path = require('path');
 
-const server = express();
 const PORT = process.env.PORT || 1234
+const server = express();
+
+server.use(bodyParser.json());
+server.use(bodyParser.urlencoded({ extended: true }));
+server.use(cookieParser());
+server.use(session({
+  secret: 'pew pew pew',
+  maxAge: 8640000000
+}));
 
 server.use(express.static(path.join(__dirname, '../../block-planes-client/public')));
+server.use('/', router);
 
 server.get('*', (req, res) => res.sendFile(path.resolve(__dirname, '../../block-planes-client/public/index.html')));
 

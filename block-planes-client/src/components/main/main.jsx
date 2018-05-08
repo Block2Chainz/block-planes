@@ -9,14 +9,14 @@ import Collection from '../collection/collection.jsx';
 import Marketplace from '../marketplace/marketplace.jsx';
 import Game from '../game/game.jsx';
 
-const Main = () => (
+const Main = (props) => (
     <main>
-        <Header />
+        <Header userId={props.userId} username={props.username} logout={props.logout}/>
         <Switch>
         <Route exact path='/' render={() => <Redirect to={{ pathname: '/home' }} />} />
             <Route path='/home' component={Home} />
-            <Route path='/login' component={Login} />
-            <Route path='/signup' component={Signup} />
+            <Route path='/login' render={() => <Login userId={props.userId} setAuth={(id) => props.setAuth(id)} />} />
+            <Route path='/signup' render={() => <Signup userId={props.userId} setAuth={(id) => props.setAuth(id)} />} />
             <Route path='/collection' component={Collection} />
             <Route path='/marketplace' component={Marketplace} />
             <Route path='/game' component={Game} />

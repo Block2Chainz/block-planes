@@ -8,43 +8,95 @@ const Promise = require('bluebird');
 const bcrypt = Promise.promisifyAll(require('bcrypt-nodejs'));
 
 class Signup extends Component {
-    render() {
-        return (
-            <div className='signup'>
-          <Grid>
-              <Form className='STARTING-FORM' onSubmit={console.log()} >
-                <Grid.Row className='signuptext'>
-                  <p className='splash'>Get Ready</p>
-                  <div className='left-picture' >
+  constructor() {
+    super();
+    this.state = {
+      fullName: '',
+      newUsername: '',
+      newPassword: ''
+    };
+    this.createAccount = this.createAccount.bind(this);
+  }
+
+  storeUserInfoInState(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
+  createAccount(event) {
+    console.log('started create account front end', this.state);
+    bcrypt.genSaltAsync(10)
+      .then(salt => {
+        bcrypt.hashAsync(this.state.newPassword, salt, null)
+          .then(hashedPassword => {
+            const newUserInfo = {
+              fullName: this.state.fullName,
+              newUsername: this.state.newUsername,
+              newPassword: hashedPassword,
+              profilePicture:
+                'http://tekno.rakyatku.com/thumbs/img_660_442_asteroid-b_1492568184roid.jpg'
+            };
+            let component = this;
+            console.log('sending info to db', newUserInfo);
+            axios
+              .post('/newAccount', newUserInfo)
+              .then(response => {
+                if (response.data === 'exists') {
+                  alert('Sorry, that username already belongs to another pilot.');
+                } else if (response.data.id) {
+                  component.props.setAuth(response.data.id);
+                }
+              })
+              .catch(err => {
+                console.log('Error from handleCreateAccount', err);
+              });
+            event.preventDefault();
+          });
+      });
+  }
+  render() {
+    if (this.props.userId) {
+      return (
+        <Redirect to={'/collection'} />
+      );
+    }
+    return (
+      <div className='signup'>
+        <Grid>
+          <Form className='STARTING-FORM' onSubmit={this.createAccount} >
+            <Grid.Row className='signuptext'>
+              <p className='splash'>Get Ready</p>
+              <div className='left-picture' >
                 <Image src='https://i.imgur.com/ZfNDUvX.png' size='medium' rounded />
               </div>
-                </Grid.Row>
-                <Grid.Row className='signuptext'>
-                  <p className='splash2'>All we need is your name, what you want to call yourself and a password. Easy.</p>
-                </Grid.Row>
-                <Grid.Row className='full-name-row'>
-                  <Form.Input name='fullName' size={'small'} placeholder='Full name' width={14} onChange={console.log()} />
-                </Grid.Row>
-                <Grid.Row className='new-username-password'>
-                  <Form.Group>
-                    <Form.Input name='newUsername' size={'small'} placeholder='New username ' width={7} onChange={console.log()} />
-                    <Form.Input name='newPassword' size={'small'} placeholder='New password ' type='password' autoComplete='off' width={7} onChange={console.log()} />
-                  </Form.Group>
-                </Grid.Row>
-                <Grid.Row className='signupbutton'>
-                  <Button className='ui inverted button' type='submit' size='massive'>Create Account</Button>
-                </Grid.Row>
-                <Grid.Row className='signupor'>
-                  <p className='splash2'>Or</p>
-                </Grid.Row>
-                <Grid.Row className='loginbutton'>
-                <Link to='/login'><Button className='ui inverted button' size='big' >Log In</Button></Link>
-                </Grid.Row>
-              </Form>
-          </Grid>
-        </div>
-        );
-    }
+            </Grid.Row>
+            <Grid.Row className='signuptext'>
+              <p className='splash2'>All we need is your name, what you want to call yourself and a password. Easy.</p>
+            </Grid.Row>
+            <Grid.Row className='full-name-row'>
+              <Form.Input name='fullName' size={'small'} placeholder='Full name' width={14} onChange={this.storeUserInfoInState.bind(this)} />
+            </Grid.Row>
+            <Grid.Row className='new-username-password'>
+              <Form.Group>
+                <Form.Input name='newUsername' size={'small'} placeholder='New username ' width={7} onChange={this.storeUserInfoInState.bind(this)} />
+                <Form.Input name='newPassword' size={'small'} placeholder='New password ' type='password' autoComplete='off' width={7} onChange={this.storeUserInfoInState.bind(this)} />
+              </Form.Group>
+            </Grid.Row>
+            <Grid.Row className='signupbutton'>
+              <Button className='ui inverted button' type='submit' size='massive'>Create Account</Button>
+            </Grid.Row>
+            <Grid.Row className='signupor'>
+              <p className='splash2'>Or</p>
+            </Grid.Row>
+            <Grid.Row className='loginbutton'>
+              <Link to='/login'><Button className='ui inverted button' size='big' >Log In</Button></Link>
+            </Grid.Row>
+          </Form>
+        </Grid>
+      </div>
+    );
+  }
 }
 
 export default Signup;
