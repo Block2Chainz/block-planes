@@ -8,11 +8,49 @@ const Promise = require('bluebird');
 const bcrypt = Promise.promisifyAll(require('bcrypt-nodejs'));
 
 class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      username: '',
+      password: ''
+    };
+    this.login = this.login.bind(this);
+  }
+
+  storeUserInfoInState(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
+  login(event) {
+    console.log('login running', this.state);
+    let component = this;
+    axios
+      .get(`/signIn/${this.state.username}/${this.state.password}`)
+      .then(response => {
+        if (response.data === 'wrong') {
+          alert('Wrong username or password!');
+        } else {
+          component.props.setAuth(response.data.id);
+        }
+      })
+      .catch(err => {
+        console.log('Error from login', err);
+      });
+    event.preventDefault();
+  }
+
     render() {
+      if (this.props.userId) {
+        return (
+          <Redirect to={'/collection'} />
+        );
+      }
         return (
             <div className='login'>
           <Grid>
-              <Form className='STARTING-FORM' onSubmit={console.log()} >
+              <Form className='STARTING-FORM' onSubmit={this.login} >
                 <Grid.Row className='signuptext'>
                   <p className='splash'>Good, You're Back</p>
                   <div className='mid-picture' >
@@ -24,8 +62,8 @@ class Login extends Component {
                 </Grid.Row>
                 <Grid.Row className='new-username-password'>
                   <Form.Group>
-                    <Form.Input name='newUsername' size={'small'} placeholder='Username ' width={7} onChange={console.log()} />
-                    <Form.Input name='newPassword' size={'small'} placeholder='Password ' type='password' autoComplete='off' width={7} onChange={console.log()} />
+                    <Form.Input name='username' size={'small'} placeholder='Username ' width={7} onChange={this.storeUserInfoInState.bind(this)} />
+                    <Form.Input name='password' size={'small'} placeholder='Password ' type='password' autoComplete='off' width={7} onChange={this.storeUserInfoInState.bind(this)} />
                   </Form.Group>
                 </Grid.Row>
                 <Grid.Row className='signupbutton4'>
