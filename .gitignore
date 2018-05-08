@@ -3,6 +3,10 @@ package-lock.json
 /client/package-lock.json
 bundle.js
 bundle.js.map
+<<<<<<< HEAD
 
 # dotenv environment variables file
 .env
+=======
+build
+>>>>>>> building out game component
