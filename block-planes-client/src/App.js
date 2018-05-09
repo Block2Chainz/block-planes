@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+// import { connect } from "react-redux";
+// import { logIn, logOut} from "./actions/index"
+
 import Main from './components/main/main.jsx';
 import './App.css';
 import jwtDecode from 'jwt-decode';
+
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     logIn: user => dispatch(logIn(user)),
+//     logOut: () => dispatch(logOut()),
+//   };
+// };
+
+// use this.props.logIn(user) and this.props.logOut() instead of setState
 
 class App extends Component {
   constructor() {
@@ -62,5 +74,7 @@ class App extends Component {
     );
   }
 }
+
+// const App = connect(null, mapDispatchToProps)(ConnectedApp);
 
 export default App;
