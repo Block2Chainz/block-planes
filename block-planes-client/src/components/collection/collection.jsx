@@ -26,7 +26,7 @@ class Collection extends Component {
 
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.web3.eth.getCoinbase((err, account) => {
       this.setState({ account })
       this.blockplanes.deployed().then((blockplanesInstance) => {
@@ -58,7 +58,6 @@ class Collection extends Component {
       }); 
     });
   }
-    // this.setState({planes: this.state.planes.push([planeId, planeAttr])});
 
   //TEST CODE CONTRACT COMMUNICATION
       // this.web3.eth.getCoinbase((err, account) => {
@@ -82,7 +81,7 @@ class Collection extends Component {
   render() {
     return (
       <div>
-        {console.log('current state: ', this.state)}
+        <Plane planes={this.state.planes}/>
       </div>
     )
   }
