@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
+import { connect } from "react-redux";
 import { Image, Form, Grid, Button } from 'semantic-ui-react';
 import axios from 'axios';
 import './login.css';
@@ -7,7 +8,15 @@ import './login.css';
 const Promise = require('bluebird');
 const bcrypt = Promise.promisifyAll(require('bcrypt-nodejs'));
 
-class Login extends Component {
+const mapStateToProps = state => {
+  return {
+    userId: state.id,
+    loggedIn: state.articles,
+    username: state.username,
+  };
+};
+
+class ConnectedLogin extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,6 +33,7 @@ class Login extends Component {
   }
 
   login(event) {
+    event.preventDefault();
     let component = this;
     axios
       .get(`/signIn/${this.state.username}/${this.state.password}`)
@@ -31,6 +41,7 @@ class Login extends Component {
         if (response.data === 'wrong') {
           alert('Wrong username or password!');
         } else {
+          console.log('response.data.token', response.data.token)
           sessionStorage.setItem('jwtToken', response.data.token);
           component.props.tokenLogin();
         }
@@ -38,7 +49,6 @@ class Login extends Component {
       .catch(err => {
         console.log('Error from login', err);
       });
-    event.preventDefault();
   }
 
     render() {
@@ -81,5 +91,8 @@ class Login extends Component {
         );
     }
 }
+
+
+const Login = connect(mapStateToProps)(ConnectedLogin);
 
 export default Login;

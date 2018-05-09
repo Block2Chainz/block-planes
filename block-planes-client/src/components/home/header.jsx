@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { connect } from "react-redux";
 import { Image, Form, Grid, Button } from 'semantic-ui-react';
 import LogInOutButton from './logInOutButton.jsx';
 import './header.css';
 
+const mapStateToProps = state => {
+    return { 
+        userId: state.id, 
+        loggedIn: state.articles,
+        username: state.username,
+    };
+};
 
-class Header extends Component {
+class ConnectedHeader extends Component {
     constructor(props) {
         super(props);
         loggedIn: false;
@@ -33,7 +41,7 @@ class Header extends Component {
               <Link to='/game'><Button className='ui inverted button' size={'small'}>Find Game</Button></Link>
               </Grid.Column>
               <Grid.Column width={3}>
-              <LogInOutButton userId={this.props.userId} logout={this.props.logout}/>
+              <LogInOutButton logout={this.props.logout}/>
               </Grid.Column>
             </Grid.Row>
           </Grid>
@@ -42,5 +50,8 @@ class Header extends Component {
 );
     }
 }
+
+
+const Header = connect(mapStateToProps)(ConnectedHeader);
 
 export default Header;

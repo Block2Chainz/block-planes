@@ -1,11 +1,21 @@
 import React, { Component } from 'react';
 import { Redirect, Link } from 'react-router-dom';
+import { connect } from "react-redux";
 import { Image, Form, Grid, Button } from 'semantic-ui-react';
 import axios from 'axios';
 import './signup.css';
 
 const Promise = require('bluebird');
 const bcrypt = Promise.promisifyAll(require('bcrypt-nodejs'));
+
+
+const mapDispatchToProps = dispatch => {
+  return {
+    logIn: user => dispatch(logIn(user)),
+    logOut: () => dispatch(logOut()),
+  };
+};
+
 
 class Signup extends Component {
   constructor() {

@@ -1,10 +1,23 @@
 import React, { Component } from 'react';
+import {  BrowserRouter} from 'react-router-dom';
 import axios from 'axios';
+import { connect } from "react-redux";
+import { logIn, logOut} from "./actions/index"
+
 import Main from './components/main/main.jsx';
 import './App.css';
 import jwtDecode from 'jwt-decode';
 
-class App extends Component {
+const mapDispatchToProps = dispatch => {
+  return {
+    logIn: user => dispatch(logIn(user)),
+    logOut: () => dispatch(logOut()),
+  };
+};
+
+// use this.props.logIn(user) and this.props.logOut() instead of setState
+
+class ConnectedApp extends Component {
   constructor() {
     super();
     this.state = {
@@ -25,6 +38,7 @@ class App extends Component {
   }
 
   tokenLogin() {
+    console.log('this is the jwt token', sessionStorage.getItem('jwtToken'));
     if (sessionStorage.getItem('jwtToken')) {
       axios
       .get('/signInToken', {
@@ -33,7 +47,7 @@ class App extends Component {
         }
       })
       .then(response => {
-        this.setState({
+        this.props.logIn({
           id: response.data.user.id,
           username: response.data.user.username,
           profilePic: response.data.user.profilePicture,
@@ -50,17 +64,21 @@ class App extends Component {
 
   logout() {
     sessionStorage.removeItem('jwtToken');
-    this.setState({ id: '', username: '', profilePic: '', fullName: '', totalPoints: '' });
+    this.logOut();
   }
 
   render() {
     var component = this;
     return (
       <div className="App">
-        <Main userId={this.state.id} username={this.state.username} tokenLogin={this.tokenLogin} logout={this.logout}/>
+        <BrowserRouter>
+          <Main tokenLogin={this.tokenLogin} logout={this.logout}/>
+        </BrowserRouter>
       </div>
     );
   }
 }
+
+const App = connect(null, mapDispatchToProps)(ConnectedApp);
 
 export default App;

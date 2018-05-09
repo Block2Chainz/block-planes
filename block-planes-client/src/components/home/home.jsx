@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { Image, Form, Grid, Button } from 'semantic-ui-react';
 import './header.css';
 
@@ -11,12 +11,12 @@ class Home extends Component {
             <Grid.Column width={6} >
                 <Grid.Row className='info'>
                   <Grid.Column width={2}>
-                  <div className="ui inverted container blurb">
-  <h2 className="about1">Pew</h2>
-  <h2 className="about2">Pew</h2>
-  <h2 className="about3">Pew</h2>
-  <h3 className="about4">Strap in and get blasting.</h3>
-</div>
+                  <div className="ui inverted container  blurb">
+                    <h2 className="about1">Pew</h2>
+                    <h2 className="about2">Pew</h2>
+                    <h2 className="about3">Pew</h2>
+                    <h3 className="about4">Strap in and get blasting.</h3>
+                  </div>
                   </Grid.Column>
                 </Grid.Row>
                 <Grid.Row className='create-account'>
