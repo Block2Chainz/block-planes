@@ -47,19 +47,3 @@ export function randomNumBetweenExcluding(min, max, exMin, exMax) {
   }
   return random;
 };
-
-// Takes in the ship attributes and returns an object with all attributes
-export function parseShipAttributes(attr) {
-  return {
-    wingShape     : attr[0],
-    wingColor     : attr[1],
-    tailShape     : attr[2],
-    tailColor     : attr[3],
-    cockpitShape  : attr[4],
-    cockpitColor  : attr[5],
-    speed         : attr[6],
-    inertia       : attr[7],
-    shootSpeed    : attr[8],
-    smokeColor    : attr[9],
-  }
-}

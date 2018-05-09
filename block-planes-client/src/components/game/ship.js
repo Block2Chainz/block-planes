@@ -73,7 +73,7 @@ export default class Ship {
         this.velocity.y -= Math.cos(-this.rotation * Math.PI / 180) * this.speed;
 
         // Thruster particles
-        let posDelta = rotatePoint({ x: 0, y: -10 }, { x: 0, y: 0 }, (this.rotation - 180) * Math.PI / 180);
+        let posDelta = rotatePoint({ x: 0, y: -55 }, { x: 0, y: 0 }, (this.rotation - 180) * Math.PI / 180);
         const particle = new Particle({
             lifeSpan: randomNumBetween(20, 40),
             size: randomNumBetween(1, 3),
@@ -137,29 +137,35 @@ export default class Ship {
         const context = state.context;
         context.save();
         context.translate(this.position.x, this.position.y);
-        context.rotate(this.rotation * Math.PI / 180);
-        context.strokeStyle = '#ffffff';
-        context.fillStyle = '#000000';
-        context.lineWidth = 2;
+        // + 0.785.... 
+        context.rotate((this.rotation) * Math.PI / 180 + 0.78539816);
+        // context.strokeStyle = '#ffffff';
+        // context.fillStyle = '#000000';
+        // context.lineWidth = 2;
 
-        // let img1 = new Image();
-        // img1.src = "http://127.0.0.1:8887/path5114.png";
-        // context.drawImage(img1, 0, 0, 45, 45);
+        let img1 = new Image();
+        img1.src = "http://127.0.0.1:8887/base_body.png";
+        context.drawImage(img1, 0, 0, 45, 45);
 
-        // let img2 = new Image();
-        // img2.src = "http://127.0.0.1:8887/barkbrown.svg";
-        // context.drawImage(img2, 0, 0, 45, 45);
+        let img2 = new Image();
+        img2.src = "http://127.0.0.1:8887/wings_01.png";
+        context.drawImage(img2, 0, 0, 45, 45);
 
-        context.beginPath();
-        context.moveTo(0, -15);
-        context.lineTo(10, 10);
-        context.lineTo(5, 7);
-        context.lineTo(-5, 7);
-        context.lineTo(-10, 10);
-        context.closePath();
-        context.fill();
-        context.stroke();
-        context.restore();
+        let img3 = new Image();
+        img3.src = "http://127.0.0.1:8887/tail_01.png";
+        context.drawImage(img3, 0, 0, 45, 45);
+
+
+        // context.beginPath();
+        // context.moveTo(0, -15);
+        // context.lineTo(10, 10);
+        // context.lineTo(5, 7);
+        // context.lineTo(-5, 7);
+        // context.lineTo(-10, 10);
+        // context.closePath();
+        // context.fill();
+        // context.stroke();
+        // context.restore();
 
     }
 }
