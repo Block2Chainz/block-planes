@@ -41,6 +41,7 @@ class ConnectedLogin extends Component {
         if (response.data === 'wrong') {
           alert('Wrong username or password!');
         } else {
+          console.log('response.data.token', response.data.token)
           sessionStorage.setItem('jwtToken', response.data.token);
           component.props.tokenLogin();
         }

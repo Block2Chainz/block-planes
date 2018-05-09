@@ -56,8 +56,9 @@ const signIn = (req, res) => {
               totalPoints: data[0].total_points,
               createdAt: data[0].created_at
             };
-            jwt.sign({user: user}, process.env.JWT_SECRET, (err, token) => {
-              res.json({ user: user, token: token });
+            jwt.sign({ user }, process.env.JWT_SECRET, (err, token) => {
+              console.log(token);
+              res.json({ user, token });
             });
           } else {
             res.send('wrong');
