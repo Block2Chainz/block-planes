@@ -2,32 +2,31 @@ import { LOG_IN } from "../constants/action-types";
 import { LOG_OUT } from "../constants/action-types";
 
 const initialState = {
-    loggedIn: false
+    loggedIn: false,
+    userId: null,
 };
 
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOG_IN:
             return { ...state, 
-                loggedIn: true, 
-                profilePic: action.payload.profilePic,
-                username: action.payload.username, 
-                fullname: action.payload.username, 
-                id: action.payload.id, 
+                id: action.payload.id,
+                username: action.payload.username,
+                profilePic: action.payload.profilePicture,
+                fullName: action.payload.fullName,
                 totalPoints: action.payload.totalPoints,
-                hasSession: true,
+                createdAt: action.payload.createdAt
             };
         case LOG_OUT: 
             return {
                 ...state, 
-                loggedIn: false,
-                profilePic: null,
-                username: null,
-                fullname: null,
                 id: null,
+                username: null,
+                profilePic: null,
+                fullName: null,
                 totalPoints: null,
-                hasSession: false,
-            }
+                createdAt: null
+            };
         default:
             return state;
     }

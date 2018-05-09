@@ -9,22 +9,35 @@ import Collection from '../collection/collection.jsx';
 import Marketplace from '../marketplace/marketplace.jsx';
 import Game from '../game/game.jsx';
 
+/* <Main 
+userId={this.state.id} 
+
+username={this.state.username} 
+
+tokenLogin={this.tokenLogin} 
+
+logout={this.logout} /> */
+
+
 const Main = (props) => (
     <main>
-        <Header userId={props.userId} username={props.username} logout={props.logout}/>
+        <Header logout={props.logout}/>
         <Switch>
-        <Route exact path='/' render={() => <Redirect to={{ pathname: '/home' }} />} />
+            <Route exact path='/' render={() => <Redirect to={{ pathname: '/home' }} />} />
             <Route path='/home' component={Home} />
-            <Route path='/login' render={() => <Login userId={props.userId} tokenLogin={props.tokenLogin} />} />
-            <Route path='/signup' render={() => <Signup userId={props.userId} tokenLogin={props.tokenLogin} />} />
+            <Route path='/login' render={() => <Login tokenLogin={props.tokenLogin} />} />
+            <Route path='/signup' render={() => <Signup tokenLogin={props.tokenLogin} />} />
             <Route path='/collection' render={() => (sessionStorage.getItem('jwtToken') ?
-            (<Collection  />)
-            : (<Redirect to={{
-              pathname: '/login'
-            }} />)
-          )} />
+                (<Collection  />)
+                : (<Redirect to={{pathname: '/login'}} /> 
+                ))} 
+            />
             <Route path='/marketplace' component={Marketplace} />
-            <Route path='/game' component={Game} />
+            <Route path='/game' render={() => (sessionStorage.getItem('jwtToken') ?
+                (<Game />) 
+                : (<Redirect to={{pathname: '/login'}} />)
+                )} 
+            />
         </Switch>
     </main>
 )
