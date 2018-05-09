@@ -1,66 +1,77 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
+=======
+import { connect } from "react-redux";
+>>>>>>> creating assets and revising the ship rendering
 import './collection.css';
 import Web3 from 'web3'
 import TruffleContract from 'truffle-contract'
 import cryptoPlanes from '../../../../block-planes-solidity/BlockPlanes/build/contracts/BlockPlanes.json';
 import Plane from '../plane/plane.jsx';
 
-class Collection extends Component {
+const mapDispatchToProps = dispatch => {
+  return {
+    storeContract: contract => dispatch(storeContract(contract)),
+    storeUserAddress: address => dispatch(storeUserAddress(address)),
+    storeUserPlanes: user => dispatch(storeUserPlanes(user)),
+  };
+};
+
+const mapStateToProps = state => {
+  return {
+    contract: state.contract, 
+    userPlanes: state.userPlanes, 
+    userAddress: state.userAddress,
+  };
+};
+
+class ConnectedCollection extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      account: '0x0',
-      planes: [['x, 1234567891123456']],
-      contract:'',
-    }
 
     if (typeof web3 != 'undefined') {
       this.web3Provider = web3.currentProvider
-      this.web3 = new Web3(this.web3Provider)
-  
-      this.blockplanes = TruffleContract(cryptoPlanes)
-      this.blockplanes.setProvider(this.web3Provider)
     } else {
-      alert('This site needs a web3 provider(MetaMask) to run properly. Please install one and refresh!');
+      this.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545')
     }
 
+    this.web3 = new Web3(this.web3Provider)
+    this.blockplanes = TruffleContract(cryptoPlanes)
+    this.blockplanes.setProvider(this.web3Provider)
 
   }
 
   componentWillMount() {
-    if (typeof web3 != "undefined") {
-      this.getPlanes();
-    }
-  }
-
-  getPlanes() {
-    this.web3.eth.getCoinbase((err, account) => {
-      if (this.props.friendsAccount) {
-        account = this.props.friendsAccount;
-      }
-      this.setState({ account })
-      this.blockplanes.deployed().then((blockplanesInstance) => {
-        this.setState( {contract : blockplanesInstance} );
-        blockplanesInstance.createRandomPlane({ from: this.web3.eth.accounts[0], value: this.web3.toWei(0.001, 'ether')});
-        return blockplanesInstance.getPlanesByOwner(account);
+    this.web3.eth.getCoinbase((err, address) => {
+      // storing the user blockchain address*****
+      this.props.storeUserAddress(address);
+      // get the contract instance
+      this.blockplanes.deployed()
+      .then((instance) => {
+        // storing the contract*****
+        this.props.storeContract(instance);
+        return instance.getPlanesByOwner(this.props.userAddress);
       }).then((planes) => {
+        // putting the plane ids into an array
         let planeIds = [];
         planes.forEach((plane) => {
           planeIds.push(plane.toNumber());
         });
         return planeIds;
       }).then((planeArray) => {
+        // getting the attributes for each plane in their collection
         let hangar = [];
         planeArray.forEach((planeId) => {
           let planeAttr;
-          this.state.contract.planes(planeId).then((plane) => {
+          this.props.contract.planes(planeId).then((plane) => {
              planeAttr = plane.toNumber();
              hangar.push([planeId, planeAttr]);
           });
-        })
+        })        
         return hangar;
       }).then((finalArray) => {
-            this.setState({planes : this.state.planes.concat(finalArray)});
+            // storing the user's plane attributes
+            this.props.storeUserPlanes(finalArray);
       }); 
     });
   }
@@ -87,15 +98,12 @@ class Collection extends Component {
   render() {
     return (
       <div>
-      {console.log('state: ', this.state)}
-        {(typeof web3 != 'undefined') ? (
-        <Plane planes={this.state.planes}/>
-        ) : (
-        <img src="https://safetymanagementgroup.com/wp-content/uploads/2017/07/Oopsbutton.jpg"/>
-        )}
+        <Plane />
       </div>
     )
   }
 }
+
+const Collection = connect(mapStateToProps, mapDispatchToProps)(ConnectedCollection);
 
 export default Collection;
