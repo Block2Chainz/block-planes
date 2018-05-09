@@ -23,21 +23,18 @@ const Main = (props) => (
     <main>
         <Header logout={props.logout}/>
         <Switch>
-            <Route exact path='/' render={() => <Redirect to={{ pathname: '/home' }} />} />
+        <Route exact path='/' render={() => <Redirect to={{ pathname: '/home' }} />} />
             <Route path='/home' component={Home} />
-            <Route path='/login' render={() => <Login tokenLogin={props.tokenLogin} />} />
-            <Route path='/signup' render={() => <Signup tokenLogin={props.tokenLogin} />} />
+            <Route path='/login' render={() => <Login userId={props.userId} tokenLogin={props.tokenLogin} />} />
+            <Route path='/signup' render={() => <Signup userId={props.userId} tokenLogin={props.tokenLogin} />} />
             <Route path='/collection' render={() => (sessionStorage.getItem('jwtToken') ?
-                (<Collection  />)
-                : (<Redirect to={{pathname: '/login'}} /> 
-                ))} 
-            />
+            (<Collection  />)
+            : (<Redirect to={{
+              pathname: '/login'
+            }} />)
+          )} />
             <Route path='/marketplace' component={Marketplace} />
-            <Route path='/game' render={() => (sessionStorage.getItem('jwtToken') ?
-                (<Game />) 
-                : (<Redirect to={{pathname: '/login'}} />)
-                )} 
-            />
+            <Route path='/game' component={Game} />
         </Switch>
     </main>
 )

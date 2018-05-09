@@ -14,6 +14,6 @@ server.use(bodyParser.urlencoded({ extended: true }));
 server.use(express.static(path.join(__dirname, '../../block-planes-client/public')));
 server.use('/', router);
 
-// server.get('*', (req, res) => res.sendFile(path.resolve(__dirname, '../../block-planes-client/public/index.html')));
+server.get('*', (req, res) => res.sendFile(path.resolve(__dirname, '../../block-planes-client/public/index.html')));
 
 server.listen(PORT, () => console.log('serving static files on port ', PORT));
