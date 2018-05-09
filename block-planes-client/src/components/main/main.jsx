@@ -15,9 +15,14 @@ const Main = (props) => (
         <Switch>
         <Route exact path='/' render={() => <Redirect to={{ pathname: '/home' }} />} />
             <Route path='/home' component={Home} />
-            <Route path='/login' render={() => <Login userId={props.userId} setAuth={(id) => props.setAuth(id)} />} />
-            <Route path='/signup' render={() => <Signup userId={props.userId} setAuth={(id) => props.setAuth(id)} />} />
-            <Route path='/collection' component={Collection} />
+            <Route path='/login' render={() => <Login userId={props.userId} tokenLogin={props.tokenLogin} />} />
+            <Route path='/signup' render={() => <Signup userId={props.userId} tokenLogin={props.tokenLogin} />} />
+            <Route path='/collection' render={() => (sessionStorage.getItem('jwtToken') ?
+            (<Collection  />)
+            : (<Redirect to={{
+              pathname: '/login'
+            }} />)
+          )} />
             <Route path='/marketplace' component={Marketplace} />
             <Route path='/game' component={Game} />
         </Switch>

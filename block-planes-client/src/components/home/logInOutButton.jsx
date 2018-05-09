@@ -5,7 +5,6 @@ import { Switch, Route, Redirect } from 'react-router-dom'
 
 
 function LogInOutButton(props) {
-  console.log('log button state', props.userId);
     if (!!props.userId) {
       return <Button className='ui inverted button' size='small' onClick={props.logout} >Log Out</Button>;
     }

@@ -13,6 +13,9 @@ bundle.js.map
 # testing
 /coverage
 
+# dotenv environment variables file
+.env
+
 # production
 /build
 /public/bundle.js

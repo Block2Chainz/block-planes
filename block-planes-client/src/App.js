@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Main from './components/main/main.jsx';
 import './App.css';
+import jwtDecode from 'jwt-decode';
 
 class App extends Component {
   constructor() {
@@ -12,85 +13,51 @@ class App extends Component {
       profilePic: '',
       fullName: '',
       totalPoints: '',
+      createdAt: '',
       hasSession: false
     };
-    this.setAuth = this.setAuth.bind(this);
     this.logout = this.logout.bind(this);
+    this.tokenLogin = this.tokenLogin.bind(this);
   }
 
   componentDidMount() {
-    this.getSessionId();
+    this.tokenLogin();
   }
 
-  fetchUserInfo() {
-    var thisIndex = this;
-    console.log('start fetchuser', this.state);
-    axios.get('/user', {
-      params: {
-        userId: thisIndex.state.id
-      }
-    })
-      .then(function (response) {
-        console.log('fetchUser back from db',response);
-        thisIndex.setState({
-          username: response.data[0].username,
-          profilePic: response.data[0].profile_picture,
-          fullName: response.data[0].full_name,
-          totalPoints: response.data[0].total_points
-        });
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
-  }
-
-  getSessionId() {
-    console.log('running getSessionId', this.state);
-    axios
-      .get('/userSession')
-      .then(response => {
-        if (response.data.id) {
-          this.setState({
-            id: response.data.id,
-            hasSession: true
-          }, function() {
-            this.fetchUserInfo();
-          });
-          console.log('getSessionId set state', this.state);
-        } else {
-          this.setState({
-            hasSession: true
-          }, function() {
-            this.fetchUserInfo();
-          });
+  tokenLogin() {
+    if (sessionStorage.getItem('jwtToken')) {
+      axios
+      .get('/signInToken', {
+        params: {
+          token: sessionStorage.getItem('jwtToken')
         }
+      })
+      .then(response => {
+        this.setState({
+          id: response.data.user.id,
+          username: response.data.user.username,
+          profilePic: response.data.user.profilePicture,
+          fullName: response.data.user.fullName,
+          totalPoints: response.data.user.totalPoints,
+          createdAt: response.data.user.createdAt
+        });
       })
       .catch(err => {
         console.log('Error getting session id', err);
       });
   }
+}
 
   logout() {
-    axios.get('/logout')
-      .catch(err => {
-        console.log('Error on logout:', err);
-      });
+    sessionStorage.removeItem('jwtToken');
     this.setState({ id: '', username: '', profilePic: '', fullName: '', totalPoints: '' });
-  }
-
-  isAuthenticated() {
-    return !!this.state.id;
-  }
-
-  setAuth(id) {
-    this.setState({ id: id });
   }
 
   render() {
     var component = this;
     return (
       <div className="App">
-        <Main userId={this.state.id} username={this.state.username} setAuth={(id) => component.setAuth(id)} logout={this.logout} isAuthenticated={this.isAuthenticated}/>
+        <Main userId={this.state.id} username={this.state.username} tokenLogin={this.tokenLogin} logout={this.logout}/>
       </div>
     );
   }
