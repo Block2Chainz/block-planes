@@ -10,11 +10,6 @@ const server = express();
 
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: true }));
-server.use(cookieParser());
-server.use(session({
-  secret: 'pew pew pew',
-  maxAge: 8640000000
-}));
 
 server.use(express.static(path.join(__dirname, '../../block-planes-client/public')));
 server.use('/', router);
