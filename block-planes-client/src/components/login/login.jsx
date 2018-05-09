@@ -24,7 +24,6 @@ class Login extends Component {
   }
 
   login(event) {
-    console.log('login running', this.state);
     let component = this;
     axios
       .get(`/signIn/${this.state.username}/${this.state.password}`)
@@ -32,7 +31,8 @@ class Login extends Component {
         if (response.data === 'wrong') {
           alert('Wrong username or password!');
         } else {
-          component.props.setAuth(response.data.id);
+          sessionStorage.setItem('jwtToken', response.data.token);
+          component.props.tokenLogin();
         }
       })
       .catch(err => {

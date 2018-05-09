@@ -25,7 +25,6 @@ class Signup extends Component {
   }
 
   createAccount(event) {
-    console.log('started create account front end', this.state);
     bcrypt.genSaltAsync(10)
       .then(salt => {
         bcrypt.hashAsync(this.state.newPassword, salt, null)
@@ -38,14 +37,14 @@ class Signup extends Component {
                 'http://tekno.rakyatku.com/thumbs/img_660_442_asteroid-b_1492568184roid.jpg'
             };
             let component = this;
-            console.log('sending info to db', newUserInfo);
             axios
               .post('/newAccount', newUserInfo)
               .then(response => {
                 if (response.data === 'exists') {
                   alert('Sorry, that username already belongs to another pilot.');
-                } else if (response.data.id) {
-                  component.props.setAuth(response.data.id);
+                } else if (response.data.user.id) {
+                  sessionStorage.setItem('jwtToken', response.data.token);
+                  component.props.tokenLogin();
                 }
               })
               .catch(err => {

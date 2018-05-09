@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const session = require('cookie-session');
 const router = require('../routes/index.js');

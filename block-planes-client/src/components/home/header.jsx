@@ -12,7 +12,6 @@ class Header extends Component {
       }
 
     render() {
-        console.log('header id', this.props.username);
         return (
     <div>
     <header className='login-header' >
