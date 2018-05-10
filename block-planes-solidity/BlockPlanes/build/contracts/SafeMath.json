@@ -23,23 +23,27 @@
 =======
   "bytecode": "0x604c602c600b82828239805160001a60731460008114601c57601e565bfe5b5030600052607381538281f30073000000000000000000000000000000000000000030146080604052600080fd00a165627a7a7230582066a7329349047f491bcadd195d1ff29fe44f50d8580cfd384224868213a1a49d0029",
   "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fd00a165627a7a7230582066a7329349047f491bcadd195d1ff29fe44f50d8580cfd384224868213a1a49d0029",
-  "sourceMap": "122:1157:4:-;;132:2:-1;166:7;155:9;146:7;137:37;252:7;246:14;243:1;238:23;232:4;229:33;270:1;265:20;;;;222:63;;265:20;274:9;222:63;;298:9;295:1;288:20;328:4;319:7;311:22;352:7;343;336:24",
-  "deployedSourceMap": "122:1157:4:-;;;;;;;;",
+  "sourceMap": "122:1157:3:-;;132:2:-1;166:7;155:9;146:7;137:37;252:7;246:14;243:1;238:23;232:4;229:33;270:1;265:20;;;;222:63;;265:20;274:9;222:63;;298:9;295:1;288:20;328:4;319:7;311:22;352:7;343;336:24",
+  "deployedSourceMap": "122:1157:3:-;;;;;;;;",
   "source": "pragma solidity ^0.4.19;\r\n\r\n/**\r\n * @title SafeMath\r\n * @dev Math operations with safety checks that throw on error\r\n */\r\nlibrary SafeMath {\r\n\r\n    /**\r\n    * @dev Multiplies two numbers, throws on overflow.\r\n    */\r\n    function mul(uint256 a, uint256 b) internal pure returns (uint256) {\r\n        if (a == 0) {\r\n            return 0;\r\n        }\r\n        uint256 c = a * b;\r\n        assert(c / a == b);\r\n        return c;\r\n    }\r\n\r\n    /**\r\n    * @dev Integer division of two numbers, truncating the quotient.\r\n    */\r\n    function div(uint256 a, uint256 b) internal pure returns (uint256) {\r\n        assert(b > 0); // Solidity automatically throws when dividing by 0\r\n        uint256 c = a / b;\r\n        assert(a == b * c + a % b); // There is no case in which this doesn't hold\r\n        return c;\r\n    }\r\n\r\n    /**\r\n    * @dev Subtracts two numbers, throws on overflow (i.e. if subtrahend is greater than minuend).\r\n    */\r\n    function sub(uint256 a, uint256 b) internal pure returns (uint256) {\r\n        assert(b <= a);\r\n        return a - b;\r\n    }\r\n\r\n    /**\r\n    * @dev Adds two numbers, throws on overflow.\r\n    */\r\n    function add(uint256 a, uint256 b) internal pure returns (uint256) {\r\n        uint256 c = a + b;\r\n        assert(c >= a);\r\n        return c;\r\n    }\r\n}\r\n",
   "sourcePath": "C:\\Users\\Nick\\Documents\\GitHub\\block-planes\\block-planes-solidity\\BlockPlanes\\contracts\\helpers\\safemath.sol",
   "ast": {
     "absolutePath": "/C/Users/Nick/Documents/GitHub/block-planes/block-planes-solidity/BlockPlanes/contracts/helpers/safemath.sol",
     "exportedSymbols": {
       "SafeMath": [
-        647
+        386
       ]
     },
-    "id": 648,
+    "id": 387,
     "nodeType": "SourceUnit",
     "nodes": [
       {
+<<<<<<< HEAD
         "id": 533,
 >>>>>>> hanger component
+=======
+        "id": 272,
+>>>>>>> plane component
         "literals": [
           "solidity",
           "^",
@@ -48,10 +52,14 @@
         ],
         "nodeType": "PragmaDirective",
 <<<<<<< HEAD
+<<<<<<< HEAD
         "src": "0:24:2"
 =======
         "src": "0:24:4"
 >>>>>>> hanger component
+=======
+        "src": "0:24:3"
+>>>>>>> plane component
       },
       {
         "baseContracts": [],
@@ -66,16 +74,21 @@
 =======
         "documentation": "@title SafeMath\r\n@dev Math operations with safety checks that throw on error\r",
         "fullyImplemented": true,
-        "id": 647,
+        "id": 386,
         "linearizedBaseContracts": [
+<<<<<<< HEAD
           647
 >>>>>>> hanger component
+=======
+          386
+>>>>>>> plane component
         ],
         "name": "SafeMath",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
+<<<<<<< HEAD
 <<<<<<< HEAD
               "id": 301,
               "nodeType": "Block",
@@ -85,6 +98,11 @@
               "nodeType": "Block",
               "src": "288:141:4",
 >>>>>>> hanger component
+=======
+              "id": 304,
+              "nodeType": "Block",
+              "src": "288:141:3",
+>>>>>>> plane component
               "statements": [
                 {
                   "condition": {
@@ -94,16 +112,21 @@
                       "typeString": "uint256"
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "id": 280,
 =======
                     "id": 544,
 >>>>>>> hanger component
+=======
+                    "id": 283,
+>>>>>>> plane component
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
                       "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 278,
                       "name": "a",
@@ -119,6 +142,14 @@
                       "referencedDeclaration": 535,
                       "src": "303:1:4",
 >>>>>>> hanger component
+=======
+                      "id": 281,
+                      "name": "a",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 274,
+                      "src": "303:1:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -130,10 +161,14 @@
                       "argumentTypes": null,
                       "hexValue": "30",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       "id": 279,
 =======
                       "id": 543,
 >>>>>>> hanger component
+=======
+                      "id": 282,
+>>>>>>> plane component
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -141,10 +176,14 @@
                       "lValueRequested": false,
                       "nodeType": "Literal",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       "src": "296:1:2",
 =======
                       "src": "308:1:4",
 >>>>>>> hanger component
+=======
+                      "src": "308:1:3",
+>>>>>>> plane component
                       "subdenomination": null,
                       "typeDescriptions": {
                         "typeIdentifier": "t_rational_0_by_1",
@@ -153,16 +192,21 @@
                       "value": "0"
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "src": "291:6:2",
 =======
                     "src": "303:6:4",
 >>>>>>> hanger component
+=======
+                    "src": "303:6:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
                   "falseBody": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 284,
                   "nodeType": "IfStatement",
@@ -173,23 +217,34 @@
                     "src": "299:33:2",
 =======
                   "id": 548,
+=======
+                  "id": 287,
+>>>>>>> plane component
                   "nodeType": "IfStatement",
-                  "src": "299:47:4",
+                  "src": "299:47:3",
                   "trueBody": {
-                    "id": 547,
+                    "id": 286,
                     "nodeType": "Block",
+<<<<<<< HEAD
                     "src": "311:35:4",
 >>>>>>> hanger component
+=======
+                    "src": "311:35:3",
+>>>>>>> plane component
                     "statements": [
                       {
                         "expression": {
                           "argumentTypes": null,
                           "hexValue": "30",
 <<<<<<< HEAD
+<<<<<<< HEAD
                           "id": 281,
 =======
                           "id": 545,
 >>>>>>> hanger component
+=======
+                          "id": 284,
+>>>>>>> plane component
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -197,10 +252,14 @@
                           "lValueRequested": false,
                           "nodeType": "Literal",
 <<<<<<< HEAD
+<<<<<<< HEAD
                           "src": "320:1:2",
 =======
                           "src": "333:1:4",
 >>>>>>> hanger component
+=======
+                          "src": "333:1:3",
+>>>>>>> plane component
                           "subdenomination": null,
                           "typeDescriptions": {
                             "typeIdentifier": "t_rational_0_by_1",
@@ -208,6 +267,7 @@
                           },
                           "value": "0"
                         },
+<<<<<<< HEAD
 <<<<<<< HEAD
                         "functionReturnParameters": 277,
                         "id": 282,
@@ -219,6 +279,12 @@
                         "nodeType": "Return",
                         "src": "326:8:4"
 >>>>>>> hanger component
+=======
+                        "functionReturnParameters": 280,
+                        "id": 285,
+                        "nodeType": "Return",
+                        "src": "326:8:3"
+>>>>>>> plane component
                       }
                     ]
                   }
@@ -226,14 +292,19 @@
                 {
                   "assignments": [
 <<<<<<< HEAD
+<<<<<<< HEAD
                     286
 =======
                     550
 >>>>>>> hanger component
+=======
+                    289
+>>>>>>> plane component
                   ],
                   "declarations": [
                     {
                       "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 286,
                       "name": "c",
@@ -247,6 +318,13 @@
                       "scope": 566,
                       "src": "356:9:4",
 >>>>>>> hanger component
+=======
+                      "id": 289,
+                      "name": "c",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 305,
+                      "src": "356:9:3",
+>>>>>>> plane component
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
@@ -254,6 +332,7 @@
                         "typeString": "uint256"
                       },
                       "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                         "id": 285,
                         "name": "uint256",
@@ -265,6 +344,12 @@
                         "nodeType": "ElementaryTypeName",
                         "src": "356:7:4",
 >>>>>>> hanger component
+=======
+                        "id": 288,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "356:7:3",
+>>>>>>> plane component
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -275,10 +360,14 @@
                     }
                   ],
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "id": 290,
 =======
                   "id": 554,
 >>>>>>> hanger component
+=======
+                  "id": 293,
+>>>>>>> plane component
                   "initialValue": {
                     "argumentTypes": null,
                     "commonType": {
@@ -286,16 +375,21 @@
                       "typeString": "uint256"
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "id": 289,
 =======
                     "id": 553,
 >>>>>>> hanger component
+=======
+                    "id": 292,
+>>>>>>> plane component
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
                       "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 287,
                       "name": "a",
@@ -311,6 +405,14 @@
                       "referencedDeclaration": 535,
                       "src": "368:1:4",
 >>>>>>> hanger component
+=======
+                      "id": 290,
+                      "name": "a",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 274,
+                      "src": "368:1:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -320,6 +422,7 @@
                     "operator": "*",
                     "rightExpression": {
                       "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 288,
                       "name": "b",
@@ -335,16 +438,28 @@
                       "referencedDeclaration": 537,
                       "src": "372:1:4",
 >>>>>>> hanger component
+=======
+                      "id": 291,
+                      "name": "b",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 276,
+                      "src": "372:1:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "src": "353:5:2",
 =======
                     "src": "368:5:4",
 >>>>>>> hanger component
+=======
+                    "src": "368:5:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -352,10 +467,14 @@
                   },
                   "nodeType": "VariableDeclarationStatement",
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "src": "341:17:2"
 =======
                   "src": "356:17:4"
 >>>>>>> hanger component
+=======
+                  "src": "356:17:3"
+>>>>>>> plane component
                 },
                 {
                   "expression": {
@@ -368,10 +487,14 @@
                           "typeString": "uint256"
                         },
 <<<<<<< HEAD
+<<<<<<< HEAD
                         "id": 296,
 =======
                         "id": 560,
 >>>>>>> hanger component
+=======
+                        "id": 299,
+>>>>>>> plane component
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -383,16 +506,21 @@
                             "typeString": "uint256"
                           },
 <<<<<<< HEAD
+<<<<<<< HEAD
                           "id": 294,
 =======
                           "id": 558,
 >>>>>>> hanger component
+=======
+                          "id": 297,
+>>>>>>> plane component
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "leftExpression": {
                             "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                             "id": 292,
                             "name": "c",
@@ -408,6 +536,14 @@
                             "referencedDeclaration": 550,
                             "src": "391:1:4",
 >>>>>>> hanger component
+=======
+                            "id": 295,
+                            "name": "c",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 289,
+                            "src": "391:1:3",
+>>>>>>> plane component
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -417,6 +553,7 @@
                           "operator": "/",
                           "rightExpression": {
                             "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                             "id": 293,
                             "name": "a",
@@ -432,16 +569,28 @@
                             "referencedDeclaration": 535,
                             "src": "395:1:4",
 >>>>>>> hanger component
+=======
+                            "id": 296,
+                            "name": "a",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 274,
+                            "src": "395:1:3",
+>>>>>>> plane component
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
                             }
                           },
 <<<<<<< HEAD
+<<<<<<< HEAD
                           "src": "375:5:2",
 =======
                           "src": "391:5:4",
 >>>>>>> hanger component
+=======
+                          "src": "391:5:3",
+>>>>>>> plane component
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -451,6 +600,7 @@
                         "operator": "==",
                         "rightExpression": {
                           "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                           "id": 295,
                           "name": "b",
@@ -466,16 +616,28 @@
                           "referencedDeclaration": 537,
                           "src": "400:1:4",
 >>>>>>> hanger component
+=======
+                          "id": 298,
+                          "name": "b",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 276,
+                          "src": "400:1:3",
+>>>>>>> plane component
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           }
                         },
 <<<<<<< HEAD
+<<<<<<< HEAD
                         "src": "375:10:2",
 =======
                         "src": "391:10:4",
 >>>>>>> hanger component
+=======
+                        "src": "391:10:3",
+>>>>>>> plane component
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -489,6 +651,7 @@
                           "typeString": "bool"
                         }
                       ],
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 291,
                       "name": "assert",
@@ -504,16 +667,28 @@
                       "referencedDeclaration": 831,
                       "src": "384:6:4",
 >>>>>>> hanger component
+=======
+                      "id": 294,
+                      "name": "assert",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 390,
+                      "src": "384:6:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_assert_pure$_t_bool_$returns$__$",
                         "typeString": "function (bool) pure"
                       }
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "id": 297,
 =======
                     "id": 561,
 >>>>>>> hanger component
+=======
+                    "id": 300,
+>>>>>>> plane component
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -522,15 +697,20 @@
                     "names": [],
                     "nodeType": "FunctionCall",
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "src": "368:18:2",
 =======
                     "src": "384:18:4",
 >>>>>>> hanger component
+=======
+                    "src": "384:18:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 298,
                   "nodeType": "ExpressionStatement",
@@ -540,10 +720,16 @@
                   "nodeType": "ExpressionStatement",
                   "src": "384:18:4"
 >>>>>>> hanger component
+=======
+                  "id": 301,
+                  "nodeType": "ExpressionStatement",
+                  "src": "384:18:3"
+>>>>>>> plane component
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 299,
                     "name": "c",
@@ -559,11 +745,20 @@
                     "referencedDeclaration": 550,
                     "src": "420:1:4",
 >>>>>>> hanger component
+=======
+                    "id": 302,
+                    "name": "c",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 289,
+                    "src": "420:1:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "functionReturnParameters": 277,
                   "id": 300,
@@ -577,14 +772,22 @@
 =======
                   "functionReturnParameters": 541,
                   "id": 564,
+=======
+                  "functionReturnParameters": 280,
+                  "id": 303,
+>>>>>>> plane component
                   "nodeType": "Return",
-                  "src": "413:8:4"
+                  "src": "413:8:3"
                 }
               ]
             },
             "documentation": "@dev Multiplies two numbers, throws on overflow.\r",
+<<<<<<< HEAD
             "id": 566,
 >>>>>>> hanger component
+=======
+            "id": 305,
+>>>>>>> plane component
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -593,14 +796,19 @@
             "nodeType": "FunctionDefinition",
             "parameters": {
 <<<<<<< HEAD
+<<<<<<< HEAD
               "id": 274,
 =======
               "id": 538,
 >>>>>>> hanger component
+=======
+              "id": 277,
+>>>>>>> plane component
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 271,
                   "name": "a",
@@ -614,6 +822,13 @@
                   "scope": 566,
                   "src": "234:9:4",
 >>>>>>> hanger component
+=======
+                  "id": 274,
+                  "name": "a",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 305,
+                  "src": "234:9:3",
+>>>>>>> plane component
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -621,6 +836,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 270,
                     "name": "uint256",
@@ -632,6 +848,12 @@
                     "nodeType": "ElementaryTypeName",
                     "src": "234:7:4",
 >>>>>>> hanger component
+=======
+                    "id": 273,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "234:7:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -642,6 +864,7 @@
                 },
                 {
                   "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 273,
                   "name": "b",
@@ -655,6 +878,13 @@
                   "scope": 566,
                   "src": "245:9:4",
 >>>>>>> hanger component
+=======
+                  "id": 276,
+                  "name": "b",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 305,
+                  "src": "245:9:3",
+>>>>>>> plane component
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -662,6 +892,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 272,
                     "name": "uint256",
@@ -673,6 +904,12 @@
                     "nodeType": "ElementaryTypeName",
                     "src": "245:7:4",
 >>>>>>> hanger component
+=======
+                    "id": 275,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "245:7:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -682,6 +919,7 @@
                   "visibility": "internal"
                 }
               ],
+<<<<<<< HEAD
 <<<<<<< HEAD
               "src": "222:22:2"
             },
@@ -695,10 +933,18 @@
             "returnParameters": {
               "id": 541,
 >>>>>>> hanger component
+=======
+              "src": "233:22:3"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 280,
+>>>>>>> plane component
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 276,
                   "name": "",
@@ -712,6 +958,13 @@
                   "scope": 566,
                   "src": "279:7:4",
 >>>>>>> hanger component
+=======
+                  "id": 279,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 305,
+                  "src": "279:7:3",
+>>>>>>> plane component
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -719,6 +972,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 275,
                     "name": "uint256",
@@ -730,6 +984,12 @@
                     "nodeType": "ElementaryTypeName",
                     "src": "279:7:4",
 >>>>>>> hanger component
+=======
+                    "id": 278,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "279:7:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -739,6 +999,7 @@
                   "visibility": "internal"
                 }
               ],
+<<<<<<< HEAD
 <<<<<<< HEAD
               "src": "267:9:2"
             },
@@ -750,12 +1011,19 @@
             "scope": 647,
             "src": "221:208:4",
 >>>>>>> hanger component
+=======
+              "src": "278:9:3"
+            },
+            "scope": 386,
+            "src": "221:208:3",
+>>>>>>> plane component
             "stateMutability": "pure",
             "superFunction": null,
             "visibility": "internal"
           },
           {
             "body": {
+<<<<<<< HEAD
 <<<<<<< HEAD
               "id": 337,
               "nodeType": "Block",
@@ -765,6 +1033,11 @@
               "nodeType": "Block",
               "src": "591:215:4",
 >>>>>>> hanger component
+=======
+              "id": 340,
+              "nodeType": "Block",
+              "src": "591:215:3",
+>>>>>>> plane component
               "statements": [
                 {
                   "expression": {
@@ -777,16 +1050,21 @@
                           "typeString": "uint256"
                         },
 <<<<<<< HEAD
+<<<<<<< HEAD
                         "id": 314,
 =======
                         "id": 578,
 >>>>>>> hanger component
+=======
+                        "id": 317,
+>>>>>>> plane component
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                           "id": 312,
                           "name": "b",
@@ -802,6 +1080,14 @@
                           "referencedDeclaration": 570,
                           "src": "609:1:4",
 >>>>>>> hanger component
+=======
+                          "id": 315,
+                          "name": "b",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 309,
+                          "src": "609:1:3",
+>>>>>>> plane component
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -813,10 +1099,14 @@
                           "argumentTypes": null,
                           "hexValue": "30",
 <<<<<<< HEAD
+<<<<<<< HEAD
                           "id": 313,
 =======
                           "id": 577,
 >>>>>>> hanger component
+=======
+                          "id": 316,
+>>>>>>> plane component
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -824,10 +1114,14 @@
                           "lValueRequested": false,
                           "nodeType": "Literal",
 <<<<<<< HEAD
+<<<<<<< HEAD
                           "src": "589:1:2",
 =======
                           "src": "613:1:4",
 >>>>>>> hanger component
+=======
+                          "src": "613:1:3",
+>>>>>>> plane component
                           "subdenomination": null,
                           "typeDescriptions": {
                             "typeIdentifier": "t_rational_0_by_1",
@@ -836,10 +1130,14 @@
                           "value": "0"
                         },
 <<<<<<< HEAD
+<<<<<<< HEAD
                         "src": "585:5:2",
 =======
                         "src": "609:5:4",
 >>>>>>> hanger component
+=======
+                        "src": "609:5:3",
+>>>>>>> plane component
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -853,6 +1151,7 @@
                           "typeString": "bool"
                         }
                       ],
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 311,
                       "name": "assert",
@@ -868,16 +1167,28 @@
                       "referencedDeclaration": 831,
                       "src": "602:6:4",
 >>>>>>> hanger component
+=======
+                      "id": 314,
+                      "name": "assert",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 390,
+                      "src": "602:6:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_assert_pure$_t_bool_$returns$__$",
                         "typeString": "function (bool) pure"
                       }
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "id": 315,
 =======
                     "id": 579,
 >>>>>>> hanger component
+=======
+                    "id": 318,
+>>>>>>> plane component
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -886,15 +1197,20 @@
                     "names": [],
                     "nodeType": "FunctionCall",
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "src": "578:13:2",
 =======
                     "src": "602:13:4",
 >>>>>>> hanger component
+=======
+                    "src": "602:13:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 316,
                   "nodeType": "ExpressionStatement",
@@ -905,17 +1221,25 @@
                     318
 =======
                   "id": 580,
+=======
+                  "id": 319,
+>>>>>>> plane component
                   "nodeType": "ExpressionStatement",
-                  "src": "602:13:4"
+                  "src": "602:13:3"
                 },
                 {
                   "assignments": [
+<<<<<<< HEAD
                     582
 >>>>>>> hanger component
+=======
+                    321
+>>>>>>> plane component
                   ],
                   "declarations": [
                     {
                       "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 318,
                       "name": "c",
@@ -929,6 +1253,13 @@
                       "scope": 602,
                       "src": "678:9:4",
 >>>>>>> hanger component
+=======
+                      "id": 321,
+                      "name": "c",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 341,
+                      "src": "678:9:3",
+>>>>>>> plane component
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
@@ -936,6 +1267,7 @@
                         "typeString": "uint256"
                       },
                       "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                         "id": 317,
                         "name": "uint256",
@@ -947,6 +1279,12 @@
                         "nodeType": "ElementaryTypeName",
                         "src": "678:7:4",
 >>>>>>> hanger component
+=======
+                        "id": 320,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "678:7:3",
+>>>>>>> plane component
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -957,10 +1295,14 @@
                     }
                   ],
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "id": 322,
 =======
                   "id": 586,
 >>>>>>> hanger component
+=======
+                  "id": 325,
+>>>>>>> plane component
                   "initialValue": {
                     "argumentTypes": null,
                     "commonType": {
@@ -968,16 +1310,21 @@
                       "typeString": "uint256"
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "id": 321,
 =======
                     "id": 585,
 >>>>>>> hanger component
+=======
+                    "id": 324,
+>>>>>>> plane component
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
                       "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 319,
                       "name": "a",
@@ -993,6 +1340,14 @@
                       "referencedDeclaration": 568,
                       "src": "690:1:4",
 >>>>>>> hanger component
+=======
+                      "id": 322,
+                      "name": "a",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 307,
+                      "src": "690:1:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -1002,6 +1357,7 @@
                     "operator": "/",
                     "rightExpression": {
                       "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 320,
                       "name": "b",
@@ -1017,16 +1373,28 @@
                       "referencedDeclaration": 570,
                       "src": "694:1:4",
 >>>>>>> hanger component
+=======
+                      "id": 323,
+                      "name": "b",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 309,
+                      "src": "694:1:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "src": "665:5:2",
 =======
                     "src": "690:5:4",
 >>>>>>> hanger component
+=======
+                    "src": "690:5:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1034,10 +1402,14 @@
                   },
                   "nodeType": "VariableDeclarationStatement",
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "src": "653:17:2"
 =======
                   "src": "678:17:4"
 >>>>>>> hanger component
+=======
+                  "src": "678:17:3"
+>>>>>>> plane component
                 },
                 {
                   "expression": {
@@ -1050,16 +1422,21 @@
                           "typeString": "uint256"
                         },
 <<<<<<< HEAD
+<<<<<<< HEAD
                         "id": 332,
 =======
                         "id": 596,
 >>>>>>> hanger component
+=======
+                        "id": 335,
+>>>>>>> plane component
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                           "id": 324,
                           "name": "a",
@@ -1075,6 +1452,14 @@
                           "referencedDeclaration": 568,
                           "src": "713:1:4",
 >>>>>>> hanger component
+=======
+                          "id": 327,
+                          "name": "a",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 307,
+                          "src": "713:1:3",
+>>>>>>> plane component
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -1089,10 +1474,14 @@
                             "typeString": "uint256"
                           },
 <<<<<<< HEAD
+<<<<<<< HEAD
                           "id": 331,
 =======
                           "id": 595,
 >>>>>>> hanger component
+=======
+                          "id": 334,
+>>>>>>> plane component
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -1104,16 +1493,21 @@
                               "typeString": "uint256"
                             },
 <<<<<<< HEAD
+<<<<<<< HEAD
                             "id": 327,
 =======
                             "id": 591,
 >>>>>>> hanger component
+=======
+                            "id": 330,
+>>>>>>> plane component
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
                             "lValueRequested": false,
                             "leftExpression": {
                               "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                               "id": 325,
                               "name": "b",
@@ -1129,6 +1523,14 @@
                               "referencedDeclaration": 570,
                               "src": "718:1:4",
 >>>>>>> hanger component
+=======
+                              "id": 328,
+                              "name": "b",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 309,
+                              "src": "718:1:3",
+>>>>>>> plane component
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
                                 "typeString": "uint256"
@@ -1138,6 +1540,7 @@
                             "operator": "*",
                             "rightExpression": {
                               "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                               "id": 326,
                               "name": "c",
@@ -1153,16 +1556,28 @@
                               "referencedDeclaration": 582,
                               "src": "722:1:4",
 >>>>>>> hanger component
+=======
+                              "id": 329,
+                              "name": "c",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 321,
+                              "src": "722:1:3",
+>>>>>>> plane component
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
                                 "typeString": "uint256"
                               }
                             },
 <<<<<<< HEAD
+<<<<<<< HEAD
                             "src": "692:5:2",
 =======
                             "src": "718:5:4",
 >>>>>>> hanger component
+=======
+                            "src": "718:5:3",
+>>>>>>> plane component
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -1177,16 +1592,21 @@
                               "typeString": "uint256"
                             },
 <<<<<<< HEAD
+<<<<<<< HEAD
                             "id": 330,
 =======
                             "id": 594,
 >>>>>>> hanger component
+=======
+                            "id": 333,
+>>>>>>> plane component
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
                             "lValueRequested": false,
                             "leftExpression": {
                               "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                               "id": 328,
                               "name": "a",
@@ -1202,6 +1622,14 @@
                               "referencedDeclaration": 568,
                               "src": "726:1:4",
 >>>>>>> hanger component
+=======
+                              "id": 331,
+                              "name": "a",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 307,
+                              "src": "726:1:3",
+>>>>>>> plane component
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
                                 "typeString": "uint256"
@@ -1211,6 +1639,7 @@
                             "operator": "%",
                             "rightExpression": {
                               "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                               "id": 329,
                               "name": "b",
@@ -1226,36 +1655,56 @@
                               "referencedDeclaration": 570,
                               "src": "730:1:4",
 >>>>>>> hanger component
+=======
+                              "id": 332,
+                              "name": "b",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 309,
+                              "src": "730:1:3",
+>>>>>>> plane component
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
                                 "typeString": "uint256"
                               }
                             },
 <<<<<<< HEAD
+<<<<<<< HEAD
                             "src": "700:5:2",
 =======
                             "src": "726:5:4",
 >>>>>>> hanger component
+=======
+                            "src": "726:5:3",
+>>>>>>> plane component
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
                             }
                           },
 <<<<<<< HEAD
+<<<<<<< HEAD
                           "src": "692:13:2",
 =======
                           "src": "718:13:4",
 >>>>>>> hanger component
+=======
+                          "src": "718:13:3",
+>>>>>>> plane component
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           }
                         },
 <<<<<<< HEAD
+<<<<<<< HEAD
                         "src": "687:18:2",
 =======
                         "src": "713:18:4",
 >>>>>>> hanger component
+=======
+                        "src": "713:18:3",
+>>>>>>> plane component
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -1269,6 +1718,7 @@
                           "typeString": "bool"
                         }
                       ],
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 323,
                       "name": "assert",
@@ -1284,16 +1734,28 @@
                       "referencedDeclaration": 831,
                       "src": "706:6:4",
 >>>>>>> hanger component
+=======
+                      "id": 326,
+                      "name": "assert",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 390,
+                      "src": "706:6:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_assert_pure$_t_bool_$returns$__$",
                         "typeString": "function (bool) pure"
                       }
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "id": 333,
 =======
                     "id": 597,
 >>>>>>> hanger component
+=======
+                    "id": 336,
+>>>>>>> plane component
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1302,15 +1764,20 @@
                     "names": [],
                     "nodeType": "FunctionCall",
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "src": "680:26:2",
 =======
                     "src": "706:26:4",
 >>>>>>> hanger component
+=======
+                    "src": "706:26:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 334,
                   "nodeType": "ExpressionStatement",
@@ -1320,10 +1787,16 @@
                   "nodeType": "ExpressionStatement",
                   "src": "706:26:4"
 >>>>>>> hanger component
+=======
+                  "id": 337,
+                  "nodeType": "ExpressionStatement",
+                  "src": "706:26:3"
+>>>>>>> plane component
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 335,
                     "name": "c",
@@ -1339,11 +1812,20 @@
                     "referencedDeclaration": 582,
                     "src": "797:1:4",
 >>>>>>> hanger component
+=======
+                    "id": 338,
+                    "name": "c",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 321,
+                    "src": "797:1:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "functionReturnParameters": 310,
                   "id": 336,
@@ -1357,14 +1839,22 @@
 =======
                   "functionReturnParameters": 574,
                   "id": 600,
+=======
+                  "functionReturnParameters": 313,
+                  "id": 339,
+>>>>>>> plane component
                   "nodeType": "Return",
-                  "src": "790:8:4"
+                  "src": "790:8:3"
                 }
               ]
             },
             "documentation": "@dev Integer division of two numbers, truncating the quotient.\r",
+<<<<<<< HEAD
             "id": 602,
 >>>>>>> hanger component
+=======
+            "id": 341,
+>>>>>>> plane component
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -1373,14 +1863,19 @@
             "nodeType": "FunctionDefinition",
             "parameters": {
 <<<<<<< HEAD
+<<<<<<< HEAD
               "id": 307,
 =======
               "id": 571,
 >>>>>>> hanger component
+=======
+              "id": 310,
+>>>>>>> plane component
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 304,
                   "name": "a",
@@ -1394,6 +1889,13 @@
                   "scope": 602,
                   "src": "537:9:4",
 >>>>>>> hanger component
+=======
+                  "id": 307,
+                  "name": "a",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 341,
+                  "src": "537:9:3",
+>>>>>>> plane component
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1401,6 +1903,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 303,
                     "name": "uint256",
@@ -1412,6 +1915,12 @@
                     "nodeType": "ElementaryTypeName",
                     "src": "537:7:4",
 >>>>>>> hanger component
+=======
+                    "id": 306,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "537:7:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1422,6 +1931,7 @@
                 },
                 {
                   "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 306,
                   "name": "b",
@@ -1435,6 +1945,13 @@
                   "scope": 602,
                   "src": "548:9:4",
 >>>>>>> hanger component
+=======
+                  "id": 309,
+                  "name": "b",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 341,
+                  "src": "548:9:3",
+>>>>>>> plane component
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1442,6 +1959,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 305,
                     "name": "uint256",
@@ -1453,6 +1971,12 @@
                     "nodeType": "ElementaryTypeName",
                     "src": "548:7:4",
 >>>>>>> hanger component
+=======
+                    "id": 308,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "548:7:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1462,6 +1986,7 @@
                   "visibility": "internal"
                 }
               ],
+<<<<<<< HEAD
 <<<<<<< HEAD
               "src": "513:22:2"
             },
@@ -1475,10 +2000,18 @@
             "returnParameters": {
               "id": 574,
 >>>>>>> hanger component
+=======
+              "src": "536:22:3"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 313,
+>>>>>>> plane component
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 309,
                   "name": "",
@@ -1492,6 +2025,13 @@
                   "scope": 602,
                   "src": "582:7:4",
 >>>>>>> hanger component
+=======
+                  "id": 312,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 341,
+                  "src": "582:7:3",
+>>>>>>> plane component
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1499,6 +2039,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 308,
                     "name": "uint256",
@@ -1510,6 +2051,12 @@
                     "nodeType": "ElementaryTypeName",
                     "src": "582:7:4",
 >>>>>>> hanger component
+=======
+                    "id": 311,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "582:7:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1519,6 +2066,7 @@
                   "visibility": "internal"
                 }
               ],
+<<<<<<< HEAD
 <<<<<<< HEAD
               "src": "558:9:2"
             },
@@ -1530,12 +2078,19 @@
             "scope": 647,
             "src": "524:282:4",
 >>>>>>> hanger component
+=======
+              "src": "581:9:3"
+            },
+            "scope": 386,
+            "src": "524:282:3",
+>>>>>>> plane component
             "stateMutability": "pure",
             "superFunction": null,
             "visibility": "internal"
           },
           {
             "body": {
+<<<<<<< HEAD
 <<<<<<< HEAD
               "id": 357,
               "nodeType": "Block",
@@ -1545,6 +2100,11 @@
               "nodeType": "Block",
               "src": "998:56:4",
 >>>>>>> hanger component
+=======
+              "id": 360,
+              "nodeType": "Block",
+              "src": "998:56:3",
+>>>>>>> plane component
               "statements": [
                 {
                   "expression": {
@@ -1557,16 +2117,21 @@
                           "typeString": "uint256"
                         },
 <<<<<<< HEAD
+<<<<<<< HEAD
                         "id": 350,
 =======
                         "id": 614,
 >>>>>>> hanger component
+=======
+                        "id": 353,
+>>>>>>> plane component
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                           "id": 348,
                           "name": "b",
@@ -1582,6 +2147,14 @@
                           "referencedDeclaration": 606,
                           "src": "1016:1:4",
 >>>>>>> hanger component
+=======
+                          "id": 351,
+                          "name": "b",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 345,
+                          "src": "1016:1:3",
+>>>>>>> plane component
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -1591,6 +2164,7 @@
                         "operator": "<=",
                         "rightExpression": {
                           "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                           "id": 349,
                           "name": "a",
@@ -1606,16 +2180,28 @@
                           "referencedDeclaration": 604,
                           "src": "1021:1:4",
 >>>>>>> hanger component
+=======
+                          "id": 352,
+                          "name": "a",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 343,
+                          "src": "1021:1:3",
+>>>>>>> plane component
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           }
                         },
 <<<<<<< HEAD
+<<<<<<< HEAD
                         "src": "982:6:2",
 =======
                         "src": "1016:6:4",
 >>>>>>> hanger component
+=======
+                        "src": "1016:6:3",
+>>>>>>> plane component
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -1629,6 +2215,7 @@
                           "typeString": "bool"
                         }
                       ],
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 347,
                       "name": "assert",
@@ -1644,16 +2231,28 @@
                       "referencedDeclaration": 831,
                       "src": "1009:6:4",
 >>>>>>> hanger component
+=======
+                      "id": 350,
+                      "name": "assert",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 390,
+                      "src": "1009:6:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_assert_pure$_t_bool_$returns$__$",
                         "typeString": "function (bool) pure"
                       }
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "id": 351,
 =======
                     "id": 615,
 >>>>>>> hanger component
+=======
+                    "id": 354,
+>>>>>>> plane component
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1662,15 +2261,20 @@
                     "names": [],
                     "nodeType": "FunctionCall",
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "src": "975:14:2",
 =======
                     "src": "1009:14:4",
 >>>>>>> hanger component
+=======
+                    "src": "1009:14:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 352,
                   "nodeType": "ExpressionStatement",
@@ -1680,6 +2284,11 @@
                   "nodeType": "ExpressionStatement",
                   "src": "1009:14:4"
 >>>>>>> hanger component
+=======
+                  "id": 355,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1009:14:3"
+>>>>>>> plane component
                 },
                 {
                   "expression": {
@@ -1689,16 +2298,21 @@
                       "typeString": "uint256"
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "id": 355,
 =======
                     "id": 619,
 >>>>>>> hanger component
+=======
+                    "id": 358,
+>>>>>>> plane component
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
                       "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 353,
                       "name": "a",
@@ -1714,6 +2328,14 @@
                       "referencedDeclaration": 604,
                       "src": "1041:1:4",
 >>>>>>> hanger component
+=======
+                      "id": 356,
+                      "name": "a",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 343,
+                      "src": "1041:1:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -1723,6 +2345,7 @@
                     "operator": "-",
                     "rightExpression": {
                       "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 354,
                       "name": "b",
@@ -1738,21 +2361,34 @@
                       "referencedDeclaration": 606,
                       "src": "1045:1:4",
 >>>>>>> hanger component
+=======
+                      "id": 357,
+                      "name": "b",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 345,
+                      "src": "1045:1:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "src": "1006:5:2",
 =======
                     "src": "1041:5:4",
 >>>>>>> hanger component
+=======
+                    "src": "1041:5:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "functionReturnParameters": 346,
                   "id": 356,
@@ -1766,14 +2402,22 @@
 =======
                   "functionReturnParameters": 610,
                   "id": 620,
+=======
+                  "functionReturnParameters": 349,
+                  "id": 359,
+>>>>>>> plane component
                   "nodeType": "Return",
-                  "src": "1034:12:4"
+                  "src": "1034:12:3"
                 }
               ]
             },
             "documentation": "@dev Subtracts two numbers, throws on overflow (i.e. if subtrahend is greater than minuend).\r",
+<<<<<<< HEAD
             "id": 622,
 >>>>>>> hanger component
+=======
+            "id": 361,
+>>>>>>> plane component
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -1782,14 +2426,19 @@
             "nodeType": "FunctionDefinition",
             "parameters": {
 <<<<<<< HEAD
+<<<<<<< HEAD
               "id": 343,
 =======
               "id": 607,
 >>>>>>> hanger component
+=======
+              "id": 346,
+>>>>>>> plane component
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 340,
                   "name": "a",
@@ -1803,6 +2452,13 @@
                   "scope": 622,
                   "src": "944:9:4",
 >>>>>>> hanger component
+=======
+                  "id": 343,
+                  "name": "a",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 361,
+                  "src": "944:9:3",
+>>>>>>> plane component
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1810,6 +2466,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 339,
                     "name": "uint256",
@@ -1821,6 +2478,12 @@
                     "nodeType": "ElementaryTypeName",
                     "src": "944:7:4",
 >>>>>>> hanger component
+=======
+                    "id": 342,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "944:7:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1831,6 +2494,7 @@
                 },
                 {
                   "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 342,
                   "name": "b",
@@ -1844,6 +2508,13 @@
                   "scope": 622,
                   "src": "955:9:4",
 >>>>>>> hanger component
+=======
+                  "id": 345,
+                  "name": "b",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 361,
+                  "src": "955:9:3",
+>>>>>>> plane component
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1851,6 +2522,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 341,
                     "name": "uint256",
@@ -1862,6 +2534,12 @@
                     "nodeType": "ElementaryTypeName",
                     "src": "955:7:4",
 >>>>>>> hanger component
+=======
+                    "id": 344,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "955:7:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1871,6 +2549,7 @@
                   "visibility": "internal"
                 }
               ],
+<<<<<<< HEAD
 <<<<<<< HEAD
               "src": "910:22:2"
             },
@@ -1884,10 +2563,18 @@
             "returnParameters": {
               "id": 610,
 >>>>>>> hanger component
+=======
+              "src": "943:22:3"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 349,
+>>>>>>> plane component
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 345,
                   "name": "",
@@ -1901,6 +2588,13 @@
                   "scope": 622,
                   "src": "989:7:4",
 >>>>>>> hanger component
+=======
+                  "id": 348,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 361,
+                  "src": "989:7:3",
+>>>>>>> plane component
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1908,6 +2602,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 344,
                     "name": "uint256",
@@ -1919,6 +2614,12 @@
                     "nodeType": "ElementaryTypeName",
                     "src": "989:7:4",
 >>>>>>> hanger component
+=======
+                    "id": 347,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "989:7:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -1928,6 +2629,7 @@
                   "visibility": "internal"
                 }
               ],
+<<<<<<< HEAD
 <<<<<<< HEAD
               "src": "955:9:2"
             },
@@ -1939,12 +2641,19 @@
             "scope": 647,
             "src": "931:123:4",
 >>>>>>> hanger component
+=======
+              "src": "988:9:3"
+            },
+            "scope": 386,
+            "src": "931:123:3",
+>>>>>>> plane component
             "stateMutability": "pure",
             "superFunction": null,
             "visibility": "internal"
           },
           {
             "body": {
+<<<<<<< HEAD
 <<<<<<< HEAD
               "id": 381,
               "nodeType": "Block",
@@ -1955,17 +2664,25 @@
                     368
 =======
               "id": 645,
+=======
+              "id": 384,
+>>>>>>> plane component
               "nodeType": "Block",
-              "src": "1196:80:4",
+              "src": "1196:80:3",
               "statements": [
                 {
                   "assignments": [
+<<<<<<< HEAD
                     632
 >>>>>>> hanger component
+=======
+                    371
+>>>>>>> plane component
                   ],
                   "declarations": [
                     {
                       "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 368,
                       "name": "c",
@@ -1979,6 +2696,13 @@
                       "scope": 646,
                       "src": "1207:9:4",
 >>>>>>> hanger component
+=======
+                      "id": 371,
+                      "name": "c",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 385,
+                      "src": "1207:9:3",
+>>>>>>> plane component
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
@@ -1986,6 +2710,7 @@
                         "typeString": "uint256"
                       },
                       "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                         "id": 367,
                         "name": "uint256",
@@ -1997,6 +2722,12 @@
                         "nodeType": "ElementaryTypeName",
                         "src": "1207:7:4",
 >>>>>>> hanger component
+=======
+                        "id": 370,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1207:7:3",
+>>>>>>> plane component
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -2007,10 +2738,14 @@
                     }
                   ],
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "id": 372,
 =======
                   "id": 636,
 >>>>>>> hanger component
+=======
+                  "id": 375,
+>>>>>>> plane component
                   "initialValue": {
                     "argumentTypes": null,
                     "commonType": {
@@ -2018,16 +2753,21 @@
                       "typeString": "uint256"
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "id": 371,
 =======
                     "id": 635,
 >>>>>>> hanger component
+=======
+                    "id": 374,
+>>>>>>> plane component
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
                       "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 369,
                       "name": "a",
@@ -2043,6 +2783,14 @@
                       "referencedDeclaration": 624,
                       "src": "1219:1:4",
 >>>>>>> hanger component
+=======
+                      "id": 372,
+                      "name": "a",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 363,
+                      "src": "1219:1:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -2052,6 +2800,7 @@
                     "operator": "+",
                     "rightExpression": {
                       "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 370,
                       "name": "b",
@@ -2067,16 +2816,28 @@
                       "referencedDeclaration": 626,
                       "src": "1223:1:4",
 >>>>>>> hanger component
+=======
+                      "id": 373,
+                      "name": "b",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 365,
+                      "src": "1223:1:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "src": "1177:5:2",
 =======
                     "src": "1219:5:4",
 >>>>>>> hanger component
+=======
+                    "src": "1219:5:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2084,10 +2845,14 @@
                   },
                   "nodeType": "VariableDeclarationStatement",
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "src": "1165:17:2"
 =======
                   "src": "1207:17:4"
 >>>>>>> hanger component
+=======
+                  "src": "1207:17:3"
+>>>>>>> plane component
                 },
                 {
                   "expression": {
@@ -2100,16 +2865,21 @@
                           "typeString": "uint256"
                         },
 <<<<<<< HEAD
+<<<<<<< HEAD
                         "id": 376,
 =======
                         "id": 640,
 >>>>>>> hanger component
+=======
+                        "id": 379,
+>>>>>>> plane component
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                           "id": 374,
                           "name": "c",
@@ -2125,6 +2895,14 @@
                           "referencedDeclaration": 632,
                           "src": "1242:1:4",
 >>>>>>> hanger component
+=======
+                          "id": 377,
+                          "name": "c",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 371,
+                          "src": "1242:1:3",
+>>>>>>> plane component
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -2134,6 +2912,7 @@
                         "operator": ">=",
                         "rightExpression": {
                           "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                           "id": 375,
                           "name": "a",
@@ -2149,16 +2928,28 @@
                           "referencedDeclaration": 624,
                           "src": "1247:1:4",
 >>>>>>> hanger component
+=======
+                          "id": 378,
+                          "name": "a",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 363,
+                          "src": "1247:1:3",
+>>>>>>> plane component
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           }
                         },
 <<<<<<< HEAD
+<<<<<<< HEAD
                         "src": "1199:6:2",
 =======
                         "src": "1242:6:4",
 >>>>>>> hanger component
+=======
+                        "src": "1242:6:3",
+>>>>>>> plane component
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -2172,6 +2963,7 @@
                           "typeString": "bool"
                         }
                       ],
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 373,
                       "name": "assert",
@@ -2187,16 +2979,28 @@
                       "referencedDeclaration": 831,
                       "src": "1235:6:4",
 >>>>>>> hanger component
+=======
+                      "id": 376,
+                      "name": "assert",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 390,
+                      "src": "1235:6:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_assert_pure$_t_bool_$returns$__$",
                         "typeString": "function (bool) pure"
                       }
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "id": 377,
 =======
                     "id": 641,
 >>>>>>> hanger component
+=======
+                    "id": 380,
+>>>>>>> plane component
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2205,15 +3009,20 @@
                     "names": [],
                     "nodeType": "FunctionCall",
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "src": "1192:14:2",
 =======
                     "src": "1235:14:4",
 >>>>>>> hanger component
+=======
+                    "src": "1235:14:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 378,
                   "nodeType": "ExpressionStatement",
@@ -2223,10 +3032,16 @@
                   "nodeType": "ExpressionStatement",
                   "src": "1235:14:4"
 >>>>>>> hanger component
+=======
+                  "id": 381,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1235:14:3"
+>>>>>>> plane component
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 379,
                     "name": "c",
@@ -2242,11 +3057,20 @@
                     "referencedDeclaration": 632,
                     "src": "1267:1:4",
 >>>>>>> hanger component
+=======
+                    "id": 382,
+                    "name": "c",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 371,
+                    "src": "1267:1:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "functionReturnParameters": 366,
                   "id": 380,
@@ -2260,14 +3084,22 @@
 =======
                   "functionReturnParameters": 630,
                   "id": 644,
+=======
+                  "functionReturnParameters": 369,
+                  "id": 383,
+>>>>>>> plane component
                   "nodeType": "Return",
-                  "src": "1260:8:4"
+                  "src": "1260:8:3"
                 }
               ]
             },
             "documentation": "@dev Adds two numbers, throws on overflow.\r",
+<<<<<<< HEAD
             "id": 646,
 >>>>>>> hanger component
+=======
+            "id": 385,
+>>>>>>> plane component
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -2276,14 +3108,19 @@
             "nodeType": "FunctionDefinition",
             "parameters": {
 <<<<<<< HEAD
+<<<<<<< HEAD
               "id": 363,
 =======
               "id": 627,
 >>>>>>> hanger component
+=======
+              "id": 366,
+>>>>>>> plane component
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 360,
                   "name": "a",
@@ -2297,6 +3134,13 @@
                   "scope": 646,
                   "src": "1142:9:4",
 >>>>>>> hanger component
+=======
+                  "id": 363,
+                  "name": "a",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 385,
+                  "src": "1142:9:3",
+>>>>>>> plane component
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2304,6 +3148,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 359,
                     "name": "uint256",
@@ -2315,6 +3160,12 @@
                     "nodeType": "ElementaryTypeName",
                     "src": "1142:7:4",
 >>>>>>> hanger component
+=======
+                    "id": 362,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1142:7:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2325,6 +3176,7 @@
                 },
                 {
                   "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 362,
                   "name": "b",
@@ -2338,6 +3190,13 @@
                   "scope": 646,
                   "src": "1153:9:4",
 >>>>>>> hanger component
+=======
+                  "id": 365,
+                  "name": "b",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 385,
+                  "src": "1153:9:3",
+>>>>>>> plane component
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2345,6 +3204,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 361,
                     "name": "uint256",
@@ -2356,6 +3216,12 @@
                     "nodeType": "ElementaryTypeName",
                     "src": "1153:7:4",
 >>>>>>> hanger component
+=======
+                    "id": 364,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1153:7:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2365,6 +3231,7 @@
                   "visibility": "internal"
                 }
               ],
+<<<<<<< HEAD
 <<<<<<< HEAD
               "src": "1100:22:2"
             },
@@ -2378,10 +3245,18 @@
             "returnParameters": {
               "id": 630,
 >>>>>>> hanger component
+=======
+              "src": "1141:22:3"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 369,
+>>>>>>> plane component
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 365,
                   "name": "",
@@ -2395,6 +3270,13 @@
                   "scope": 646,
                   "src": "1187:7:4",
 >>>>>>> hanger component
+=======
+                  "id": 368,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 385,
+                  "src": "1187:7:3",
+>>>>>>> plane component
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -2402,6 +3284,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 364,
                     "name": "uint256",
@@ -2413,6 +3296,12 @@
                     "nodeType": "ElementaryTypeName",
                     "src": "1187:7:4",
 >>>>>>> hanger component
+=======
+                    "id": 367,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1187:7:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2422,6 +3311,7 @@
                   "visibility": "internal"
                 }
               ],
+<<<<<<< HEAD
 <<<<<<< HEAD
               "src": "1145:9:2"
             },
@@ -2433,11 +3323,18 @@
             "scope": 647,
             "src": "1129:147:4",
 >>>>>>> hanger component
+=======
+              "src": "1186:9:3"
+            },
+            "scope": 386,
+            "src": "1129:147:3",
+>>>>>>> plane component
             "stateMutability": "pure",
             "superFunction": null,
             "visibility": "internal"
           }
         ],
+<<<<<<< HEAD
 <<<<<<< HEAD
         "scope": 384,
         "src": "116:1117:2"
@@ -2460,23 +3357,31 @@
 =======
         "scope": 648,
         "src": "122:1157:4"
+=======
+        "scope": 387,
+        "src": "122:1157:3"
+>>>>>>> plane component
       }
     ],
-    "src": "0:1281:4"
+    "src": "0:1281:3"
   },
   "legacyAST": {
     "absolutePath": "/C/Users/Nick/Documents/GitHub/block-planes/block-planes-solidity/BlockPlanes/contracts/helpers/safemath.sol",
     "exportedSymbols": {
       "SafeMath": [
-        647
+        386
       ]
     },
-    "id": 648,
+    "id": 387,
     "nodeType": "SourceUnit",
     "nodes": [
       {
+<<<<<<< HEAD
         "id": 533,
 >>>>>>> hanger component
+=======
+        "id": 272,
+>>>>>>> plane component
         "literals": [
           "solidity",
           "^",
@@ -2485,10 +3390,14 @@
         ],
         "nodeType": "PragmaDirective",
 <<<<<<< HEAD
+<<<<<<< HEAD
         "src": "0:24:2"
 =======
         "src": "0:24:4"
 >>>>>>> hanger component
+=======
+        "src": "0:24:3"
+>>>>>>> plane component
       },
       {
         "baseContracts": [],
@@ -2503,16 +3412,21 @@
 =======
         "documentation": "@title SafeMath\r\n@dev Math operations with safety checks that throw on error\r",
         "fullyImplemented": true,
-        "id": 647,
+        "id": 386,
         "linearizedBaseContracts": [
+<<<<<<< HEAD
           647
 >>>>>>> hanger component
+=======
+          386
+>>>>>>> plane component
         ],
         "name": "SafeMath",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "body": {
+<<<<<<< HEAD
 <<<<<<< HEAD
               "id": 301,
               "nodeType": "Block",
@@ -2522,6 +3436,11 @@
               "nodeType": "Block",
               "src": "288:141:4",
 >>>>>>> hanger component
+=======
+              "id": 304,
+              "nodeType": "Block",
+              "src": "288:141:3",
+>>>>>>> plane component
               "statements": [
                 {
                   "condition": {
@@ -2531,16 +3450,21 @@
                       "typeString": "uint256"
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "id": 280,
 =======
                     "id": 544,
 >>>>>>> hanger component
+=======
+                    "id": 283,
+>>>>>>> plane component
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
                       "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 278,
                       "name": "a",
@@ -2556,6 +3480,14 @@
                       "referencedDeclaration": 535,
                       "src": "303:1:4",
 >>>>>>> hanger component
+=======
+                      "id": 281,
+                      "name": "a",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 274,
+                      "src": "303:1:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -2567,10 +3499,14 @@
                       "argumentTypes": null,
                       "hexValue": "30",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       "id": 279,
 =======
                       "id": 543,
 >>>>>>> hanger component
+=======
+                      "id": 282,
+>>>>>>> plane component
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": true,
@@ -2578,10 +3514,14 @@
                       "lValueRequested": false,
                       "nodeType": "Literal",
 <<<<<<< HEAD
+<<<<<<< HEAD
                       "src": "296:1:2",
 =======
                       "src": "308:1:4",
 >>>>>>> hanger component
+=======
+                      "src": "308:1:3",
+>>>>>>> plane component
                       "subdenomination": null,
                       "typeDescriptions": {
                         "typeIdentifier": "t_rational_0_by_1",
@@ -2590,16 +3530,21 @@
                       "value": "0"
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "src": "291:6:2",
 =======
                     "src": "303:6:4",
 >>>>>>> hanger component
+=======
+                    "src": "303:6:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_bool",
                       "typeString": "bool"
                     }
                   },
                   "falseBody": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 284,
                   "nodeType": "IfStatement",
@@ -2610,23 +3555,34 @@
                     "src": "299:33:2",
 =======
                   "id": 548,
+=======
+                  "id": 287,
+>>>>>>> plane component
                   "nodeType": "IfStatement",
-                  "src": "299:47:4",
+                  "src": "299:47:3",
                   "trueBody": {
-                    "id": 547,
+                    "id": 286,
                     "nodeType": "Block",
+<<<<<<< HEAD
                     "src": "311:35:4",
 >>>>>>> hanger component
+=======
+                    "src": "311:35:3",
+>>>>>>> plane component
                     "statements": [
                       {
                         "expression": {
                           "argumentTypes": null,
                           "hexValue": "30",
 <<<<<<< HEAD
+<<<<<<< HEAD
                           "id": 281,
 =======
                           "id": 545,
 >>>>>>> hanger component
+=======
+                          "id": 284,
+>>>>>>> plane component
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -2634,10 +3590,14 @@
                           "lValueRequested": false,
                           "nodeType": "Literal",
 <<<<<<< HEAD
+<<<<<<< HEAD
                           "src": "320:1:2",
 =======
                           "src": "333:1:4",
 >>>>>>> hanger component
+=======
+                          "src": "333:1:3",
+>>>>>>> plane component
                           "subdenomination": null,
                           "typeDescriptions": {
                             "typeIdentifier": "t_rational_0_by_1",
@@ -2645,6 +3605,7 @@
                           },
                           "value": "0"
                         },
+<<<<<<< HEAD
 <<<<<<< HEAD
                         "functionReturnParameters": 277,
                         "id": 282,
@@ -2656,6 +3617,12 @@
                         "nodeType": "Return",
                         "src": "326:8:4"
 >>>>>>> hanger component
+=======
+                        "functionReturnParameters": 280,
+                        "id": 285,
+                        "nodeType": "Return",
+                        "src": "326:8:3"
+>>>>>>> plane component
                       }
                     ]
                   }
@@ -2663,14 +3630,19 @@
                 {
                   "assignments": [
 <<<<<<< HEAD
+<<<<<<< HEAD
                     286
 =======
                     550
 >>>>>>> hanger component
+=======
+                    289
+>>>>>>> plane component
                   ],
                   "declarations": [
                     {
                       "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 286,
                       "name": "c",
@@ -2684,6 +3656,13 @@
                       "scope": 566,
                       "src": "356:9:4",
 >>>>>>> hanger component
+=======
+                      "id": 289,
+                      "name": "c",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 305,
+                      "src": "356:9:3",
+>>>>>>> plane component
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
@@ -2691,6 +3670,7 @@
                         "typeString": "uint256"
                       },
                       "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                         "id": 285,
                         "name": "uint256",
@@ -2702,6 +3682,12 @@
                         "nodeType": "ElementaryTypeName",
                         "src": "356:7:4",
 >>>>>>> hanger component
+=======
+                        "id": 288,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "356:7:3",
+>>>>>>> plane component
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -2712,10 +3698,14 @@
                     }
                   ],
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "id": 290,
 =======
                   "id": 554,
 >>>>>>> hanger component
+=======
+                  "id": 293,
+>>>>>>> plane component
                   "initialValue": {
                     "argumentTypes": null,
                     "commonType": {
@@ -2723,16 +3713,21 @@
                       "typeString": "uint256"
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "id": 289,
 =======
                     "id": 553,
 >>>>>>> hanger component
+=======
+                    "id": 292,
+>>>>>>> plane component
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
                       "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 287,
                       "name": "a",
@@ -2748,6 +3743,14 @@
                       "referencedDeclaration": 535,
                       "src": "368:1:4",
 >>>>>>> hanger component
+=======
+                      "id": 290,
+                      "name": "a",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 274,
+                      "src": "368:1:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -2757,6 +3760,7 @@
                     "operator": "*",
                     "rightExpression": {
                       "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 288,
                       "name": "b",
@@ -2772,16 +3776,28 @@
                       "referencedDeclaration": 537,
                       "src": "372:1:4",
 >>>>>>> hanger component
+=======
+                      "id": 291,
+                      "name": "b",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 276,
+                      "src": "372:1:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "src": "353:5:2",
 =======
                     "src": "368:5:4",
 >>>>>>> hanger component
+=======
+                    "src": "368:5:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -2789,10 +3805,14 @@
                   },
                   "nodeType": "VariableDeclarationStatement",
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "src": "341:17:2"
 =======
                   "src": "356:17:4"
 >>>>>>> hanger component
+=======
+                  "src": "356:17:3"
+>>>>>>> plane component
                 },
                 {
                   "expression": {
@@ -2805,10 +3825,14 @@
                           "typeString": "uint256"
                         },
 <<<<<<< HEAD
+<<<<<<< HEAD
                         "id": 296,
 =======
                         "id": 560,
 >>>>>>> hanger component
+=======
+                        "id": 299,
+>>>>>>> plane component
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -2820,16 +3844,21 @@
                             "typeString": "uint256"
                           },
 <<<<<<< HEAD
+<<<<<<< HEAD
                           "id": 294,
 =======
                           "id": 558,
 >>>>>>> hanger component
+=======
+                          "id": 297,
+>>>>>>> plane component
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "leftExpression": {
                             "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                             "id": 292,
                             "name": "c",
@@ -2845,6 +3874,14 @@
                             "referencedDeclaration": 550,
                             "src": "391:1:4",
 >>>>>>> hanger component
+=======
+                            "id": 295,
+                            "name": "c",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 289,
+                            "src": "391:1:3",
+>>>>>>> plane component
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -2854,6 +3891,7 @@
                           "operator": "/",
                           "rightExpression": {
                             "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                             "id": 293,
                             "name": "a",
@@ -2869,16 +3907,28 @@
                             "referencedDeclaration": 535,
                             "src": "395:1:4",
 >>>>>>> hanger component
+=======
+                            "id": 296,
+                            "name": "a",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 274,
+                            "src": "395:1:3",
+>>>>>>> plane component
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
                             }
                           },
 <<<<<<< HEAD
+<<<<<<< HEAD
                           "src": "375:5:2",
 =======
                           "src": "391:5:4",
 >>>>>>> hanger component
+=======
+                          "src": "391:5:3",
+>>>>>>> plane component
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -2888,6 +3938,7 @@
                         "operator": "==",
                         "rightExpression": {
                           "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                           "id": 295,
                           "name": "b",
@@ -2903,16 +3954,28 @@
                           "referencedDeclaration": 537,
                           "src": "400:1:4",
 >>>>>>> hanger component
+=======
+                          "id": 298,
+                          "name": "b",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 276,
+                          "src": "400:1:3",
+>>>>>>> plane component
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           }
                         },
 <<<<<<< HEAD
+<<<<<<< HEAD
                         "src": "375:10:2",
 =======
                         "src": "391:10:4",
 >>>>>>> hanger component
+=======
+                        "src": "391:10:3",
+>>>>>>> plane component
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -2926,6 +3989,7 @@
                           "typeString": "bool"
                         }
                       ],
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 291,
                       "name": "assert",
@@ -2941,16 +4005,28 @@
                       "referencedDeclaration": 831,
                       "src": "384:6:4",
 >>>>>>> hanger component
+=======
+                      "id": 294,
+                      "name": "assert",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 390,
+                      "src": "384:6:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_assert_pure$_t_bool_$returns$__$",
                         "typeString": "function (bool) pure"
                       }
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "id": 297,
 =======
                     "id": 561,
 >>>>>>> hanger component
+=======
+                    "id": 300,
+>>>>>>> plane component
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2959,15 +4035,20 @@
                     "names": [],
                     "nodeType": "FunctionCall",
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "src": "368:18:2",
 =======
                     "src": "384:18:4",
 >>>>>>> hanger component
+=======
+                    "src": "384:18:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 298,
                   "nodeType": "ExpressionStatement",
@@ -2977,10 +4058,16 @@
                   "nodeType": "ExpressionStatement",
                   "src": "384:18:4"
 >>>>>>> hanger component
+=======
+                  "id": 301,
+                  "nodeType": "ExpressionStatement",
+                  "src": "384:18:3"
+>>>>>>> plane component
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 299,
                     "name": "c",
@@ -2996,11 +4083,20 @@
                     "referencedDeclaration": 550,
                     "src": "420:1:4",
 >>>>>>> hanger component
+=======
+                    "id": 302,
+                    "name": "c",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 289,
+                    "src": "420:1:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "functionReturnParameters": 277,
                   "id": 300,
@@ -3014,14 +4110,22 @@
 =======
                   "functionReturnParameters": 541,
                   "id": 564,
+=======
+                  "functionReturnParameters": 280,
+                  "id": 303,
+>>>>>>> plane component
                   "nodeType": "Return",
-                  "src": "413:8:4"
+                  "src": "413:8:3"
                 }
               ]
             },
             "documentation": "@dev Multiplies two numbers, throws on overflow.\r",
+<<<<<<< HEAD
             "id": 566,
 >>>>>>> hanger component
+=======
+            "id": 305,
+>>>>>>> plane component
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -3030,14 +4134,19 @@
             "nodeType": "FunctionDefinition",
             "parameters": {
 <<<<<<< HEAD
+<<<<<<< HEAD
               "id": 274,
 =======
               "id": 538,
 >>>>>>> hanger component
+=======
+              "id": 277,
+>>>>>>> plane component
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 271,
                   "name": "a",
@@ -3051,6 +4160,13 @@
                   "scope": 566,
                   "src": "234:9:4",
 >>>>>>> hanger component
+=======
+                  "id": 274,
+                  "name": "a",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 305,
+                  "src": "234:9:3",
+>>>>>>> plane component
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3058,6 +4174,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 270,
                     "name": "uint256",
@@ -3069,6 +4186,12 @@
                     "nodeType": "ElementaryTypeName",
                     "src": "234:7:4",
 >>>>>>> hanger component
+=======
+                    "id": 273,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "234:7:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -3079,6 +4202,7 @@
                 },
                 {
                   "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 273,
                   "name": "b",
@@ -3092,6 +4216,13 @@
                   "scope": 566,
                   "src": "245:9:4",
 >>>>>>> hanger component
+=======
+                  "id": 276,
+                  "name": "b",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 305,
+                  "src": "245:9:3",
+>>>>>>> plane component
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3099,6 +4230,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 272,
                     "name": "uint256",
@@ -3110,6 +4242,12 @@
                     "nodeType": "ElementaryTypeName",
                     "src": "245:7:4",
 >>>>>>> hanger component
+=======
+                    "id": 275,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "245:7:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -3119,6 +4257,7 @@
                   "visibility": "internal"
                 }
               ],
+<<<<<<< HEAD
 <<<<<<< HEAD
               "src": "222:22:2"
             },
@@ -3132,10 +4271,18 @@
             "returnParameters": {
               "id": 541,
 >>>>>>> hanger component
+=======
+              "src": "233:22:3"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 280,
+>>>>>>> plane component
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 276,
                   "name": "",
@@ -3149,6 +4296,13 @@
                   "scope": 566,
                   "src": "279:7:4",
 >>>>>>> hanger component
+=======
+                  "id": 279,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 305,
+                  "src": "279:7:3",
+>>>>>>> plane component
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3156,6 +4310,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 275,
                     "name": "uint256",
@@ -3167,6 +4322,12 @@
                     "nodeType": "ElementaryTypeName",
                     "src": "279:7:4",
 >>>>>>> hanger component
+=======
+                    "id": 278,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "279:7:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -3176,6 +4337,7 @@
                   "visibility": "internal"
                 }
               ],
+<<<<<<< HEAD
 <<<<<<< HEAD
               "src": "267:9:2"
             },
@@ -3187,12 +4349,19 @@
             "scope": 647,
             "src": "221:208:4",
 >>>>>>> hanger component
+=======
+              "src": "278:9:3"
+            },
+            "scope": 386,
+            "src": "221:208:3",
+>>>>>>> plane component
             "stateMutability": "pure",
             "superFunction": null,
             "visibility": "internal"
           },
           {
             "body": {
+<<<<<<< HEAD
 <<<<<<< HEAD
               "id": 337,
               "nodeType": "Block",
@@ -3202,6 +4371,11 @@
               "nodeType": "Block",
               "src": "591:215:4",
 >>>>>>> hanger component
+=======
+              "id": 340,
+              "nodeType": "Block",
+              "src": "591:215:3",
+>>>>>>> plane component
               "statements": [
                 {
                   "expression": {
@@ -3214,16 +4388,21 @@
                           "typeString": "uint256"
                         },
 <<<<<<< HEAD
+<<<<<<< HEAD
                         "id": 314,
 =======
                         "id": 578,
 >>>>>>> hanger component
+=======
+                        "id": 317,
+>>>>>>> plane component
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                           "id": 312,
                           "name": "b",
@@ -3239,6 +4418,14 @@
                           "referencedDeclaration": 570,
                           "src": "609:1:4",
 >>>>>>> hanger component
+=======
+                          "id": 315,
+                          "name": "b",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 309,
+                          "src": "609:1:3",
+>>>>>>> plane component
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -3250,10 +4437,14 @@
                           "argumentTypes": null,
                           "hexValue": "30",
 <<<<<<< HEAD
+<<<<<<< HEAD
                           "id": 313,
 =======
                           "id": 577,
 >>>>>>> hanger component
+=======
+                          "id": 316,
+>>>>>>> plane component
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -3261,10 +4452,14 @@
                           "lValueRequested": false,
                           "nodeType": "Literal",
 <<<<<<< HEAD
+<<<<<<< HEAD
                           "src": "589:1:2",
 =======
                           "src": "613:1:4",
 >>>>>>> hanger component
+=======
+                          "src": "613:1:3",
+>>>>>>> plane component
                           "subdenomination": null,
                           "typeDescriptions": {
                             "typeIdentifier": "t_rational_0_by_1",
@@ -3273,10 +4468,14 @@
                           "value": "0"
                         },
 <<<<<<< HEAD
+<<<<<<< HEAD
                         "src": "585:5:2",
 =======
                         "src": "609:5:4",
 >>>>>>> hanger component
+=======
+                        "src": "609:5:3",
+>>>>>>> plane component
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -3290,6 +4489,7 @@
                           "typeString": "bool"
                         }
                       ],
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 311,
                       "name": "assert",
@@ -3305,16 +4505,28 @@
                       "referencedDeclaration": 831,
                       "src": "602:6:4",
 >>>>>>> hanger component
+=======
+                      "id": 314,
+                      "name": "assert",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 390,
+                      "src": "602:6:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_assert_pure$_t_bool_$returns$__$",
                         "typeString": "function (bool) pure"
                       }
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "id": 315,
 =======
                     "id": 579,
 >>>>>>> hanger component
+=======
+                    "id": 318,
+>>>>>>> plane component
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3323,15 +4535,20 @@
                     "names": [],
                     "nodeType": "FunctionCall",
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "src": "578:13:2",
 =======
                     "src": "602:13:4",
 >>>>>>> hanger component
+=======
+                    "src": "602:13:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 316,
                   "nodeType": "ExpressionStatement",
@@ -3342,17 +4559,25 @@
                     318
 =======
                   "id": 580,
+=======
+                  "id": 319,
+>>>>>>> plane component
                   "nodeType": "ExpressionStatement",
-                  "src": "602:13:4"
+                  "src": "602:13:3"
                 },
                 {
                   "assignments": [
+<<<<<<< HEAD
                     582
 >>>>>>> hanger component
+=======
+                    321
+>>>>>>> plane component
                   ],
                   "declarations": [
                     {
                       "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 318,
                       "name": "c",
@@ -3366,6 +4591,13 @@
                       "scope": 602,
                       "src": "678:9:4",
 >>>>>>> hanger component
+=======
+                      "id": 321,
+                      "name": "c",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 341,
+                      "src": "678:9:3",
+>>>>>>> plane component
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
@@ -3373,6 +4605,7 @@
                         "typeString": "uint256"
                       },
                       "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                         "id": 317,
                         "name": "uint256",
@@ -3384,6 +4617,12 @@
                         "nodeType": "ElementaryTypeName",
                         "src": "678:7:4",
 >>>>>>> hanger component
+=======
+                        "id": 320,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "678:7:3",
+>>>>>>> plane component
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -3394,10 +4633,14 @@
                     }
                   ],
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "id": 322,
 =======
                   "id": 586,
 >>>>>>> hanger component
+=======
+                  "id": 325,
+>>>>>>> plane component
                   "initialValue": {
                     "argumentTypes": null,
                     "commonType": {
@@ -3405,16 +4648,21 @@
                       "typeString": "uint256"
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "id": 321,
 =======
                     "id": 585,
 >>>>>>> hanger component
+=======
+                    "id": 324,
+>>>>>>> plane component
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
                       "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 319,
                       "name": "a",
@@ -3430,6 +4678,14 @@
                       "referencedDeclaration": 568,
                       "src": "690:1:4",
 >>>>>>> hanger component
+=======
+                      "id": 322,
+                      "name": "a",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 307,
+                      "src": "690:1:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -3439,6 +4695,7 @@
                     "operator": "/",
                     "rightExpression": {
                       "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 320,
                       "name": "b",
@@ -3454,16 +4711,28 @@
                       "referencedDeclaration": 570,
                       "src": "694:1:4",
 >>>>>>> hanger component
+=======
+                      "id": 323,
+                      "name": "b",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 309,
+                      "src": "694:1:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "src": "665:5:2",
 =======
                     "src": "690:5:4",
 >>>>>>> hanger component
+=======
+                    "src": "690:5:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -3471,10 +4740,14 @@
                   },
                   "nodeType": "VariableDeclarationStatement",
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "src": "653:17:2"
 =======
                   "src": "678:17:4"
 >>>>>>> hanger component
+=======
+                  "src": "678:17:3"
+>>>>>>> plane component
                 },
                 {
                   "expression": {
@@ -3487,16 +4760,21 @@
                           "typeString": "uint256"
                         },
 <<<<<<< HEAD
+<<<<<<< HEAD
                         "id": 332,
 =======
                         "id": 596,
 >>>>>>> hanger component
+=======
+                        "id": 335,
+>>>>>>> plane component
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                           "id": 324,
                           "name": "a",
@@ -3512,6 +4790,14 @@
                           "referencedDeclaration": 568,
                           "src": "713:1:4",
 >>>>>>> hanger component
+=======
+                          "id": 327,
+                          "name": "a",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 307,
+                          "src": "713:1:3",
+>>>>>>> plane component
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -3526,10 +4812,14 @@
                             "typeString": "uint256"
                           },
 <<<<<<< HEAD
+<<<<<<< HEAD
                           "id": 331,
 =======
                           "id": 595,
 >>>>>>> hanger component
+=======
+                          "id": 334,
+>>>>>>> plane component
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -3541,16 +4831,21 @@
                               "typeString": "uint256"
                             },
 <<<<<<< HEAD
+<<<<<<< HEAD
                             "id": 327,
 =======
                             "id": 591,
 >>>>>>> hanger component
+=======
+                            "id": 330,
+>>>>>>> plane component
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
                             "lValueRequested": false,
                             "leftExpression": {
                               "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                               "id": 325,
                               "name": "b",
@@ -3566,6 +4861,14 @@
                               "referencedDeclaration": 570,
                               "src": "718:1:4",
 >>>>>>> hanger component
+=======
+                              "id": 328,
+                              "name": "b",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 309,
+                              "src": "718:1:3",
+>>>>>>> plane component
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
                                 "typeString": "uint256"
@@ -3575,6 +4878,7 @@
                             "operator": "*",
                             "rightExpression": {
                               "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                               "id": 326,
                               "name": "c",
@@ -3590,16 +4894,28 @@
                               "referencedDeclaration": 582,
                               "src": "722:1:4",
 >>>>>>> hanger component
+=======
+                              "id": 329,
+                              "name": "c",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 321,
+                              "src": "722:1:3",
+>>>>>>> plane component
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
                                 "typeString": "uint256"
                               }
                             },
 <<<<<<< HEAD
+<<<<<<< HEAD
                             "src": "692:5:2",
 =======
                             "src": "718:5:4",
 >>>>>>> hanger component
+=======
+                            "src": "718:5:3",
+>>>>>>> plane component
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
@@ -3614,16 +4930,21 @@
                               "typeString": "uint256"
                             },
 <<<<<<< HEAD
+<<<<<<< HEAD
                             "id": 330,
 =======
                             "id": 594,
 >>>>>>> hanger component
+=======
+                            "id": 333,
+>>>>>>> plane component
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": false,
                             "lValueRequested": false,
                             "leftExpression": {
                               "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                               "id": 328,
                               "name": "a",
@@ -3639,6 +4960,14 @@
                               "referencedDeclaration": 568,
                               "src": "726:1:4",
 >>>>>>> hanger component
+=======
+                              "id": 331,
+                              "name": "a",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 307,
+                              "src": "726:1:3",
+>>>>>>> plane component
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
                                 "typeString": "uint256"
@@ -3648,6 +4977,7 @@
                             "operator": "%",
                             "rightExpression": {
                               "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                               "id": 329,
                               "name": "b",
@@ -3663,36 +4993,56 @@
                               "referencedDeclaration": 570,
                               "src": "730:1:4",
 >>>>>>> hanger component
+=======
+                              "id": 332,
+                              "name": "b",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 309,
+                              "src": "730:1:3",
+>>>>>>> plane component
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
                                 "typeString": "uint256"
                               }
                             },
 <<<<<<< HEAD
+<<<<<<< HEAD
                             "src": "700:5:2",
 =======
                             "src": "726:5:4",
 >>>>>>> hanger component
+=======
+                            "src": "726:5:3",
+>>>>>>> plane component
                             "typeDescriptions": {
                               "typeIdentifier": "t_uint256",
                               "typeString": "uint256"
                             }
                           },
 <<<<<<< HEAD
+<<<<<<< HEAD
                           "src": "692:13:2",
 =======
                           "src": "718:13:4",
 >>>>>>> hanger component
+=======
+                          "src": "718:13:3",
+>>>>>>> plane component
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           }
                         },
 <<<<<<< HEAD
+<<<<<<< HEAD
                         "src": "687:18:2",
 =======
                         "src": "713:18:4",
 >>>>>>> hanger component
+=======
+                        "src": "713:18:3",
+>>>>>>> plane component
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -3706,6 +5056,7 @@
                           "typeString": "bool"
                         }
                       ],
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 323,
                       "name": "assert",
@@ -3721,16 +5072,28 @@
                       "referencedDeclaration": 831,
                       "src": "706:6:4",
 >>>>>>> hanger component
+=======
+                      "id": 326,
+                      "name": "assert",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 390,
+                      "src": "706:6:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_assert_pure$_t_bool_$returns$__$",
                         "typeString": "function (bool) pure"
                       }
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "id": 333,
 =======
                     "id": 597,
 >>>>>>> hanger component
+=======
+                    "id": 336,
+>>>>>>> plane component
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -3739,15 +5102,20 @@
                     "names": [],
                     "nodeType": "FunctionCall",
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "src": "680:26:2",
 =======
                     "src": "706:26:4",
 >>>>>>> hanger component
+=======
+                    "src": "706:26:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 334,
                   "nodeType": "ExpressionStatement",
@@ -3757,10 +5125,16 @@
                   "nodeType": "ExpressionStatement",
                   "src": "706:26:4"
 >>>>>>> hanger component
+=======
+                  "id": 337,
+                  "nodeType": "ExpressionStatement",
+                  "src": "706:26:3"
+>>>>>>> plane component
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 335,
                     "name": "c",
@@ -3776,11 +5150,20 @@
                     "referencedDeclaration": 582,
                     "src": "797:1:4",
 >>>>>>> hanger component
+=======
+                    "id": 338,
+                    "name": "c",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 321,
+                    "src": "797:1:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "functionReturnParameters": 310,
                   "id": 336,
@@ -3794,14 +5177,22 @@
 =======
                   "functionReturnParameters": 574,
                   "id": 600,
+=======
+                  "functionReturnParameters": 313,
+                  "id": 339,
+>>>>>>> plane component
                   "nodeType": "Return",
-                  "src": "790:8:4"
+                  "src": "790:8:3"
                 }
               ]
             },
             "documentation": "@dev Integer division of two numbers, truncating the quotient.\r",
+<<<<<<< HEAD
             "id": 602,
 >>>>>>> hanger component
+=======
+            "id": 341,
+>>>>>>> plane component
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -3810,14 +5201,19 @@
             "nodeType": "FunctionDefinition",
             "parameters": {
 <<<<<<< HEAD
+<<<<<<< HEAD
               "id": 307,
 =======
               "id": 571,
 >>>>>>> hanger component
+=======
+              "id": 310,
+>>>>>>> plane component
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 304,
                   "name": "a",
@@ -3831,6 +5227,13 @@
                   "scope": 602,
                   "src": "537:9:4",
 >>>>>>> hanger component
+=======
+                  "id": 307,
+                  "name": "a",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 341,
+                  "src": "537:9:3",
+>>>>>>> plane component
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3838,6 +5241,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 303,
                     "name": "uint256",
@@ -3849,6 +5253,12 @@
                     "nodeType": "ElementaryTypeName",
                     "src": "537:7:4",
 >>>>>>> hanger component
+=======
+                    "id": 306,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "537:7:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -3859,6 +5269,7 @@
                 },
                 {
                   "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 306,
                   "name": "b",
@@ -3872,6 +5283,13 @@
                   "scope": 602,
                   "src": "548:9:4",
 >>>>>>> hanger component
+=======
+                  "id": 309,
+                  "name": "b",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 341,
+                  "src": "548:9:3",
+>>>>>>> plane component
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3879,6 +5297,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 305,
                     "name": "uint256",
@@ -3890,6 +5309,12 @@
                     "nodeType": "ElementaryTypeName",
                     "src": "548:7:4",
 >>>>>>> hanger component
+=======
+                    "id": 308,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "548:7:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -3899,6 +5324,7 @@
                   "visibility": "internal"
                 }
               ],
+<<<<<<< HEAD
 <<<<<<< HEAD
               "src": "513:22:2"
             },
@@ -3912,10 +5338,18 @@
             "returnParameters": {
               "id": 574,
 >>>>>>> hanger component
+=======
+              "src": "536:22:3"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 313,
+>>>>>>> plane component
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 309,
                   "name": "",
@@ -3929,6 +5363,13 @@
                   "scope": 602,
                   "src": "582:7:4",
 >>>>>>> hanger component
+=======
+                  "id": 312,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 341,
+                  "src": "582:7:3",
+>>>>>>> plane component
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3936,6 +5377,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 308,
                     "name": "uint256",
@@ -3947,6 +5389,12 @@
                     "nodeType": "ElementaryTypeName",
                     "src": "582:7:4",
 >>>>>>> hanger component
+=======
+                    "id": 311,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "582:7:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -3956,6 +5404,7 @@
                   "visibility": "internal"
                 }
               ],
+<<<<<<< HEAD
 <<<<<<< HEAD
               "src": "558:9:2"
             },
@@ -3967,12 +5416,19 @@
             "scope": 647,
             "src": "524:282:4",
 >>>>>>> hanger component
+=======
+              "src": "581:9:3"
+            },
+            "scope": 386,
+            "src": "524:282:3",
+>>>>>>> plane component
             "stateMutability": "pure",
             "superFunction": null,
             "visibility": "internal"
           },
           {
             "body": {
+<<<<<<< HEAD
 <<<<<<< HEAD
               "id": 357,
               "nodeType": "Block",
@@ -3982,6 +5438,11 @@
               "nodeType": "Block",
               "src": "998:56:4",
 >>>>>>> hanger component
+=======
+              "id": 360,
+              "nodeType": "Block",
+              "src": "998:56:3",
+>>>>>>> plane component
               "statements": [
                 {
                   "expression": {
@@ -3994,16 +5455,21 @@
                           "typeString": "uint256"
                         },
 <<<<<<< HEAD
+<<<<<<< HEAD
                         "id": 350,
 =======
                         "id": 614,
 >>>>>>> hanger component
+=======
+                        "id": 353,
+>>>>>>> plane component
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                           "id": 348,
                           "name": "b",
@@ -4019,6 +5485,14 @@
                           "referencedDeclaration": 606,
                           "src": "1016:1:4",
 >>>>>>> hanger component
+=======
+                          "id": 351,
+                          "name": "b",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 345,
+                          "src": "1016:1:3",
+>>>>>>> plane component
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -4028,6 +5502,7 @@
                         "operator": "<=",
                         "rightExpression": {
                           "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                           "id": 349,
                           "name": "a",
@@ -4043,16 +5518,28 @@
                           "referencedDeclaration": 604,
                           "src": "1021:1:4",
 >>>>>>> hanger component
+=======
+                          "id": 352,
+                          "name": "a",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 343,
+                          "src": "1021:1:3",
+>>>>>>> plane component
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           }
                         },
 <<<<<<< HEAD
+<<<<<<< HEAD
                         "src": "982:6:2",
 =======
                         "src": "1016:6:4",
 >>>>>>> hanger component
+=======
+                        "src": "1016:6:3",
+>>>>>>> plane component
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -4066,6 +5553,7 @@
                           "typeString": "bool"
                         }
                       ],
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 347,
                       "name": "assert",
@@ -4081,16 +5569,28 @@
                       "referencedDeclaration": 831,
                       "src": "1009:6:4",
 >>>>>>> hanger component
+=======
+                      "id": 350,
+                      "name": "assert",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 390,
+                      "src": "1009:6:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_assert_pure$_t_bool_$returns$__$",
                         "typeString": "function (bool) pure"
                       }
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "id": 351,
 =======
                     "id": 615,
 >>>>>>> hanger component
+=======
+                    "id": 354,
+>>>>>>> plane component
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -4099,15 +5599,20 @@
                     "names": [],
                     "nodeType": "FunctionCall",
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "src": "975:14:2",
 =======
                     "src": "1009:14:4",
 >>>>>>> hanger component
+=======
+                    "src": "1009:14:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 352,
                   "nodeType": "ExpressionStatement",
@@ -4117,6 +5622,11 @@
                   "nodeType": "ExpressionStatement",
                   "src": "1009:14:4"
 >>>>>>> hanger component
+=======
+                  "id": 355,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1009:14:3"
+>>>>>>> plane component
                 },
                 {
                   "expression": {
@@ -4126,16 +5636,21 @@
                       "typeString": "uint256"
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "id": 355,
 =======
                     "id": 619,
 >>>>>>> hanger component
+=======
+                    "id": 358,
+>>>>>>> plane component
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
                       "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 353,
                       "name": "a",
@@ -4151,6 +5666,14 @@
                       "referencedDeclaration": 604,
                       "src": "1041:1:4",
 >>>>>>> hanger component
+=======
+                      "id": 356,
+                      "name": "a",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 343,
+                      "src": "1041:1:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -4160,6 +5683,7 @@
                     "operator": "-",
                     "rightExpression": {
                       "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 354,
                       "name": "b",
@@ -4175,21 +5699,34 @@
                       "referencedDeclaration": 606,
                       "src": "1045:1:4",
 >>>>>>> hanger component
+=======
+                      "id": 357,
+                      "name": "b",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 345,
+                      "src": "1045:1:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "src": "1006:5:2",
 =======
                     "src": "1041:5:4",
 >>>>>>> hanger component
+=======
+                    "src": "1041:5:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "functionReturnParameters": 346,
                   "id": 356,
@@ -4203,14 +5740,22 @@
 =======
                   "functionReturnParameters": 610,
                   "id": 620,
+=======
+                  "functionReturnParameters": 349,
+                  "id": 359,
+>>>>>>> plane component
                   "nodeType": "Return",
-                  "src": "1034:12:4"
+                  "src": "1034:12:3"
                 }
               ]
             },
             "documentation": "@dev Subtracts two numbers, throws on overflow (i.e. if subtrahend is greater than minuend).\r",
+<<<<<<< HEAD
             "id": 622,
 >>>>>>> hanger component
+=======
+            "id": 361,
+>>>>>>> plane component
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -4219,14 +5764,19 @@
             "nodeType": "FunctionDefinition",
             "parameters": {
 <<<<<<< HEAD
+<<<<<<< HEAD
               "id": 343,
 =======
               "id": 607,
 >>>>>>> hanger component
+=======
+              "id": 346,
+>>>>>>> plane component
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 340,
                   "name": "a",
@@ -4240,6 +5790,13 @@
                   "scope": 622,
                   "src": "944:9:4",
 >>>>>>> hanger component
+=======
+                  "id": 343,
+                  "name": "a",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 361,
+                  "src": "944:9:3",
+>>>>>>> plane component
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -4247,6 +5804,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 339,
                     "name": "uint256",
@@ -4258,6 +5816,12 @@
                     "nodeType": "ElementaryTypeName",
                     "src": "944:7:4",
 >>>>>>> hanger component
+=======
+                    "id": 342,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "944:7:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -4268,6 +5832,7 @@
                 },
                 {
                   "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 342,
                   "name": "b",
@@ -4281,6 +5846,13 @@
                   "scope": 622,
                   "src": "955:9:4",
 >>>>>>> hanger component
+=======
+                  "id": 345,
+                  "name": "b",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 361,
+                  "src": "955:9:3",
+>>>>>>> plane component
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -4288,6 +5860,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 341,
                     "name": "uint256",
@@ -4299,6 +5872,12 @@
                     "nodeType": "ElementaryTypeName",
                     "src": "955:7:4",
 >>>>>>> hanger component
+=======
+                    "id": 344,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "955:7:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -4308,6 +5887,7 @@
                   "visibility": "internal"
                 }
               ],
+<<<<<<< HEAD
 <<<<<<< HEAD
               "src": "910:22:2"
             },
@@ -4321,10 +5901,18 @@
             "returnParameters": {
               "id": 610,
 >>>>>>> hanger component
+=======
+              "src": "943:22:3"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 349,
+>>>>>>> plane component
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 345,
                   "name": "",
@@ -4338,6 +5926,13 @@
                   "scope": 622,
                   "src": "989:7:4",
 >>>>>>> hanger component
+=======
+                  "id": 348,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 361,
+                  "src": "989:7:3",
+>>>>>>> plane component
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -4345,6 +5940,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 344,
                     "name": "uint256",
@@ -4356,6 +5952,12 @@
                     "nodeType": "ElementaryTypeName",
                     "src": "989:7:4",
 >>>>>>> hanger component
+=======
+                    "id": 347,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "989:7:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -4365,6 +5967,7 @@
                   "visibility": "internal"
                 }
               ],
+<<<<<<< HEAD
 <<<<<<< HEAD
               "src": "955:9:2"
             },
@@ -4376,12 +5979,19 @@
             "scope": 647,
             "src": "931:123:4",
 >>>>>>> hanger component
+=======
+              "src": "988:9:3"
+            },
+            "scope": 386,
+            "src": "931:123:3",
+>>>>>>> plane component
             "stateMutability": "pure",
             "superFunction": null,
             "visibility": "internal"
           },
           {
             "body": {
+<<<<<<< HEAD
 <<<<<<< HEAD
               "id": 381,
               "nodeType": "Block",
@@ -4392,17 +6002,25 @@
                     368
 =======
               "id": 645,
+=======
+              "id": 384,
+>>>>>>> plane component
               "nodeType": "Block",
-              "src": "1196:80:4",
+              "src": "1196:80:3",
               "statements": [
                 {
                   "assignments": [
+<<<<<<< HEAD
                     632
 >>>>>>> hanger component
+=======
+                    371
+>>>>>>> plane component
                   ],
                   "declarations": [
                     {
                       "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 368,
                       "name": "c",
@@ -4416,6 +6034,13 @@
                       "scope": 646,
                       "src": "1207:9:4",
 >>>>>>> hanger component
+=======
+                      "id": 371,
+                      "name": "c",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 385,
+                      "src": "1207:9:3",
+>>>>>>> plane component
                       "stateVariable": false,
                       "storageLocation": "default",
                       "typeDescriptions": {
@@ -4423,6 +6048,7 @@
                         "typeString": "uint256"
                       },
                       "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                         "id": 367,
                         "name": "uint256",
@@ -4434,6 +6060,12 @@
                         "nodeType": "ElementaryTypeName",
                         "src": "1207:7:4",
 >>>>>>> hanger component
+=======
+                        "id": 370,
+                        "name": "uint256",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1207:7:3",
+>>>>>>> plane component
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
                           "typeString": "uint256"
@@ -4444,10 +6076,14 @@
                     }
                   ],
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "id": 372,
 =======
                   "id": 636,
 >>>>>>> hanger component
+=======
+                  "id": 375,
+>>>>>>> plane component
                   "initialValue": {
                     "argumentTypes": null,
                     "commonType": {
@@ -4455,16 +6091,21 @@
                       "typeString": "uint256"
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "id": 371,
 =======
                     "id": 635,
 >>>>>>> hanger component
+=======
+                    "id": 374,
+>>>>>>> plane component
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftExpression": {
                       "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 369,
                       "name": "a",
@@ -4480,6 +6121,14 @@
                       "referencedDeclaration": 624,
                       "src": "1219:1:4",
 >>>>>>> hanger component
+=======
+                      "id": 372,
+                      "name": "a",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 363,
+                      "src": "1219:1:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
@@ -4489,6 +6138,7 @@
                     "operator": "+",
                     "rightExpression": {
                       "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 370,
                       "name": "b",
@@ -4504,16 +6154,28 @@
                       "referencedDeclaration": 626,
                       "src": "1223:1:4",
 >>>>>>> hanger component
+=======
+                      "id": 373,
+                      "name": "b",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 365,
+                      "src": "1223:1:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_uint256",
                         "typeString": "uint256"
                       }
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "src": "1177:5:2",
 =======
                     "src": "1219:5:4",
 >>>>>>> hanger component
+=======
+                    "src": "1219:5:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -4521,10 +6183,14 @@
                   },
                   "nodeType": "VariableDeclarationStatement",
 <<<<<<< HEAD
+<<<<<<< HEAD
                   "src": "1165:17:2"
 =======
                   "src": "1207:17:4"
 >>>>>>> hanger component
+=======
+                  "src": "1207:17:3"
+>>>>>>> plane component
                 },
                 {
                   "expression": {
@@ -4537,16 +6203,21 @@
                           "typeString": "uint256"
                         },
 <<<<<<< HEAD
+<<<<<<< HEAD
                         "id": 376,
 =======
                         "id": 640,
 >>>>>>> hanger component
+=======
+                        "id": 379,
+>>>>>>> plane component
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                           "id": 374,
                           "name": "c",
@@ -4562,6 +6233,14 @@
                           "referencedDeclaration": 632,
                           "src": "1242:1:4",
 >>>>>>> hanger component
+=======
+                          "id": 377,
+                          "name": "c",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 371,
+                          "src": "1242:1:3",
+>>>>>>> plane component
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
@@ -4571,6 +6250,7 @@
                         "operator": ">=",
                         "rightExpression": {
                           "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                           "id": 375,
                           "name": "a",
@@ -4586,16 +6266,28 @@
                           "referencedDeclaration": 624,
                           "src": "1247:1:4",
 >>>>>>> hanger component
+=======
+                          "id": 378,
+                          "name": "a",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 363,
+                          "src": "1247:1:3",
+>>>>>>> plane component
                           "typeDescriptions": {
                             "typeIdentifier": "t_uint256",
                             "typeString": "uint256"
                           }
                         },
 <<<<<<< HEAD
+<<<<<<< HEAD
                         "src": "1199:6:2",
 =======
                         "src": "1242:6:4",
 >>>>>>> hanger component
+=======
+                        "src": "1242:6:3",
+>>>>>>> plane component
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -4609,6 +6301,7 @@
                           "typeString": "bool"
                         }
                       ],
+<<<<<<< HEAD
 <<<<<<< HEAD
                       "id": 373,
                       "name": "assert",
@@ -4624,16 +6317,28 @@
                       "referencedDeclaration": 831,
                       "src": "1235:6:4",
 >>>>>>> hanger component
+=======
+                      "id": 376,
+                      "name": "assert",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 390,
+                      "src": "1235:6:3",
+>>>>>>> plane component
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_assert_pure$_t_bool_$returns$__$",
                         "typeString": "function (bool) pure"
                       }
                     },
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "id": 377,
 =======
                     "id": 641,
 >>>>>>> hanger component
+=======
+                    "id": 380,
+>>>>>>> plane component
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -4642,15 +6347,20 @@
                     "names": [],
                     "nodeType": "FunctionCall",
 <<<<<<< HEAD
+<<<<<<< HEAD
                     "src": "1192:14:2",
 =======
                     "src": "1235:14:4",
 >>>>>>> hanger component
+=======
+                    "src": "1235:14:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 378,
                   "nodeType": "ExpressionStatement",
@@ -4660,10 +6370,16 @@
                   "nodeType": "ExpressionStatement",
                   "src": "1235:14:4"
 >>>>>>> hanger component
+=======
+                  "id": 381,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1235:14:3"
+>>>>>>> plane component
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 379,
                     "name": "c",
@@ -4679,11 +6395,20 @@
                     "referencedDeclaration": 632,
                     "src": "1267:1:4",
 >>>>>>> hanger component
+=======
+                    "id": 382,
+                    "name": "c",
+                    "nodeType": "Identifier",
+                    "overloadedDeclarations": [],
+                    "referencedDeclaration": 371,
+                    "src": "1267:1:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
                     }
                   },
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "functionReturnParameters": 366,
                   "id": 380,
@@ -4697,14 +6422,22 @@
 =======
                   "functionReturnParameters": 630,
                   "id": 644,
+=======
+                  "functionReturnParameters": 369,
+                  "id": 383,
+>>>>>>> plane component
                   "nodeType": "Return",
-                  "src": "1260:8:4"
+                  "src": "1260:8:3"
                 }
               ]
             },
             "documentation": "@dev Adds two numbers, throws on overflow.\r",
+<<<<<<< HEAD
             "id": 646,
 >>>>>>> hanger component
+=======
+            "id": 385,
+>>>>>>> plane component
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": true,
@@ -4713,14 +6446,19 @@
             "nodeType": "FunctionDefinition",
             "parameters": {
 <<<<<<< HEAD
+<<<<<<< HEAD
               "id": 363,
 =======
               "id": 627,
 >>>>>>> hanger component
+=======
+              "id": 366,
+>>>>>>> plane component
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 360,
                   "name": "a",
@@ -4734,6 +6472,13 @@
                   "scope": 646,
                   "src": "1142:9:4",
 >>>>>>> hanger component
+=======
+                  "id": 363,
+                  "name": "a",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 385,
+                  "src": "1142:9:3",
+>>>>>>> plane component
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -4741,6 +6486,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 359,
                     "name": "uint256",
@@ -4752,6 +6498,12 @@
                     "nodeType": "ElementaryTypeName",
                     "src": "1142:7:4",
 >>>>>>> hanger component
+=======
+                    "id": 362,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1142:7:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -4762,6 +6514,7 @@
                 },
                 {
                   "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 362,
                   "name": "b",
@@ -4775,6 +6528,13 @@
                   "scope": 646,
                   "src": "1153:9:4",
 >>>>>>> hanger component
+=======
+                  "id": 365,
+                  "name": "b",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 385,
+                  "src": "1153:9:3",
+>>>>>>> plane component
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -4782,6 +6542,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 361,
                     "name": "uint256",
@@ -4793,6 +6554,12 @@
                     "nodeType": "ElementaryTypeName",
                     "src": "1153:7:4",
 >>>>>>> hanger component
+=======
+                    "id": 364,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1153:7:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -4802,6 +6569,7 @@
                   "visibility": "internal"
                 }
               ],
+<<<<<<< HEAD
 <<<<<<< HEAD
               "src": "1100:22:2"
             },
@@ -4815,10 +6583,18 @@
             "returnParameters": {
               "id": 630,
 >>>>>>> hanger component
+=======
+              "src": "1141:22:3"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 369,
+>>>>>>> plane component
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
+<<<<<<< HEAD
 <<<<<<< HEAD
                   "id": 365,
                   "name": "",
@@ -4832,6 +6608,13 @@
                   "scope": 646,
                   "src": "1187:7:4",
 >>>>>>> hanger component
+=======
+                  "id": 368,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 385,
+                  "src": "1187:7:3",
+>>>>>>> plane component
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -4839,6 +6622,7 @@
                     "typeString": "uint256"
                   },
                   "typeName": {
+<<<<<<< HEAD
 <<<<<<< HEAD
                     "id": 364,
                     "name": "uint256",
@@ -4850,6 +6634,12 @@
                     "nodeType": "ElementaryTypeName",
                     "src": "1187:7:4",
 >>>>>>> hanger component
+=======
+                    "id": 367,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1187:7:3",
+>>>>>>> plane component
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
                       "typeString": "uint256"
@@ -4859,6 +6649,7 @@
                   "visibility": "internal"
                 }
               ],
+<<<<<<< HEAD
 <<<<<<< HEAD
               "src": "1145:9:2"
             },
@@ -4870,11 +6661,18 @@
             "scope": 647,
             "src": "1129:147:4",
 >>>>>>> hanger component
+=======
+              "src": "1186:9:3"
+            },
+            "scope": 386,
+            "src": "1129:147:3",
+>>>>>>> plane component
             "stateMutability": "pure",
             "superFunction": null,
             "visibility": "internal"
           }
         ],
+<<<<<<< HEAD
 <<<<<<< HEAD
         "scope": 384,
         "src": "116:1117:2"
@@ -4888,6 +6686,13 @@
     ],
     "src": "0:1281:4"
 >>>>>>> hanger component
+=======
+        "scope": 387,
+        "src": "122:1157:3"
+      }
+    ],
+    "src": "0:1281:3"
+>>>>>>> plane component
   },
   "compiler": {
     "name": "solc",
@@ -4896,8 +6701,12 @@
   "networks": {},
   "schemaVersion": "2.0.0",
 <<<<<<< HEAD
+<<<<<<< HEAD
   "updatedAt": "2018-05-10T03:02:09.463Z"
 =======
   "updatedAt": "2018-05-10T02:58:07.341Z"
 >>>>>>> hanger component
+=======
+  "updatedAt": "2018-05-10T20:08:39.979Z"
+>>>>>>> plane component
 }
