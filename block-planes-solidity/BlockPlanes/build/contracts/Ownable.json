@@ -53,49 +53,24 @@
       "type": "function"
     }
   ],
-<<<<<<< HEAD
-  "bytecode": "0x608060405234801561001057600080fd5b50336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550610291806100606000396000f30060806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638da5cb5b14610051578063f2fde38b146100a8575b600080fd5b34801561005d57600080fd5b506100666100eb565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156100b457600080fd5b506100e9600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610110565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561016b57600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16141515156101a757600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a723058204b6af976ab5ef0272758a692b2ae37b31673427c2d943a60b34b40d869d6bfc10029",
-  "deployedBytecode": "0x60806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638da5cb5b14610051578063f2fde38b146100a8575b600080fd5b34801561005d57600080fd5b506100666100eb565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156100b457600080fd5b506100e9600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610110565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561016b57600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16141515156101a757600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a723058204b6af976ab5ef0272758a692b2ae37b31673427c2d943a60b34b40d869d6bfc10029",
-  "sourceMap": "216:478:1:-;;;357:56;8:9:-1;5:2;;;30:1;27;20:12;5:2;357:56:1;396:10;388:5;;:18;;;;;;;;;;;;;;;;;;216:478;;;;;;",
-  "deployedSourceMap": "216:478:1:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;239:20;;8:9:-1;5:2;;;30:1;27;20:12;5:2;239:20:1;;;;;;;;;;;;;;;;;;;;;;;;;;;504:188;;8:9:-1;5:2;;;30:1;27;20:12;5:2;504:188:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;239:20;;;;;;;;;;;;;:::o;504:188::-;473:5;;;;;;;;;;;459:19;;:10;:19;;;451:28;;;;;;;;604:1;584:22;;:8;:22;;;;576:31;;;;;;;;650:8;622:37;;643:5;;;;;;;;;;;622:37;;;;;;;;;;;;677:8;669:5;;:16;;;;;;;;;;;;;;;;;;504:188;:::o",
-  "source": "pragma solidity ^0.4.19;\n\n/**\n * @title Ownable\n * @dev The Ownable contract has an owner address, and provides basic authorization control\n * functions, this simplifies the implementation of \"user permissions\".\n */\ncontract Ownable {\n    address public owner;\n\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\n\n\n    constructor() public {\n        owner = msg.sender;\n    }\n\n\n    modifier onlyOwner() {\n        require(msg.sender == owner);\n        _;\n    }\n\n\n    function transferOwnership(address newOwner) public onlyOwner {\n        require(newOwner != address(0));\n        emit OwnershipTransferred(owner, newOwner);\n        owner = newOwner;\n    }\n}\n",
-  "sourcePath": "/Users/josephduynguyen/Desktop/Hack Reactor Work Space/block-planes/block-planes-solidity/BlockPlanes/contracts/helpers/ownable.sol",
-  "ast": {
-    "absolutePath": "/Users/josephduynguyen/Desktop/Hack Reactor Work Space/block-planes/block-planes-solidity/BlockPlanes/contracts/helpers/ownable.sol",
-    "exportedSymbols": {
-      "Ownable": [
-        267
-      ]
-    },
-    "id": 268,
-    "nodeType": "SourceUnit",
-    "nodes": [
-      {
-        "id": 213,
-=======
   "bytecode": "0x608060405234801561001057600080fd5b50336000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550610291806100606000396000f30060806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638da5cb5b14610051578063f2fde38b146100a8575b600080fd5b34801561005d57600080fd5b506100666100eb565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156100b457600080fd5b506100e9600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610110565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561016b57600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16141515156101a757600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a72305820e094b1240fef3fde8dc5f950a710ed7b98c691bd66149e69616b51b0fbffc8f40029",
   "deployedBytecode": "0x60806040526004361061004c576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680638da5cb5b14610051578063f2fde38b146100a8575b600080fd5b34801561005d57600080fd5b506100666100eb565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b3480156100b457600080fd5b506100e9600480360381019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610110565b005b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561016b57600080fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16141515156101a757600080fd5b8073ffffffffffffffffffffffffffffffffffffffff166000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e060405160405180910390a3806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550505600a165627a7a72305820e094b1240fef3fde8dc5f950a710ed7b98c691bd66149e69616b51b0fbffc8f40029",
-  "sourceMap": "223:500:2:-;;;370:58;8:9:-1;5:2;;;30:1;27;20:12;5:2;370:58:2;410:10;402:5;;:18;;;;;;;;;;;;;;;;;;223:500;;;;;;",
-  "deployedSourceMap": "223:500:2:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;247:20;;8:9:-1;5:2;;;30:1;27;20:12;5:2;247:20:2;;;;;;;;;;;;;;;;;;;;;;;;;;;528:192;;8:9:-1;5:2;;;30:1;27;20:12;5:2;528:192:2;;;;;;;;;;;;;;;;;;;;;;;;;;;;247:20;;;;;;;;;;;;;:::o;528:192::-;492:5;;;;;;;;;;;478:19;;:10;:19;;;470:28;;;;;;;;629:1;609:22;;:8;:22;;;;601:31;;;;;;;;676:8;648:37;;669:5;;;;;;;;;;;648:37;;;;;;;;;;;;704:8;696:5;;:16;;;;;;;;;;;;;;;;;;528:192;:::o",
+  "sourceMap": "223:500:4:-;;;370:58;8:9:-1;5:2;;;30:1;27;20:12;5:2;370:58:4;410:10;402:5;;:18;;;;;;;;;;;;;;;;;;223:500;;;;;;",
+  "deployedSourceMap": "223:500:4:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;247:20;;8:9:-1;5:2;;;30:1;27;20:12;5:2;247:20:4;;;;;;;;;;;;;;;;;;;;;;;;;;;528:192;;8:9:-1;5:2;;;30:1;27;20:12;5:2;528:192:4;;;;;;;;;;;;;;;;;;;;;;;;;;;;247:20;;;;;;;;;;;;;:::o;528:192::-;492:5;;;;;;;;;;;478:19;;:10;:19;;;470:28;;;;;;;;629:1;609:22;;:8;:22;;;;601:31;;;;;;;;676:8;648:37;;669:5;;;;;;;;;;;648:37;;;;;;;;;;;;704:8;696:5;;:16;;;;;;;;;;;;;;;;;;528:192;:::o",
   "source": "pragma solidity ^0.4.19;\r\n\r\n/**\r\n * @title Ownable\r\n * @dev The Ownable contract has an owner address, and provides basic authorization control\r\n * functions, this simplifies the implementation of \"user permissions\".\r\n */\r\ncontract Ownable {\r\n    address public owner;\r\n\r\n    event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\r\n\r\n\r\n    constructor() public {\r\n        owner = msg.sender;\r\n    }\r\n\r\n\r\n    modifier onlyOwner() {\r\n        require(msg.sender == owner);\r\n        _;\r\n    }\r\n\r\n\r\n    function transferOwnership(address newOwner) public onlyOwner {\r\n        require(newOwner != address(0));\r\n        emit OwnershipTransferred(owner, newOwner);\r\n        owner = newOwner;\r\n    }\r\n}\r\n",
   "sourcePath": "C:\\Users\\Nick\\Documents\\GitHub\\block-planes\\block-planes-solidity\\BlockPlanes\\contracts\\helpers\\ownable.sol",
   "ast": {
     "absolutePath": "/C/Users/Nick/Documents/GitHub/block-planes/block-planes-solidity/BlockPlanes/contracts/helpers/ownable.sol",
     "exportedSymbols": {
       "Ownable": [
-        270
+        588
       ]
     },
-    "id": 271,
+    "id": 589,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-<<<<<<< HEAD
-        "id": 477,
->>>>>>> hanger component
-=======
-        "id": 216,
->>>>>>> plane component
+        "id": 534,
         "literals": [
           "solidity",
           "^",
@@ -103,64 +78,28 @@
           ".19"
         ],
         "nodeType": "PragmaDirective",
-<<<<<<< HEAD
-<<<<<<< HEAD
-        "src": "0:24:1"
-=======
-        "src": "0:24:3"
->>>>>>> hanger component
-=======
-        "src": "0:24:2"
->>>>>>> plane component
+        "src": "0:24:4"
       },
       {
         "baseContracts": [],
         "contractDependencies": [],
         "contractKind": "contract",
-<<<<<<< HEAD
-        "documentation": "@title Ownable\n@dev The Ownable contract has an owner address, and provides basic authorization control\nfunctions, this simplifies the implementation of \"user permissions\".",
-        "fullyImplemented": true,
-        "id": 267,
-        "linearizedBaseContracts": [
-          267
-=======
         "documentation": "@title Ownable\r\n@dev The Ownable contract has an owner address, and provides basic authorization control\r\nfunctions, this simplifies the implementation of \"user permissions\".\r",
         "fullyImplemented": true,
-        "id": 270,
+        "id": 588,
         "linearizedBaseContracts": [
-<<<<<<< HEAD
-          531
->>>>>>> hanger component
-=======
-          270
->>>>>>> plane component
+          588
         ],
         "name": "Ownable",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-<<<<<<< HEAD
-<<<<<<< HEAD
-            "id": 215,
+            "id": 536,
             "name": "owner",
             "nodeType": "VariableDeclaration",
-            "scope": 267,
-            "src": "239:20:1",
-=======
-            "id": 479,
-            "name": "owner",
-            "nodeType": "VariableDeclaration",
-            "scope": 531,
-            "src": "247:20:3",
->>>>>>> hanger component
-=======
-            "id": 218,
-            "name": "owner",
-            "nodeType": "VariableDeclaration",
-            "scope": 270,
-            "src": "247:20:2",
->>>>>>> plane component
+            "scope": 588,
+            "src": "247:20:4",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -168,24 +107,10 @@
               "typeString": "address"
             },
             "typeName": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-              "id": 214,
+              "id": 535,
               "name": "address",
               "nodeType": "ElementaryTypeName",
-              "src": "239:7:1",
-=======
-              "id": 478,
-              "name": "address",
-              "nodeType": "ElementaryTypeName",
-              "src": "247:7:3",
->>>>>>> hanger component
-=======
-              "id": 217,
-              "name": "address",
-              "nodeType": "ElementaryTypeName",
-              "src": "247:7:2",
->>>>>>> plane component
+              "src": "247:7:4",
               "typeDescriptions": {
                 "typeIdentifier": "t_address",
                 "typeString": "address"
@@ -197,55 +122,21 @@
           {
             "anonymous": false,
             "documentation": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-            "id": 221,
+            "id": 542,
             "name": "OwnershipTransferred",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 220,
-=======
-            "id": 485,
-            "name": "OwnershipTransferred",
-            "nodeType": "EventDefinition",
-            "parameters": {
-              "id": 484,
->>>>>>> hanger component
-=======
-            "id": 224,
-            "name": "OwnershipTransferred",
-            "nodeType": "EventDefinition",
-            "parameters": {
-              "id": 223,
->>>>>>> plane component
+              "id": 541,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  "id": 217,
+                  "id": 538,
                   "indexed": true,
                   "name": "previousOwner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 221,
-                  "src": "293:29:1",
-=======
-                  "id": 481,
-                  "indexed": true,
-                  "name": "previousOwner",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 485,
-                  "src": "303:29:3",
->>>>>>> hanger component
-=======
-                  "id": 220,
-                  "indexed": true,
-                  "name": "previousOwner",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 224,
-                  "src": "303:29:2",
->>>>>>> plane component
+                  "scope": 542,
+                  "src": "303:29:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -253,24 +144,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    "id": 216,
+                    "id": 537,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "293:7:1",
-=======
-                    "id": 480,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "303:7:3",
->>>>>>> hanger component
-=======
-                    "id": 219,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "303:7:2",
->>>>>>> plane component
+                    "src": "303:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -281,30 +158,12 @@
                 },
                 {
                   "constant": false,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  "id": 219,
+                  "id": 540,
                   "indexed": true,
                   "name": "newOwner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 221,
-                  "src": "324:24:1",
-=======
-                  "id": 483,
-                  "indexed": true,
-                  "name": "newOwner",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 485,
-                  "src": "334:24:3",
->>>>>>> hanger component
-=======
-                  "id": 222,
-                  "indexed": true,
-                  "name": "newOwner",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 224,
-                  "src": "334:24:2",
->>>>>>> plane component
+                  "scope": 542,
+                  "src": "334:24:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -312,24 +171,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    "id": 218,
+                    "id": 539,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "324:7:1",
-=======
-                    "id": 482,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "334:7:3",
->>>>>>> hanger component
-=======
-                    "id": 221,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "334:7:2",
->>>>>>> plane component
+                    "src": "334:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -339,78 +184,32 @@
                   "visibility": "internal"
                 }
               ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-              "src": "292:57:1"
+              "src": "302:57:4"
             },
-            "src": "266:84:1"
+            "src": "276:84:4"
           },
           {
             "body": {
-              "id": 229,
+              "id": 550,
               "nodeType": "Block",
-              "src": "378:35:1",
-=======
-              "src": "302:57:3"
-=======
-              "src": "302:57:2"
->>>>>>> plane component
-            },
-            "src": "276:84:2"
-          },
-          {
-            "body": {
-              "id": 232,
-              "nodeType": "Block",
-<<<<<<< HEAD
-              "src": "391:37:3",
->>>>>>> hanger component
-=======
-              "src": "391:37:2",
->>>>>>> plane component
+              "src": "391:37:4",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    "id": 227,
-=======
-                    "id": 491,
->>>>>>> hanger component
-=======
-                    "id": 230,
->>>>>>> plane component
+                    "id": 548,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                      "id": 224,
+                      "id": 545,
                       "name": "owner",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 215,
-                      "src": "388:5:1",
-=======
-                      "id": 488,
-                      "name": "owner",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 479,
-                      "src": "402:5:3",
->>>>>>> hanger component
-=======
-                      "id": 227,
-                      "name": "owner",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 218,
-                      "src": "402:5:2",
->>>>>>> plane component
+                      "referencedDeclaration": 536,
+                      "src": "402:5:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
@@ -422,44 +221,18 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        "id": 225,
+                        "id": 546,
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 398,
-                        "src": "396:3:1",
-=======
-                        "id": 489,
-                        "name": "msg",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 842,
-                        "src": "410:3:3",
->>>>>>> hanger component
-=======
-                        "id": 228,
-                        "name": "msg",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 401,
-                        "src": "410:3:2",
->>>>>>> plane component
+                        "referencedDeclaration": 899,
+                        "src": "410:3:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
                           "typeString": "msg"
                         }
                       },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                      "id": 226,
-=======
-                      "id": 490,
->>>>>>> hanger component
-=======
-                      "id": 229,
->>>>>>> plane component
+                      "id": 547,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -467,62 +240,26 @@
                       "memberName": "sender",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                      "src": "396:10:1",
-=======
-                      "src": "410:10:3",
->>>>>>> hanger component
-=======
-                      "src": "410:10:2",
->>>>>>> plane component
+                      "src": "410:10:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       }
                     },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    "src": "388:18:1",
-=======
-                    "src": "402:18:3",
->>>>>>> hanger component
-=======
-                    "src": "402:18:2",
->>>>>>> plane component
+                    "src": "402:18:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
                     }
                   },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  "id": 228,
+                  "id": 549,
                   "nodeType": "ExpressionStatement",
-                  "src": "388:18:1"
-=======
-                  "id": 492,
-                  "nodeType": "ExpressionStatement",
-                  "src": "402:18:3"
->>>>>>> hanger component
-=======
-                  "id": 231,
-                  "nodeType": "ExpressionStatement",
-                  "src": "402:18:2"
->>>>>>> plane component
+                  "src": "402:18:4"
                 }
               ]
             },
             "documentation": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-            "id": 230,
-=======
-            "id": 494,
->>>>>>> hanger component
-=======
-            "id": 233,
->>>>>>> plane component
+            "id": 551,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -530,67 +267,29 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-              "id": 222,
+              "id": 543,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "368:2:1"
+              "src": "381:2:4"
             },
             "payable": false,
             "returnParameters": {
-              "id": 223,
+              "id": 544,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "378:0:1"
+              "src": "391:0:4"
             },
-            "scope": 267,
-            "src": "357:56:1",
-=======
-              "id": 486,
-=======
-              "id": 225,
->>>>>>> plane component
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "381:2:2"
-            },
-            "payable": false,
-            "returnParameters": {
-              "id": 226,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "391:0:2"
-            },
-<<<<<<< HEAD
-            "scope": 531,
-            "src": "370:58:3",
->>>>>>> hanger component
-=======
-            "scope": 270,
-            "src": "370:58:2",
->>>>>>> plane component
+            "scope": 588,
+            "src": "370:58:4",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           },
           {
             "body": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-              "id": 240,
+              "id": 561,
               "nodeType": "Block",
-              "src": "441:56:1",
-=======
-              "id": 504,
-              "nodeType": "Block",
-              "src": "459:59:3",
->>>>>>> hanger component
-=======
-              "id": 243,
-              "nodeType": "Block",
-              "src": "459:59:2",
->>>>>>> plane component
+              "src": "459:59:4",
               "statements": [
                 {
                   "expression": {
@@ -602,15 +301,7 @@
                           "typeIdentifier": "t_address",
                           "typeString": "address"
                         },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        "id": 236,
-=======
-                        "id": 500,
->>>>>>> hanger component
-=======
-                        "id": 239,
->>>>>>> plane component
+                        "id": 557,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -619,44 +310,18 @@
                           "argumentTypes": null,
                           "expression": {
                             "argumentTypes": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                            "id": 233,
+                            "id": 554,
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 398,
-                            "src": "459:3:1",
-=======
-                            "id": 497,
-                            "name": "msg",
-                            "nodeType": "Identifier",
-                            "overloadedDeclarations": [],
-                            "referencedDeclaration": 842,
-                            "src": "478:3:3",
->>>>>>> hanger component
-=======
-                            "id": 236,
-                            "name": "msg",
-                            "nodeType": "Identifier",
-                            "overloadedDeclarations": [],
-                            "referencedDeclaration": 401,
-                            "src": "478:3:2",
->>>>>>> plane component
+                            "referencedDeclaration": 899,
+                            "src": "478:3:4",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
                               "typeString": "msg"
                             }
                           },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                          "id": 234,
-=======
-                          "id": 498,
->>>>>>> hanger component
-=======
-                          "id": 237,
->>>>>>> plane component
+                          "id": 555,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -664,15 +329,7 @@
                           "memberName": "sender",
                           "nodeType": "MemberAccess",
                           "referencedDeclaration": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                          "src": "459:10:1",
-=======
-                          "src": "478:10:3",
->>>>>>> hanger component
-=======
-                          "src": "478:10:2",
->>>>>>> plane component
+                          "src": "478:10:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -682,44 +339,18 @@
                         "operator": "==",
                         "rightExpression": {
                           "argumentTypes": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                          "id": 235,
+                          "id": 556,
                           "name": "owner",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 215,
-                          "src": "473:5:1",
-=======
-                          "id": 499,
-                          "name": "owner",
-                          "nodeType": "Identifier",
-                          "overloadedDeclarations": [],
-                          "referencedDeclaration": 479,
-                          "src": "492:5:3",
->>>>>>> hanger component
-=======
-                          "id": 238,
-                          "name": "owner",
-                          "nodeType": "Identifier",
-                          "overloadedDeclarations": [],
-                          "referencedDeclaration": 218,
-                          "src": "492:5:2",
->>>>>>> plane component
+                          "referencedDeclaration": 536,
+                          "src": "492:5:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
                           }
                         },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        "src": "459:19:1",
-=======
-                        "src": "478:19:3",
->>>>>>> hanger component
-=======
-                        "src": "478:19:2",
->>>>>>> plane component
+                        "src": "478:19:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -733,50 +364,21 @@
                           "typeString": "bool"
                         }
                       ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-                      "id": 232,
+                      "id": 553,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        401,
-                        402
+                        902,
+                        903
                       ],
-                      "referencedDeclaration": 401,
-                      "src": "451:7:1",
-=======
-                      "id": 496,
-=======
-                      "id": 235,
->>>>>>> plane component
-                      "name": "require",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        404,
-                        405
-                      ],
-<<<<<<< HEAD
-                      "referencedDeclaration": 845,
-                      "src": "470:7:3",
->>>>>>> hanger component
-=======
-                      "referencedDeclaration": 404,
-                      "src": "470:7:2",
->>>>>>> plane component
+                      "referencedDeclaration": 902,
+                      "src": "470:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
                         "typeString": "function (bool) pure"
                       }
                     },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    "id": 237,
-=======
-                    "id": 501,
->>>>>>> hanger component
-=======
-                    "id": 240,
->>>>>>> plane component
+                    "id": 558,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -784,101 +386,41 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    "src": "451:28:1",
-=======
-                    "src": "470:28:3",
->>>>>>> hanger component
-=======
-                    "src": "470:28:2",
->>>>>>> plane component
+                    "src": "470:28:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  "id": 238,
+                  "id": 559,
                   "nodeType": "ExpressionStatement",
-                  "src": "451:28:1"
+                  "src": "470:28:4"
                 },
                 {
-                  "id": 239,
+                  "id": 560,
                   "nodeType": "PlaceholderStatement",
-                  "src": "489:1:1"
-=======
-                  "id": 502,
-=======
-                  "id": 241,
->>>>>>> plane component
-                  "nodeType": "ExpressionStatement",
-                  "src": "470:28:2"
-                },
-                {
-                  "id": 242,
-                  "nodeType": "PlaceholderStatement",
-<<<<<<< HEAD
-                  "src": "509:1:3"
->>>>>>> hanger component
-=======
-                  "src": "509:1:2"
->>>>>>> plane component
+                  "src": "509:1:4"
                 }
               ]
             },
             "documentation": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-            "id": 241,
+            "id": 562,
             "name": "onlyOwner",
             "nodeType": "ModifierDefinition",
             "parameters": {
-              "id": 231,
+              "id": 552,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "438:2:1"
+              "src": "456:2:4"
             },
-            "src": "420:77:1",
-=======
-            "id": 505,
-=======
-            "id": 244,
->>>>>>> plane component
-            "name": "onlyOwner",
-            "nodeType": "ModifierDefinition",
-            "parameters": {
-              "id": 234,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "456:2:2"
-            },
-<<<<<<< HEAD
-            "src": "438:80:3",
->>>>>>> hanger component
-=======
-            "src": "438:80:2",
->>>>>>> plane component
+            "src": "438:80:4",
             "visibility": "internal"
           },
           {
             "body": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-              "id": 265,
+              "id": 586,
               "nodeType": "Block",
-              "src": "566:126:1",
-=======
-              "id": 529,
-              "nodeType": "Block",
-              "src": "590:130:3",
->>>>>>> hanger component
-=======
-              "id": 268,
-              "nodeType": "Block",
-              "src": "590:130:2",
->>>>>>> plane component
+              "src": "590:130:4",
               "statements": [
                 {
                   "expression": {
@@ -890,45 +432,19 @@
                           "typeIdentifier": "t_address",
                           "typeString": "address"
                         },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        "id": 253,
-=======
-                        "id": 517,
->>>>>>> hanger component
-=======
-                        "id": 256,
->>>>>>> plane component
+                        "id": 574,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "argumentTypes": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                          "id": 249,
+                          "id": 570,
                           "name": "newOwner",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 243,
-                          "src": "584:8:1",
-=======
-                          "id": 513,
-                          "name": "newOwner",
-                          "nodeType": "Identifier",
-                          "overloadedDeclarations": [],
-                          "referencedDeclaration": 507,
-                          "src": "609:8:3",
->>>>>>> hanger component
-=======
-                          "id": 252,
-                          "name": "newOwner",
-                          "nodeType": "Identifier",
-                          "overloadedDeclarations": [],
-                          "referencedDeclaration": 246,
-                          "src": "609:8:2",
->>>>>>> plane component
+                          "referencedDeclaration": 564,
+                          "src": "609:8:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -942,30 +458,14 @@
                             {
                               "argumentTypes": null,
                               "hexValue": "30",
-<<<<<<< HEAD
-<<<<<<< HEAD
-                              "id": 251,
-=======
-                              "id": 515,
->>>>>>> hanger component
-=======
-                              "id": 254,
->>>>>>> plane component
+                              "id": 572,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
                               "kind": "number",
                               "lValueRequested": false,
                               "nodeType": "Literal",
-<<<<<<< HEAD
-<<<<<<< HEAD
-                              "src": "604:1:1",
-=======
-                              "src": "629:1:3",
->>>>>>> hanger component
-=======
-                              "src": "629:1:2",
->>>>>>> plane component
+                              "src": "629:1:4",
                               "subdenomination": null,
                               "typeDescriptions": {
                                 "typeIdentifier": "t_rational_0_by_1",
@@ -981,44 +481,20 @@
                                 "typeString": "int_const 0"
                               }
                             ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-                            "id": 250,
-=======
-                            "id": 514,
->>>>>>> hanger component
-=======
-                            "id": 253,
->>>>>>> plane component
+                            "id": 571,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
                             "lValueRequested": false,
                             "nodeType": "ElementaryTypeNameExpression",
-<<<<<<< HEAD
-<<<<<<< HEAD
-                            "src": "596:7:1",
-=======
-                            "src": "621:7:3",
->>>>>>> hanger component
-=======
-                            "src": "621:7:2",
->>>>>>> plane component
+                            "src": "621:7:4",
                             "typeDescriptions": {
                               "typeIdentifier": "t_type$_t_address_$",
                               "typeString": "type(address)"
                             },
                             "typeName": "address"
                           },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                          "id": 252,
-=======
-                          "id": 516,
->>>>>>> hanger component
-=======
-                          "id": 255,
->>>>>>> plane component
+                          "id": 573,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -1026,29 +502,13 @@
                           "lValueRequested": false,
                           "names": [],
                           "nodeType": "FunctionCall",
-<<<<<<< HEAD
-<<<<<<< HEAD
-                          "src": "596:10:1",
-=======
-                          "src": "621:10:3",
->>>>>>> hanger component
-=======
-                          "src": "621:10:2",
->>>>>>> plane component
+                          "src": "621:10:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
                           }
                         },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        "src": "584:22:1",
-=======
-                        "src": "609:22:3",
->>>>>>> hanger component
-=======
-                        "src": "609:22:2",
->>>>>>> plane component
+                        "src": "609:22:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -1062,50 +522,21 @@
                           "typeString": "bool"
                         }
                       ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-                      "id": 248,
+                      "id": 569,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        401,
-                        402
+                        902,
+                        903
                       ],
-                      "referencedDeclaration": 401,
-                      "src": "576:7:1",
-=======
-                      "id": 512,
-=======
-                      "id": 251,
->>>>>>> plane component
-                      "name": "require",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        404,
-                        405
-                      ],
-<<<<<<< HEAD
-                      "referencedDeclaration": 845,
-                      "src": "601:7:3",
->>>>>>> hanger component
-=======
-                      "referencedDeclaration": 404,
-                      "src": "601:7:2",
->>>>>>> plane component
+                      "referencedDeclaration": 902,
+                      "src": "601:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
                         "typeString": "function (bool) pure"
                       }
                     },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    "id": 254,
-=======
-                    "id": 518,
->>>>>>> hanger component
-=======
-                    "id": 257,
->>>>>>> plane component
+                    "id": 575,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1113,35 +544,15 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    "src": "576:31:1",
-=======
-                    "src": "601:31:3",
->>>>>>> hanger component
-=======
-                    "src": "601:31:2",
->>>>>>> plane component
+                    "src": "601:31:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  "id": 255,
+                  "id": 576,
                   "nodeType": "ExpressionStatement",
-                  "src": "576:31:1"
-=======
-                  "id": 519,
-                  "nodeType": "ExpressionStatement",
-                  "src": "601:31:3"
->>>>>>> hanger component
-=======
-                  "id": 258,
-                  "nodeType": "ExpressionStatement",
-                  "src": "601:31:2"
->>>>>>> plane component
+                  "src": "601:31:4"
                 },
                 {
                   "eventCall": {
@@ -1149,30 +560,12 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        "id": 257,
+                        "id": 578,
                         "name": "owner",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 215,
-                        "src": "643:5:1",
-=======
-                        "id": 521,
-                        "name": "owner",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 479,
-                        "src": "669:5:3",
->>>>>>> hanger component
-=======
-                        "id": 260,
-                        "name": "owner",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 218,
-                        "src": "669:5:2",
->>>>>>> plane component
+                        "referencedDeclaration": 536,
+                        "src": "669:5:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -1180,30 +573,12 @@
                       },
                       {
                         "argumentTypes": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        "id": 258,
+                        "id": 579,
                         "name": "newOwner",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 243,
-                        "src": "650:8:1",
-=======
-                        "id": 522,
-                        "name": "newOwner",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 507,
-                        "src": "676:8:3",
->>>>>>> hanger component
-=======
-                        "id": 261,
-                        "name": "newOwner",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 246,
-                        "src": "676:8:2",
->>>>>>> plane component
+                        "referencedDeclaration": 564,
+                        "src": "676:8:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -1221,44 +596,18 @@
                           "typeString": "address"
                         }
                       ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-                      "id": 256,
+                      "id": 577,
                       "name": "OwnershipTransferred",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 221,
-                      "src": "622:20:1",
-=======
-                      "id": 520,
-                      "name": "OwnershipTransferred",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 485,
-                      "src": "648:20:3",
->>>>>>> hanger component
-=======
-                      "id": 259,
-                      "name": "OwnershipTransferred",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 224,
-                      "src": "648:20:2",
->>>>>>> plane component
+                      "referencedDeclaration": 542,
+                      "src": "648:20:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$returns$__$",
                         "typeString": "function (address,address)"
                       }
                     },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    "id": 259,
-=======
-                    "id": 523,
->>>>>>> hanger component
-=======
-                    "id": 262,
->>>>>>> plane component
+                    "id": 580,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1266,78 +615,32 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    "src": "622:37:1",
-=======
-                    "src": "648:37:3",
->>>>>>> hanger component
-=======
-                    "src": "648:37:2",
->>>>>>> plane component
+                    "src": "648:37:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  "id": 260,
+                  "id": 581,
                   "nodeType": "EmitStatement",
-                  "src": "617:42:1"
-=======
-                  "id": 524,
-                  "nodeType": "EmitStatement",
-                  "src": "643:42:3"
->>>>>>> hanger component
-=======
-                  "id": 263,
-                  "nodeType": "EmitStatement",
-                  "src": "643:42:2"
->>>>>>> plane component
+                  "src": "643:42:4"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    "id": 263,
-=======
-                    "id": 527,
->>>>>>> hanger component
-=======
-                    "id": 266,
->>>>>>> plane component
+                    "id": 584,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                      "id": 261,
+                      "id": 582,
                       "name": "owner",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 215,
-                      "src": "669:5:1",
-=======
-                      "id": 525,
-                      "name": "owner",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 479,
-                      "src": "696:5:3",
->>>>>>> hanger component
-=======
-                      "id": 264,
-                      "name": "owner",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 218,
-                      "src": "696:5:2",
->>>>>>> plane component
+                      "referencedDeclaration": 536,
+                      "src": "696:5:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
@@ -1347,167 +650,68 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                      "id": 262,
+                      "id": 583,
                       "name": "newOwner",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 243,
-                      "src": "677:8:1",
-=======
-                      "id": 526,
-                      "name": "newOwner",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 507,
-                      "src": "704:8:3",
->>>>>>> hanger component
-=======
-                      "id": 265,
-                      "name": "newOwner",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 246,
-                      "src": "704:8:2",
->>>>>>> plane component
+                      "referencedDeclaration": 564,
+                      "src": "704:8:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       }
                     },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    "src": "669:16:1",
-=======
-                    "src": "696:16:3",
->>>>>>> hanger component
-=======
-                    "src": "696:16:2",
->>>>>>> plane component
+                    "src": "696:16:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
                     }
                   },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  "id": 264,
+                  "id": 585,
                   "nodeType": "ExpressionStatement",
-                  "src": "669:16:1"
-=======
-                  "id": 528,
-                  "nodeType": "ExpressionStatement",
-                  "src": "696:16:3"
->>>>>>> hanger component
-=======
-                  "id": 267,
-                  "nodeType": "ExpressionStatement",
-                  "src": "696:16:2"
->>>>>>> plane component
+                  "src": "696:16:4"
                 }
               ]
             },
             "documentation": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-            "id": 266,
-=======
-            "id": 530,
->>>>>>> hanger component
-=======
-            "id": 269,
->>>>>>> plane component
+            "id": 587,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
             "modifiers": [
               {
                 "arguments": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                "id": 246,
+                "id": 567,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 245,
+                  "id": 566,
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 241,
-                  "src": "556:9:1",
-=======
-                "id": 510,
-=======
-                "id": 249,
->>>>>>> plane component
-                "modifierName": {
-                  "argumentTypes": null,
-                  "id": 248,
-                  "name": "onlyOwner",
-                  "nodeType": "Identifier",
-                  "overloadedDeclarations": [],
-<<<<<<< HEAD
-                  "referencedDeclaration": 505,
-                  "src": "580:9:3",
->>>>>>> hanger component
-=======
-                  "referencedDeclaration": 244,
-                  "src": "580:9:2",
->>>>>>> plane component
+                  "referencedDeclaration": 562,
+                  "src": "580:9:4",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
                     "typeString": "modifier ()"
                   }
                 },
                 "nodeType": "ModifierInvocation",
-<<<<<<< HEAD
-<<<<<<< HEAD
-                "src": "556:9:1"
-=======
-                "src": "580:9:3"
->>>>>>> hanger component
-=======
-                "src": "580:9:2"
->>>>>>> plane component
+                "src": "580:9:4"
               }
             ],
             "name": "transferOwnership",
             "nodeType": "FunctionDefinition",
             "parameters": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-              "id": 244,
-=======
-              "id": 508,
->>>>>>> hanger component
-=======
-              "id": 247,
->>>>>>> plane component
+              "id": 565,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  "id": 243,
+                  "id": 564,
                   "name": "newOwner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 266,
-                  "src": "531:16:1",
-=======
-                  "id": 507,
-                  "name": "newOwner",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 530,
-                  "src": "555:16:3",
->>>>>>> hanger component
-=======
-                  "id": 246,
-                  "name": "newOwner",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 269,
-                  "src": "555:16:2",
->>>>>>> plane component
+                  "scope": 587,
+                  "src": "555:16:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1515,24 +719,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    "id": 242,
+                    "id": 563,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "531:7:1",
-=======
-                    "id": 506,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "555:7:3",
->>>>>>> hanger component
-=======
-                    "id": 245,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "555:7:2",
->>>>>>> plane component
+                    "src": "555:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1542,93 +732,40 @@
                   "visibility": "internal"
                 }
               ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-              "src": "530:18:1"
+              "src": "554:18:4"
             },
             "payable": false,
             "returnParameters": {
-              "id": 247,
+              "id": 568,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "566:0:1"
+              "src": "590:0:4"
             },
-            "scope": 267,
-            "src": "504:188:1",
-=======
-              "src": "554:18:3"
-=======
-              "src": "554:18:2"
->>>>>>> plane component
-            },
-            "payable": false,
-            "returnParameters": {
-              "id": 250,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "590:0:2"
-            },
-<<<<<<< HEAD
-            "scope": 531,
-            "src": "528:192:3",
->>>>>>> hanger component
-=======
-            "scope": 270,
-            "src": "528:192:2",
->>>>>>> plane component
+            "scope": 588,
+            "src": "528:192:4",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-        "scope": 268,
-        "src": "216:478:1"
+        "scope": 589,
+        "src": "223:500:4"
       }
     ],
-    "src": "0:695:1"
-  },
-  "legacyAST": {
-    "absolutePath": "/Users/josephduynguyen/Desktop/Hack Reactor Work Space/block-planes/block-planes-solidity/BlockPlanes/contracts/helpers/ownable.sol",
-    "exportedSymbols": {
-      "Ownable": [
-        267
-      ]
-    },
-    "id": 268,
-    "nodeType": "SourceUnit",
-    "nodes": [
-      {
-        "id": 213,
-=======
-        "scope": 532,
-        "src": "223:500:3"
-=======
-        "scope": 271,
-        "src": "223:500:2"
->>>>>>> plane component
-      }
-    ],
-    "src": "0:725:2"
+    "src": "0:725:4"
   },
   "legacyAST": {
     "absolutePath": "/C/Users/Nick/Documents/GitHub/block-planes/block-planes-solidity/BlockPlanes/contracts/helpers/ownable.sol",
     "exportedSymbols": {
       "Ownable": [
-        270
+        588
       ]
     },
-    "id": 271,
+    "id": 589,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-<<<<<<< HEAD
-        "id": 477,
->>>>>>> hanger component
-=======
-        "id": 216,
->>>>>>> plane component
+        "id": 534,
         "literals": [
           "solidity",
           "^",
@@ -1636,64 +773,28 @@
           ".19"
         ],
         "nodeType": "PragmaDirective",
-<<<<<<< HEAD
-<<<<<<< HEAD
-        "src": "0:24:1"
-=======
-        "src": "0:24:3"
->>>>>>> hanger component
-=======
-        "src": "0:24:2"
->>>>>>> plane component
+        "src": "0:24:4"
       },
       {
         "baseContracts": [],
         "contractDependencies": [],
         "contractKind": "contract",
-<<<<<<< HEAD
-        "documentation": "@title Ownable\n@dev The Ownable contract has an owner address, and provides basic authorization control\nfunctions, this simplifies the implementation of \"user permissions\".",
-        "fullyImplemented": true,
-        "id": 267,
-        "linearizedBaseContracts": [
-          267
-=======
         "documentation": "@title Ownable\r\n@dev The Ownable contract has an owner address, and provides basic authorization control\r\nfunctions, this simplifies the implementation of \"user permissions\".\r",
         "fullyImplemented": true,
-        "id": 270,
+        "id": 588,
         "linearizedBaseContracts": [
-<<<<<<< HEAD
-          531
->>>>>>> hanger component
-=======
-          270
->>>>>>> plane component
+          588
         ],
         "name": "Ownable",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": false,
-<<<<<<< HEAD
-<<<<<<< HEAD
-            "id": 215,
+            "id": 536,
             "name": "owner",
             "nodeType": "VariableDeclaration",
-            "scope": 267,
-            "src": "239:20:1",
-=======
-            "id": 479,
-            "name": "owner",
-            "nodeType": "VariableDeclaration",
-            "scope": 531,
-            "src": "247:20:3",
->>>>>>> hanger component
-=======
-            "id": 218,
-            "name": "owner",
-            "nodeType": "VariableDeclaration",
-            "scope": 270,
-            "src": "247:20:2",
->>>>>>> plane component
+            "scope": 588,
+            "src": "247:20:4",
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
@@ -1701,24 +802,10 @@
               "typeString": "address"
             },
             "typeName": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-              "id": 214,
+              "id": 535,
               "name": "address",
               "nodeType": "ElementaryTypeName",
-              "src": "239:7:1",
-=======
-              "id": 478,
-              "name": "address",
-              "nodeType": "ElementaryTypeName",
-              "src": "247:7:3",
->>>>>>> hanger component
-=======
-              "id": 217,
-              "name": "address",
-              "nodeType": "ElementaryTypeName",
-              "src": "247:7:2",
->>>>>>> plane component
+              "src": "247:7:4",
               "typeDescriptions": {
                 "typeIdentifier": "t_address",
                 "typeString": "address"
@@ -1730,55 +817,21 @@
           {
             "anonymous": false,
             "documentation": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-            "id": 221,
+            "id": 542,
             "name": "OwnershipTransferred",
             "nodeType": "EventDefinition",
             "parameters": {
-              "id": 220,
-=======
-            "id": 485,
-            "name": "OwnershipTransferred",
-            "nodeType": "EventDefinition",
-            "parameters": {
-              "id": 484,
->>>>>>> hanger component
-=======
-            "id": 224,
-            "name": "OwnershipTransferred",
-            "nodeType": "EventDefinition",
-            "parameters": {
-              "id": 223,
->>>>>>> plane component
+              "id": 541,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  "id": 217,
+                  "id": 538,
                   "indexed": true,
                   "name": "previousOwner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 221,
-                  "src": "293:29:1",
-=======
-                  "id": 481,
-                  "indexed": true,
-                  "name": "previousOwner",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 485,
-                  "src": "303:29:3",
->>>>>>> hanger component
-=======
-                  "id": 220,
-                  "indexed": true,
-                  "name": "previousOwner",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 224,
-                  "src": "303:29:2",
->>>>>>> plane component
+                  "scope": 542,
+                  "src": "303:29:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1786,24 +839,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    "id": 216,
+                    "id": 537,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "293:7:1",
-=======
-                    "id": 480,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "303:7:3",
->>>>>>> hanger component
-=======
-                    "id": 219,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "303:7:2",
->>>>>>> plane component
+                    "src": "303:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1814,30 +853,12 @@
                 },
                 {
                   "constant": false,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  "id": 219,
+                  "id": 540,
                   "indexed": true,
                   "name": "newOwner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 221,
-                  "src": "324:24:1",
-=======
-                  "id": 483,
-                  "indexed": true,
-                  "name": "newOwner",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 485,
-                  "src": "334:24:3",
->>>>>>> hanger component
-=======
-                  "id": 222,
-                  "indexed": true,
-                  "name": "newOwner",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 224,
-                  "src": "334:24:2",
->>>>>>> plane component
+                  "scope": 542,
+                  "src": "334:24:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -1845,24 +866,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    "id": 218,
+                    "id": 539,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "324:7:1",
-=======
-                    "id": 482,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "334:7:3",
->>>>>>> hanger component
-=======
-                    "id": 221,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "334:7:2",
->>>>>>> plane component
+                    "src": "334:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -1872,78 +879,32 @@
                   "visibility": "internal"
                 }
               ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-              "src": "292:57:1"
+              "src": "302:57:4"
             },
-            "src": "266:84:1"
+            "src": "276:84:4"
           },
           {
             "body": {
-              "id": 229,
+              "id": 550,
               "nodeType": "Block",
-              "src": "378:35:1",
-=======
-              "src": "302:57:3"
-=======
-              "src": "302:57:2"
->>>>>>> plane component
-            },
-            "src": "276:84:2"
-          },
-          {
-            "body": {
-              "id": 232,
-              "nodeType": "Block",
-<<<<<<< HEAD
-              "src": "391:37:3",
->>>>>>> hanger component
-=======
-              "src": "391:37:2",
->>>>>>> plane component
+              "src": "391:37:4",
               "statements": [
                 {
                   "expression": {
                     "argumentTypes": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    "id": 227,
-=======
-                    "id": 491,
->>>>>>> hanger component
-=======
-                    "id": 230,
->>>>>>> plane component
+                    "id": 548,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                      "id": 224,
+                      "id": 545,
                       "name": "owner",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 215,
-                      "src": "388:5:1",
-=======
-                      "id": 488,
-                      "name": "owner",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 479,
-                      "src": "402:5:3",
->>>>>>> hanger component
-=======
-                      "id": 227,
-                      "name": "owner",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 218,
-                      "src": "402:5:2",
->>>>>>> plane component
+                      "referencedDeclaration": 536,
+                      "src": "402:5:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
@@ -1955,44 +916,18 @@
                       "argumentTypes": null,
                       "expression": {
                         "argumentTypes": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        "id": 225,
+                        "id": 546,
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 398,
-                        "src": "396:3:1",
-=======
-                        "id": 489,
-                        "name": "msg",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 842,
-                        "src": "410:3:3",
->>>>>>> hanger component
-=======
-                        "id": 228,
-                        "name": "msg",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 401,
-                        "src": "410:3:2",
->>>>>>> plane component
+                        "referencedDeclaration": 899,
+                        "src": "410:3:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
                           "typeString": "msg"
                         }
                       },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                      "id": 226,
-=======
-                      "id": 490,
->>>>>>> hanger component
-=======
-                      "id": 229,
->>>>>>> plane component
+                      "id": 547,
                       "isConstant": false,
                       "isLValue": false,
                       "isPure": false,
@@ -2000,62 +935,26 @@
                       "memberName": "sender",
                       "nodeType": "MemberAccess",
                       "referencedDeclaration": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                      "src": "396:10:1",
-=======
-                      "src": "410:10:3",
->>>>>>> hanger component
-=======
-                      "src": "410:10:2",
->>>>>>> plane component
+                      "src": "410:10:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       }
                     },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    "src": "388:18:1",
-=======
-                    "src": "402:18:3",
->>>>>>> hanger component
-=======
-                    "src": "402:18:2",
->>>>>>> plane component
+                    "src": "402:18:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
                     }
                   },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  "id": 228,
+                  "id": 549,
                   "nodeType": "ExpressionStatement",
-                  "src": "388:18:1"
-=======
-                  "id": 492,
-                  "nodeType": "ExpressionStatement",
-                  "src": "402:18:3"
->>>>>>> hanger component
-=======
-                  "id": 231,
-                  "nodeType": "ExpressionStatement",
-                  "src": "402:18:2"
->>>>>>> plane component
+                  "src": "402:18:4"
                 }
               ]
             },
             "documentation": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-            "id": 230,
-=======
-            "id": 494,
->>>>>>> hanger component
-=======
-            "id": 233,
->>>>>>> plane component
+            "id": 551,
             "implemented": true,
             "isConstructor": true,
             "isDeclaredConst": false,
@@ -2063,67 +962,29 @@
             "name": "",
             "nodeType": "FunctionDefinition",
             "parameters": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-              "id": 222,
+              "id": 543,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "368:2:1"
+              "src": "381:2:4"
             },
             "payable": false,
             "returnParameters": {
-              "id": 223,
+              "id": 544,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "378:0:1"
+              "src": "391:0:4"
             },
-            "scope": 267,
-            "src": "357:56:1",
-=======
-              "id": 486,
-=======
-              "id": 225,
->>>>>>> plane component
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "381:2:2"
-            },
-            "payable": false,
-            "returnParameters": {
-              "id": 226,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "391:0:2"
-            },
-<<<<<<< HEAD
-            "scope": 531,
-            "src": "370:58:3",
->>>>>>> hanger component
-=======
-            "scope": 270,
-            "src": "370:58:2",
->>>>>>> plane component
+            "scope": 588,
+            "src": "370:58:4",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           },
           {
             "body": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-              "id": 240,
+              "id": 561,
               "nodeType": "Block",
-              "src": "441:56:1",
-=======
-              "id": 504,
-              "nodeType": "Block",
-              "src": "459:59:3",
->>>>>>> hanger component
-=======
-              "id": 243,
-              "nodeType": "Block",
-              "src": "459:59:2",
->>>>>>> plane component
+              "src": "459:59:4",
               "statements": [
                 {
                   "expression": {
@@ -2135,15 +996,7 @@
                           "typeIdentifier": "t_address",
                           "typeString": "address"
                         },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        "id": 236,
-=======
-                        "id": 500,
->>>>>>> hanger component
-=======
-                        "id": 239,
->>>>>>> plane component
+                        "id": 557,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -2152,44 +1005,18 @@
                           "argumentTypes": null,
                           "expression": {
                             "argumentTypes": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                            "id": 233,
+                            "id": 554,
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 398,
-                            "src": "459:3:1",
-=======
-                            "id": 497,
-                            "name": "msg",
-                            "nodeType": "Identifier",
-                            "overloadedDeclarations": [],
-                            "referencedDeclaration": 842,
-                            "src": "478:3:3",
->>>>>>> hanger component
-=======
-                            "id": 236,
-                            "name": "msg",
-                            "nodeType": "Identifier",
-                            "overloadedDeclarations": [],
-                            "referencedDeclaration": 401,
-                            "src": "478:3:2",
->>>>>>> plane component
+                            "referencedDeclaration": 899,
+                            "src": "478:3:4",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
                               "typeString": "msg"
                             }
                           },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                          "id": 234,
-=======
-                          "id": 498,
->>>>>>> hanger component
-=======
-                          "id": 237,
->>>>>>> plane component
+                          "id": 555,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
@@ -2197,15 +1024,7 @@
                           "memberName": "sender",
                           "nodeType": "MemberAccess",
                           "referencedDeclaration": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                          "src": "459:10:1",
-=======
-                          "src": "478:10:3",
->>>>>>> hanger component
-=======
-                          "src": "478:10:2",
->>>>>>> plane component
+                          "src": "478:10:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -2215,44 +1034,18 @@
                         "operator": "==",
                         "rightExpression": {
                           "argumentTypes": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                          "id": 235,
+                          "id": 556,
                           "name": "owner",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 215,
-                          "src": "473:5:1",
-=======
-                          "id": 499,
-                          "name": "owner",
-                          "nodeType": "Identifier",
-                          "overloadedDeclarations": [],
-                          "referencedDeclaration": 479,
-                          "src": "492:5:3",
->>>>>>> hanger component
-=======
-                          "id": 238,
-                          "name": "owner",
-                          "nodeType": "Identifier",
-                          "overloadedDeclarations": [],
-                          "referencedDeclaration": 218,
-                          "src": "492:5:2",
->>>>>>> plane component
+                          "referencedDeclaration": 536,
+                          "src": "492:5:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
                           }
                         },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        "src": "459:19:1",
-=======
-                        "src": "478:19:3",
->>>>>>> hanger component
-=======
-                        "src": "478:19:2",
->>>>>>> plane component
+                        "src": "478:19:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -2266,50 +1059,21 @@
                           "typeString": "bool"
                         }
                       ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-                      "id": 232,
+                      "id": 553,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        401,
-                        402
+                        902,
+                        903
                       ],
-                      "referencedDeclaration": 401,
-                      "src": "451:7:1",
-=======
-                      "id": 496,
-=======
-                      "id": 235,
->>>>>>> plane component
-                      "name": "require",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        404,
-                        405
-                      ],
-<<<<<<< HEAD
-                      "referencedDeclaration": 845,
-                      "src": "470:7:3",
->>>>>>> hanger component
-=======
-                      "referencedDeclaration": 404,
-                      "src": "470:7:2",
->>>>>>> plane component
+                      "referencedDeclaration": 902,
+                      "src": "470:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
                         "typeString": "function (bool) pure"
                       }
                     },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    "id": 237,
-=======
-                    "id": 501,
->>>>>>> hanger component
-=======
-                    "id": 240,
->>>>>>> plane component
+                    "id": 558,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2317,101 +1081,41 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    "src": "451:28:1",
-=======
-                    "src": "470:28:3",
->>>>>>> hanger component
-=======
-                    "src": "470:28:2",
->>>>>>> plane component
+                    "src": "470:28:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  "id": 238,
+                  "id": 559,
                   "nodeType": "ExpressionStatement",
-                  "src": "451:28:1"
+                  "src": "470:28:4"
                 },
                 {
-                  "id": 239,
+                  "id": 560,
                   "nodeType": "PlaceholderStatement",
-                  "src": "489:1:1"
-=======
-                  "id": 502,
-=======
-                  "id": 241,
->>>>>>> plane component
-                  "nodeType": "ExpressionStatement",
-                  "src": "470:28:2"
-                },
-                {
-                  "id": 242,
-                  "nodeType": "PlaceholderStatement",
-<<<<<<< HEAD
-                  "src": "509:1:3"
->>>>>>> hanger component
-=======
-                  "src": "509:1:2"
->>>>>>> plane component
+                  "src": "509:1:4"
                 }
               ]
             },
             "documentation": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-            "id": 241,
+            "id": 562,
             "name": "onlyOwner",
             "nodeType": "ModifierDefinition",
             "parameters": {
-              "id": 231,
+              "id": 552,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "438:2:1"
+              "src": "456:2:4"
             },
-            "src": "420:77:1",
-=======
-            "id": 505,
-=======
-            "id": 244,
->>>>>>> plane component
-            "name": "onlyOwner",
-            "nodeType": "ModifierDefinition",
-            "parameters": {
-              "id": 234,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "456:2:2"
-            },
-<<<<<<< HEAD
-            "src": "438:80:3",
->>>>>>> hanger component
-=======
-            "src": "438:80:2",
->>>>>>> plane component
+            "src": "438:80:4",
             "visibility": "internal"
           },
           {
             "body": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-              "id": 265,
+              "id": 586,
               "nodeType": "Block",
-              "src": "566:126:1",
-=======
-              "id": 529,
-              "nodeType": "Block",
-              "src": "590:130:3",
->>>>>>> hanger component
-=======
-              "id": 268,
-              "nodeType": "Block",
-              "src": "590:130:2",
->>>>>>> plane component
+              "src": "590:130:4",
               "statements": [
                 {
                   "expression": {
@@ -2423,45 +1127,19 @@
                           "typeIdentifier": "t_address",
                           "typeString": "address"
                         },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        "id": 253,
-=======
-                        "id": 517,
->>>>>>> hanger component
-=======
-                        "id": 256,
->>>>>>> plane component
+                        "id": 574,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
                         "lValueRequested": false,
                         "leftExpression": {
                           "argumentTypes": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                          "id": 249,
+                          "id": 570,
                           "name": "newOwner",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 243,
-                          "src": "584:8:1",
-=======
-                          "id": 513,
-                          "name": "newOwner",
-                          "nodeType": "Identifier",
-                          "overloadedDeclarations": [],
-                          "referencedDeclaration": 507,
-                          "src": "609:8:3",
->>>>>>> hanger component
-=======
-                          "id": 252,
-                          "name": "newOwner",
-                          "nodeType": "Identifier",
-                          "overloadedDeclarations": [],
-                          "referencedDeclaration": 246,
-                          "src": "609:8:2",
->>>>>>> plane component
+                          "referencedDeclaration": 564,
+                          "src": "609:8:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
@@ -2475,30 +1153,14 @@
                             {
                               "argumentTypes": null,
                               "hexValue": "30",
-<<<<<<< HEAD
-<<<<<<< HEAD
-                              "id": 251,
-=======
-                              "id": 515,
->>>>>>> hanger component
-=======
-                              "id": 254,
->>>>>>> plane component
+                              "id": 572,
                               "isConstant": false,
                               "isLValue": false,
                               "isPure": true,
                               "kind": "number",
                               "lValueRequested": false,
                               "nodeType": "Literal",
-<<<<<<< HEAD
-<<<<<<< HEAD
-                              "src": "604:1:1",
-=======
-                              "src": "629:1:3",
->>>>>>> hanger component
-=======
-                              "src": "629:1:2",
->>>>>>> plane component
+                              "src": "629:1:4",
                               "subdenomination": null,
                               "typeDescriptions": {
                                 "typeIdentifier": "t_rational_0_by_1",
@@ -2514,44 +1176,20 @@
                                 "typeString": "int_const 0"
                               }
                             ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-                            "id": 250,
-=======
-                            "id": 514,
->>>>>>> hanger component
-=======
-                            "id": 253,
->>>>>>> plane component
+                            "id": 571,
                             "isConstant": false,
                             "isLValue": false,
                             "isPure": true,
                             "lValueRequested": false,
                             "nodeType": "ElementaryTypeNameExpression",
-<<<<<<< HEAD
-<<<<<<< HEAD
-                            "src": "596:7:1",
-=======
-                            "src": "621:7:3",
->>>>>>> hanger component
-=======
-                            "src": "621:7:2",
->>>>>>> plane component
+                            "src": "621:7:4",
                             "typeDescriptions": {
                               "typeIdentifier": "t_type$_t_address_$",
                               "typeString": "type(address)"
                             },
                             "typeName": "address"
                           },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                          "id": 252,
-=======
-                          "id": 516,
->>>>>>> hanger component
-=======
-                          "id": 255,
->>>>>>> plane component
+                          "id": 573,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": true,
@@ -2559,29 +1197,13 @@
                           "lValueRequested": false,
                           "names": [],
                           "nodeType": "FunctionCall",
-<<<<<<< HEAD
-<<<<<<< HEAD
-                          "src": "596:10:1",
-=======
-                          "src": "621:10:3",
->>>>>>> hanger component
-=======
-                          "src": "621:10:2",
->>>>>>> plane component
+                          "src": "621:10:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_address",
                             "typeString": "address"
                           }
                         },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        "src": "584:22:1",
-=======
-                        "src": "609:22:3",
->>>>>>> hanger component
-=======
-                        "src": "609:22:2",
->>>>>>> plane component
+                        "src": "609:22:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_bool",
                           "typeString": "bool"
@@ -2595,50 +1217,21 @@
                           "typeString": "bool"
                         }
                       ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-                      "id": 248,
+                      "id": 569,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        401,
-                        402
+                        902,
+                        903
                       ],
-                      "referencedDeclaration": 401,
-                      "src": "576:7:1",
-=======
-                      "id": 512,
-=======
-                      "id": 251,
->>>>>>> plane component
-                      "name": "require",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [
-                        404,
-                        405
-                      ],
-<<<<<<< HEAD
-                      "referencedDeclaration": 845,
-                      "src": "601:7:3",
->>>>>>> hanger component
-=======
-                      "referencedDeclaration": 404,
-                      "src": "601:7:2",
->>>>>>> plane component
+                      "referencedDeclaration": 902,
+                      "src": "601:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
                         "typeString": "function (bool) pure"
                       }
                     },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    "id": 254,
-=======
-                    "id": 518,
->>>>>>> hanger component
-=======
-                    "id": 257,
->>>>>>> plane component
+                    "id": 575,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2646,35 +1239,15 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    "src": "576:31:1",
-=======
-                    "src": "601:31:3",
->>>>>>> hanger component
-=======
-                    "src": "601:31:2",
->>>>>>> plane component
+                    "src": "601:31:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  "id": 255,
+                  "id": 576,
                   "nodeType": "ExpressionStatement",
-                  "src": "576:31:1"
-=======
-                  "id": 519,
-                  "nodeType": "ExpressionStatement",
-                  "src": "601:31:3"
->>>>>>> hanger component
-=======
-                  "id": 258,
-                  "nodeType": "ExpressionStatement",
-                  "src": "601:31:2"
->>>>>>> plane component
+                  "src": "601:31:4"
                 },
                 {
                   "eventCall": {
@@ -2682,30 +1255,12 @@
                     "arguments": [
                       {
                         "argumentTypes": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        "id": 257,
+                        "id": 578,
                         "name": "owner",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 215,
-                        "src": "643:5:1",
-=======
-                        "id": 521,
-                        "name": "owner",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 479,
-                        "src": "669:5:3",
->>>>>>> hanger component
-=======
-                        "id": 260,
-                        "name": "owner",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 218,
-                        "src": "669:5:2",
->>>>>>> plane component
+                        "referencedDeclaration": 536,
+                        "src": "669:5:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -2713,30 +1268,12 @@
                       },
                       {
                         "argumentTypes": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        "id": 258,
+                        "id": 579,
                         "name": "newOwner",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 243,
-                        "src": "650:8:1",
-=======
-                        "id": 522,
-                        "name": "newOwner",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 507,
-                        "src": "676:8:3",
->>>>>>> hanger component
-=======
-                        "id": 261,
-                        "name": "newOwner",
-                        "nodeType": "Identifier",
-                        "overloadedDeclarations": [],
-                        "referencedDeclaration": 246,
-                        "src": "676:8:2",
->>>>>>> plane component
+                        "referencedDeclaration": 564,
+                        "src": "676:8:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_address",
                           "typeString": "address"
@@ -2754,44 +1291,18 @@
                           "typeString": "address"
                         }
                       ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-                      "id": 256,
+                      "id": 577,
                       "name": "OwnershipTransferred",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 221,
-                      "src": "622:20:1",
-=======
-                      "id": 520,
-                      "name": "OwnershipTransferred",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 485,
-                      "src": "648:20:3",
->>>>>>> hanger component
-=======
-                      "id": 259,
-                      "name": "OwnershipTransferred",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 224,
-                      "src": "648:20:2",
->>>>>>> plane component
+                      "referencedDeclaration": 542,
+                      "src": "648:20:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$returns$__$",
                         "typeString": "function (address,address)"
                       }
                     },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    "id": 259,
-=======
-                    "id": 523,
->>>>>>> hanger component
-=======
-                    "id": 262,
->>>>>>> plane component
+                    "id": 580,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -2799,78 +1310,32 @@
                     "lValueRequested": false,
                     "names": [],
                     "nodeType": "FunctionCall",
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    "src": "622:37:1",
-=======
-                    "src": "648:37:3",
->>>>>>> hanger component
-=======
-                    "src": "648:37:2",
->>>>>>> plane component
+                    "src": "648:37:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_tuple$__$",
                       "typeString": "tuple()"
                     }
                   },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  "id": 260,
+                  "id": 581,
                   "nodeType": "EmitStatement",
-                  "src": "617:42:1"
-=======
-                  "id": 524,
-                  "nodeType": "EmitStatement",
-                  "src": "643:42:3"
->>>>>>> hanger component
-=======
-                  "id": 263,
-                  "nodeType": "EmitStatement",
-                  "src": "643:42:2"
->>>>>>> plane component
+                  "src": "643:42:4"
                 },
                 {
                   "expression": {
                     "argumentTypes": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    "id": 263,
-=======
-                    "id": 527,
->>>>>>> hanger component
-=======
-                    "id": 266,
->>>>>>> plane component
+                    "id": 584,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
                       "argumentTypes": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                      "id": 261,
+                      "id": 582,
                       "name": "owner",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 215,
-                      "src": "669:5:1",
-=======
-                      "id": 525,
-                      "name": "owner",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 479,
-                      "src": "696:5:3",
->>>>>>> hanger component
-=======
-                      "id": 264,
-                      "name": "owner",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 218,
-                      "src": "696:5:2",
->>>>>>> plane component
+                      "referencedDeclaration": 536,
+                      "src": "696:5:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
@@ -2880,167 +1345,68 @@
                     "operator": "=",
                     "rightHandSide": {
                       "argumentTypes": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                      "id": 262,
+                      "id": 583,
                       "name": "newOwner",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 243,
-                      "src": "677:8:1",
-=======
-                      "id": 526,
-                      "name": "newOwner",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 507,
-                      "src": "704:8:3",
->>>>>>> hanger component
-=======
-                      "id": 265,
-                      "name": "newOwner",
-                      "nodeType": "Identifier",
-                      "overloadedDeclarations": [],
-                      "referencedDeclaration": 246,
-                      "src": "704:8:2",
->>>>>>> plane component
+                      "referencedDeclaration": 564,
+                      "src": "704:8:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_address",
                         "typeString": "address"
                       }
                     },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    "src": "669:16:1",
-=======
-                    "src": "696:16:3",
->>>>>>> hanger component
-=======
-                    "src": "696:16:2",
->>>>>>> plane component
+                    "src": "696:16:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
                     }
                   },
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  "id": 264,
+                  "id": 585,
                   "nodeType": "ExpressionStatement",
-                  "src": "669:16:1"
-=======
-                  "id": 528,
-                  "nodeType": "ExpressionStatement",
-                  "src": "696:16:3"
->>>>>>> hanger component
-=======
-                  "id": 267,
-                  "nodeType": "ExpressionStatement",
-                  "src": "696:16:2"
->>>>>>> plane component
+                  "src": "696:16:4"
                 }
               ]
             },
             "documentation": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-            "id": 266,
-=======
-            "id": 530,
->>>>>>> hanger component
-=======
-            "id": 269,
->>>>>>> plane component
+            "id": 587,
             "implemented": true,
             "isConstructor": false,
             "isDeclaredConst": false,
             "modifiers": [
               {
                 "arguments": null,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                "id": 246,
+                "id": 567,
                 "modifierName": {
                   "argumentTypes": null,
-                  "id": 245,
+                  "id": 566,
                   "name": "onlyOwner",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 241,
-                  "src": "556:9:1",
-=======
-                "id": 510,
-=======
-                "id": 249,
->>>>>>> plane component
-                "modifierName": {
-                  "argumentTypes": null,
-                  "id": 248,
-                  "name": "onlyOwner",
-                  "nodeType": "Identifier",
-                  "overloadedDeclarations": [],
-<<<<<<< HEAD
-                  "referencedDeclaration": 505,
-                  "src": "580:9:3",
->>>>>>> hanger component
-=======
-                  "referencedDeclaration": 244,
-                  "src": "580:9:2",
->>>>>>> plane component
+                  "referencedDeclaration": 562,
+                  "src": "580:9:4",
                   "typeDescriptions": {
                     "typeIdentifier": "t_modifier$__$",
                     "typeString": "modifier ()"
                   }
                 },
                 "nodeType": "ModifierInvocation",
-<<<<<<< HEAD
-<<<<<<< HEAD
-                "src": "556:9:1"
-=======
-                "src": "580:9:3"
->>>>>>> hanger component
-=======
-                "src": "580:9:2"
->>>>>>> plane component
+                "src": "580:9:4"
               }
             ],
             "name": "transferOwnership",
             "nodeType": "FunctionDefinition",
             "parameters": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-              "id": 244,
-=======
-              "id": 508,
->>>>>>> hanger component
-=======
-              "id": 247,
->>>>>>> plane component
+              "id": 565,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-<<<<<<< HEAD
-<<<<<<< HEAD
-                  "id": 243,
+                  "id": 564,
                   "name": "newOwner",
                   "nodeType": "VariableDeclaration",
-                  "scope": 266,
-                  "src": "531:16:1",
-=======
-                  "id": 507,
-                  "name": "newOwner",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 530,
-                  "src": "555:16:3",
->>>>>>> hanger component
-=======
-                  "id": 246,
-                  "name": "newOwner",
-                  "nodeType": "VariableDeclaration",
-                  "scope": 269,
-                  "src": "555:16:2",
->>>>>>> plane component
+                  "scope": 587,
+                  "src": "555:16:4",
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
@@ -3048,24 +1414,10 @@
                     "typeString": "address"
                   },
                   "typeName": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    "id": 242,
+                    "id": 563,
                     "name": "address",
                     "nodeType": "ElementaryTypeName",
-                    "src": "531:7:1",
-=======
-                    "id": 506,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "555:7:3",
->>>>>>> hanger component
-=======
-                    "id": 245,
-                    "name": "address",
-                    "nodeType": "ElementaryTypeName",
-                    "src": "555:7:2",
->>>>>>> plane component
+                    "src": "555:7:4",
                     "typeDescriptions": {
                       "typeIdentifier": "t_address",
                       "typeString": "address"
@@ -3075,66 +1427,27 @@
                   "visibility": "internal"
                 }
               ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-              "src": "530:18:1"
+              "src": "554:18:4"
             },
             "payable": false,
             "returnParameters": {
-              "id": 247,
+              "id": 568,
               "nodeType": "ParameterList",
               "parameters": [],
-              "src": "566:0:1"
+              "src": "590:0:4"
             },
-            "scope": 267,
-            "src": "504:188:1",
-=======
-              "src": "554:18:3"
-=======
-              "src": "554:18:2"
->>>>>>> plane component
-            },
-            "payable": false,
-            "returnParameters": {
-              "id": 250,
-              "nodeType": "ParameterList",
-              "parameters": [],
-              "src": "590:0:2"
-            },
-<<<<<<< HEAD
-            "scope": 531,
-            "src": "528:192:3",
->>>>>>> hanger component
-=======
-            "scope": 270,
-            "src": "528:192:2",
->>>>>>> plane component
+            "scope": 588,
+            "src": "528:192:4",
             "stateMutability": "nonpayable",
             "superFunction": null,
             "visibility": "public"
           }
         ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-        "scope": 268,
-        "src": "216:478:1"
+        "scope": 589,
+        "src": "223:500:4"
       }
     ],
-    "src": "0:695:1"
-=======
-        "scope": 532,
-        "src": "223:500:3"
-      }
-    ],
-    "src": "0:725:3"
->>>>>>> hanger component
-=======
-        "scope": 271,
-        "src": "223:500:2"
-      }
-    ],
-    "src": "0:725:2"
->>>>>>> plane component
+    "src": "0:725:4"
   },
   "compiler": {
     "name": "solc",
@@ -3142,13 +1455,5 @@
   },
   "networks": {},
   "schemaVersion": "2.0.0",
-<<<<<<< HEAD
-<<<<<<< HEAD
-  "updatedAt": "2018-05-10T03:02:09.455Z"
-=======
-  "updatedAt": "2018-05-10T02:58:07.340Z"
->>>>>>> hanger component
-=======
-  "updatedAt": "2018-05-10T20:08:39.969Z"
->>>>>>> plane component
+  "updatedAt": "2018-05-10T23:15:30.918Z"
 }
