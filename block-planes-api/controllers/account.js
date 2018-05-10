@@ -73,6 +73,30 @@ const signIn = (req, res) => {
   });
 }
 
+const updateToken = (req, res) => {
+  console.log('got to update token');
+  db.query('SELECT * FROM users WHERE username = ?', [req.query.username], (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('data', data);
+      const user = {
+        id: data[0].id,
+        username: data[0].username,
+        fullName: data[0].full_name,
+        profilePicture: data[0].profile_picture,
+        totalPoints: data[0].total_points,
+        createdAt: data[0].created_at
+      };
+      console.log('user object', user);
+      jwt.sign({ user }, process.env.JWT_SECRET, (err, token) => {
+        console.log('token', token, 'sending!', );
+        res.json({ user, token });
+      });
+    }
+  });
+}
+
 const signInToken = (req, res) => {
   var decoded = jwtDecode(req.query.token);
   res.send(decoded);
@@ -80,4 +104,5 @@ const signInToken = (req, res) => {
 
 module.exports.createAccount = createAccount;
 module.exports.signIn = signIn;
+module.exports.updateToken = updateToken;
 module.exports.signInToken = signInToken;

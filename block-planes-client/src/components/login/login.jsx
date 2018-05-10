@@ -54,7 +54,7 @@ class ConnectedLogin extends Component {
     render() {
       if (this.props.userId) {
         return (
-          <Redirect to={'/collection'} />
+          <Redirect to={'/profile'} />
         );
       }
         return (

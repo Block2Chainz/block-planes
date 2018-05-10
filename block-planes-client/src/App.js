@@ -19,7 +19,7 @@ const mapStateToProps = state => {
   return {
     id: state.id,
     username: state.username,
-    profilePic: state.profilePicture,
+    profilePicture: state.profilePicture,
     fullName: state.fullName,
     totalPoints: state.totalPoints,
     createdAt: state.createdAt
@@ -52,10 +52,11 @@ class ConnectedApp extends Component {
         this.props.logIn({
           id: response.data.user.id,
           username: response.data.user.username,
-          profilePic: response.data.user.profilePicture,
+          profilePicture: response.data.user.profilePicture,
           fullName: response.data.user.fullName,
           totalPoints: response.data.user.totalPoints,
-          createdAt: response.data.user.createdAt
+          createdAt: response.data.user.createdAt,
+          tokenLogin: this.tokenLogin
         });
       })
       .catch(err => {
