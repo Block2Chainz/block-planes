@@ -12,17 +12,18 @@ const rootReducer = (state = initialState, action) => {
             return { ...state, 
                 id: action.payload.id,
                 username: action.payload.username,
-                profilePic: action.payload.profilePicture,
+                profilePicture: action.payload.profilePicture,
                 fullName: action.payload.fullName,
                 totalPoints: action.payload.totalPoints,
-                createdAt: action.payload.createdAt
+                createdAt: action.payload.createdAt,
+                tokenLogin: action.payload.tokenLogin
             };
         case LOG_OUT: 
             return {
                 ...state, 
                 id: null,
                 username: null,
-                profilePic: null,
+                profilePicture: null,
                 fullName: null,
                 totalPoints: null,
                 createdAt: null

@@ -1,0 +1,51 @@
+.userrow {
+  padding-top: 1.5%;
+  padding-left: 2%;
+  background-color: #000000;
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid #ffffff;
+  color: #fff;
+  text-align: center;
+  padding-right: 2%;
+  font-family: 'Orbitron';
+}
+
+.profilepic {
+  margin-left: 3%;
+  border: 1px solid #ffffff;
+}
+
+.joined {
+  text-align: center;
+  font-size: 120%;
+}
+
+.username {
+  padding-top: 25%;
+  font-size: 500%;
+  margin-left: 3%;
+  text-align: left;
+}
+
+.points {
+  padding-top: 25%;
+  margin-right: 3%;
+  font-size: 500%;
+  text-align: right;
+}
+
+.hangar {
+  padding-top: 3%;
+  font-family: 'Orbitron';
+  margin-left: 40%;
+  text-align: center;
+  font-size: 400%;
+  color: #fff;
+}
+
+.dropzone {
+  width : 300px;
+  height : 300px;
+  border : 0px;
+}

@@ -15,20 +15,22 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+const mapStateToProps = state => {
+  return {
+    id: state.id,
+    username: state.username,
+    profilePicture: state.profilePicture,
+    fullName: state.fullName,
+    totalPoints: state.totalPoints,
+    createdAt: state.createdAt
+  };
+};
+
 // use this.props.logIn(user) and this.props.logOut() instead of setState
 
 class ConnectedApp extends Component {
   constructor() {
     super();
-    this.state = {
-      id: '',
-      username: '',
-      profilePic: '',
-      fullName: '',
-      totalPoints: '',
-      createdAt: '',
-      hasSession: false
-    };
     this.logout = this.logout.bind(this);
     this.tokenLogin = this.tokenLogin.bind(this);
   }
@@ -50,10 +52,11 @@ class ConnectedApp extends Component {
         this.props.logIn({
           id: response.data.user.id,
           username: response.data.user.username,
-          profilePic: response.data.user.profilePicture,
+          profilePicture: response.data.user.profilePicture,
           fullName: response.data.user.fullName,
           totalPoints: response.data.user.totalPoints,
-          createdAt: response.data.user.createdAt
+          createdAt: response.data.user.createdAt,
+          tokenLogin: this.tokenLogin
         });
       })
       .catch(err => {
@@ -64,7 +67,7 @@ class ConnectedApp extends Component {
 
   logout() {
     sessionStorage.removeItem('jwtToken');
-    this.logOut();
+    this.props.logOut();
   }
 
   render() {
@@ -79,6 +82,6 @@ class ConnectedApp extends Component {
   }
 }
 
-const App = connect(null, mapDispatchToProps)(ConnectedApp);
+const App = connect(mapStateToProps, mapDispatchToProps)(ConnectedApp);
 
 export default App;
