@@ -10,7 +10,7 @@ class Collection extends Component {
     super(props)
     this.state = {
       account: '0x0',
-      planes: [],
+      planes: [['x, 1234567891123456']],
       contract:'',
     }
 
@@ -41,6 +41,7 @@ class Collection extends Component {
       this.setState({ account })
       this.blockplanes.deployed().then((blockplanesInstance) => {
         this.setState( {contract : blockplanesInstance} );
+        blockplanesInstance.createRandomPlane({ from: this.web3.eth.accounts[0], value: this.web3.toWei(0.001, 'ether')});
         return blockplanesInstance.getPlanesByOwner(account);
       }).then((planes) => {
         let planeIds = [];
@@ -57,11 +58,9 @@ class Collection extends Component {
              hangar.push([planeId, planeAttr]);
           });
         })
-        console.log(hangar, 'flag1');          
         return hangar;
       }).then((finalArray) => {
-            console.log(finalArray, 'flag2');
-            this.setState({planes : finalArray});
+            this.setState({planes : this.state.planes.concat(finalArray)});
       }); 
     });
   }
@@ -88,6 +87,7 @@ class Collection extends Component {
   render() {
     return (
       <div>
+      {console.log('state: ', this.state)}
         {(typeof web3 != 'undefined') ? (
         <Plane planes={this.state.planes}/>
         ) : (
