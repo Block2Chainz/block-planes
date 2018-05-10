@@ -1,5 +1,5 @@
-var BlockPlanes = artifacts.require("../contracts/BlockPlanes.sol");
+var Migrations = artifacts.require("../contracts/Migrations.sol");
 
 module.exports = function(deployer) {
-  deployer.deploy(BlockPlanes);
+  deployer.deploy(Migrations);
 };

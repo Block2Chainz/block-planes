@@ -50,6 +50,7 @@ class Signup extends Component {
             axios
               .post('/newAccount', newUserInfo)
               .then(response => {
+                console.log('inside response', response)
                 if (response.data === 'exists') {
                   alert('Sorry, that username already belongs to another pilot.');
                 } else if (response.data.user.id) {

@@ -6,6 +6,7 @@ const webtoken = require('../controllers/webtoken');
 var jwtDecode = require('jwt-decode');
 
 const createAccount = (req, res) => {
+  console.log('inside account controller');
   db.query('SELECT `username` FROM `users` WHERE `username` = ?', [req.body.newUsername], (err, data) => {
     if (err) {
       res.send(err);

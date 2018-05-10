@@ -62,7 +62,12 @@ module.exports = {
                         }
                     },
                 ],
-            }
+            },{
+                test: /\.json$/,
+                loader: 'json-loader',
+                include: '/build/contracts/'
+              }
+
         ]
     },
     // plugins: [
