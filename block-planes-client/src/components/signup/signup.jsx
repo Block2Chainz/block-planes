@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import { Image, Form, Grid, Button } from 'semantic-ui-react';
 import axios from 'axios';
 import './signup.css';
+import cryptoPlanes from '../../../../block-planes-solidity/BlockPlanes/build/contracts/BlockPlanes.json';
+
 
 const Promise = require('bluebird');
 const bcrypt = Promise.promisifyAll(require('bcrypt-nodejs'));
@@ -23,9 +25,27 @@ class Signup extends Component {
     this.state = {
       fullName: '',
       newUsername: '',
-      newPassword: ''
+      newPassword: '',
+      blockAccount: null
     };
     this.createAccount = this.createAccount.bind(this);
+    if (typeof web3 != 'undefined') {
+      this.web3Provider = web3.currentProvider
+      this.web3 = new Web3(this.web3Provider)
+  
+      this.blockplanes = TruffleContract(cryptoPlanes)
+      this.blockplanes.setProvider(this.web3Provider)
+    } else {
+      alert('This site needs a web3 provider(MetaMask) to run properly. Please install one and refresh!');
+    }
+  }
+
+  componentDidMount() {
+    if (!this.state.blockAccount && typeof web3 != 'undefined') {
+      this.web3.eth.getCoinbase((err, account) => {
+        this.setState({ blockAccount : account });
+      });
+    }
   }
 
   storeUserInfoInState(e) {
@@ -50,6 +70,7 @@ class Signup extends Component {
             axios
               .post('/newAccount', newUserInfo)
               .then(response => {
+                console.log('inside response', response)
                 if (response.data === 'exists') {
                   alert('Sorry, that username already belongs to another pilot.');
                 } else if (response.data.user.id) {
@@ -71,38 +92,44 @@ class Signup extends Component {
       );
     }
     return (
-      <div className='signup'>
-        <Grid>
-          <Form className='STARTING-FORM' onSubmit={this.createAccount} >
-            <Grid.Row className='signuptext'>
-              <p className='splash'>Get Ready</p>
-              <div className='left-picture' >
-                <Image src='https://i.imgur.com/ZfNDUvX.png' size='medium' rounded />
-              </div>
-            </Grid.Row>
-            <Grid.Row className='signuptext'>
-              <p className='splash2'>All we need is your name, what you want to call yourself and a password. Easy.</p>
-            </Grid.Row>
-            <Grid.Row className='full-name-row'>
-              <Form.Input name='fullName' size={'small'} placeholder='Full name' width={14} onChange={this.storeUserInfoInState.bind(this)} />
-            </Grid.Row>
-            <Grid.Row className='new-username-password'>
-              <Form.Group>
-                <Form.Input name='newUsername' size={'small'} placeholder='New username ' width={7} onChange={this.storeUserInfoInState.bind(this)} />
-                <Form.Input name='newPassword' size={'small'} placeholder='New password ' type='password' autoComplete='off' width={7} onChange={this.storeUserInfoInState.bind(this)} />
-              </Form.Group>
-            </Grid.Row>
-            <Grid.Row className='signupbutton'>
-              <Button className='ui inverted button' type='submit' size='massive'>Create Account</Button>
-            </Grid.Row>
-            <Grid.Row className='signupor'>
-              <p className='splash2'>Or</p>
-            </Grid.Row>
-            <Grid.Row className='loginbutton'>
-              <Link to='/login'><Button className='ui inverted button' size='big' >Log In</Button></Link>
-            </Grid.Row>
-          </Form>
-        </Grid>
+      <div>
+        {console.log(this.state, 'state inside')}
+        {(typeof web3 != 'undefined') ? (
+          <div className='signup'>
+            <Grid>
+              <Form className='STARTING-FORM' onSubmit={this.createAccount} >
+                <Grid.Row className='signuptext'>
+                  <p className='splash'>Get Ready</p>
+                  <div className='left-picture' >
+                    <Image src='https://i.imgur.com/ZfNDUvX.png' size='medium' rounded />
+                  </div>
+                </Grid.Row>
+                <Grid.Row className='signuptext'>
+                  <p className='splash2'>All we need is your name, what you want to call yourself and a password. Easy.</p>
+                </Grid.Row>
+                <Grid.Row className='full-name-row'>
+                  <Form.Input name='fullName' size={'small'} placeholder='Full name' width={14} onChange={this.storeUserInfoInState.bind(this)} />
+                </Grid.Row>
+                <Grid.Row className='new-username-password'>
+                  <Form.Group>
+                    <Form.Input name='newUsername' size={'small'} placeholder='New username ' width={7} onChange={this.storeUserInfoInState.bind(this)} />
+                    <Form.Input name='newPassword' size={'small'} placeholder='New password ' type='password' autoComplete='off' width={7} onChange={this.storeUserInfoInState.bind(this)} />
+                  </Form.Group>
+                </Grid.Row>
+                <Grid.Row className='signupbutton'>
+                  <Button className='ui inverted button' type='submit' size='massive'>Create Account</Button>
+                </Grid.Row>
+                <Grid.Row className='signupor'>
+                  <p className='splash2'>Or</p>
+                </Grid.Row>
+                <Grid.Row className='loginbutton'>
+                  <Link to='/login'><Button className='ui inverted button' size='big' >Log In</Button></Link>
+                </Grid.Row>
+              </Form>
+            </Grid>
+          </div>) : (
+            <img src="https://safetymanagementgroup.com/wp-content/uploads/2017/07/Oopsbutton.jpg"/>
+          )}
       </div>
     );
   }
