@@ -155,22 +155,22 @@ export default class Ship {
         // RENDER BODY
         let img1 = new Image();
         img1.src = `http://127.0.0.1:8887/bodies/body_${this.bodyColor}.png`;
-        context.drawImage(img1, 0, 0, 45, 45);
+        context.drawImage(img1, 0, 0, 75, 75);
 
         // RENDER WINGS
         let img2 = new Image();
         img2.src = `http://127.0.0.1:8887/wings/${this.wingShape}/wing_${this.wingShape}_${this.wingColor}.png`;
-        context.drawImage(img2, 0, 0, 45, 45);
+        context.drawImage(img2, 0, 0, 75, 75);
 
         // RENDER TAIL
         let img3 = new Image();
         img3.src = `http://127.0.0.1:8887/tails/${this.tailShape}/tail_${this.tailShape}_${this.tailColor}.png`;
-        context.drawImage(img3, 0, 0, 45, 45);
+        context.drawImage(img3, 0, 0, 75, 75);
 
         // RENDER COCKPIT
         let img4 = new Image();
         img4.src = `http://127.0.0.1:8887/cockpits/${this.cockpitShape}/cockpit_${this.cockpitShape}_${this.cockpitColor}.png`;
-        context.drawImage(img4, 0, 0, 45, 45);
+        context.drawImage(img4, 0, 0, 75, 75);
 
         // context.beginPath();
         // context.moveTo(0, -15);

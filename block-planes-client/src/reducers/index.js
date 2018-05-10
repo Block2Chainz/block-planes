@@ -4,6 +4,7 @@ import { LOG_OUT } from "../constants/action-types";
 const initialState = {
     loggedIn: false,
     userId: null,
+    userAddress: '0x0',
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -28,6 +29,21 @@ const rootReducer = (state = initialState, action) => {
                 totalPoints: null,
                 createdAt: null
             };
+        case STORE_CONTRACT: 
+            return {
+                ...state, 
+                contract: action.payload,
+            };
+        case STORE_USER_ADDRESS: 
+            return {
+                ...state, 
+                userAddress: action.payload,
+            };
+        case STORE_USER_PLANES: 
+            return {
+                ...state,
+                userPlanes: action.payload,
+            }
         default:
             return state;
     }
