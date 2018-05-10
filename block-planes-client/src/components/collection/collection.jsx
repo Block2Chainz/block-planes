@@ -3,6 +3,7 @@ import './collection.css';
 import Web3 from 'web3'
 import TruffleContract from 'truffle-contract'
 import cryptoPlanes from '../../../../block-planes-solidity/BlockPlanes/build/contracts/BlockPlanes.json';
+import Plane from '../plane/plane.jsx';
 
 class Collection extends Component {
   constructor(props) {
