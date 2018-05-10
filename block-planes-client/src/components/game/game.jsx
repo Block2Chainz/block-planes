@@ -214,15 +214,13 @@ class Game extends Component {
 
     shipCreator(attrString, otherAttr) {
         let attrPossibilities = {
+            bodyColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'],
             wingShape: ['01', '02', '03', '04', '05'], 
             wingColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'], 
-
             tailShape: ['01', '02', '03', '04', '05'], 
             tailColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'], 
-            
             cockpitShape: ['01', '02', '03', '04', '05'], 
             cockpitColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'], 
-            
             speed: [0.15, 0.3, 0.4, 0.5],  
             inertia: [0.99, 0.98, 0.97, 0.96], 
             shootingSpeed: [300, 350, 400, 250, 200, 150, 100], 
@@ -230,6 +228,7 @@ class Game extends Component {
         }
 
         let shipArgs = {
+            bodyColor: attrPossibilities.bodyColor[attrString[0] % 8],
             wingShape: attrPossibilities.wingShape[attrString[0] % 5],
             wingColor: attrPossibilities.wingColor[attrString[1] % 8], 
             tailShape: attrPossibilities.tailShape[attrString[2] % 5],
@@ -241,7 +240,6 @@ class Game extends Component {
             shootingSpeed: attrPossibilities.shootingSpeed[attrString[8] % 7],
             smokeColor: attrPossibilities.smokeColor[attrString[9] % 8],
         };
-        console.log('speed: ', shipArgs.speed, 'inertia: ', shipArgs.inertia);
         return new Ship(Object.assign({}, shipArgs, otherAttr));
     }
 
