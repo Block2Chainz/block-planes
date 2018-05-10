@@ -1,10 +1,16 @@
-import { LOG_IN } from "../constants/action-types";
-import { LOG_OUT } from "../constants/action-types";
+import {
+    LOG_IN,
+    LOG_OUT,
+    STORE_CONTRACT,
+    STORE_USER_ADDRESS,
+    STORE_USER_PLANES
+} from "../constants/action-types";
 
 const initialState = {
     loggedIn: false,
     userId: null,
     userAddress: '0x0',
+    userPlanes: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -43,7 +49,7 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 userPlanes: action.payload,
-            }
+            };
         default:
             return state;
     }

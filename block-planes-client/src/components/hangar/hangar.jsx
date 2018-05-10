@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-=======
 import { connect } from "react-redux";
->>>>>>> creating assets and revising the ship rendering
 import './collection.css';
 import Web3 from 'web3'
+import { storeContract, storeUserAddress, storeUserPlanes } from "../../actions/index"
+// import './hanger.css';
+import Web3 from 'web3';
 import TruffleContract from 'truffle-contract'
 import cryptoPlanes from '../../../../block-planes-solidity/BlockPlanes/build/contracts/BlockPlanes.json';
-import Plane from '../plane/plane.jsx';
+import Plane from './plane.jsx';
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -25,19 +25,20 @@ const mapStateToProps = state => {
   };
 };
 
-class ConnectedCollection extends Component {
+class ConnectedHangar extends Component {
   constructor(props) {
     super(props)
 
     if (typeof web3 != 'undefined') {
-      this.web3Provider = web3.currentProvider
+      this.web3Provider = web3.currentProvider;
     } else {
-      this.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545')
+      this.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
     }
 
     this.web3 = new Web3(this.web3Provider)
     this.blockplanes = TruffleContract(cryptoPlanes)
     this.blockplanes.setProvider(this.web3Provider)
+
 
   }
 
@@ -45,19 +46,22 @@ class ConnectedCollection extends Component {
     this.web3.eth.getCoinbase((err, address) => {
       // storing the user blockchain address*****
       this.props.storeUserAddress(address);
+      setTimeout(1000);
       // get the contract instance
       this.blockplanes.deployed()
       .then((instance) => {
         // storing the contract*****
         this.props.storeContract(instance);
+        setTimeout(1000);
         return instance.getPlanesByOwner(this.props.userAddress);
       }).then((planes) => {
         // putting the plane ids into an array
         let planeIds = [];
-        planes.forEach((plane) => {
-          planeIds.push(plane.toNumber());
+        return planes.map((plane) => {
+          // planeIds.push(
+            return plane.toNumber();
+          // );
         });
-        return planeIds;
       }).then((planeArray) => {
         // getting the attributes for each plane in their collection
         let hangar = [];
@@ -96,14 +100,18 @@ class ConnectedCollection extends Component {
       // });  
 
   render() {
+    console.log('planes', this.props.userPlanes);
     return (
       <div>
-        <Plane />
+       {this.props.userPlanes.map((plane) => {
+           return <Plane plane={plane} /> 
+          })
+       }
       </div>
     )
   }
 }
 
-const Collection = connect(mapStateToProps, mapDispatchToProps)(ConnectedCollection);
+const Hangar = connect(mapStateToProps, mapDispatchToProps)(ConnectedHangar);
 
-export default Collection;
+export default Hangar;
