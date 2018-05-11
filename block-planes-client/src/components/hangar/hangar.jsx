@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import './collection.css';
-import Web3 from 'web3'
 import { storeContract, storeUserAddress, storeUserPlanes } from "../../actions/index"
 // import './hanger.css';
 import Web3 from 'web3';
