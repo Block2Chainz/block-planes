@@ -27,7 +27,6 @@ class ConnectedProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isCollection: true,
       account: '0x0',
       planes: [],
       contract:''

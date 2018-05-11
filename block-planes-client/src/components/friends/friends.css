@@ -33,3 +33,37 @@
   font-size: 500%;
   text-align: right;
 }
+
+.searchbar {
+  margin-left: 25%;
+}
+
+.borderfriends {
+  border-bottom: 1px solid #ffffff;
+}
+
+/* .addfriendsbutton {
+  padding-right: 2%;
+  padding-left: 2%;
+} */
+
+.text1 {
+  color: #fff;
+  font-family: 'Orbitron';
+font-size: 120%;
+margin-right: 3%;
+
+}
+
+.text2 {
+  color: #fff;
+  font-family: 'Orbitron';
+font-size: 120%;
+margin-right: 3%;
+margin-left: 3%;
+
+}
+
+.searchusersbar {
+  padding-right: 20%;
+}

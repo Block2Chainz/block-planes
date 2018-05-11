@@ -18,8 +18,15 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
+const mapStateToProps = state => {
+  return {
+    userId: state.id,
+    loggedIn: state.articles,
+    username: state.username,
+  };
+};
 
-class Signup extends Component {
+class ConnectedSignup extends Component {
   constructor() {
     super();
     this.state = {
@@ -55,35 +62,42 @@ class Signup extends Component {
   }
 
   createAccount(event) {
-    bcrypt.genSaltAsync(10)
-      .then(salt => {
-        bcrypt.hashAsync(this.state.newPassword, salt, null)
-          .then(hashedPassword => {
-            const newUserInfo = {
-              fullName: this.state.fullName,
-              newUsername: this.state.newUsername,
-              newPassword: hashedPassword,
-              profilePicture:
-                'http://tekno.rakyatku.com/thumbs/img_660_442_asteroid-b_1492568184roid.jpg'
-            };
-            let component = this;
-            axios
-              .post('/newAccount', newUserInfo)
-              .then(response => {
-                console.log('inside response', response)
-                if (response.data === 'exists') {
-                  alert('Sorry, that username already belongs to another pilot.');
-                } else if (response.data.user.id) {
-                  sessionStorage.setItem('jwtToken', response.data.token);
-                  component.props.tokenLogin();
-                }
-              })
-              .catch(err => {
-                console.log('Error from handleCreateAccount', err);
-              });
-            event.preventDefault();
-          });
-      });
+    if (!this.state.newUsername && !this.state.newPassword) {
+      alert('Please enter a username and password!');
+    } else if (!this.state.newUsername) {
+      alert('Please enter a username!');
+    } else if (!this.state.newPassword) {
+      alert('Please enter a password!');
+    } else {
+      bcrypt.genSaltAsync(10)
+        .then(salt => {
+          bcrypt.hashAsync(this.state.newPassword, salt, null)
+            .then(hashedPassword => {
+              const newUserInfo = {
+                fullName: this.state.fullName,
+                newUsername: this.state.newUsername,
+                newPassword: hashedPassword,
+                profilePicture:
+                  'http://tekno.rakyatku.com/thumbs/img_660_442_asteroid-b_1492568184roid.jpg'
+              };
+              let component = this;
+              axios
+                .post('/newAccount', newUserInfo)
+                .then(response => {
+                  if (response.data === 'exists') {
+                    alert('Sorry, that username already belongs to another pilot.');
+                  } else if (response.data.user.id) {
+                    sessionStorage.setItem('jwtToken', response.data.token);
+                    component.props.tokenLogin();
+                  }
+                })
+                .catch(err => {
+                  console.log('Error from handleCreateAccount', err);
+                });
+              event.preventDefault();
+            });
+        });
+    }
   }
   render() {
     if (this.props.userId) {
@@ -134,5 +148,8 @@ class Signup extends Component {
     );
   }
 }
+
+const Signup = connect(mapStateToProps)(ConnectedSignup);
+
 
 export default Signup;

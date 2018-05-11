@@ -44,7 +44,11 @@ const createAccount = (req, res) => {
 };
 
 const signIn = (req, res) => {
+  if (!req.params.password) {
+    console.log('password empty');
+  }
   db.query('SELECT * FROM users WHERE username = ?', [req.params.username], (err, data) => {
+    console.log('signin data', req.params.password);
     if (data.length) {
       bcrypt.compareAsync(req.params.password, data[0].password)
         .then(response => {
