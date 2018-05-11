@@ -40,7 +40,6 @@ class ConnectedApp extends Component {
   }
 
   tokenLogin() {
-    console.log('this is the jwt token', sessionStorage.getItem('jwtToken'));
     if (sessionStorage.getItem('jwtToken')) {
       axios
       .get('/signInToken', {
