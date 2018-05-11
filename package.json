@@ -24,6 +24,7 @@
     "cookie-session": "^2.0.0-beta.3",
     "dotenv": "^5.0.1",
     "express": "^4.16.3",
+    "hiredis": "^0.5.0",
     "http": "0.0.0",
     "image-webpack-loader": "^4.2.0",
     "jsonwebtoken": "^8.2.1",
@@ -36,6 +37,7 @@
     "react-redux": "^5.0.7",
     "react-dropzone": "^4.2.9",
     "react-router-dom": "^4.2.2",
+    "redis": "^2.8.0",
     "redux": "^4.0.0",
     "socket.io": "^2.1.0",
     "truffle-contract": "^3.0.5"
