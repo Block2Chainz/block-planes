@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { Grid } from 'semantic-ui-react';
 import { storeContract, storeUserAddress, storeUserPlanes } from "../../actions/index"
-// import './hanger.css';
+import './hangar.css';
 import Web3 from 'web3';
 import TruffleContract from 'truffle-contract'
 import cryptoPlanes from '../../../../block-planes-solidity/BlockPlanes/build/contracts/BlockPlanes.json';
@@ -25,7 +26,7 @@ const mapStateToProps = state => {
 
 class ConnectedHangar extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     if (typeof web3 != 'undefined') {
       this.web3Provider = web3.currentProvider;
@@ -41,24 +42,21 @@ class ConnectedHangar extends Component {
   }
 
   componentWillMount() {
+    let userAddress, contract;
     this.web3.eth.getCoinbase((err, address) => {
       // storing the user blockchain address*****
-      this.props.storeUserAddress(address);
-      setTimeout(1000);
+      userAddress = address;
       // get the contract instance
       this.blockplanes.deployed()
       .then((instance) => {
         // storing the contract*****
-        this.props.storeContract(instance);
-        setTimeout(1000);
+        contract = instance;
         return instance.getPlanesByOwner(this.props.userAddress);
       }).then((planes) => {
         // putting the plane ids into an array
         let planeIds = [];
         return planes.map((plane) => {
-          // planeIds.push(
             return plane.toNumber();
-          // );
         });
       }).then((planeArray) => {
         // getting the attributes for each plane in their collection
@@ -72,41 +70,34 @@ class ConnectedHangar extends Component {
         })        
         return hangar;
       }).then((finalArray) => {
-            // storing the user's plane attributes
-            this.props.storeUserPlanes(finalArray);
-      }); 
+        // storing the user's plane attributes
+        this.props.storeUserPlanes({contract, userAddress, userPlanes: finalArray});
+      }) 
     });
   }
 
-  //TEST CODE CONTRACT COMMUNICATION
-      // this.web3.eth.getCoinbase((err, account) => {
-      //   this.setState({ account })
-      //   this.blockplanes.deployed().then((blockplanesInstance) => {
-      //     console.log('planessss: ', blockplanesInstance, 'account', this.state.account);
-      //     this.setState( {contract : blockplanesInstance} );
-      //     return blockplanesInstance;
-      //   }).then((contract) => {
-      //     // return contract.createRandomPlane();        
-      //     return contract.createRandomPlane({ from: this.web3.eth.accounts[0], value: this.web3.toWei(0.001, 'ether')});
-      //   }).then((receipt) => {
-      //     console.log('receipt: ', receipt, 'state: ', this.state);
-      //     return receipt.logs[0].args.planeId.toNumber();
-      //   }).then((planeCount) => {
-      //     console.log(this.state.contract.planeToOwner(planeCount));
-      //     return this.state.contract.planeToOwner(planeCount);
-      //   });
-      // });  
-
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.userPlanes.length === 0 && this.props.userPlanes.length !== 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+    
+      
   render() {
-    console.log('planes', this.props.userPlanes);
-    return (
-      <div>
-       {this.props.userPlanes.map((plane) => {
-           return <Plane plane={plane} /> 
-          })
-       }
-      </div>
-    )
+      return (
+          <Grid>
+            <Grid.Row className='planerow'>
+              {this.props.userPlanes.map((plane) => {
+                return <Plane
+                  key={Math.random()}
+                  plane={plane} />
+              })
+              }
+            </Grid.Row>
+          </Grid>
+      )
   }
 }
 

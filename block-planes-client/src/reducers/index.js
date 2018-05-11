@@ -48,7 +48,9 @@ const rootReducer = (state = initialState, action) => {
         case STORE_USER_PLANES: 
             return {
                 ...state,
-                userPlanes: action.payload,
+                contract: action.payload.contract,
+                userAddress: action.payload.userAddress,
+                userPlanes: action.payload.userPlanes,
             };
         default:
             return state;
