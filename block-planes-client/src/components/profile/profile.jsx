@@ -100,8 +100,8 @@ class ConnectedProfile extends Component {
           </Grid.Row>
 
           <Grid.Row>
-            <Hangar />
           <p className='hangar'>Hangar</p>
+            <Hangar />
 
           </Grid.Row>
 

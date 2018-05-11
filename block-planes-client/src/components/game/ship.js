@@ -41,6 +41,7 @@ export default class Ship {
         this.inertia = args.inertia || 0.99; // modify in arguments when called
         this.shootingSpeed = args.shootingSpeed || 300; // lower is better
         this.smokeColor = args.smokeColor || '#ffffff';
+        this.ingame = args.ingame;
     }
 
     destroy() {
@@ -104,23 +105,26 @@ export default class Ship {
     // state is passed in from game.jsx (state = game.jsx's state)
     render(state) {
         // if the specified buttons are pressed, activate the respective functions
-        if (state.keys.up) {
-            this.accelerate(1);
-        } 
-        if (state.keys.left) {
-            this.rotate('LEFT');
-        } 
-        if (state.keys.right) {
-            this.rotate('RIGHT');
-        } 
-        if (state.keys.space && Date.now() - this.lastShot > this.shootingSpeed) {
-            // doesn't allow rapidly firing as quickly as you can press the spacebar
-            const bullet = new Bullet({ ship: this });
-            //this.create = this(game.jsx).createObject()
-            this.create(bullet, 'bullets');
-            this.lastShot = Date.now();
+        if (this.ingame) {        
+        
+            if (state.keys.up) {
+                this.accelerate(1);
+            } 
+            if (state.keys.left) {
+                this.rotate('LEFT');
+            } 
+            if (state.keys.right) {
+                this.rotate('RIGHT');
+            } 
+            if (state.keys.space && Date.now() - this.lastShot > this.shootingSpeed) {
+                // doesn't allow rapidly firing as quickly as you can press the spacebar
+                const bullet = new Bullet({ ship: this });
+                //this.create = this(game.jsx).createObject()
+                this.create(bullet, 'bullets');
+                this.lastShot = Date.now();
+            }
         }
-
+        
         // Move
         this.position.x += this.velocity.x;
         this.position.y += this.velocity.y;
@@ -146,6 +150,9 @@ export default class Ship {
         const context = state.context;
         context.save();
         context.translate(this.position.x, this.position.y);
+        if (!this.ingame) {
+            context.translate(this.position.x+50, this.position.y);
+        }
         // + 0.785.... is the additional rotation of 45 degrees due to the img format
         context.rotate((this.rotation) * Math.PI / 180 + 0.78539816);
         // context.strokeStyle = '#ffffff';
