@@ -42,7 +42,7 @@ class Home extends Component {
               </div>
                 </Grid.Row> */}
                 <Grid.Row className='secondhalfpara2'>
-                  <p className='secondhalfpara'><br></br><br></br>If you’re reading this, the world needs your help.<br></br><br></br>That’s right, the <strong>WORLD</strong>.<br></br><br></br>The terrorist organization known as <strong>EVILGROUP.NAME</strong> is mobilizing an air force to destroy life as we know it…<br></br>and, you know, <strong>IN GENERAL</strong>. <br></br><br></br>That’s why we started <strong>BLOCKPLANES</strong>. <br></br><br></br>To supply any able bodied pilot with the means to take down these monsters.<br></br><br></br>So what do you say?<br></br><br></br>We have the <strong>PLANES</strong>. Do you have the <strong>GUTS?</strong><br></br><br></br></p>
+                  <p className='secondhalfpara'><br></br><br></br>If you’re reading this, the world needs your help.<br></br><br></br>That’s right, the <strong>WORLD</strong>.<br></br><br></br>The terrorist organization known as <strong>EVILGROUP.NAME</strong> is mobilizing an air force to destroy life as we know it…<br></br>and, you know, in general. <br></br><br></br>That’s why we started <strong>BLOCKPLANES</strong>. <br></br><br></br>To supply any able bodied pilot with the means to take down these monsters.<br></br><br></br>So what do you say?<br></br><br></br>We have the <strong>PLANES</strong>. Do you have the <strong>GUTS?</strong><br></br><br></br></p>
                 </Grid.Row>
                 <Grid.Row className='signupbuttonhome'>
                 <Link to='/signup'><Button className='ui inverted button' size='massive' >Sign Up</Button></Link>

@@ -15,7 +15,9 @@ router.get('/signInToken', account.signInToken);
 router.post('/upload', upload.saveProfilePicture);
 
 router.get('/search', search.fetchUsers);
-router.get('/friends', friends.checkIfFriends);
-router.post('/friends', friends.addFriend);
+router.get('/friendsCheck', friends.checkIfFriends);
+router.post('/friendsAdd', friends.addFriend);
+router.get('/friendsFetch', friends.fetchFriends);
+
 
 module.exports = router;

@@ -67,6 +67,7 @@ class SearchUsers extends Component {
     return (
       <div>
           <Search
+          placeholder='Search for User'
             loading={this.state.isLoading}
             onResultSelect={this.handleResultSelect}
             onSearchChange={_.debounce(this.handleSearchChange, 500, { leading: true })}

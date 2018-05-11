@@ -55,7 +55,15 @@ class ConnectedLogin extends Component {
   login(event) {
     event.preventDefault();
     let component = this;
-    axios
+    console.log('user, pass', this.state.username, this.state.password);
+    if (!this.state.username && !this.state.password) {
+      alert('Please enter a username and password!');
+    } else if (!this.state.username) {
+      alert('Please enter a username!');
+    } else if (!this.state.password) {
+      alert('Please enter a password!');
+    } else {
+      axios
       .get(`/signIn/${this.state.username}/${this.state.password}`)
       .then(response => {
         if (response.data === 'wrong') {
@@ -69,6 +77,7 @@ class ConnectedLogin extends Component {
       .catch(err => {
         console.log('Error from login', err);
       });
+    }
   }
 
     render() {
