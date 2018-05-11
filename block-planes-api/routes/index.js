@@ -6,6 +6,7 @@ const search = require('../controllers/search');
 const friends = require('../controllers/friends');
 
 
+const leaderboard = require('../controllers/leaderboard');
 
 router.post('/newAccount', account.createAccount);
 router.get('/signIn/:username/:password', account.signIn);
@@ -13,6 +14,8 @@ router.get('/updateToken', account.updateToken);
 router.get('/signInToken', account.signInToken);
 
 router.post('/upload', upload.saveProfilePicture);
+router.get('/leaderboardHi', leaderboard.getHiScore);
+router.get('/leaderboardTotal', leaderboard.getTotal);
 
 router.get('/search', search.fetchUsers);
 router.get('/friendsCheck', friends.checkIfFriends);
