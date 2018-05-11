@@ -11,7 +11,7 @@ class Home extends Component {
             <Grid.Column width={8} >
                 <Grid.Row>
                   <div className="ui inverted container blurb">
-                    <h2 className="about1">Build your Hangar</h2>
+                    <h2 className="about1">Collect Planes</h2>
                     <h2 className="about2">Team Up</h2>
                     <h2 className="about3">Save the World</h2>
                     <h3 className="about4">Welcome to BlockPlanes.<br></br>Strap in.</h3>
@@ -36,32 +36,17 @@ class Home extends Component {
           <Grid.Row className='secondhalfheader'>
                   <p className='secondhalftext'>Calling All Pilots</p>
                   </Grid.Row>
-                  <Grid.Row>
+                  {/* <Grid.Row>
                   <div className='mid-picture2' >
                 <Image src='https://i.imgur.com/VNZZjii.png' size='large' rounded />
               </div>
-                </Grid.Row>
-                <Grid.Column width={4} >
-          </Grid.Column>
-          <Grid.Column width={9} >
+                </Grid.Row> */}
                 <Grid.Row className='secondhalfpara2'>
-                  <p className='secondhalfpara'>Operation: MOONSHOT</p>
-                </Grid.Row>
-                <Grid.Row className='secondhalfpara2'>
-                  <p className='secondhalfpara'>Priority: ALPHA</p>
-                </Grid.Row>
-                <Grid.Row className='secondhalfpara2'>
-                  <p className='secondhalfpara'>Objectives: RESCUE THE PRESIDENT'S DAUGHTER</p>
-                </Grid.Row>
-                <Grid.Row className='secondhalfpara2'>
-                  <p className='secondhalfpara'><br></br><br></br>Listen up, pilot.<br></br><br></br>The President's daughter has been abducted by the terrorist organization known as BLACK ROGUE DARK SPIDER HACK DEATH.<br></br><br></br>And she is way too fine for us to just stand idly by. <br></br><br></br>Seriously, she's just...I mean, DAMN. <br></br><br></br>Your mission is to tear through the enemies defenses, invade their fortified airbase, grab the hottie, and get the hell out.<br></br><br></br>How you do it, and who flies with you is up to you.<br></br><br></br>Her life and hotness are in your hands.<br></br><br></br>Good luck. </p>
+                  <p className='secondhalfpara'><br></br><br></br>If you’re reading this, the world needs your help.<br></br><br></br>That’s right, the <strong>WORLD</strong>.<br></br><br></br>The terrorist organization known as <strong>EVILGROUP.NAME</strong> is mobilizing an air force to destroy life as we know it…<br></br>and, you know, <strong>IN GENERAL</strong>. <br></br><br></br>That’s why we started <strong>BLOCKPLANES</strong>. <br></br><br></br>To supply any able bodied pilot with the means to take down these monsters.<br></br><br></br>So what do you say?<br></br><br></br>We have the <strong>PLANES</strong>. Do you have the <strong>GUTS?</strong><br></br><br></br></p>
                 </Grid.Row>
                 <Grid.Row className='signupbuttonhome'>
                 <Link to='/signup'><Button className='ui inverted button' size='massive' >Sign Up</Button></Link>
                 </Grid.Row>
-          </Grid.Column>
-                <Grid.Column width={4} >
-          </Grid.Column>
           </Grid>
         </div>
         );

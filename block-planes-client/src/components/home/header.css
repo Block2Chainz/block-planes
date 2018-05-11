@@ -23,7 +23,7 @@
   .create-account {
     padding-top: 20px;
     padding-bottom: 1%;
-    margin-left: 25%;
+    margin-left: 20%;
 
   }
   
@@ -88,7 +88,7 @@
   .about4 {
     font-family: 'Orbitron';
 
-    margin-left: 25%;
+    margin-left: 20%;
       color: #fff;
       background-color: #000000;
       margin-bottom: 5%;
@@ -149,7 +149,7 @@
   }
 
   .secondhalfpara {
-    /* font-family: 'Orbitron'; */
+    font-family: 'Courier';
     font-size: 120%;
     padding-top: 1%;
       color: #fff;
@@ -157,10 +157,14 @@
   }
 
   .secondhalfpara2 {
+    text-align: center;
+    margin-left: 13%;
     padding-top: 1%;
     padding-bottom: 1%;
   }
 
   .signupbuttonhome {
-    margin-left: 35%;
+    margin-left: 45%;
+    padding-bottom: 5%;
+    margin-bottom: 5%;
 }
