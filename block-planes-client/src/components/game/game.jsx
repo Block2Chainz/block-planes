@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './game.css';
 import io from 'socket.io-client/dist/socket.io.js';
 
-import Ship from './Ship';
+import Ship from './ship';
 import Enemy from './Enemy';
 import { randomNumBetweenExcluding } from './helpers'
 

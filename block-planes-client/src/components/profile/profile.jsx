@@ -76,30 +76,37 @@ class ConnectedProfile extends Component {
   }
 
     render() {
-        console.log(this.props);
         return (
-            <Grid>
+          <Grid>
+
           <Grid.Row>
           </Grid.Row>
-                  <Grid.Row className='userrow'>
-                  <div className='profilepic' >
-                  <Dropzone className='dropzone' onDrop={this.handleDrop} accept="image/*">
-                  <Image src={this.props.profilePicture} size='medium' rounded />
-                    </Dropzone>
-                  <p className='joined'>Joined: {Moment(this.props.createdAt).format('MMMM Do YYYY')}</p>
+
+          <Grid.Row className='userrow'>
+              <div className='profilepic' >
+              <Dropzone className='dropzone' onDrop={this.handleDrop} accept="image/*">
+              <Image src={this.props.profilePicture} size='medium' rounded />
+                </Dropzone>
+              <p className='joined'>Joined: {Moment(this.props.createdAt).format('MMMM Do YYYY')}</p>
               </div>
+
               <Grid.Column width={6} >
-              <p className='username'>{this.props.username}</p>
+                  <p className='username'>{this.props.username}</p>
               </Grid.Column >
+
               <Grid.Column width={6} >
-                <p className='points'>{this.props.totalPoints}</p>
-          </Grid.Column>
-                </Grid.Row>
-                <p className='hangar'>Hangar</p>
-                <Grid.Row>
-                <Hangar />
+                  <p className='points'>{this.props.totalPoints}</p>
+              </Grid.Column>
           </Grid.Row>
-          </Grid>
+
+          <Grid.Row>
+            <Hangar />
+          <p className='hangar'>Hangar</p>
+
+          </Grid.Row>
+
+        </Grid>
+
         );
     }
 }

@@ -31,11 +31,8 @@
     "mysql": "^2.15.0",
     "path": "^0.12.7",
     "react": "^16.3.2",
-<<<<<<< HEAD
     "react-redux": "^5.0.7",
-=======
     "react-dropzone": "^4.2.9",
->>>>>>> plane component
     "react-router-dom": "^4.2.2",
     "redux": "^4.0.0",
     "socket.io": "^2.1.0",
