@@ -33,6 +33,7 @@ class HighScores extends Component {
     render() {
         let title;
         let title2;
+        let title3;        
         return (
             <Table basic='very' celled collapsing className="leaderboard">
             <Table.Header>
@@ -40,6 +41,7 @@ class HighScores extends Component {
                 <Table.HeaderCell >Weekly High Score Leaders</Table.HeaderCell>
             </Table.Row>
               <Table.Row>
+                <Table.HeaderCell className="table-header">Rank</Table.HeaderCell>
                 <Table.HeaderCell className="table-header">Player</Table.HeaderCell>
                 <Table.HeaderCell className="table-header">High Score</Table.HeaderCell>
               </Table.Row>
@@ -47,9 +49,13 @@ class HighScores extends Component {
           <Table.Body>
             {this.state.highScores.map((set, index) => {
               (index === (this.state.highScores.length - 1)) ? (title = 'cell-player-bottom') : (title = 'cell-player');
-              (index === (this.state.highScores.length - 1)) ? (title2 = 'cell-score-bottom') : (title2 = 'cell-score');              
+              (index === (this.state.highScores.length - 1)) ? (title2 = 'cell-score-bottom') : (title2 = 'cell-score'); 
+              (index === (this.state.highScores.length - 1)) ? (title3 = 'cell-rank-bottom') : (title3 = 'cell-rank');              
               return (
-              <Table.Row >
+                <Table.Row >
+                    <Table.Cell className={title3}>
+                    {index +  1}
+                  </Table.Cell>
                 <Table.Cell className={title}>
                   <Header as='h4' image>
                     <Image src='http://static1.squarespace.com/static/522a22cbe4b04681b0bff826/t/581cc65fe4fcb5a68ecd940c/1478280803080/hrhq-avatar.png?format=1000w' rounded size='mini' />

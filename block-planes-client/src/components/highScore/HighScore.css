@@ -17,9 +17,9 @@
     align-self: center;
     font-size: 24px;
     border-style: solid !important;
-    border-width: thin;
-    border-top: lightgrey !important;
-    border-left: lightgrey !important;
+    border-width: thin !important;
+    border-top: #352d2d !important;
+    border-left: #352d2d !important;
 }
 
 .cell-player-bottom {
@@ -28,8 +28,8 @@
     align-self: center;
     font-size: 24px;
     border-style: solid !important;
-    border-width: thin;
-    border-left: lightgrey !important;
+    border-width: thin !important;
+    border-left: #352d2d !important;
     border-bottom: none !important;
 }
 
@@ -46,9 +46,9 @@
     align-self: center;
     font-size: 24px;
     border-style: solid !important;
-    border-width: thin;
-    border-top: lightgrey !important;
-    border-right: lightgrey !important;
+    border-width: thin !important;
+    border-top: #352d2d !important;
+    border-right: #352d2d !important;
 }
 
 .cell-score-bottom {
@@ -57,8 +57,28 @@
     align-self: center;
     font-size: 24px;
     border-style: solid !important;
-    border-width: thin;
-    border-right: lightgrey !important;
+    border-width: thin !important;
+    border-right: #352d2d !important;
+    border-bottom: none !important;
+}
+
+.cell-rank {
+    color: white;
+    text-align: center !important;
+    font-size: 24px;
+    border-style: solid !important;
+    border-width: thin !important;
+    border-top: #352d2d !important;
+    border-left: #352d2d !important;
+}
+
+.cell-rank-bottom {
+    color: white;
+    text-align: center !important;
+    font-size: 24px;
+    border-style: solid !important;
+    border-width: thin !important;
+    border-left: #352d2d !important;
     border-bottom: none !important;
 }
 
