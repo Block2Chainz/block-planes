@@ -144,10 +144,13 @@ class ConnectedFriends extends Component {
                   <p className='joined'>Joined: {Moment(this.state.createdAt).format('MMMM Do YYYY')}</p>
               </div>
               <Grid.Column width={6} >
-              <p className='username'>{this.state.username}</p>
+              <p className='username2'>{this.state.username}</p>
               </Grid.Column >
               <Grid.Column width={6} >
-                <p className='points'>{this.state.totalPoints}</p>
+              <p className='score2'>Total Score</p>
+                <p className='score2'>{this.state.totalPoints}</p>
+                <p className='score2'>High Score</p>
+                <p className='score2'>0</p>
           </Grid.Column>
                 </Grid.Row>
                 <p className='hangar'>Hangar</p>

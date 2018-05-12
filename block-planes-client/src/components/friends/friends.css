@@ -67,3 +67,19 @@ margin-left: 3%;
 .searchusersbar {
   padding-right: 20%;
 }
+
+.score2 {
+  padding-top: 3%;
+  font-family: 'Orbitron';
+  margin-left: 40%;
+  text-align: right;
+  font-size: 200%;
+  color: #fff;
+}
+
+.username2 {
+  font-size: 500%;
+  margin-left: 3%;
+  text-align: left;
+  padding-top: 25%;
+}

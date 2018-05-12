@@ -95,14 +95,15 @@ class ConnectedProfile extends Component {
               </Grid.Column >
 
               <Grid.Column width={6} >
-                  <p className='points'>{this.props.totalPoints}</p>
-              </Grid.Column>
-          </Grid.Row>
-
-          <Grid.Row>
-          <p className='hangar'>Hangar</p>
-            <Hangar />
-
+              <p className='score'>Total Score</p>
+                <p className='score'>{this.props.totalPoints}</p>
+                <p className='score'>High Score</p>
+                <p className='score'>0</p>
+          </Grid.Column>
+                </Grid.Row>
+                <p className='hangar'>Hangar</p>
+                <Grid.Row>
+                <Plane planes={this.state.planes}/>
           </Grid.Row>
 
         </Grid>
