@@ -1,0 +1,9 @@
+p {
+    color: white;
+    font-family: Orbitron;
+    font-size: 24px;
+}
+
+.score {
+    width: 200px;
+}

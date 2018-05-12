@@ -95,7 +95,6 @@ const updateToken = (req, res) => {
       };
       console.log('user object', user);
       jwt.sign({ user }, process.env.JWT_SECRET, (err, token) => {
-        console.log('token', token, 'sending!', );
         res.json({ user, token });
       });
     }
