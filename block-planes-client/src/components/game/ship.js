@@ -1,5 +1,5 @@
 import Bullet from './Bullet';
-import Particle from './Particle';
+import Particle from './particle';
 import { rotatePoint, randomNumBetween } from './helpers';
 
 // to render a new ship, create a new canvas element, 
@@ -53,7 +53,7 @@ export default class Ship {
         // generate new 60 new particles in an explosion
         for (let i = 0; i < 60; i++) {
             const particle = new Particle({
-                lifeSpan: randomNumBetween(60, 100),
+                lifeSpan: this.ingame ? randomNumBetween(60, 100) : randomNumBetween(0, 10),
                 size: randomNumBetween(1, 4),
                 position: {
                     x: this.position.x + randomNumBetween(-this.radius/4, this.radius/4),
@@ -79,9 +79,10 @@ export default class Ship {
     }
 
     accelerate(val) {
-        this.velocity.x -= Math.sin(-this.rotation * Math.PI / 180) * this.speed;
-        this.velocity.y -= Math.cos(-this.rotation * Math.PI / 180) * this.speed;
-
+        if (this.ingame) {
+            this.velocity.x -= Math.sin(-this.rotation * Math.PI / 180) * this.speed;
+            this.velocity.y -= Math.cos(-this.rotation * Math.PI / 180) * this.speed;
+        }
         // Thruster particles
         let posDelta = rotatePoint({ x: 0, y: -55 }, { x: 0, y: 0 }, (this.rotation - 180) * Math.PI / 180);
         const particle = new Particle({
@@ -150,9 +151,9 @@ export default class Ship {
         const context = state.context;
         context.save();
         context.translate(this.position.x, this.position.y);
-        if (!this.ingame) {
-            context.translate(this.position.x+50, this.position.y);
-        }
+        // if (!this.ingame) {
+        //     context.translate(this.position.x+50, this.position.y);
+        // }
         // + 0.785.... is the additional rotation of 45 degrees due to the img format
         context.rotate((this.rotation) * Math.PI / 180 + 0.78539816);
         // context.strokeStyle = '#ffffff';

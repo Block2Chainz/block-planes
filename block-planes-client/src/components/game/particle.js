@@ -5,7 +5,7 @@ export default class Particle {
         this.radius = args.size;
         this.lifeSpan = args.lifeSpan;
         // added inertia argument so it can be modified
-        this.inertia = args.inertia || 0.98;
+        this.inertia = 0.98;
         // added color argument so it can be modified
         this.color = args.color || '#ffffff';
     }

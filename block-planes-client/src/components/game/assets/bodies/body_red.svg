@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+   sodipodi:docname="body_red.svg"
+   inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\base_body.png"
+   inkscape:export-xdpi="25.27"
+   inkscape:export-ydpi="25.27">
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient834">
+      <stop
+         style="stop-color:#910000;stop-opacity:1"
+         offset="0"
+         id="stop830" />
+      <stop
+         style="stop-color:#f9f9f9;stop-opacity:1"
+         offset="1"
+         id="stop832" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient834"
+       id="linearGradient836"
+       x1="214.4838"
+       y1="233.96819"
+       x2="266.25943"
+       y2="182.19254"
+       gradientUnits="userSpaceOnUse"
+       spreadMethod="reflect" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.70710678"
+     inkscape:cx="198.43686"
+     inkscape:cy="889.26953"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer2"
+     showgrid="false"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-nodes="true"
+     inkscape:bbox-paths="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:object-paths="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:snap-smooth-nodes="true"
+     inkscape:snap-midpoints="true"
+     inkscape:snap-center="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:object-nodes="true"
+     inkscape:snap-nodes="true"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline">
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26458332;stroke-opacity:0"
+       id="rect815"
+       width="49.999996"
+       height="50"
+       x="48.643055"
+       y="53.784729"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\body_red.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0"
+       d="m 48.643055,53.78473 c 7.951269,7.951267 1e-6,-2e-6 7.951269,7.951267 l 42.048728,42.048733"
+       id="path819"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="csc"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\body_red.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0"
+       d="m 98.64305,53.78473 -49.999995,50"
+       id="path843"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\body_red.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2"
+     style="display:inline">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 52.630382,65.699938 69.679113,82.74867 M 77.673137,74.754645 60.558261,57.772061"
+       id="path825"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\body_red.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 69.679113,82.748669 7.994023,-7.994025"
+       id="path824"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\body_red.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 52.630382,65.699938 7.927879,-7.927877"
+       id="path826"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\body_red.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+    <path
+       style="opacity:1;fill:url(#linearGradient836);fill-opacity:1;stroke:#000000;stroke-width:0.50078738;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0;paint-order:stroke markers fill"
+       d="m 231.62243,280.07321 -31.62358,-31.62653 14.48495,-14.47849 14.48495,-14.47849 23.39094,23.19538 c 12.86501,12.75745 27.15999,26.92495 31.76661,31.48333 l 8.37568,8.28796 -14.62798,14.62168 -14.62798,14.62168 z"
+       id="path828"
+       inkscape:connector-curvature="0"
+       transform="scale(0.26458333)"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\body_red.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+  </g>
+</svg>

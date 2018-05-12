@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Grid } from 'semantic-ui-react';
 // import { connect } from "react-redux";
 import Ship from '../game/ship.js';
+import Particle from '../game/particle.js';
 import './plane.css';
 
 // const mapStateToProps = state => {
@@ -44,11 +45,13 @@ class Plane extends Component {
     const context = this.state.context;
     const ship = this.ship[0];
 
+    // ship.accelerate();
     // store canvas state on the stack
+
     context.save();
     // resize the field if the window has been resized
     // context.scale(this.state.screen.ratio, this.state.screen.ratio);
-
+    
     // remove or render
     this.updateObjects(this.particles, 'particles');
     this.updateObjects(this.ship, 'ship');
@@ -61,24 +64,12 @@ class Plane extends Component {
   }
 
   startGame() {
-    // make your ship
+    // make the ship
     // create a ship object
-    let randomAttrString = '' + Math.floor(Math.random() * 10) +
-      '' + Math.floor(Math.random() * 10) +
-      '' + Math.floor(Math.random() * 10) +
-      '' + Math.floor(Math.random() * 10) +
-      '' + Math.floor(Math.random() * 10) +
-      '' + Math.floor(Math.random() * 10) +
-      '' + Math.floor(Math.random() * 10) +
-      '' + Math.floor(Math.random() * 10) +
-      '' + Math.floor(Math.random() * 10) +
-      '' + Math.floor(Math.random() * 10) + '';
 
-    let ship = this.shipCreator(randomAttrString, {
+    let ship = this.shipCreator(this.props.plane[1].toString(), {
       position: {
-        // x: this.state.screen.width / 2,
-        // y: this.state.screen.height / 2,
-        x: 0,
+        x: 50,
         y: 0,
       },
       create: this.createObject.bind(this),
@@ -104,17 +95,17 @@ class Plane extends Component {
     }
 
     let shipArgs = {
-      bodyColor: attrPossibilities.bodyColor[attrString[0] % 8],
-      wingShape: attrPossibilities.wingShape[attrString[0] % 5],
-      wingColor: attrPossibilities.wingColor[attrString[1] % 8],
-      tailShape: attrPossibilities.tailShape[attrString[2] % 5],
-      tailColor: attrPossibilities.tailColor[attrString[3] % 8],
-      cockpitShape: attrPossibilities.cockpitShape[attrString[4] % 5],
-      cockpitColor: attrPossibilities.cockpitColor[attrString[5] % 8],
-      speed: attrPossibilities.speed[attrString[6] % 4],
-      inertia: attrPossibilities.inertia[attrString[7] % 3],
-      shootingSpeed: attrPossibilities.shootingSpeed[attrString[8] % 7],
-      smokeColor: attrPossibilities.smokeColor[attrString[9] % 8],
+      wingShape: attrPossibilities.wingShape[parseInt(attrString[0]) % 5],
+      wingColor: attrPossibilities.wingColor[parseInt(attrString[1]) % 8],
+      tailShape: attrPossibilities.tailShape[parseInt(attrString[2]) % 5],
+      tailColor: attrPossibilities.tailColor[parseInt(attrString[3]) % 8],
+      cockpitShape: attrPossibilities.cockpitShape[parseInt(attrString[4]) % 5],
+      cockpitColor: attrPossibilities.cockpitColor[parseInt(attrString[5]) % 8],
+      speed: attrPossibilities.speed[parseInt(attrString[6]) % 4],
+      inertia: attrPossibilities.inertia[parseInt(attrString[7]) % 3],
+      shootingSpeed: attrPossibilities.shootingSpeed[parseInt(attrString[8]) % 7],
+      smokeColor: attrPossibilities.smokeColor[parseInt(attrString[9]) % 8],
+      bodyColor: attrPossibilities.bodyColor[parseInt(attrString[10]) % 8],
       ingame: false,
     };
     return new Ship(Object.assign({}, shipArgs, otherAttr, ));
@@ -125,10 +116,12 @@ class Plane extends Component {
   }
 
   updateObjects(items, group) {
+    let context = this.state.context;
     // go through each item of the specified group and delete them or call their render functions
     let index = 0;
     for (let item of items) {
-      if (item.delete) {
+      // console.log(item, 'from ', items);
+      if (item.delete || items.length > 5) {
         // delete the object from the field
         this[group].splice(index, 1);
       } else {
@@ -137,17 +130,14 @@ class Plane extends Component {
       }
       index++;
     }
+    context.restore();
   }
 
   render() {
     return (
-      <Grid>
-        <Grid.Row>
         <Grid.Column width={16} className='plane' >
           <canvas ref='canvas' width={150} height={150} />
         </Grid.Column>
-        </Grid.Row>
-      </Grid>
     )
   }  
 }

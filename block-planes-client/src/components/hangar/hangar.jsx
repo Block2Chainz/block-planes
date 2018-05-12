@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Grid } from 'semantic-ui-react';
-import { storeContract, storeUserAddress, storeUserPlanes } from "../../actions/index"
+import { storeContract, storeUserAddress, storeUserPlanes } from "../../actions/index";
+import 'bluebird';
 import './hangar.css';
 import Web3 from 'web3';
 import TruffleContract from 'truffle-contract'
@@ -37,11 +38,9 @@ class ConnectedHangar extends Component {
     this.web3 = new Web3(this.web3Provider)
     this.blockplanes = TruffleContract(cryptoPlanes)
     this.blockplanes.setProvider(this.web3Provider)
-
-
   }
 
-  componentWillMount() {
+  componentDidMount() {
     let userAddress, contract;
     this.web3.eth.getCoinbase((err, address) => {
       // storing the user blockchain address*****
@@ -51,7 +50,7 @@ class ConnectedHangar extends Component {
       .then((instance) => {
         // storing the contract*****
         contract = instance;
-        return instance.getPlanesByOwner(this.props.userAddress);
+        return instance.getPlanesByOwner(userAddress);
       }).then((planes) => {
         // putting the plane ids into an array
         let planeIds = [];
@@ -61,18 +60,17 @@ class ConnectedHangar extends Component {
       }).then((planeArray) => {
         // getting the attributes for each plane in their collection
         let hangar = [];
-        planeArray.forEach((planeId) => {
+        for (let i = 0; i < planeArray.length; i++) {
           let planeAttr;
-          this.props.contract.planes(planeId).then((plane) => {
-             planeAttr = plane.toNumber();
-             hangar.push([planeId, planeAttr]);
+          contract.planes(planeArray[i]).then((plane) => {
+            planeAttr = plane.toNumber();
+            hangar.push([planeArray[i], planeAttr]);
+            if (i === planeArray.length - 1) {
+              this.props.storeUserPlanes({ contract, userAddress, userPlanes: hangar });
+            }
           });
-        })        
-        return hangar;
-      }).then((finalArray) => {
-        // storing the user's plane attributes
-        this.props.storeUserPlanes({contract, userAddress, userPlanes: finalArray});
-      }) 
+        }
+      })
     });
   }
 

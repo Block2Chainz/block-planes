@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+   sodipodi:docname="cockpit_03_orange.svg"
+   inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\base_body.png"
+   inkscape:export-xdpi="25.27"
+   inkscape:export-ydpi="25.27">
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient846">
+      <stop
+         style="stop-color:#803900;stop-opacity:1"
+         offset="0"
+         id="stop842" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1"
+         id="stop844" />
+    </linearGradient>
+    <inkscape:path-effect
+       effect="mirror_symmetry"
+       start_point="49.31683,54.458505"
+       end_point="56.594322,61.736"
+       center_point="52.955576,58.097252"
+       id="path-effect4613"
+       is_visible="true"
+       mode="free"
+       discard_orig_path="false"
+       fuse_paths="false"
+       oposite_fuse="false" />
+    <inkscape:path-effect
+       effect="mirror_symmetry"
+       start_point="50.73914,55.880814"
+       end_point="56.594324,61.735997"
+       center_point="53.666732,58.808405"
+       id="path-effect4611"
+       is_visible="true"
+       mode="free"
+       discard_orig_path="false"
+       fuse_paths="false"
+       oposite_fuse="false" />
+    <inkscape:path-effect
+       effect="mirror_symmetry"
+       start_point="50.740444,55.882118"
+       end_point="56.594324,61.735997"
+       center_point="53.667384,58.809057"
+       id="path-effect4609"
+       is_visible="true"
+       mode="free"
+       discard_orig_path="false"
+       fuse_paths="false"
+       oposite_fuse="false" />
+    <inkscape:path-effect
+       effect="skeletal"
+       id="path-effect4607"
+       is_visible="true"
+       pattern="M -0.13229105,-1.5643921 H 0.86770888"
+       copytype="single_stretched"
+       prop_scale="-1000000"
+       scale_y_rel="true"
+       spacing="0"
+       normal_offset="0"
+       tang_offset="0"
+       prop_units="false"
+       vertical_pattern="false"
+       fuse_tolerance="0" />
+    <inkscape:path-effect
+       fuse_tolerance="0"
+       vertical_pattern="false"
+       prop_units="false"
+       tang_offset="0"
+       normal_offset="0"
+       spacing="0"
+       scale_y_rel="true"
+       prop_scale="-1000000"
+       copytype="single_stretched"
+       pattern="m -2.1872542,-1.58478 h 1"
+       is_visible="true"
+       id="path-effect4603"
+       effect="skeletal" />
+    <inkscape:path-effect
+       effect="skeletal"
+       id="path-effect4597"
+       is_visible="true"
+       pattern="M -0.99218751,-0.23151043 H 0.00781246"
+       copytype="single_stretched"
+       prop_scale="-1000000"
+       scale_y_rel="true"
+       spacing="0"
+       normal_offset="0"
+       tang_offset="0"
+       prop_units="false"
+       vertical_pattern="false"
+       fuse_tolerance="0" />
+    <inkscape:path-effect
+       effect="skeletal"
+       id="path-effect4522"
+       is_visible="true"
+       pattern="M 0,0 H 1"
+       copytype="single_stretched"
+       prop_scale="1"
+       scale_y_rel="false"
+       spacing="0"
+       normal_offset="0"
+       tang_offset="0"
+       prop_units="false"
+       vertical_pattern="false"
+       fuse_tolerance="0" />
+    <inkscape:path-effect
+       effect="skeletal"
+       id="path-effect825"
+       is_visible="true"
+       pattern="M 0,0 H 1"
+       copytype="single_stretched"
+       prop_scale="1"
+       scale_y_rel="false"
+       spacing="0"
+       normal_offset="0"
+       tang_offset="0"
+       prop_units="false"
+       vertical_pattern="false"
+       fuse_tolerance="0" />
+    <inkscape:path-effect
+       effect="mirror_symmetry"
+       start_point="56.594322,61.736"
+       end_point="61.622328,66.773692"
+       center_point="59.108325,64.254846"
+       id="path-effect833"
+       is_visible="true"
+       mode="free"
+       discard_orig_path="false"
+       fuse_paths="false"
+       oposite_fuse="false" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient846"
+       id="linearGradient848"
+       x1="183.34776"
+       y1="257.76965"
+       x2="161.75002"
+       y2="228.01965"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35355337"
+     inkscape:cx="276.53319"
+     inkscape:cy="556.95713"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer2"
+     showgrid="false"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-nodes="true"
+     inkscape:bbox-paths="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:object-paths="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:snap-smooth-nodes="true"
+     inkscape:snap-midpoints="true"
+     inkscape:snap-center="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:object-nodes="true"
+     inkscape:snap-nodes="true"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline">
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26458332;stroke-opacity:0"
+       id="rect815"
+       width="49.999996"
+       height="50"
+       x="48.643055"
+       y="53.784729"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\cockpit_03_orange.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0"
+       d="m 48.643055,53.78473 c 7.951269,7.951267 1e-6,-2e-6 7.951269,7.951267 l 42.048728,42.048733"
+       id="path819"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="csc"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\cockpit_03_orange.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0"
+       d="m 98.64305,53.78473 -49.999995,50"
+       id="path843"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\cockpit_03_orange.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+    <path
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0"
+       d="M 52.630382,65.699938 69.679113,82.74867 M 77.673137,74.754645 60.558261,57.772061"
+       id="path825"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\cockpit_03_orange.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+    <path
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0"
+       d="m 69.679113,82.748669 7.994023,-7.994025"
+       id="path824"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\cockpit_03_orange.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+    <path
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0"
+       d="m 52.630382,65.699938 7.927879,-7.927877"
+       id="path826"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\cockpit_03_orange.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2"
+     style="display:inline">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.19626172"
+       d="m 60.558261,57.772061 -7.927879,7.927877"
+       id="path829"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\cockpit_03_orange.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+    <path
+       sodipodi:nodetypes="ccc"
+       inkscape:connector-curvature="0"
+       id="path823"
+       d="m 52.630382,65.699938 c -0.495581,-4.082873 -1.62535,-8.081188 -3.987327,-11.915209 3.610617,2.045254 7.568846,3.401151 11.915206,3.987332"
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\cockpit_03_orange.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 56.594324,61.735997 c 0,0 2.286037,2.286037 5.372669,10.821327 5.559394,2.114844 8.06176,0.996955 5.488397,-5.488397 C 58.881243,64.022916 56.594322,61.736 56.594322,61.736"
+       id="path4619"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\cockpit_03_orange.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+    <path
+       style="opacity:1;fill:url(#linearGradient848);fill-opacity:1;stroke:#000000;stroke-width:0.25039369;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0;paint-order:stroke markers fill"
+       d="m 199.31529,246.45571 c -0.0708,-0.3344 -0.36208,-2.12675 -0.64731,-3.983 -1.73301,-11.27811 -5.18588,-22.10205 -10.28502,-32.24118 -1.34601,-2.6764 -2.42457,-4.88847 -2.39681,-4.91572 0.0278,-0.0273 1.85049,0.83656 4.05049,1.91958 11.11083,5.46964 22.1505,8.92488 36.44127,11.40554 l 1.19128,0.20678 -14.11259,14.108 c -12.54042,12.53633 -14.12694,14.04026 -14.24131,13.5 z"
+       id="path834"
+       inkscape:connector-curvature="0"
+       transform="scale(0.26458333)"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\cockpit_03_orange.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+    <path
+       style="opacity:1;fill:#a0ffff;fill-opacity:1;stroke:#000000;stroke-width:0.25039369;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0;paint-order:stroke markers fill"
+       d="m 246.28664,277.05829 c -1.81749,-0.27643 -5.24619,-1.17074 -8.21809,-2.14354 -2.90344,-0.95039 -3.25148,-1.12739 -3.55949,-1.81021 -0.18776,-0.41625 -1.08959,-2.72557 -2.00406,-5.13182 -3.82265,-10.05856 -8.9694,-21.08316 -12.82432,-27.47034 -1.11047,-1.83993 -2.01904,-3.3789 -2.01904,-3.41993 0,-0.041 1.19281,0.65569 2.65069,1.54826 7.10584,4.3505 18.45231,9.55375 30.47431,13.97487 1.7875,0.65736 3.38578,1.31826 3.55172,1.46867 0.4655,0.42191 1.92993,4.67293 2.85092,8.27575 0.71867,2.8114 0.83123,3.66755 0.83783,6.37272 0.007,2.74021 -0.0636,3.28255 -0.57053,4.40456 -0.71534,1.58313 -1.79144,2.64847 -3.41994,3.38573 -1.03742,0.46966 -1.73892,0.57384 -4.125,0.61262 -1.58125,0.0257 -3.2125,-0.005 -3.625,-0.0673 z"
+       id="path840"
+       inkscape:connector-curvature="0"
+       transform="scale(0.26458333)"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\cockpit_03_orange.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+  </g>
+</svg>
