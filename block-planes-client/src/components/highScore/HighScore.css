@@ -1,12 +1,12 @@
-.high-score {
-    width: 800px;
+.row {
+    display: flex;
 }
 
-.username {
-    width: 200px;
-    height: auto;
+.column1 {
+    flex: 50%;
+    text-align: right;
 }
 
-.score {
-    width: 200px;
+.column2 {
+    flex: 50%;
 }
