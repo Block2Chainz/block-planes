@@ -10,23 +10,23 @@ client.on('connect', function() {
 
 const getHiScore = (req, res) => {
   
-  db.query('SELECT username, id FROM users', (err, data) => {
+  db.query('SELECT username, id, profile_picture FROM users', (err, data) => {
     for (let i = 0; i < data.length; i++) {
-      console.log('id: ', data[i].id, 'username: ', data[i].username);
-      client.zadd('leaderboard', data[i].id, data[i].username);
+      // console.log('id: ', data[i].id, 'username: ', data[i].username);
+      client.zadd('leaderboard', data[i].id, data[i].username + '___' + data[i].profile_picture);
     }
     // console.log('data from db: ', data)
     
-    client.zrevrange('leaderboard', 0, 2, 'withscores', function(err, scores){
+    client.zrevrange('leaderboard', 0, 9, 'withscores', function(err, scores){
       console.log('scores: ', scores);
       let highScores = [];
       while (scores.length) {
         let tup = scores.splice(0,2)
-        console.log('tup: ', tup, 'scores: ', scores)
-        highScores.push({name: tup[0], score: tup[1]});
+        // console.log('tup: ', tup, 'scores: ', scores)
+        highScores.push({name: tup[0].split('___')[0], picture: tup[0].split('___')[1], score: tup[1]});
         console.log('highScores array: ', highScores)
       }
-      
+
       res.send(highScores);
     });
   })

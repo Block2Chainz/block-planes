@@ -60,7 +60,7 @@ class HighScores extends Component {
                   </Table.Cell>
                 <Table.Cell className={`${title} ${cellColor}`}>
                   <Header as='h4' image>
-                    <Image src='http://static1.squarespace.com/static/522a22cbe4b04681b0bff826/t/581cc65fe4fcb5a68ecd940c/1478280803080/hrhq-avatar.png?format=1000w' rounded size='mini' />
+                    <Image src={set.picture} rounded size='mini' />
                     <Header.Content className="cell-player-header">
                         {set.name}
                       {/* <Header.Subheader>Cool Player</Header.Subheader> */}
