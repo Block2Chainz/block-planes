@@ -9,7 +9,7 @@ import FriendsDropDown from './friendsDropDown.jsx';
 import Web3 from 'web3'
 import TruffleContract from 'truffle-contract'
 import cryptoPlanes from '../../../../block-planes-solidity/BlockPlanes/build/contracts/BlockPlanes.json';
-import Plane from '../plane/plane.jsx';
+// import Plane from '../plane/plane.jsx';
 import axios from 'axios';
 import './friends.css';
 
@@ -152,7 +152,7 @@ class ConnectedFriends extends Component {
                 </Grid.Row>
                 <p className='hangar'>Hangar</p>
                 <Grid.Row>
-                <Plane planes={this.state.planes}/>
+                {/* <Plane planes={this.state.planes}/> */}
           </Grid.Row>
           </Grid>
         );

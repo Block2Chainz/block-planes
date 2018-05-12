@@ -62,12 +62,37 @@ module.exports = {
                         }
                     },
                 ],
-            },{
+            },
+            {
                 test: /\.json$/,
                 loader: 'json-loader',
                 include: '/build/contracts/'
-              }
-
+            },
+            {
+                test: /\.(gif|png|jpe?g|svg)$/i,
+                use: [
+                    'file-loader',
+                    {
+                        loader: 'image-webpack-loader',
+                        options: {
+                            mozjpeg: {
+                                progressive: true,
+                                quality: 65
+                            },
+                            optipng: {
+                                optimizationLevel: 7,
+                            },
+                            pngquant: {
+                                quality: 65,
+                            },
+                            svggo: {},
+                            webp: {
+                                quality: 65
+                            }
+                        }
+                    },
+                ],
+            }
         ]
     },
     // plugins: [

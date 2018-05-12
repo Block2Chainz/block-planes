@@ -27,7 +27,9 @@ bundle.js.map
 .env
 
 # production
-/build
+/build/
+/build/contracts/
+/build/contracts
 /public/bundle.js
 /public/bundle.js.map
 

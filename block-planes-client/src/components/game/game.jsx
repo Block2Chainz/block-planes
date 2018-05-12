@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './game.css';
 import io from 'socket.io-client/dist/socket.io.js';
 
-import Ship from './Ship';
+import Ship from './ship';
 import Enemy from './Enemy';
 import { randomNumBetweenExcluding } from './helpers'
 
@@ -23,7 +23,7 @@ class Game extends Component {
         this.state = {
             screen: {
                 width: window.innerWidth,
-                height: window.innerHeight,
+                height: window.innerHeight - 120,
                 ratio: window.devicePixelRadio || 1
             },
             keys: {
@@ -44,7 +44,7 @@ class Game extends Component {
         this.setState({
             screen: {
                 width: window.innerWidth,
-                height: window.innerHeight,
+                height: window.innerHeight - 120,
                 ratio: window.devicePixelRatio || 1,
             }
         }); 
@@ -214,22 +214,21 @@ class Game extends Component {
 
     shipCreator(attrString, otherAttr) {
         let attrPossibilities = {
+            bodyColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'],
             wingShape: ['01', '02', '03', '04', '05'], 
             wingColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'], 
-
             tailShape: ['01', '02', '03', '04', '05'], 
             tailColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'], 
-            
             cockpitShape: ['01', '02', '03', '04', '05'], 
             cockpitColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'], 
-            
-            speed: [0.15, 0.3, 0.4, 0.5],  
-            inertia: [0.99, 0.98, 0.97, 0.96], 
-            shootingSpeed: [300, 350, 400, 250, 200, 150, 100], 
+            speed: [0.8, 1, 1.5, 2], // how much movement it travels after each frame with a keydown,  
+            inertia: [.88, .93, .97, .99], // how quickly it slows down after releasing a key: 0.5 = immediately, 1 = never; 
+            shootingSpeed: [300, 35, 100, 250, 200, 75, 150], 
             smokeColor: ['#ff9999', '#b3ff99', '#ffffb3', '#80ffdf', '#99d6ff', '#c299ff', '#ff80df', '#ffffff'], 
         }
 
         let shipArgs = {
+            bodyColor: attrPossibilities.bodyColor[attrString[0] % 8],
             wingShape: attrPossibilities.wingShape[attrString[0] % 5],
             wingColor: attrPossibilities.wingColor[attrString[1] % 8], 
             tailShape: attrPossibilities.tailShape[attrString[2] % 5],
@@ -240,8 +239,8 @@ class Game extends Component {
             inertia: attrPossibilities.inertia[attrString[7] % 3],
             shootingSpeed: attrPossibilities.shootingSpeed[attrString[8] % 7],
             smokeColor: attrPossibilities.smokeColor[attrString[9] % 8],
+            ingame: true,
         };
-        console.log('speed: ', shipArgs.speed, 'inertia: ', shipArgs.inertia);
         return new Ship(Object.assign({}, shipArgs, otherAttr));
     }
 

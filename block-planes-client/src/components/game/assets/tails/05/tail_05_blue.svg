@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="tail_05_blue.svg"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+   inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\tail_01.png"
+   inkscape:export-xdpi="25.27"
+   inkscape:export-ydpi="25.27">
+  <defs
+     id="defs2">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient866">
+      <stop
+         style="stop-color:#14005f;stop-opacity:1"
+         offset="0"
+         id="stop862" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         offset="1"
+         id="stop864" />
+    </linearGradient>
+    <inkscape:path-effect
+       effect="mirror_symmetry"
+       start_point="63.722286,95.58131"
+       end_point="70.826548,102.71405"
+       center_point="67.274417,99.14768"
+       id="path-effect858"
+       is_visible="true"
+       mode="free"
+       discard_orig_path="false"
+       fuse_paths="false"
+       oposite_fuse="false" />
+    <inkscape:path-effect
+       effect="mirror_symmetry"
+       start_point="56.887619,88.77512"
+       end_point="81.885413,113.77292"
+       center_point="69.386516,101.27402"
+       id="path-effect851"
+       is_visible="true"
+       mode="free"
+       discard_orig_path="false"
+       fuse_paths="false"
+       oposite_fuse="false" />
+    <inkscape:path-effect
+       effect="mirror_symmetry"
+       start_point="56.887619,88.77512"
+       end_point="81.885414,113.77292"
+       center_point="69.386516,101.27402"
+       id="path-effect859"
+       is_visible="true"
+       mode="free"
+       discard_orig_path="false"
+       fuse_paths="false"
+       oposite_fuse="false" />
+    <inkscape:path-effect
+       effect="mirror_symmetry"
+       start_point="56.887619,88.77512"
+       end_point="81.885415,113.77292"
+       center_point="69.386517,101.27402"
+       id="path-effect857"
+       is_visible="true"
+       mode="free"
+       discard_orig_path="false"
+       fuse_paths="false"
+       oposite_fuse="false" />
+    <inkscape:path-effect
+       effect="mirror_symmetry"
+       start_point="66.819314,98.713431"
+       end_point="73.238332,105.12583"
+       center_point="70.028823,101.91963"
+       id="path-effect884"
+       is_visible="true"
+       mode="free"
+       discard_orig_path="false"
+       fuse_paths="false"
+       oposite_fuse="false" />
+    <inkscape:path-effect
+       effect="mirror_symmetry"
+       start_point="66.819314,98.713431"
+       end_point="73.169524,105.05703"
+       center_point="69.994419,101.88523"
+       id="path-effect882"
+       is_visible="true"
+       mode="free"
+       discard_orig_path="false"
+       fuse_paths="false"
+       oposite_fuse="false" />
+    <inkscape:path-effect
+       effect="mirror_symmetry"
+       start_point="66.819314,98.713431"
+       end_point="72.123072,104.01057"
+       center_point="69.471193,101.362"
+       id="path-effect880"
+       is_visible="true"
+       mode="free"
+       discard_orig_path="false"
+       fuse_paths="false"
+       oposite_fuse="false" />
+    <inkscape:path-effect
+       effect="mirror_symmetry"
+       start_point="56.901528,88.761223"
+       end_point="81.885414,113.77292"
+       center_point="69.393471,101.26707"
+       id="path-effect854"
+       is_visible="true"
+       mode="free"
+       discard_orig_path="false"
+       fuse_paths="false"
+       oposite_fuse="false" />
+    <inkscape:path-effect
+       effect="mirror_symmetry"
+       start_point="56.887619,88.77512"
+       end_point="81.885414,113.77292"
+       center_point="69.386516,101.27402"
+       id="path-effect852"
+       is_visible="true"
+       mode="free"
+       discard_orig_path="false"
+       fuse_paths="false"
+       oposite_fuse="false" />
+    <inkscape:path-effect
+       effect="mirror_symmetry"
+       start_point="57.381507,92.576301"
+       end_point="63.939121,99.133915"
+       center_point="60.660314,95.855108"
+       id="path-effect848"
+       is_visible="true"
+       mode="free"
+       discard_orig_path="false"
+       fuse_paths="false"
+       oposite_fuse="false" />
+    <inkscape:path-effect
+       effect="mirror_symmetry"
+       start_point="55.795821,102.94466"
+       end_point="49.908843,96.149989"
+       center_point="52.852332,99.547325"
+       id="path-effect846"
+       is_visible="true"
+       mode="free"
+       discard_orig_path="false"
+       fuse_paths="false"
+       oposite_fuse="false" />
+    <inkscape:path-effect
+       effect="mirror_symmetry"
+       start_point="56.887619,88.77512"
+       end_point="66.822457,98.709958"
+       center_point="61.855038,93.742539"
+       id="path-effect844"
+       is_visible="true"
+       mode="free"
+       discard_orig_path="false"
+       fuse_paths="false"
+       oposite_fuse="false" />
+    <inkscape:path-effect
+       effect="mirror_symmetry"
+       start_point="54.903769,86.897226"
+       end_point="79.387441,111.27494"
+       center_point="67.145605,99.086083"
+       id="path-effect839"
+       is_visible="true"
+       mode="free"
+       discard_orig_path="false"
+       fuse_paths="false"
+       oposite_fuse="false" />
+    <inkscape:path-effect
+       effect="mirror_symmetry"
+       start_point="39.84838,71.712532"
+       end_point="81.873722,113.78457"
+       center_point="60.861051,92.748551"
+       id="path-effect838"
+       is_visible="true"
+       mode="free"
+       discard_orig_path="false"
+       fuse_paths="false"
+       oposite_fuse="false" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient866"
+       id="linearGradient886"
+       x1="210.75"
+       y1="331.26968"
+       x2="245.834"
+       y2="296.01968"
+       gradientUnits="userSpaceOnUse"
+       spreadMethod="reflect" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient866"
+       id="linearGradient902"
+       x1="281.95593"
+       y1="337.51968"
+       x2="332.25"
+       y2="380.26968"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient866"
+       id="linearGradient910"
+       x1="216.75"
+       y1="402.34827"
+       x2="259"
+       y2="440.50787"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.70710678"
+     inkscape:cx="-32.171043"
+     inkscape:cy="841.62223"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-nodes="true"
+     inkscape:bbox-paths="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:object-paths="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:snap-smooth-nodes="true"
+     inkscape:snap-midpoints="true"
+     inkscape:snap-center="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:object-nodes="true"
+     inkscape:snap-nodes="true"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:measure-start="0,0"
+     inkscape:measure-end="0,0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer1"
+     inkscape:label="Layer 4"
+     style="display:inline">
+    <g
+       style="display:inline;stroke:#000000;stroke-opacity:0.0046729"
+       id="g1503"
+       transform="translate(-16.757637,9.9881886)"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\tail_05_blue.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27">
+      <g
+         style="display:inline;stroke:#000000;stroke-opacity:0.0046729"
+         id="layer1-0"
+         inkscape:label="Layer 1">
+        <rect
+           y="53.784729"
+           x="48.643055"
+           height="50"
+           width="49.999996"
+           id="rect815-7"
+           style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26458332;stroke-opacity:0.0046729" />
+        <path
+           sodipodi:nodetypes="csc"
+           inkscape:connector-curvature="0"
+           id="path819-9"
+           d="m 48.643055,53.78473 c 7.951269,7.951267 1e-6,-2e-6 7.951269,7.951267 l 42.048728,42.048733"
+           style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.0046729" />
+        <path
+           sodipodi:nodetypes="cccc"
+           inkscape:connector-curvature="0"
+           id="path821-9"
+           d="m 52.630382,65.699938 3.987327,-3.987326 m 0,0 3.940552,-3.940551"
+           style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.0046729" />
+        <path
+           sodipodi:nodetypes="cccc"
+           inkscape:connector-curvature="0"
+           id="path825-3"
+           d="M 52.630382,65.699938 69.679113,82.74867 M 77.673137,74.754645 60.558261,57.772061"
+           style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.0046729" />
+        <path
+           sodipodi:nodetypes="cc"
+           inkscape:connector-curvature="0"
+           id="path837-9"
+           d="m 48.643055,53.78473 11.915206,3.987331"
+           style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.0046729" />
+        <path
+           sodipodi:nodetypes="cc"
+           inkscape:connector-curvature="0"
+           id="path841-9"
+           d="m 48.643055,53.78473 3.987327,11.915208"
+           style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.0046729" />
+      </g>
+      <g
+         style="display:inline;stroke:#000000;stroke-opacity:0.0046729"
+         inkscape:label="Layer 2"
+         id="layer2">
+        <path
+           inkscape:connector-curvature="0"
+           id="path871"
+           d="M 52.630382,99.797398 69.679113,82.748669"
+           style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.0046729" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path873"
+           d="M 94.655716,57.772061 77.673136,74.754644"
+           style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.0046729" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path826-0"
+           d="M 69.115698,66.263352 98.64305,53.78473 77.673136,74.754644"
+           style="display:inline;fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.0046729" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path843"
+           d="m 98.64305,53.78473 -49.999995,50"
+           style="display:inline;fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.0046729" />
+        <path
+           inkscape:connector-curvature="0"
+           id="path824"
+           d="M 61.154746,74.224302 48.643055,103.78473 69.679113,82.748669"
+           style="display:inline;fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.0046729" />
+      </g>
+    </g>
+    <path
+       style="opacity:1;fill:url(#linearGradient886);fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-linecap:square;stroke-linejoin:round;stroke-opacity:1;paint-order:stroke markers fill"
+       d="m 231.04512,372.2688 c -16.41693,-11.91604 -29.90035,-21.70804 -29.96315,-21.76001 -0.0628,-0.052 6.40376,-6.61315 14.37014,-14.58041 11.26837,-11.26963 14.54901,-14.41744 14.77572,-14.17749 0.16028,0.16965 9.98254,13.68965 21.82724,30.04446 l 21.53582,29.73602 -2.68653,2.69489 -2.68654,2.69489 -0.31728,-1.23977 c -0.73487,-2.87153 -2.72191,-5.88914 -6.31524,-9.59064 -3.57142,-3.67893 -8.0446,-7.22617 -14.73777,-11.68709 -5.32474,-3.54887 -5.62136,-3.71085 -6.06319,-3.311 -0.45092,0.40808 -0.44503,0.45411 0.2009,1.56855 3.36478,5.80536 9.65932,14.32273 13.53931,18.32054 4.13593,4.26152 6.8434,6.20572 10.10469,7.25609 l 1.70553,0.54931 -2.56484,2.57359 c -1.41066,1.41548 -2.63482,2.5736 -2.72035,2.5736 -0.0855,0 -13.58753,-9.74949 -30.00446,-21.66553 z"
+       id="path866"
+       inkscape:connector-curvature="0"
+       transform="scale(0.26458333)"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\tail_05_blue.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+    <path
+       style="opacity:1;fill:url(#linearGradient910);fill-opacity:1.0;stroke:#000000;stroke-width:0.25;stroke-linecap:square;stroke-linejoin:round;stroke-opacity:1;paint-order:stroke markers fill"
+       d="m 248.82115,422.34539 c 0,-0.11643 -2.76174,-10.05568 -6.13722,-22.08722 -3.37547,-12.03153 -6.10186,-21.98157 -6.05866,-22.11119 0.058,-0.174 31.66647,22.51408 32.7527,23.50939 0.1,0.0916 -4.48438,4.83177 -10.1875,10.53365 -5.70312,5.70188 -10.36932,10.27179 -10.36932,10.15537 z"
+       id="path868"
+       inkscape:connector-curvature="0"
+       transform="scale(0.26458333)"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\tail_05_blue.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+    <path
+       style="opacity:1;fill:url(#linearGradient902);fill-opacity:1.0;stroke:#000000;stroke-width:0.25;stroke-linecap:square;stroke-linejoin:round;stroke-opacity:1;paint-order:stroke markers fill"
+       d="m 269.29151,373.49172 c -6.54755,-9.03781 -11.88563,-16.4568 -11.8624,-16.48665 0.0393,-0.0505 43.32961,12.03811 44.12956,12.3229 0.24035,0.0856 -3.0871,3.57943 -9.87386,10.36771 -5.63,5.63126 -10.29313,10.23635 -10.36251,10.23354 -0.0694,-0.003 -5.48323,-7.39969 -12.03079,-16.4375 z"
+       id="path870"
+       inkscape:connector-curvature="0"
+       transform="scale(0.26458333)"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\tail_05_blue.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+    <path
+       style="opacity:1;fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-linecap:square;stroke-linejoin:round;stroke-opacity:0.0046729;paint-order:stroke markers fill"
+       d="m 268.82115,399.71009 c -0.89375,-0.66535 -2.77278,-2.04775 -4.17562,-3.07201 l -2.55062,-1.86228 2.38857,-2.35823 c 1.65666,-1.63562 2.33253,-2.17082 2.20568,-1.7466 -0.10059,0.3364 -0.17765,1.1944 -0.17125,1.90668 0.0153,1.70262 0.77626,3.16629 2.10243,4.04391 0.8721,0.57713 1.3066,0.68777 2.70087,0.68777 2.013,0 3.23471,-0.6916 4.00365,-2.26643 1.87375,-3.83754 -2.18211,-7.70248 -5.56998,-5.30777 -2.07708,1.46818 -1.79472,4.65606 0.49723,5.6137 2.51073,1.04905 4.8786,-1.86331 3.07547,-3.78266 -1.21576,-1.29411 -3.12489,-0.54807 -2.96151,1.15728 0.0707,0.73836 0.17388,0.84495 0.88401,0.91358 0.68888,0.0666 0.82757,-0.0165 0.96919,-0.5808 0.11504,-0.45834 0.24477,-0.57901 0.4268,-0.39698 0.40632,0.40632 -0.20257,1.48485 -0.94324,1.67075 -1.33388,0.33478 -2.47798,-1.18189 -1.97509,-2.61827 0.3002,-0.85747 1.78204,-1.65975 2.65905,-1.43963 1.26331,0.31707 1.98738,1.20018 2.12058,2.58635 0.11279,1.17384 0.0578,1.33974 -0.7282,2.19743 -2.21229,2.41403 -6.05417,0.75044 -6.05417,-2.62155 0,-2.27321 1.82226,-4 4.22115,-4 2.861,0 4.93909,2.51831 4.50245,5.45625 -0.15978,1.07512 -0.40718,1.40351 -3.08807,4.09899 l -2.91438,2.93024 z"
+       id="path876"
+       inkscape:connector-curvature="0"
+       transform="scale(0.26458333)"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\tail_05_blue.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+    <path
+       style="opacity:1;fill:#999999;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-linecap:square;stroke-linejoin:round;stroke-opacity:0.0046729;paint-order:stroke markers fill"
+       d="m 277.6139,391.94655 c -0.37954,-1.83753 -1.4886,-3.36914 -3.04275,-4.20204 -0.98328,-0.52695 -1.37125,-0.58955 -3.07989,-0.49688 l -1.95489,0.10603 2.32618,-2.3359 c 1.27941,-1.28474 2.40165,-2.30722 2.49388,-2.27216 0.19201,0.073 5.71792,7.65616 5.87234,8.05859 0.0559,0.14566 -0.44015,0.79846 -1.10232,1.45068 l -1.20394,1.18584 z"
+       id="path878"
+       inkscape:connector-curvature="0"
+       transform="scale(0.26458333)"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\tail_05_blue.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+    <path
+       style="opacity:1;fill:#00339b;fill-opacity:1;stroke:#000000;stroke-width:0.25;stroke-linecap:square;stroke-linejoin:round;stroke-opacity:0.0046729;paint-order:stroke markers fill"
+       d="m 264.60693,386.93453 c -4.26861,-1.53555 -9.67546,-6.5376 -15.40342,-14.2502 -2.29694,-3.09278 -6.21835,-8.99733 -6.07238,-9.14331 0.056,-0.056 2.00602,1.18349 4.33341,2.75439 11.57034,7.80952 18.0544,14.62698 19.45126,20.45142 0.14339,0.59789 0.0909,0.68633 -0.40238,0.67849 -0.312,-0.005 -1.16992,-0.22582 -1.90649,-0.49079 z"
+       id="path928"
+       inkscape:connector-curvature="0"
+       transform="scale(0.26458333)"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\tail_05_blue.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Layer 3"
+     style="display:inline">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 52.921476,92.736857 7.960103,-7.951261"
+       id="path840"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\tail_05_blue.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+    <g
+       id="g863">
+      <g
+         id="g872">
+        <g
+           id="g878" />
+      </g>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 52.921476,92.736857 71.571183,106.28185 74.426868,103.4794 60.881579,84.785596"
+       id="path863"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\tail_05_blue.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 71.571182,106.28185 -5.798311,5.79831 -3.526541,-12.570806 m 12.148015,3.949336 5.798312,-5.798312 -12.570806,-3.526544"
+       id="path849"
+       inkscape:connector-curvature="0"
+       inkscape:path-effect="#path-effect851"
+       inkscape:original-d="M 71.571182,106.28185 65.772871,112.08016 62.24633,99.509354"
+       sodipodi:nodetypes="ccc"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\tail_05_blue.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 69.073082,104.46752 3.519546,-3.51955"
+       id="path853"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\tail_05_blue.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 63.722286,95.581307 c 3.135724,5.160263 5.377262,7.079103 7.104261,7.132743 m -7.104263,-7.132741 c 5.147676,3.156344 7.057533,5.405541 7.104264,7.132741"
+       id="path855"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:path-effect="#path-effect858"
+       inkscape:original-d="m 63.722286,95.581307 c 3.135724,5.160263 5.377262,7.079103 7.104261,7.132743"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\tail_05_blue.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+    <path
+       sodipodi:type="spiral"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.26458332"
+       id="path860"
+       sodipodi:cx="71.867447"
+       sodipodi:cy="103.92031"
+       sodipodi:expansion="1"
+       sodipodi:revolution="3"
+       sodipodi:radius="1.5114115"
+       sodipodi:argument="-18.265451"
+       sodipodi:t0="0"
+       d="m 71.867447,103.92031 c 0.06322,0.0418 -0.02514,0.10583 -0.06946,0.10507 -0.120088,-0.002 -0.168583,-0.14545 -0.140682,-0.24398 0.04991,-0.17626 0.260179,-0.23862 0.418506,-0.1763 0.232351,0.0915 0.31032,0.37632 0.211908,0.59303 -0.131168,0.28885 -0.492943,0.38272 -0.767556,0.24753 -0.345572,-0.17013 -0.455452,-0.60979 -0.283135,-0.94208 0.2087,-0.40245 0.726765,-0.5284 1.116607,-0.31875 0.459415,0.24706 0.601464,0.84381 0.354361,1.29113 -0.285291,0.51644 -0.960919,0.67462 -1.465657,0.38997 -0.573515,-0.32343 -0.747831,-1.07806 -0.425587,-1.64018 0.36151,-0.63062 1.195226,-0.82109 1.814707,-0.4612 0.687741,0.39954 0.894376,1.31241 0.496813,1.98923"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\tail_05_blue.png"
+       inkscape:export-xdpi="25.27"
+       inkscape:export-ydpi="25.27" />
+  </g>
+</svg>
