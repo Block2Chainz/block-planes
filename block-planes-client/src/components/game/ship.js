@@ -1,5 +1,5 @@
 import Bullet from './Bullet';
-import Particle from './Particle';
+import Particle from './particle';
 import { rotatePoint, randomNumBetween } from './helpers';
 
 // to render a new ship, create a new canvas element, 

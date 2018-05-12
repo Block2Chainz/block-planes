@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="wing_03_orange.svg"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
+   inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\wings_01.png"
+   inkscape:export-xdpi="25.290001"
+   inkscape:export-ydpi="25.290001">
+  <defs
+     id="defs2">
+    <linearGradient
+       id="linearGradient859"
+       inkscape:collect="always">
+      <stop
+         id="stop855"
+         offset="0"
+         style="stop-color:#b87b00;stop-opacity:1" />
+      <stop
+         id="stop857"
+         offset="1"
+         style="stop-color:#ffffff;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient859"
+       id="linearGradient837"
+       x1="213.8998"
+       y1="233.33292"
+       x2="309.35922"
+       y2="328.79233"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient859"
+       id="linearGradient853"
+       x1="213.98819"
+       y1="233.24452"
+       x2="308.0491"
+       y2="327.48221"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.5"
+     inkscape:cx="232.26176"
+     inkscape:cy="878.568"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer2"
+     showgrid="false"
+     inkscape:snap-bbox="true"
+     inkscape:bbox-nodes="true"
+     inkscape:bbox-paths="true"
+     inkscape:snap-bbox-edge-midpoints="true"
+     inkscape:snap-bbox-midpoints="true"
+     inkscape:object-paths="true"
+     inkscape:snap-intersection-paths="true"
+     inkscape:snap-smooth-nodes="true"
+     inkscape:snap-midpoints="true"
+     inkscape:snap-center="true"
+     inkscape:snap-object-midpoints="true"
+     inkscape:object-nodes="true"
+     inkscape:snap-nodes="true"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline">
+    <rect
+       style="fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.26458332;stroke-opacity:0"
+       id="rect815"
+       width="49.999996"
+       height="50"
+       x="48.643055"
+       y="53.784729"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\wing_03_orange.png"
+       inkscape:export-xdpi="25.290001"
+       inkscape:export-ydpi="25.290001" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0"
+       d="m 48.643055,53.78473 c 7.951269,7.951267 1e-6,-2e-6 7.951269,7.951267 l 42.048728,42.048733"
+       id="path819"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="csc"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\wing_03_orange.png"
+       inkscape:export-xdpi="25.290001"
+       inkscape:export-ydpi="25.290001" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0"
+       d="m 52.630382,65.699938 3.987327,-3.987326 m 0,0 3.940552,-3.940551"
+       id="path821"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\wing_03_orange.png"
+       inkscape:export-xdpi="25.290001"
+       inkscape:export-ydpi="25.290001" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0"
+       d="M 52.630382,65.699938 69.679113,82.74867 M 77.673137,74.754645 60.558261,57.772061"
+       id="path825"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\wing_03_orange.png"
+       inkscape:export-xdpi="25.290001"
+       inkscape:export-ydpi="25.290001" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0"
+       d="m 48.643055,53.78473 11.915206,3.987331"
+       id="path837"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\wing_03_orange.png"
+       inkscape:export-xdpi="25.290001"
+       inkscape:export-ydpi="25.290001" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0"
+       d="m 48.643055,53.78473 3.987327,11.915208"
+       id="path841"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\wing_03_orange.png"
+       inkscape:export-xdpi="25.290001"
+       inkscape:export-ydpi="25.290001" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0"
+       d="m 48.643055,103.78473 49.999995,-50"
+       id="path833"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\wing_03_orange.png"
+       inkscape:export-xdpi="25.290001"
+       inkscape:export-ydpi="25.290001" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2"
+     style="display:inline">
+    <path
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 60.558261,57.772061 C 69.115699,66.263353 98.64305,53.78473 98.64305,53.78473 L 77.673136,74.754644"
+       id="path826"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\wing_03_orange.png"
+       inkscape:export-xdpi="25.290001"
+       inkscape:export-ydpi="25.290001" />
+    <path
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 52.630382,65.699938 c 8.524365,8.524366 -3.987327,38.084792 -3.987327,38.084792 L 69.679113,82.748669"
+       id="path824"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\wing_03_orange.png"
+       inkscape:export-xdpi="25.290001"
+       inkscape:export-ydpi="25.290001" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 52.630382,65.699938 69.679113,82.748667"
+       id="path835"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\wing_03_orange.png"
+       inkscape:export-xdpi="25.290001"
+       inkscape:export-ydpi="25.290001" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.26458332px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 77.673136,74.754644 60.558261,57.772061"
+       id="path838"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\wing_03_orange.png"
+       inkscape:export-xdpi="25.290001"
+       inkscape:export-ydpi="25.290001" />
+    <path
+       style="opacity:1;fill:url(#linearGradient837);fill-opacity:1;stroke:#000000;stroke-width:0.35411015;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0;paint-order:stroke markers fill"
+       d="m 186.31799,388.12807 c 0.13658,-0.38891 1.4937,-4.04819 3.01583,-8.13173 11.20568,-30.06245 18.50559,-58.79469 20.89444,-82.23597 0.005,-0.0474 0.01,-0.0947 0.0144,-0.14197 0.65453,-6.47065 0.56539,-19.64275 -0.16694,-24.66679 -0.77409,-5.3106 -1.97388,-10.02972 -3.54436,-13.94106 -0.68243,-1.69962 -1.20268,-3.12833 -1.15611,-3.1749 0.0466,-0.0466 12.88511,12.71648 28.53008,28.36235 l 28.44539,28.44704 -38.14053,38.09507 c -20.9773,20.95229 -38.02879,37.77687 -37.89221,37.38796 z"
+       id="path827"
+       inkscape:connector-curvature="0"
+       transform="scale(0.26458333)"
+       sodipodi:nodetypes="sssscssscss"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\wing_03_orange.png"
+       inkscape:export-xdpi="25.290001"
+       inkscape:export-ydpi="25.290001" />
+    <path
+       style="opacity:1;fill:url(#linearGradient853);fill-opacity:1.0;stroke:#000000;stroke-width:0.35411015;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+       d="m 264.82663,253.01395 c -15.75081,-15.65761 -28.39918,-28.3853 -28.1075,-28.28375 0.29169,0.10154 1.64403,0.66113 3.00521,1.24353 8.8313,3.77858 23.6116,5.11891 39.24442,3.55882 22.93332,-2.28864 53.98603,-10.27764 83.60158,-21.50836 3.58981,-1.36132 6.56643,-2.43563 6.6147,-2.38736 0.0483,0.0483 -16.96911,17.13326 -37.81641,37.96663 l -37.90418,37.87887 z"
+       id="path829"
+       inkscape:connector-curvature="0"
+       transform="scale(0.26458333)"
+       inkscape:export-filename="C:\Users\Nick\Desktop\gameAssets\wing_03_orange.png"
+       inkscape:export-xdpi="25.290001"
+       inkscape:export-ydpi="25.290001" />
+  </g>
+</svg>
