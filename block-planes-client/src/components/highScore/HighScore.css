@@ -1,12 +1,42 @@
-.row {
-    display: flex;
+.leaderboard {
+    text-align: center;
+    padding-left: 40%;
+    color: white;
+    text-align: center;
 }
 
-.column1 {
-    flex: 50%;
-    text-align: right;
+.table-header {
+    color: white !important;
+    text-align: center !important;
+    font-size: 30px;
 }
 
-.column2 {
-    flex: 50%;
+.cell-player {
+    color: white;
+    /* text-align: center !important; */
+    align-self: center;
+    font-size: 24px;
+    border-style: solid !important;
+    border-width: thin;
+    border-top: lightgrey !important;
+    border-left: lightgrey !important;
 }
+
+.cell-player-header {
+    color: white;
+    /* text-align: center !important; */
+    align-self: center;
+    font-size: 24px;
+}
+
+.cell-score {
+    color: white;
+    text-align: center !important;
+    align-self: center;
+    font-size: 24px;
+    border-style: solid !important;
+    border-width: thin;
+    border-top: lightgrey !important;
+    border-right: lightgrey !important;
+}
+

@@ -31,75 +31,36 @@ class HighScores extends Component {
     }
 
     render() {
-        const divStyle = {
-            color: 'white',
-        };
         return (
-            <Table basic='very' celled collapsing>
+            <Table basic='very' celled collapsing className="leaderboard">
             <Table.Header>
+            <Table.Row>
+                <Table.HeaderCell >Weekly High Score Leaders</Table.HeaderCell>
+            </Table.Row>
               <Table.Row>
-                <Table.HeaderCell style={divStyle}>Player</Table.HeaderCell>
-                <Table.HeaderCell style={divStyle}>High Score</Table.HeaderCell>
+                <Table.HeaderCell className="table-header">Player</Table.HeaderCell>
+                <Table.HeaderCell className="table-header">High Score</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
-        
-            <Table.Body>
-              <Table.Row>
-                <Table.Cell>
+          <Table.Body>
+            {this.state.highScores.map((set) => {
+              return (
+              <Table.Row >
+                <Table.Cell className="cell-player">
                   <Header as='h4' image>
-                    <Image src='/assets/images/avatar/small/lena.png' rounded size='mini' />
-                    <Header.Content>
-                        Lena
-                      <Header.Subheader>Human Resources</Header.Subheader>
+                    <Image src='http://static1.squarespace.com/static/522a22cbe4b04681b0bff826/t/581cc65fe4fcb5a68ecd940c/1478280803080/hrhq-avatar.png?format=1000w' rounded size='mini' />
+                    <Header.Content className="cell-player-header">
+                        {set.name}
+                      {/* <Header.Subheader>Cool Player</Header.Subheader> */}
                     </Header.Content>
                   </Header>
                 </Table.Cell>
-                <Table.Cell>
-                    22
+                <Table.Cell className="cell-score">
+                    {set.score}
                 </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  <Header as='h4' image>
-                    <Image src='/assets/images/avatar/small/matthew.png' rounded size='mini' />
-                    <Header.Content>
-                        Matthew
-                      <Header.Subheader>Fabric Design</Header.Subheader>
-                    </Header.Content>
-                  </Header>
-                </Table.Cell>
-                <Table.Cell>
-                    15
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  <Header as='h4' image>
-                    <Image src='/assets/images/avatar/small/lindsay.png' rounded size='mini' />
-                    <Header.Content>
-                        Lindsay
-                      <Header.Subheader>Entertainment</Header.Subheader>
-                    </Header.Content>
-                  </Header>
-                </Table.Cell>
-                <Table.Cell>
-                    12
-                </Table.Cell>
-              </Table.Row>
-              <Table.Row>
-                <Table.Cell>
-                  <Header as='h4' image>
-                    <Image src='/assets/images/avatar/small/mark.png' rounded size='mini' />
-                    <Header.Content>
-                        Mark
-                      <Header.Subheader>Executive</Header.Subheader>
-                    </Header.Content>
-                  </Header>
-                </Table.Cell>
-                <Table.Cell>
-                    11
-                </Table.Cell>
-              </Table.Row>
+              </Table.Row>);
+            })
+            };
             </Table.Body>
           </Table>
         );
