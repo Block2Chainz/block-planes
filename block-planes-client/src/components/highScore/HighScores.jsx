@@ -33,7 +33,8 @@ class HighScores extends Component {
     render() {
         let title;
         let title2;
-        let title3;        
+        let title3;
+        let cellColor;        
         return (
             <Table basic='very' celled collapsing className="leaderboard">
             <Table.Header>
@@ -50,13 +51,14 @@ class HighScores extends Component {
             {this.state.highScores.map((set, index) => {
               (index === (this.state.highScores.length - 1)) ? (title = 'cell-player-bottom') : (title = 'cell-player');
               (index === (this.state.highScores.length - 1)) ? (title2 = 'cell-score-bottom') : (title2 = 'cell-score'); 
-              (index === (this.state.highScores.length - 1)) ? (title3 = 'cell-rank-bottom') : (title3 = 'cell-rank');              
+              (index === (this.state.highScores.length - 1)) ? (title3 = 'cell-rank-bottom') : (title3 = 'cell-rank');
+              (index % 2 === 0) ? (cellColor = 'cell-color-gray') : (cellColor = 'cell-color-black');                                          
               return (
                 <Table.Row >
-                    <Table.Cell className={title3}>
+                    <Table.Cell className={`${title3} ${cellColor}`}>
                     {index +  1}
                   </Table.Cell>
-                <Table.Cell className={title}>
+                <Table.Cell className={`${title} ${cellColor}`}>
                   <Header as='h4' image>
                     <Image src='http://static1.squarespace.com/static/522a22cbe4b04681b0bff826/t/581cc65fe4fcb5a68ecd940c/1478280803080/hrhq-avatar.png?format=1000w' rounded size='mini' />
                     <Header.Content className="cell-player-header">
@@ -65,7 +67,7 @@ class HighScores extends Component {
                     </Header.Content>
                   </Header>
                 </Table.Cell>
-                <Table.Cell className={title2}>
+                <Table.Cell className={`${title2} ${cellColor}`}>
                     {set.score}
                 </Table.Cell>
               </Table.Row>);

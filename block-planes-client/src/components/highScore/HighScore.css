@@ -1,3 +1,7 @@
+Table {
+    border-radius: 15px !important;
+}
+
 .leaderboard {
     text-align: center;
     padding-left: 40%;
@@ -6,35 +10,31 @@
 }
 
 .table-header {
-    color: white !important;
+    color: red !important;
+    font-family: Orbitron;
     text-align: center !important;
     font-size: 30px;
 }
 
 .cell-player {
     color: white;
+    font-family: Orbitron;
     /* text-align: center !important; */
     align-self: center;
     font-size: 24px;
-    border-style: solid !important;
-    border-width: thin !important;
-    border-top: #352d2d !important;
-    border-left: #352d2d !important;
 }
 
 .cell-player-bottom {
     color: white;
+    font-family: Orbitron;
     /* text-align: center !important; */
     align-self: center;
     font-size: 24px;
-    border-style: solid !important;
-    border-width: thin !important;
-    border-left: #352d2d !important;
-    border-bottom: none !important;
 }
 
 .cell-player-header {
     color: white;
+    font-family: Orbitron;
     /* text-align: center !important; */
     align-self: center;
     font-size: 24px;
@@ -42,43 +42,39 @@
 
 .cell-score {
     color: white;
+    font-family: Orbitron;
     text-align: center !important;
     align-self: center;
     font-size: 24px;
-    border-style: solid !important;
-    border-width: thin !important;
-    border-top: #352d2d !important;
-    border-right: #352d2d !important;
 }
 
 .cell-score-bottom {
     color: white;
+    font-family: Orbitron;
     text-align: center !important;
     align-self: center;
     font-size: 24px;
-    border-style: solid !important;
-    border-width: thin !important;
-    border-right: #352d2d !important;
-    border-bottom: none !important;
 }
 
 .cell-rank {
-    color: white;
+    color:white;
+    font-family: Orbitron;
     text-align: center !important;
     font-size: 24px;
-    border-style: solid !important;
-    border-width: thin !important;
-    border-top: #352d2d !important;
-    border-left: #352d2d !important;
 }
 
 .cell-rank-bottom {
     color: white;
+    font-family: Orbitron;
     text-align: center !important;
     font-size: 24px;
-    border-style: solid !important;
-    border-width: thin !important;
-    border-left: #352d2d !important;
-    border-bottom: none !important;
+}
+
+.cell-color-gray {
+    background-color: darkgrey !important;
+}
+
+.cell-color-black {
+    background-color: black !important;
 }
 
