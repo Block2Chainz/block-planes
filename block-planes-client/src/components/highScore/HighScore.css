@@ -22,6 +22,17 @@
     border-left: lightgrey !important;
 }
 
+.cell-player-bottom {
+    color: white;
+    /* text-align: center !important; */
+    align-self: center;
+    font-size: 24px;
+    border-style: solid !important;
+    border-width: thin;
+    border-left: lightgrey !important;
+    border-bottom: none !important;
+}
+
 .cell-player-header {
     color: white;
     /* text-align: center !important; */
@@ -38,5 +49,16 @@
     border-width: thin;
     border-top: lightgrey !important;
     border-right: lightgrey !important;
+}
+
+.cell-score-bottom {
+    color: white;
+    text-align: center !important;
+    align-self: center;
+    font-size: 24px;
+    border-style: solid !important;
+    border-width: thin;
+    border-right: lightgrey !important;
+    border-bottom: none !important;
 }
 

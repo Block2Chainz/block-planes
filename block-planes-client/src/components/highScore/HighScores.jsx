@@ -31,6 +31,8 @@ class HighScores extends Component {
     }
 
     render() {
+        let title;
+        let title2;
         return (
             <Table basic='very' celled collapsing className="leaderboard">
             <Table.Header>
@@ -43,10 +45,12 @@ class HighScores extends Component {
               </Table.Row>
             </Table.Header>
           <Table.Body>
-            {this.state.highScores.map((set) => {
+            {this.state.highScores.map((set, index) => {
+              (index === (this.state.highScores.length - 1)) ? (title = 'cell-player-bottom') : (title = 'cell-player');
+              (index === (this.state.highScores.length - 1)) ? (title2 = 'cell-score-bottom') : (title2 = 'cell-score');              
               return (
               <Table.Row >
-                <Table.Cell className="cell-player">
+                <Table.Cell className={title}>
                   <Header as='h4' image>
                     <Image src='http://static1.squarespace.com/static/522a22cbe4b04681b0bff826/t/581cc65fe4fcb5a68ecd940c/1478280803080/hrhq-avatar.png?format=1000w' rounded size='mini' />
                     <Header.Content className="cell-player-header">
@@ -55,7 +59,7 @@ class HighScores extends Component {
                     </Header.Content>
                   </Header>
                 </Table.Cell>
-                <Table.Cell className="cell-score">
+                <Table.Cell className={title2}>
                     {set.score}
                 </Table.Cell>
               </Table.Row>);
