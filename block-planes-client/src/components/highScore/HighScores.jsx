@@ -36,11 +36,14 @@ class HighScores extends Component {
         let title3;
         let cellColor;        
         return (
-            <Table basic='very' celled collapsing className="leaderboard">
+          <div>
+          <div class="half-width">
+            <div className="table-title">
+              <p >Weekly High Score</p>
+            </div>
+            <div className="center">
+            <Table basic='very' celled collapsing className="hi-leaderboard">
             <Table.Header>
-            <Table.Row>
-                <Table.HeaderCell >Weekly High Score Leaders</Table.HeaderCell>
-            </Table.Row>
               <Table.Row>
                 <Table.HeaderCell className="table-header">Rank</Table.HeaderCell>
                 <Table.HeaderCell className="table-header">Player</Table.HeaderCell>
@@ -75,6 +78,52 @@ class HighScores extends Component {
             };
             </Table.Body>
           </Table>
+          </div>
+        </div>
+        <div class="half-width">
+        <div className="table-title">
+          <p >Weekly Top Score</p>
+        </div>
+        <div className="center">
+        <Table basic='very' celled collapsing className="hi-leaderboard">
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell className="table-header">Rank</Table.HeaderCell>
+            <Table.HeaderCell className="table-header">Player</Table.HeaderCell>
+            <Table.HeaderCell className="table-header">High Score</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+      <Table.Body>
+        {this.state.highScores.map((set, index) => {
+          (index === (this.state.highScores.length - 1)) ? (title = 'cell-player-bottom') : (title = 'cell-player');
+          (index === (this.state.highScores.length - 1)) ? (title2 = 'cell-score-bottom') : (title2 = 'cell-score'); 
+          (index === (this.state.highScores.length - 1)) ? (title3 = 'cell-rank-bottom') : (title3 = 'cell-rank');
+          (index % 2 === 0) ? (cellColor = 'cell-color-gray') : (cellColor = 'cell-color-black');                                          
+          return (
+            <Table.Row >
+                <Table.Cell className={`${title3} ${cellColor}`}>
+                {index +  1}
+              </Table.Cell>
+            <Table.Cell className={`${title} ${cellColor}`}>
+              <Header as='h4' image>
+                <Image src={set.picture} rounded size='mini' />
+                <Header.Content className="cell-player-header">
+                    {set.name}
+                  {/* <Header.Subheader>Cool Player</Header.Subheader> */}
+                </Header.Content>
+              </Header>
+            </Table.Cell>
+            <Table.Cell className={`${title2} ${cellColor}`}>
+                {set.score}
+            </Table.Cell>
+          </Table.Row>);
+        })
+        };
+        </Table.Body>
+      </Table>
+      </div>
+    </div>
+    </div>
         );
     }
 }
