@@ -37,6 +37,10 @@ class HighScores extends Component {
         let cellColor;        
         return (
           <div>
+            <div>
+              <p className="page-title">LEADERBOARD</p>
+            </div>
+          {/* ********FIRST TABLE******** */}
           <div class="half-width">
             <div className="table-title">
               <p >Weekly High Score</p>
@@ -80,6 +84,8 @@ class HighScores extends Component {
           </Table>
           </div>
         </div>
+
+        {/* ********SECOND TABLE******** */}
         <div class="half-width">
         <div className="table-title">
           <p >Weekly Top Score</p>
