@@ -18,7 +18,8 @@ const mapStateToProps = state => {
         profilePicture: state.profilePicture,
         totalPoints: state.totalPoints,
         createdAt: state.createdAt,
-        tokenLogin: state.tokenLogin
+        tokenLogin: state.tokenLogin,
+        userAddress: state.userAddress
     };
 };
 

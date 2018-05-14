@@ -45,28 +45,38 @@ const createAccount = (req, res) => {
 const signIn = (req, res) => {
   db.query('SELECT * FROM users WHERE username = ?', [req.params.username], (err, data) => {
     if (data.length) {
-      bcrypt.compareAsync(req.params.password, data[0].password)
-        .then(response => {
-          if (response) {
-            const user = {
-              id: data[0].id,
-              username: data[0].username,
-              fullName: data[0].full_name,
-              profilePicture: data[0].profile_picture,
-              totalPoints: data[0].total_points,
-              createdAt: data[0].created_at
-            };
-            jwt.sign({ user }, process.env.JWT_SECRET, (err, token) => {
-              res.json({ user, token });
-            });
-          } else {
-            res.send('wrong');
-          }
-        })
-        .catch(err => {
-          res.status(404).send('Request failed');
-        });
+      // makes sure the blockchain address is the same as the one the user is logged into
+      if (data[0].blockchainAddress !== req.params.blockchainAddress) {
+        // sends error otherwise
+        res.send('wrongMetaMask');
+      } else {
+        // compares the password hashes for equality, and sends the JWT if matching
+        bcrypt.compareAsync(req.params.password, data[0].password)
+          .then(response => {
+            if (response) {
+              const user = {
+                id: data[0].id,
+                username: data[0].username,
+                fullName: data[0].full_name,
+                profilePicture: data[0].profile_picture,
+                totalPoints: data[0].total_points,
+                createdAt: data[0].created_at,
+                blockchainAddress: data[0].blockchainAddress
+              };
+              jwt.sign({ user }, process.env.JWT_SECRET, (err, token) => {
+                console.log(token);
+                res.json({ user, token });
+              });
+            } else {
+              res.send('wrong');
+            }
+          })
+          .catch(err => {
+            res.status(404).send('Request failed');
+          });
+      }
     } else {
+      // sends a string for wrong username and/or password if no data returns from the DB
       res.send('wrong');
     }
   });

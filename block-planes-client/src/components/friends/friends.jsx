@@ -9,7 +9,7 @@ import FriendsDropDown from './friendsDropDown.jsx';
 import Web3 from 'web3'
 import TruffleContract from 'truffle-contract'
 import cryptoPlanes from '../../../../block-planes-solidity/BlockPlanes/build/contracts/BlockPlanes.json';
-// import Plane from '../plane/plane.jsx';
+import Hangar from '../hangar/hangar.jsx';
 import axios from 'axios';
 import './friends.css';
 
@@ -30,8 +30,9 @@ class ConnectedFriends extends Component {
       totalPoints: '',
       createdAt: '',
       friendState: '',
-      friends: []
+      friends: [],
     };
+
     this.updateFriendsPage = this.updateFriendsPage.bind(this);
     this.addFriend = this.addFriend.bind(this);
     this.fetchFriends = this.fetchFriends.bind(this);
@@ -121,27 +122,33 @@ class ConnectedFriends extends Component {
     render() {
       if (this.state.friendId) {
         return (
-            <Grid>
-              <Grid.Row >
-          </Grid.Row>
-          <Grid.Row className='searchbar'> <p className='text1' >Select a Friend: </p>
-          <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
-          <p className='text2'>Or Search Users: </p>
-            <SearchUsers className='searchusersbar' updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
-            <div className='addfriendbutton'>
-            <AddFriendButton className='addfriendbutton' friendState={this.state.friendState} addFriend={this.addFriend} />
-            </div>
-          </Grid.Row>
-          <Grid.Row className='borderfriends'>
-          </Grid.Row>
-                  <Grid.Row className='userrow'>
-                  <div className='profilepic' >
-                <Image src={this.state.profilePicture} size='medium' rounded />
-                  <p className='joined'>Joined: {Moment(this.state.createdAt).format('MMMM Do YYYY')}</p>
+          <Grid>
+
+            <Grid.Row >
+            </Grid.Row>
+
+            <Grid.Row className='searchbar'> <p className='text1' >Select a Friend: </p>
+              <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
+              <p className='text2'>Or Search Users: </p>
+              <SearchUsers className='searchusersbar' updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
+              <div className='addfriendbutton'>
+              <AddFriendButton className='addfriendbutton' friendState={this.state.friendState} addFriend={this.addFriend} />
               </div>
+            </Grid.Row>
+
+            <Grid.Row className='borderfriends'>
+            </Grid.Row>
+
+            <Grid.Row className='userrow'>
+              <div className='profilepic' >
+              <Image src={this.state.profilePicture} size='medium' rounded />
+              <p className='joined'>Joined: {Moment(this.state.createdAt).format('MMMM Do YYYY')}</p>
+              </div>
+
               <Grid.Column width={6} >
               <p className='username2'>{this.state.username}</p>
               </Grid.Column >
+
               <Grid.Column width={6} >
               <p className='score2'>Total Score</p>
                 <p className='score2'>{this.state.totalPoints}</p>
@@ -151,19 +158,25 @@ class ConnectedFriends extends Component {
                 </Grid.Row>
                 <p className='hangar'>Hangar</p>
                 <Grid.Row>
+            <Hangar friend={this.state.friendId} />
           </Grid.Row>
           </Grid>
         );
+
       } else {
         return (
+
           <Grid>
-       <Grid.Row >
-          </Grid.Row>
-          <Grid.Row className='searchbar'> <p className='text1' >Select a Friend: </p>
-          <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
-          <p className='text2'>Or Search Users: </p>
-            <SearchUsers className='searchusersbar' updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
-          </Grid.Row>
+
+            <Grid.Row >
+            </Grid.Row>
+
+            <Grid.Row className='searchbar'> <p className='text1' >Select a Friend: </p>
+              <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
+              <p className='text2'>Or Search Users: </p>
+              <SearchUsers className='searchusersbar' updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
+            </Grid.Row>
+
         </Grid>
         );
       }

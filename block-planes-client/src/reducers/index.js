@@ -4,7 +4,8 @@ import {
     STORE_CONTRACT,
     STORE_USER_ADDRESS,
     STORE_USER_PLANES,
-    TOGGLE_CHAT_VISIBILITY
+    TOGGLE_CHAT_VISIBILITY,
+    STORE_PLANES
 } from "../constants/action-types";
 
 const initialState = {
@@ -25,6 +26,7 @@ const rootReducer = (state = initialState, action) => {
                 fullName: action.payload.fullName,
                 totalPoints: action.payload.totalPoints,
                 createdAt: action.payload.createdAt,
+                userAddress: action.payload.blockchainAddress,
                 tokenLogin: action.payload.tokenLogin
             };
         case LOG_OUT: 
@@ -34,6 +36,7 @@ const rootReducer = (state = initialState, action) => {
                 username: null,
                 profilePicture: null,
                 fullName: null,
+                userAddress: null,
                 totalPoints: null,
                 createdAt: null
             };
@@ -53,6 +56,11 @@ const rootReducer = (state = initialState, action) => {
                 contract: action.payload.contract,
                 userAddress: action.payload.userAddress,
                 userPlanes: action.payload.userPlanes,
+            };
+        case STORE_PLANES: 
+            return {
+                ...state,
+                userPlanes: action.payload.planes,
             };
         case TOGGLE_CHAT_VISIBILITY:
             return {
