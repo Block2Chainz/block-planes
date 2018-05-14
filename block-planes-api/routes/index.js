@@ -5,7 +5,6 @@ const upload = require('../controllers/upload');
 const search = require('../controllers/search');
 const friends = require('../controllers/friends');
 
-
 const leaderboard = require('../controllers/leaderboard');
 
 router.post('/newAccount', account.createAccount);
