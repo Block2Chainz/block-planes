@@ -13,14 +13,9 @@ const pullData = new CronJob ( '30 * * * * 1-5', function() {
       for (let i = 0; i < data.length; i++) {
         // console.log('id: ', data[i].id, 'username: ', data[i].username);
         client.zadd('leaderboardHi', data[i].id, data[i].username + '___' + data[i].profile_picture);
-      }
-      console.log('inside cron job: ', data, 'time', Date.now());  
-    });
-
-    db.query('SELECT username, id, profile_picture FROM users', (err, data) => {
-      for (let i = 0; i < data.length; i++) {
         client.zadd('leaderboardTotal', data[i].id, data[i].username + '___' + data[i].profile_picture);
       }
+      console.log('inside cron job: ', data, 'time', Date.now());  
     });
   },
   null,
