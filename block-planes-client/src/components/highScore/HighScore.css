@@ -1,0 +1,113 @@
+.page-title {
+    color: white;
+    font-family: Orbitron;
+    font-size: 50px;
+    text-align: center;
+    padding-top: 50px;
+}
+
+
+
+.half-width {
+    width: 50% !important;
+    float: left;
+}
+
+.center {
+    box-sizing: border-box;    
+    width: 600px !important;
+    margin: auto;
+}
+
+.hi-leaderboard {
+    /* box-sizing: border-box; */
+    float: left;
+    text-align: center;
+    color: white;
+    text-align: center;
+    width: 600px !important;
+    /* position: absolute; */
+    margin: auto;
+    padding: 5px;
+}
+
+.table-title {
+    /* box-sizing: border-box; */
+    padding: 50px;
+    color: white !important;
+    font-family: Orbitron;
+    text-align: center !important;
+    font-size: 30px;
+    width: 800px;
+    margin: auto;
+}
+
+.table-header {
+    color: red !important;
+    font-family: Orbitron;
+    text-align: center !important;
+    font-size: 26px;
+}
+
+.cell-player {
+    color: white;
+    font-family: Orbitron;
+    /* text-align: center !important; */
+    align-self: center;
+    font-size: 22px;
+}
+
+.cell-player-bottom {
+    color: white;
+    font-family: Orbitron;
+    /* text-align: center !important; */
+    align-self: center;
+    font-size: 24px;
+}
+
+.cell-player-header {
+    color: white;
+    font-family: Orbitron;
+    /* text-align: center !important; */
+    align-self: center;
+    font-size: 24px;
+}
+
+.cell-score {
+    color: white;
+    font-family: Orbitron;
+    text-align: center !important;
+    align-self: center;
+    font-size: 24px;
+}
+
+.cell-score-bottom {
+    color: white;
+    font-family: Orbitron;
+    text-align: center !important;
+    align-self: center;
+    font-size: 24px;
+}
+
+.cell-rank {
+    color:white;
+    font-family: Orbitron;
+    text-align: center !important;
+    font-size: 24px;
+}
+
+.cell-rank-bottom {
+    color: white;
+    font-family: Orbitron;
+    text-align: center !important;
+    font-size: 24px;
+}
+
+.cell-color-gray {
+    background-color: darkgrey !important;
+}
+
+.cell-color-black {
+    background-color: black !important;
+}
+

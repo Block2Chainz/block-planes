@@ -9,6 +9,7 @@ import Profile from '../profile/profile.jsx';
 import Friends from '../friends/friends.jsx';
 import Marketplace from '../marketplace/marketplace.jsx';
 import Game from '../game/game.jsx';
+import Leaderboard from '../leaderboard/leaderboard.jsx';
 
 /* <Main 
 userId={this.state.id} 
@@ -37,6 +38,7 @@ const Main = (props) => (
             <Route path='/friends' component={Friends} />
             <Route path='/marketplace' component={Marketplace} />
             <Route path='/game' component={Game} />
+            <Route path='/leaderboard' component={Leaderboard} />
         </Switch>
     </main>
 )
