@@ -4,6 +4,7 @@ const webtoken = require('../controllers/webtoken');
 const upload = require('../controllers/upload');
 const search = require('../controllers/search');
 const friends = require('../controllers/friends');
+const messages = require('../controllers/messages');
 
 const leaderboard = require('../controllers/leaderboard');
 
@@ -20,6 +21,10 @@ router.get('/search', search.fetchUsers);
 router.get('/friendsCheck', friends.checkIfFriends);
 router.post('/friendsAdd', friends.addFriend);
 router.get('/friendsFetch', friends.fetchFriends);
+
+router.get('/messages', messages.fetchMessages);
+router.post('/messages', messages.saveMessage);
+
 
 
 module.exports = router;

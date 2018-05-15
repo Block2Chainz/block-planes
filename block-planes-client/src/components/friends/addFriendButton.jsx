@@ -11,7 +11,6 @@ const mapStateToProps = state => {
 };
 
 function ConnectedAddFriendButton(props) {
-  console.log('fs in button', props.friendState);
     if (props.friendState === 'not friends') {
       return <Button className='ui inverted button' size='small' onClick={props.addFriend} >Add to Friends</Button>;
     } else {

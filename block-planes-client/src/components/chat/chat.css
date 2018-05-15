@@ -1,0 +1,132 @@
+.userrow {
+  padding-top: 1.5%;
+  padding-left: 2%;
+  background-color: #000000;
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid #ffffff;
+  color: #fff;
+  text-align: center;
+  padding-right: 2%;
+}
+
+.profilepic {
+  margin-left: 3%;
+  border: 1px solid #ffffff;
+}
+
+.joined {
+  text-align: center;
+  font-size: 120%;
+}
+
+.username {
+  padding-top: 25%;
+  font-size: 500%;
+  margin-left: 3%;
+  text-align: left;
+}
+
+.points {
+  padding-top: 25%;
+  margin-right: 3%;
+  font-size: 500%;
+  text-align: right;
+}
+
+.searchbar {
+  margin-left: 25%;
+}
+
+.borderfriends {
+  border-bottom: 1px solid #ffffff;
+}
+
+.text1 {
+  color: #fff;
+  font-family: 'Orbitron';
+font-size: 120%;
+margin-right: 3%;
+
+}
+
+.text2 {
+  color: #fff;
+  font-family: 'Orbitron';
+font-size: 120%;
+margin-right: 3%;
+margin-left: 3%;
+
+}
+
+.searchusersbar {
+  padding-right: 20%;
+}
+
+.score2 {
+  padding-top: 3%;
+  font-family: 'Orbitron';
+  margin-left: 40%;
+  text-align: right;
+  font-size: 200%;
+  color: #fff;
+}
+
+.username2 {
+  font-size: 500%;
+  margin-left: 3%;
+  text-align: left;
+  padding-top: 25%;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.inner {
+  width:100%;
+  height:67%;
+  position: absolute;
+        overflow: auto;
+}
+
+.hide {
+  display: none;
+}
+
+.post {
+  color: white;
+  width: 95%;
+  margin: auto;
+}
+
+.author {
+  color: white !important;
+  font-size: 100% !important;
+  margin-right: 1% !important;
+}
+
+.date {
+  color: grey;
+  font-size: 90% !important;
+  margin: auto !important;
+}
+
+.content {
+  color: white;
+}
+
+.text {
+  margin-left: 3.8%;
+  font-size: 110% !important;
+  margin-top: -1% !important;
+  /* margin-bottom: -0.5% !important; */
+}
+
+.searchbar {
+  margin-bottom: -1% !important;
+}

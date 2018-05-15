@@ -103,7 +103,7 @@ class ConnectedProfile extends Component {
                 </Grid.Row>
                 <p className='hangar'>Hangar</p>
                 <Grid.Row>
-                <Plane planes={this.state.planes}/>
+                <Hangar />
           </Grid.Row>
 
         </Grid>

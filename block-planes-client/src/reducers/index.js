@@ -3,7 +3,8 @@ import {
     LOG_OUT,
     STORE_CONTRACT,
     STORE_USER_ADDRESS,
-    STORE_USER_PLANES
+    STORE_USER_PLANES,
+    TOGGLE_CHAT_VISIBILITY
 } from "../constants/action-types";
 
 const initialState = {
@@ -11,6 +12,7 @@ const initialState = {
     userId: null,
     userAddress: '0x0',
     userPlanes: [],
+    chatVisible: false
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -45,12 +47,17 @@ const rootReducer = (state = initialState, action) => {
                 ...state, 
                 userAddress: action.payload,
             };
-        case STORE_USER_PLANES: 
+        case STORE_USER_PLANES:
             return {
                 ...state,
                 contract: action.payload.contract,
                 userAddress: action.payload.userAddress,
                 userPlanes: action.payload.userPlanes,
+            };
+        case TOGGLE_CHAT_VISIBILITY:
+            return {
+                ...state,
+                chatVisible: action.payload
             };
         default:
             return state;
