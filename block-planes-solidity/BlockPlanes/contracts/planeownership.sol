@@ -13,6 +13,7 @@ contract PlaneOwnership is BlockPlanes, ERC721 {
 
     mapping (uint => address) planeApprovals;
     mapping (uint => uint) planesOnSale;
+    mapping (uint => uint) public planesOnSaleCount;
 
     /// emits an event when a transfer occurs
     event Transfer(address from, address to, uint planeId);
@@ -62,6 +63,7 @@ contract PlaneOwnership is BlockPlanes, ERC721 {
     //put plane on sale
     function sellPlane(uint256 _planeId, uint256 price) public onlyOwnerOf(_planeId) {
         planesOnSale[_planeId] = price;
+        planesOnSaleCount[0] = planesOnSaleCount[0] + 1 || 1;
     }
 
     //transfer ownership of plane once money is received
