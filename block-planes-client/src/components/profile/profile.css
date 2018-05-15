@@ -1,4 +1,4 @@
-.userrow {
+.userrowprofile {
   padding-top: 1.5%;
   padding-left: 2%;
   background-color: #000000;
@@ -21,7 +21,8 @@
   font-size: 120%;
 }
 
-.username {
+.usernameprofile {
+  padding-top: 25%;
   font-size: 500%;
   margin-left: 3%;
   text-align: left;
@@ -49,7 +50,7 @@
   border : 0px;
 }
 
-.score {
+.scoreprofile {
   padding-top: 3%;
   font-family: 'Orbitron';
   margin-left: 40%;

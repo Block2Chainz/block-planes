@@ -8,7 +8,7 @@ client.on('connect', function() {
   console.log('connected to redis client at leaderboard');
 });
 
-const pullData = new CronJob ( '* 30 00 * * 1', function() {
+const pullData = new CronJob ( '10 * * * * *', function() {
     queryDb();
   },
   null,
