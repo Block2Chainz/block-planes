@@ -141,6 +141,7 @@ export default class Ship {
         }
 
         // Screen edges
+        // Roll from one edge to the opposite
         if (this.position.x > state.screen.width) this.position.x = 0;
         else if (this.position.x < 0) this.position.x = state.screen.width;
         if (this.position.y > state.screen.height) this.position.y = 0;

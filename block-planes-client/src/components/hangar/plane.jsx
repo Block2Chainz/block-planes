@@ -48,6 +48,7 @@ class Plane extends Component {
     // ship.accelerate();
     // store canvas state on the stack
     context.save();
+    
     if (this.props.selected === 'highlight') {
       context.fillStyle = '#8b0000';
       context.fillRect(0, 0, 150, 150);
@@ -93,7 +94,7 @@ class Plane extends Component {
       cockpitColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'],
       speed: [0.15, 0.3, 0.4, 0.5],
       inertia: [0.99, 0.98, 0.97, 0.96],
-      shootingSpeed: [300, 350, 400, 250, 200, 150, 100],
+      shootingSpeed: [100, 150, 200, 250, 300, 350, 400],
       smokeColor: ['#ff9999', '#b3ff99', '#ffffb3', '#80ffdf', '#99d6ff', '#c299ff', '#ff80df', '#ffffff'],
     }
 
@@ -146,13 +147,13 @@ class Plane extends Component {
       <div onClick={(e) => this.select(e)} width={16} className='plane' >
         <canvas ref='canvas' width={150} height={150} />
         {this.props.selected === 'highlight' ? 
-          <div>
+          
               <p>
                 Speed: {parseInt(JSON.stringify(this.props.plane[1]).slice(6, 7)) % 4} <br/>
                 Inertia: {parseInt(JSON.stringify(this.props.plane[1]).slice(7, 8)) % 3} <br />
                 Shooting Speed: {parseInt(JSON.stringify(this.props.plane[1]).slice(8, 9)) % 7}
               </p>
-          </div> : 
+           : 
           <div></div>
         }
       </div>

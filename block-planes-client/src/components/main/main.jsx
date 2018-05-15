@@ -12,6 +12,7 @@ import Game from '../game/game.jsx';
 import Leaderboard from '../leaderboard/leaderboard.jsx';
 import Chat from '../chat/chat.jsx';
 import GameLanding from '../game/gameLanding.jsx';
+import WaitingRoom from '../game/waitingRoom.jsx';
 
 const Main = (props) => (
     <main>
@@ -45,6 +46,7 @@ const Main = (props) => (
             <Route path='/game' render={() => (sessionStorage.getItem('jwtToken') ?
                 (<GameLanding />)
                 : (<Redirect to={{ pathname: '/login' }} />))} />
+            <Route path='/waitingRoom' component={WaitingRoom} />
         </Switch>
     </main>
 )

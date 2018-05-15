@@ -27,6 +27,8 @@ class ConnectedGameLanding extends Component {
     }
 
     render() {
+        console.log(typeof(this.props.selectedPlane));
+        console.log(this.props.selectedPlane);
         return (
             <Grid>
                 <Grid.Row>
@@ -39,7 +41,7 @@ class ConnectedGameLanding extends Component {
                     </Grid.Column>
                 </Grid.Row>
 
-                { this.props.selectedPlane === null || this.props.selectedPlane === undefined ?
+                { typeof(this.props.selectedPlane) !== 'number' ?
                     <div></div> : 
                     
                     <Grid.Row className='landing'>

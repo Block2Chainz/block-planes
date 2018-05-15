@@ -44,8 +44,8 @@ class ConnectedHangar extends Component {
   }
 
   componentDidMount() {
-    // clear out any plane
-    this.props.deselectPlane();
+    // clear out any selected plane if 
+    // this.props.deselectPlane();
     // checks if a friend ID was passed in as props
     if (this.props.friend) {
       // if so - fetches that user's planes and renders
@@ -105,10 +105,12 @@ class ConnectedHangar extends Component {
   }
 
   highlight(plane) {
-    if (this.props.selectedPlane === plane) {
-      this.props.deselectPlane(plane)
-    } else {
-      this.props.selectPlane(plane)
+    if (!this.props.friend) {
+      if (this.props.selectedPlane === plane) {
+        this.props.deselectPlane(plane)
+      } else {
+        this.props.selectPlane(plane)
+      }
     }
   }
 

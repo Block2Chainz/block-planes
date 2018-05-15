@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon block-planes-api/rest-server/index.js",
     "chatSocket": "nodemon block-planes-api/chat-server/index.js",
-    "gameSocket": "node block-planes-api/socket-server/gameSocket/index.js"
+    "gameSocket": "nodemon block-planes-api/socket-server/gameSocket/index.js"
   },
   "repository": {
     "type": "git",
@@ -32,10 +32,12 @@
     "image-webpack-loader": "^4.2.0",
     "jsonwebtoken": "^8.2.1",
     "jwt-decode": "^2.2.0",
+    "lodash": "^4.17.10",
     "moment": "^2.22.1",
     "mysql": "^2.15.0",
     "node-cron": "^1.2.1",
     "path": "^0.12.7",
+    "randomstring": "^1.1.5",
     "react": "^16.3.2",
     "react-chat-box": "^1.0.2",
     "react-dropzone": "^4.2.9",

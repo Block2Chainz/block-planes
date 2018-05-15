@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './game.css';
-import io from 'socket.io-client/dist/socket.io.js';
+// import io from 'socket.io-client/dist/socket.io.js';
 
 import Ship from './gameObjects/ship';
 import Enemy from './gameObjects/Enemy';
@@ -16,14 +16,13 @@ const KEY = {
     SPACE: 32
 };
 
-
 class Game extends Component {
     constructor() {
         super();
         this.state = {
             screen: {
                 width: window.innerWidth,
-                height: window.innerHeight - 120,
+                height: window.innerHeight - 75,
                 ratio: window.devicePixelRadio || 1
             },
             keys: {
@@ -51,15 +50,7 @@ class Game extends Component {
     }
 
     componentWillMount() {
-        if (this.props.twoPlayer) {
-            this.socket = io('http://localhost:4155', {
-                query: {
-                    // roomId: this.props.location.pathname.slice(1),
-                    // player: this.props.location.state ? 1 : 2
-                }
-            });
-            this.setState({ socket: this.socket });
-        }
+
     }
 
     componentDidMount() {
@@ -88,11 +79,13 @@ class Game extends Component {
     }
 
     handleKeys(value, e) {
+        
         let keys = this.state.keys;
         if (e.keyCode === KEY.LEFT || e.keyCode === KEY.A) keys.left = value;
         if (e.keyCode === KEY.RIGHT || e.keyCode === KEY.D) keys.right = value;
         if (e.keyCode === KEY.UP || e.keyCode === KEY.W) keys.up = value;
         if (e.keyCode === KEY.SPACE) keys.space = value;
+        // this.socket.emit(`p${}_keydown`, { keys })
         this.setState({
             keys
         });
@@ -334,11 +327,10 @@ class Game extends Component {
 
         return (
             <div className="game">
-                PEW PEW PEW PACHOW
-                <span className="controls" >
+                {/* <span className="controls" >
                     Use [A][S][W][D] or [←][↑][↓][→] to MOVE<br />
                     Use [SPACE] to SHOOT
-                </span>
+                </span> */}
                 <canvas ref="canvas"
                     width={this.state.screen.width * this.state.screen.ratio}
                     height={this.state.screen.height * this.state.screen.ratio}

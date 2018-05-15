@@ -53,7 +53,7 @@ class ConnectedFriends extends Component {
         fullName: '',
         totalPoints: user.totalPoints,
         createdAt: user.createdAt
-      }, function() {
+      }, () => {
         this.fetchFriends();
       });
     }
@@ -110,7 +110,7 @@ class ConnectedFriends extends Component {
       .then(response => {
           component.setState({
             friends: response.data
-          }, function() {
+          }, () => {
             this.updateFriendState();
           });
       })

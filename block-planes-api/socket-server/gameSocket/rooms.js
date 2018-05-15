@@ -1,3 +1,16 @@
+// Rooms: {
+
+//     store: Map {
+//         ${roomId}: {
+//             id: ${roomId}
+//         }
+//     }
+
+
+
+// }
+
+
 module.exports = class Rooms {
     constructor(io) {
         this.io = io;
@@ -5,6 +18,7 @@ module.exports = class Rooms {
     }
 
     findOrCreate(roomId) {
+        console.log('creating a room', roomId)
         let room = this.store.get(roomId);
         if (!room) {
             room = new Map();

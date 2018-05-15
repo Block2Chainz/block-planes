@@ -16,7 +16,7 @@ const initialState = {
     userAddress: '0x0',
     userPlanes: [],
     chatVisible: false,
-    selectedPlane: null,
+    selectedPlane: '0000000000000',
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -78,7 +78,7 @@ const rootReducer = (state = initialState, action) => {
         case DESELECT_PLANE: 
             return {
                 ...state, 
-                selectedPlane: null,
+                selectedPlane: 'hjlk',
             }
         default:
             return state;

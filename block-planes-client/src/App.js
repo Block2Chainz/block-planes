@@ -89,6 +89,7 @@ class ConnectedApp extends Component {
                 fullName: response.data.user.fullName,
                 totalPoints: response.data.user.totalPoints,
                 createdAt: response.data.user.createdAt,
+                tokenLogin: this.tokenLogin,
                 blockchainAddress: response.data.user.blockchainAddress,
               });
             } else {
