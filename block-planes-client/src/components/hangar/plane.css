@@ -4,5 +4,9 @@
   text-align: center;
   width: 100%;
   margin-left: 50%;
-  border: 1px solid #ffffff;
+  border: 1px solid white;
+}
+
+.highlight {
+  color: red
 }

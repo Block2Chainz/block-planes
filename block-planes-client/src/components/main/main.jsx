@@ -11,17 +11,7 @@ import Marketplace from '../marketplace/marketplace.jsx';
 import Game from '../game/game.jsx';
 import Leaderboard from '../leaderboard/leaderboard.jsx';
 import Chat from '../chat/chat.jsx';
-
-
-/* <Main 
-userId={this.state.id} 
-
-username={this.state.username} 
-
-tokenLogin={this.tokenLogin} 
-
-logout={this.logout} /> */
-
+import GameLanding from '../game/gameLanding.jsx';
 
 const Main = (props) => (
     <main>
@@ -52,6 +42,9 @@ const Main = (props) => (
             <Route path='/marketplace' component={Marketplace} />
             <Route path='/game' component={Game} />
             <Route path='/leaderboard' component={Leaderboard} />
+            <Route path='/game' render={() => (sessionStorage.getItem('jwtToken') ?
+                (<GameLanding />)
+                : (<Redirect to={{ pathname: '/login' }} />))} />
         </Switch>
     </main>
 )

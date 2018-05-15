@@ -6,6 +6,8 @@ import {
     STORE_USER_PLANES,
     TOGGLE_CHAT_VISIBILITY,
     STORE_PLANES,
+    SELECT_PLANE,
+    DESELECT_PLANE,
 } from "../constants/action-types";
 
 export const logIn = user => ({
@@ -30,4 +32,13 @@ export const storePlanes = (planes) => ({
 export const toggleChatVisibility = (flag) => ({
     type: TOGGLE_CHAT_VISIBILITY,
     payload: flag
+});
+
+export const selectPlane = (plane) => ({
+    type: SELECT_PLANE,
+    payload: plane
+});
+
+export const deselectPlane = () => ({
+    type: DESELECT_PLANE,
 });

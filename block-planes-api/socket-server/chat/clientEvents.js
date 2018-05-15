@@ -1,9 +1,6 @@
-import axios from 'axios';
+const axios = require('axios');
 
-import { success } from './lib/log';
-import {
-    serverInitialState,
-} from './serverEvents';
+const serverInitialState = require('./serverEvents').serverInitialState;
 
 /**
  *
@@ -24,11 +21,6 @@ const clientReady = ({ io, client, room, player }, payload) => {
 
 const clientEmitters = {
     'client.ready': clientReady,
-    'clientOne.update': clientOneUpdate,
-    'clientTwo.update': clientTwoUpdate,
-    'client.disconnect': clientDisconnect,
-    'client.run': clientRun,
-    'client.message': clientMessage,
 };
 
-export default clientEmitters;
+module.exports = clientEmitters;

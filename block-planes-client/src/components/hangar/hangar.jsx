@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Grid } from 'semantic-ui-react';
-import { storeContract, storeUserAddress, storePlanes, logOut } from "../../actions/index";
+import { storePlanes, logOut, selectPlane, deselectPlane } from "../../actions/index";
 import 'bluebird';
 import './hangar.css';
 import Web3 from 'web3';
@@ -11,9 +11,10 @@ import Plane from './plane.jsx';
 
 const mapDispatchToProps = dispatch => {
   return {
-    // storeUserAddress: address => dispatch(storeUserAddress(address)),
     logOut: () => dispatch(logOut()),
     storePlanes: user => dispatch(storePlanes(user)),
+    selectPlane: plane => dispatch(selectPlane(plane)),
+    deselectPlane: () => dispatch(deselectPlane()),
   };
 };
 
@@ -22,6 +23,7 @@ const mapStateToProps = state => {
     contract: state.contract, 
     userPlanes: state.userPlanes, 
     userAddress: state.userAddress,
+    selectedPlane: state.selectedPlane,
   };
 };
 
@@ -42,6 +44,8 @@ class ConnectedHangar extends Component {
   }
 
   componentDidMount() {
+    // clear out any plane
+    this.props.deselectPlane();
     // checks if a friend ID was passed in as props
     if (this.props.friend) {
       // if so - fetches that user's planes and renders
@@ -100,19 +104,41 @@ class ConnectedHangar extends Component {
     }
   }
 
+  highlight(plane) {
+    if (this.props.selectedPlane === plane) {
+      this.props.deselectPlane(plane)
+    } else {
+      this.props.selectPlane(plane)
+    }
+  }
+
   render() {
       return (
+        <div>
+        <br/>
           <Grid>
             {/* Should also generate a generic plane for all users and display it here */}
             <Grid.Row className='planerow'>
               {this.props.userPlanes.map((plane) => {
-                return <Plane
+                if (this.props.selectedPlane === plane[1]) {
+                  return <Plane
+                  selected={'highlight'}
                   key={Math.random()}
-                  plane={plane} />
+                  plane={plane}
+                  highlight={this.highlight.bind(this)} 
+                  />
+                } else {
+                  return <Plane 
+                  selected={'noHighlight'}
+                  key={plane[0]}
+                  plane={plane}
+                  highlight={this.highlight.bind(this)} />
+                }
               })
               }
             </Grid.Row>
           </Grid>
+          </div>
       )
   }
 }

@@ -5,7 +5,9 @@ import {
     STORE_USER_ADDRESS,
     STORE_USER_PLANES,
     TOGGLE_CHAT_VISIBILITY,
-    STORE_PLANES
+    STORE_PLANES,
+    SELECT_PLANE,
+    DESELECT_PLANE,
 } from "../constants/action-types";
 
 const initialState = {
@@ -13,7 +15,8 @@ const initialState = {
     userId: null,
     userAddress: '0x0',
     userPlanes: [],
-    chatVisible: false
+    chatVisible: false,
+    selectedPlane: null,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -67,6 +70,16 @@ const rootReducer = (state = initialState, action) => {
                 ...state,
                 chatVisible: action.payload
             };
+        case SELECT_PLANE: 
+            return {
+                ...state, 
+                selectedPlane: action.payload,
+            };
+        case DESELECT_PLANE: 
+            return {
+                ...state, 
+                selectedPlane: null,
+            }
         default:
             return state;
     }

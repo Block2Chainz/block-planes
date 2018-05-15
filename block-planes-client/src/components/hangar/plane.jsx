@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import { Grid } from 'semantic-ui-react';
 // import { connect } from "react-redux";
-import Ship from '../game/ship.js';
-import Particle from '../game/particle.js';
+import Ship from '../game/gameObjects/ship.js';
+import Particle from '../game/gameObjects/particle.js';
 import './plane.css';
 
 // const mapStateToProps = state => {
 //   return {
-//     contract: state.contract,
+//     se: state.contract,
 //     userPlanes: state.userPlanes,
 //     userAddress: state.userAddress,
 //   };
 // };
 
 class Plane extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       screen: {
         width: window.innerWidth,
@@ -47,8 +47,11 @@ class Plane extends Component {
 
     // ship.accelerate();
     // store canvas state on the stack
-
     context.save();
+    if (this.props.selected === 'highlight') {
+      context.fillStyle = '#8b0000';
+      context.fillRect(0, 0, 150, 150);
+    }
     // resize the field if the window has been resized
     // context.scale(this.state.screen.ratio, this.state.screen.ratio);
     
@@ -69,8 +72,8 @@ class Plane extends Component {
 
     let ship = this.shipCreator(this.props.plane[1].toString(), {
       position: {
-        x: 50,
-        y: 0,
+        x: 75,
+        y: 25,
       },
       create: this.createObject.bind(this),
     });
@@ -133,11 +136,26 @@ class Plane extends Component {
     context.restore();
   }
 
+  select (e) {
+    e.preventDefault();
+    this.props.highlight(this.props.plane[1])
+  }
+
   render() {
     return (
-        <Grid.Column width={16} className='plane' >
-          <canvas ref='canvas' width={150} height={150} />
-        </Grid.Column>
+      <div onClick={(e) => this.select(e)} width={16} className='plane' >
+        <canvas ref='canvas' width={150} height={150} />
+        {this.props.selected === 'highlight' ? 
+          <div>
+              <p>
+                Speed: {parseInt(JSON.stringify(this.props.plane[1]).slice(6, 7)) % 4} <br/>
+                Inertia: {parseInt(JSON.stringify(this.props.plane[1]).slice(7, 8)) % 3} <br />
+                Shooting Speed: {parseInt(JSON.stringify(this.props.plane[1]).slice(8, 9)) % 7}
+              </p>
+          </div> : 
+          <div></div>
+        }
+      </div>
     )
   }  
 }

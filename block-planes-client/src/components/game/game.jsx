@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import './game.css';
 import io from 'socket.io-client/dist/socket.io.js';
 
-import Ship from './ship';
-import Enemy from './Enemy';
-import { randomNumBetweenExcluding } from './helpers'
+import Ship from './gameObjects/ship';
+import Enemy from './gameObjects/Enemy';
+import { randomNumBetweenExcluding } from './gameObjects/helpers'
 
 const KEY = {
     LEFT: 37,

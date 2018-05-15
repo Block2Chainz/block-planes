@@ -1,4 +1,4 @@
-export default class Rooms {
+module.exports = class Rooms {
     constructor(io) {
         this.io = io;
         this.store = new Map();

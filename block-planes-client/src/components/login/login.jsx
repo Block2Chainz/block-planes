@@ -67,7 +67,6 @@ class ConnectedLogin extends Component {
     this.refresh();
 
     let component = this;
-    console.log('user, pass', this.state.username, this.state.password, this.state.blockAccount);
     if (!this.state.username && !this.state.password) {
       alert('Please enter a username and password!');
     } else if (!this.state.username) {
