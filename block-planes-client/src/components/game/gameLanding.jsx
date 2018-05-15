@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
+import { Link, Redirect } from 'react-router';
 import './gameLanding.css';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Button } from 'semantic-ui-react';
 import Friends from '../friends/friends.jsx';
 import Hangar from '../hangar/hangar.jsx';
+import WaitingRoom from './waitingRoom.jsx';
 
 import { connect } from "react-redux";
 import { selectPlane } from "../../actions/index";
 
 const mapStateToProps = state => {
     return {
-        selectedPlane: state.selectedPlane
+        selectedPlane: state.selectedPlane,
     };
 };
 
@@ -22,13 +24,26 @@ const mapDispatchToProps = dispatch => {
 };
 
 class ConnectedGameLanding extends Component {
-    constructor(props) {
-        super(props);
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            selectedFriend: false,
+            play: false
+        }
+    }
+
+    selectFriend(friend) {
+        console.log('setting friend', friend);
+        this.setState({ selectedFriend: friend })
+    }
+
+    joinGame() {
+        // redirect to waiting room component with props friend: this.state.selectedFriend
+        console.log(this.context)
+        this.setState({ play: true });
     }
 
     render() {
-        console.log(typeof(this.props.selectedPlane));
-        console.log(this.props.selectedPlane);
         return (
             <Grid>
                 <Grid.Row>
@@ -51,9 +66,25 @@ class ConnectedGameLanding extends Component {
 
                         <Grid.Column width={8}>
                             <h3>Challenge Friend</h3>
-                            <Friends />
+                            <Friends selectFriend={this.selectFriend.bind(this)}/>
                         </Grid.Column>
                     </Grid.Row>
+                }
+
+                { this.state.selectedFriend ? 
+                    <Grid.Row className='landing'>
+                        <Grid.Column width={8}>
+                            <Button onClick={() => this.joinGame()}>
+                            </Button>
+                        </Grid.Column>
+                    </Grid.Row>    :
+                    <div></div>
+                }
+
+                {
+                    this.state.play ? 
+                    <Redirect to="/waitingRoom" params={{ friend: this.state.selectedFriend }} />:
+                    <div></div>
                 }
             </Grid>
         )

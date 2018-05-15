@@ -44,6 +44,8 @@
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "redis": "^2.8.0",
+    "redis-cli": "^1.0.2",
+    "redis-server": "^1.2.0",
     "redux": "^4.0.0",
     "socket.io": "^2.1.0",
     "truffle-contract": "^3.0.5"

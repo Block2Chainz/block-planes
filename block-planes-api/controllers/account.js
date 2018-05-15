@@ -64,7 +64,6 @@ const signIn = (req, res) => {
                 blockchainAddress: data[0].blockchainAddress
               };
               jwt.sign({ user }, process.env.JWT_SECRET, (err, token) => {
-                console.log(token);
                 res.json({ user, token });
               });
             } else {

@@ -3,12 +3,10 @@ const Promise = require('bluebird');
 
 
 const checkIfFriends = (req, res) => {
-  console.log('checking req from check if friends', req.query);
   db.query('SELECT * FROM friends WHERE id_one = ? AND id_two = ?', [req.query.user, req.query.friend], (err, data) => {
     if (err) {
       console.log(err);
     } else {
-      console.log('data from check if friends', data);
       if (!data.length) {
         res.send('not friends');
       } else {
@@ -31,22 +29,18 @@ const addFriend = (req, res) => {
 
 const fetchFriends = (req, res) => {
   const queryId = req.query.id;
-  console.log('queryID'. queryId);
   db.query('SELECT * FROM friends WHERE id_one = (?) OR id_two = (?)', [queryId, queryId], (err, data) => {
     if (err) {
       console.log(err);
     } else {
       const friends = data.map(user => {
-        console.log('user.idone', user.id_one, 'useridtwo', user.id_two, 'req.query', queryId);
         if (user.id_one + '' === queryId + '') {
           return user.id_two;
         } else {
-          console.log('user id is two', user);
           return user.id_one;
         }
 
       });
-      console.log('friends array in fetchFriends', friends);
       if (!friends.length) {
         res.send([]);
       } else {
@@ -54,7 +48,6 @@ const fetchFriends = (req, res) => {
           if (err) {
             console.log(err);
           } else {
-            console.log('friendData', friendData);
             res.send(
               friendData.map((friend, i) => {
                 return {

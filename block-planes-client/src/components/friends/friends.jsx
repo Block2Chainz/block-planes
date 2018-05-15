@@ -73,9 +73,10 @@ class ConnectedFriends extends Component {
           friendState: 'not friends'
         });
       } else {
-        this.setState({
-          friendState: ''
-        });
+        this.setState({ friendState: '' });
+        if (this.props.selectFriend) {
+          this.props.selectFriend(this.state.friendId);
+        }
       }
     })
     .catch(err => {
