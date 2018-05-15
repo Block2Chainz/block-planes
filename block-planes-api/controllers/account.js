@@ -6,7 +6,6 @@ const webtoken = require('../controllers/webtoken');
 var jwtDecode = require('jwt-decode');
 
 const createAccount = (req, res) => {
-  console.log('inside account controller');
   db.query('SELECT `username` FROM `users` WHERE `username` = ?', [req.body.newUsername], (err, data) => {
     if (err) {
       res.send(err);
@@ -44,11 +43,7 @@ const createAccount = (req, res) => {
 };
 
 const signIn = (req, res) => {
-  if (!req.params.password) {
-    console.log('password empty');
-  }
   db.query('SELECT * FROM users WHERE username = ?', [req.params.username], (err, data) => {
-    console.log('signin data', req.params.password);
     if (data.length) {
       bcrypt.compareAsync(req.params.password, data[0].password)
         .then(response => {
@@ -62,7 +57,6 @@ const signIn = (req, res) => {
               createdAt: data[0].created_at
             };
             jwt.sign({ user }, process.env.JWT_SECRET, (err, token) => {
-              console.log(token);
               res.json({ user, token });
             });
           } else {
@@ -79,12 +73,10 @@ const signIn = (req, res) => {
 }
 
 const updateToken = (req, res) => {
-  console.log('got to update token');
   db.query('SELECT * FROM users WHERE username = ?', [req.query.username], (err, data) => {
     if (err) {
       console.log(err);
     } else {
-      console.log('data', data);
       const user = {
         id: data[0].id,
         username: data[0].username,
@@ -93,7 +85,6 @@ const updateToken = (req, res) => {
         totalPoints: data[0].total_points,
         createdAt: data[0].created_at
       };
-      console.log('user object', user);
       jwt.sign({ user }, process.env.JWT_SECRET, (err, token) => {
         res.json({ user, token });
       });

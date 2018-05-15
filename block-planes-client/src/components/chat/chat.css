@@ -78,3 +78,54 @@ margin-left: 3%;
   text-align: left;
   padding-top: 25%;
 }
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.inner {
+  width:100%;
+  height:67%;
+  position: absolute;
+        overflow: auto;
+}
+
+.hide {
+  display: none;
+}
+
+.post {
+  color: white;
+  width: 95%;
+  margin: auto;
+}
+
+.author {
+  color: white !important;
+  font-size: 100% !important;
+  margin-right: 1% !important;
+}
+
+.date {
+  color: grey;
+  font-size: 90% !important;
+  margin: auto !important;
+}
+
+.content {
+  color: white;
+}
+
+.text {
+  margin-left: 3.8%;
+  font-size: 110% !important;
+  margin-top: -1% !important;
+}
+
+.searchbar {
+  margin-bottom: -1% !important;
+}

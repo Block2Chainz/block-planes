@@ -7,6 +7,8 @@ import { logIn, logOut} from "./actions/index"
 import Main from './components/main/main.jsx';
 import './App.css';
 import jwtDecode from 'jwt-decode';
+import Socketio from 'socket.io-client';
+
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -33,10 +35,15 @@ class ConnectedApp extends Component {
     super();
     this.logout = this.logout.bind(this);
     this.tokenLogin = this.tokenLogin.bind(this);
+    this.socket = Socketio('http://localhost:4225');
   }
 
   componentDidMount() {
     this.tokenLogin();
+    // Can use this for notifications
+    // this.socket.on('notify', function (message) {
+    //   
+    // });
   }
 
   tokenLogin() {

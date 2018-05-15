@@ -82,7 +82,7 @@ class ConnectedProfile extends Component {
           <Grid.Row>
           </Grid.Row>
 
-          <Grid.Row className='userrow'>
+          <Grid.Row className='userrowprofile'>
               <div className='profilepic' >
               <Dropzone className='dropzone' onDrop={this.handleDrop} accept="image/*">
               <Image src={this.props.profilePicture} size='medium' rounded />
@@ -91,18 +91,19 @@ class ConnectedProfile extends Component {
               </div>
 
               <Grid.Column width={6} >
-                  <p className='username'>{this.props.username}</p>
+                  <p className='usernameprofile'>{this.props.username}</p>
               </Grid.Column >
 
               <Grid.Column width={6} >
-                  <p className='points'>{this.props.totalPoints}</p>
-              </Grid.Column>
-          </Grid.Row>
-
-          <Grid.Row>
-          <p className='hangar'>Hangar</p>
-            <Hangar />
-
+              <p className='scoreprofile'>Total Score</p>
+                <p className='scoreprofile'>{this.props.totalPoints}</p>
+                <p className='scoreprofile'>High Score</p>
+                <p className='scoreprofile'>0</p>
+          </Grid.Column>
+                </Grid.Row>
+                <p className='hangar'>Hangar</p>
+                <Grid.Row>
+                <Hangar />
           </Grid.Row>
 
         </Grid>

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import './marketplace.css';
 
+
 class Marketplace extends Component {
-    render() {
+    render(props) {
         return (
             <div className="marketplace">
-                Buy, trade and sell right hurr
+            Marketplace
             </div>
         );
     }

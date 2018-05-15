@@ -55,7 +55,6 @@ class ConnectedLogin extends Component {
   login(event) {
     event.preventDefault();
     let component = this;
-    console.log('user, pass', this.state.username, this.state.password);
     if (!this.state.username && !this.state.password) {
       alert('Please enter a username and password!');
     } else if (!this.state.username) {
@@ -69,7 +68,6 @@ class ConnectedLogin extends Component {
         if (response.data === 'wrong') {
           alert('Wrong username or password!');
         } else {
-          console.log('response.data.token', response.data.token)
           sessionStorage.setItem('jwtToken', response.data.token);
           component.props.tokenLogin();
         }

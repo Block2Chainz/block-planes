@@ -3,15 +3,18 @@ import { Link } from 'react-router-dom';
 import { Image, Form, Grid, Button } from 'semantic-ui-react';
 import { connect } from "react-redux";
 import Moment from 'moment';
-import SearchUsers from './searchUsersBar.jsx';
-import AddFriendButton from './addFriendButton.jsx';
-import FriendsDropDown from './friendsDropDown.jsx';
+import SearchUsers from './searchChatBar.jsx';
+import FriendsDropDown from './chatDropDown.jsx';
 import Web3 from 'web3'
 import TruffleContract from 'truffle-contract'
 import cryptoPlanes from '../../../../block-planes-solidity/BlockPlanes/build/contracts/BlockPlanes.json';
 // import Plane from '../plane/plane.jsx';
 import axios from 'axios';
-import './friends.css';
+import MessageInput from './messageInput.jsx';
+import MessageList from './messageList.jsx';
+import { animateScroll } from "react-scroll";
+import Socketio from 'socket.io-client';
+import './chat.css';
 
 const mapStateToProps = state => {
   return {
@@ -29,17 +32,36 @@ class ConnectedFriends extends Component {
       fullName: '',
       totalPoints: '',
       createdAt: '',
-      friendState: '',
-      friends: []
+      friends: [],
+      messages: []
     };
     this.updateFriendsPage = this.updateFriendsPage.bind(this);
-    this.addFriend = this.addFriend.bind(this);
     this.fetchFriends = this.fetchFriends.bind(this);
+    this.fetchMessages = this.fetchMessages.bind(this);
+    this.socket = Socketio('http://localhost:4225');
   }
 
   componentDidMount() {
+    let component = this;
     this.updateFriendsPage();
+    this.scrollToBottom();
+    this.socket.on('returnmessage', function (message) {
+      if ((component.props.userId === message.userId) || (component.props.userId === message.friendId)) {
+        component.fetchMessages();
+      }
+    });
   }
+
+  componentDidUpdate() {
+    this.scrollToBottom();
+  }
+
+scrollToBottom() {
+  var someElement = document.querySelector('.inner');
+  if (someElement) {
+    someElement.scrollTop = someElement.scrollHeight;
+  }
+}
 
   updateFriendsPage(user) {
     if (!user) {
@@ -58,46 +80,6 @@ class ConnectedFriends extends Component {
     }
   }
 
-  updateFriendState() {
-    axios
-    .get('/friendsCheck', {
-      params: {
-        user: this.props.userId,
-        friend: this.state.friendId
-      }
-    })
-    .then(response => {
-      if (response.data === 'not friends') {
-        this.setState({
-          friendState: 'not friends'
-        });
-      } else {
-        this.setState({
-          friendState: ''
-        });
-      }
-    })
-    .catch(err => {
-      console.log('Error getting session id', err);
-    });
-  }
-
-  addFriend() {
-    axios
-      .post('/friendsAdd', {
-        userId: this.props.userId,
-        friendId: this.state.friendId
-      })
-      .then(response => {
-        this.setState({
-          friendState: ''
-        });
-      })
-      .catch(err => {
-        console.log('Error from handleCreateAccount', err);
-      });
-  }
-
   fetchFriends() {
     let component = this;
     axios
@@ -110,7 +92,28 @@ class ConnectedFriends extends Component {
           component.setState({
             friends: response.data
           }, function() {
-            this.updateFriendState();
+            this.fetchMessages();
+          });
+      })
+      .catch(err => {
+        console.log('Error from login', err);
+      });
+  }
+
+  fetchMessages() {
+    let component = this;
+    axios
+      .get('/messages', {
+        params: {
+          id: component.props.userId,
+          friendId: component.state.friendId
+        }
+        })
+      .then(response => {
+          component.setState({
+            messages: response.data
+          }, function() {
+            component.scrollToBottom();
           });
       })
       .catch(err => {
@@ -128,30 +131,17 @@ class ConnectedFriends extends Component {
           <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
           <p className='text2'>Or Search Users: </p>
             <SearchUsers className='searchusersbar' updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
-            <div className='addfriendbutton'>
-            <AddFriendButton className='addfriendbutton' friendState={this.state.friendState} addFriend={this.addFriend} />
-            </div>
           </Grid.Row>
           <Grid.Row className='borderfriends'>
           </Grid.Row>
-                  <Grid.Row className='userrow'>
-                  <div className='profilepic' >
-                <Image src={this.state.profilePicture} size='medium' rounded />
-                  <p className='joined'>Joined: {Moment(this.state.createdAt).format('MMMM Do YYYY')}</p>
-              </div>
-              <Grid.Column width={6} >
-              <p className='username2'>{this.state.username}</p>
-              </Grid.Column >
-              <Grid.Column width={6} >
-              <p className='score2'>Total Score</p>
-                <p className='score2'>{this.state.totalPoints}</p>
-                <p className='score2'>High Score</p>
-                <p className='score2'>0</p>
-          </Grid.Column>
-                </Grid.Row>
-                <p className='hangar'>Hangar</p>
-                <Grid.Row>
-          </Grid.Row>
+          <div className='chatview'>
+          <div id='totes' className='inner'>
+                 <MessageList id={this.props.userId} messages={this.state.messages} />
+                 </div>
+                 </div>
+                 <div className='footer'>
+                 <MessageInput className='footer' friendId={this.state.friendId} username={this.state.username} userId={this.props.userId} fetchMessages={this.fetchMessages}/>
+                 </div>
           </Grid>
         );
       } else {
