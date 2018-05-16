@@ -16,7 +16,7 @@ const initialState = {
     userAddress: '0x0',
     userPlanes: [],
     chatVisible: false,
-    selectedPlane: '0000000000000',
+    selectedPlane: null,
 };
 
 const rootReducer = (state = initialState, action) => {

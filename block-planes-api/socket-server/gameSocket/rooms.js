@@ -1,9 +1,14 @@
 // Rooms: {
 
 //     store: Map {
-//         ${roomId}: {
-//             id: ${roomId}
-//         }
+//         
+//          ${roomId}: {
+//              
+//              id: ${roomId},
+//              p1_ship: ${ p1_ship attr string }
+//              p2_ship: ${ p2_ship attr string }
+//                      
+//          }
 //     }
 
 

@@ -24,8 +24,8 @@ const mapDispatchToProps = dispatch => {
 };
 
 class ConnectedGameLanding extends Component {
-    constructor(props, context) {
-        super(props, context);
+    constructor(props) {
+        super(props);
         this.state = {
             selectedFriend: false,
             play: false
@@ -33,13 +33,11 @@ class ConnectedGameLanding extends Component {
     }
 
     selectFriend(friend) {
-        console.log('setting friend', friend);
         this.setState({ selectedFriend: friend })
     }
 
     joinGame() {
         // redirect to waiting room component with props friend: this.state.selectedFriend
-        console.log(this.context)
         this.setState({ play: true });
     }
 

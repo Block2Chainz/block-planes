@@ -28,6 +28,7 @@ class ConnectedWaitingRoom extends Component {
     }
 
     componentWillMount() {
+        console.log('this.props.history: ', this.props.history);
         // checks if a room exists in props already
         let roomId;
         if (!this.props.roomId) {
@@ -36,7 +37,7 @@ class ConnectedWaitingRoom extends Component {
             roomId = randomstring.generate();
         }
 
-        let player = !this.props.roomId ? 1: 2;
+        let player = !this.props.roomId ? 1 : 2;
 
         const socket = io.connect('http://localhost:2345', {
             query: {
@@ -52,7 +53,6 @@ class ConnectedWaitingRoom extends Component {
 
     componentDidMount() {
         const { socket } = this.state;
-
         
         socket.on('p1_ready', ({ ship }) => {
             if (this.state.player === 2) {
@@ -92,11 +92,15 @@ class ConnectedWaitingRoom extends Component {
                         <div></div>
                 }
 
-            <Game   inGame={this.state.oppReady && this.state.youReady} 
-                    socket={this.state.socket} 
-                    player={this.state.player}
-                    p1_ship={this.state.p1_ship} 
-                    p2_ship={this.state.p2_ship} />
+                {
+                    this.state.youReady && this.state.p1_ship && this.props.ship? 
+                    <Game   socket={this.state.socket}
+                            player={this.state.player}
+                            p1_ship={this.state.p1_ship} 
+                            p2_ship={this.state.p2_ship} />
+                    :
+                    <div></div>
+                }
             </div>
         )
     }

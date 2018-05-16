@@ -1,7 +1,6 @@
 import Bullet from './Bullet';
 import Particle from './particle';
 import { rotatePoint, randomNumBetween } from './helpers';
-import shipRenderer from './shipRenderer.js';
 
 // to render a new ship, create a new canvas element, 
 // make sure that there is a canvas element saved in the parent state as 'context', 
@@ -30,34 +29,19 @@ export default class Ship {
         this.create = args.create;
         this.onDie = args.onDie || (() => console.log('cannot kill'));
         
-        let {
-            bodyColor, 
-            wingShape, 
-            wingColor, 
-            tailShape, 
-            tailColor, 
-            cockpitShape, 
-            cockpitColor, 
-            speed, 
-            inertia, 
-            shootingSpeed, 
-            smokeColor, 
-            ingame
-        } = shipRenderer(args.attr);
-        
         // ship characteristics
-        this.bodyColor = bodyColor;
-        this.wingShape = wingShape;
-        this.wingColor = wingColor;
-        this.tailShape = tailShape;
-        this.tailColor = tailColor;
-        this.cockpitShape = cockpitShape;
-        this.cockpitColor = cockpitColor;
-        this.speed = speed || 0.15; // modify in arguments when called
-        this.inertia = inertia || 0.99; // modify in arguments when called
-        this.shootingSpeed = shootingSpeed || 300; // lower is better
-        this.smokeColor = smokeColor || '#ffffff';
-        this.ingame = ingame;
+        this.bodyColor = args.bodyColor;
+        this.wingShape = args.wingShape;
+        this.wingColor = args.wingColor;
+        this.tailShape = args.tailShape;
+        this.tailColor = args.tailColor;
+        this.cockpitShape = args.cockpitShape;
+        this.cockpitColor = args.cockpitColor;
+        this.speed = args.speed || 0.15; // modify in arguments when called
+        this.inertia = args.inertia || 0.99; // modify in arguments when called
+        this.shootingSpeed = args.shootingSpeed || 300; // lower is better
+        this.smokeColor = args.smokeColor || '#ffffff';
+        this.ingame = args.ingame;
     }
 
     destroy() {
@@ -210,3 +194,39 @@ export default class Ship {
 
     }
 }
+
+// Incorporate this logic into the ship object
+/*
+        let attrPossibilities = {
+            wingShape: ['01', '02', '03', '04', '05'],
+            wingColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'],
+
+            tailShape: ['01', '02', '03', '04', '05'],
+            tailColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'],
+
+            cockpitShape: ['01', '02', '03', '04', '05'],
+            cockpitColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'],
+
+            speed: [0.15, 0.3, 0.4, 0.5],
+            inertia: [0.99, 0.98, 0.97, 0.96],
+            shootingSpeed: [300, 350, 400, 250, 200, 150, 100],
+            smokeColor: ['#ff9999', '#b3ff99', '#ffffb3', '#80ffdf', '#99d6ff', '#c299ff', '#ff80df', '#ffffff'],
+        }
+
+        let shipArgs = {
+            wingShape: attrPossibilities.wingShape[attrString[0] % 5],
+            wingColor: attrPossibilities.wingColor[attrString[1] % 8],
+            tailShape: attrPossibilities.tailShape[attrString[2] % 5],
+            tailColor: attrPossibilities.tailColor[attrString[3] % 8],
+            cockpitShape: attrPossibilities.cockpitShape[attrString[4] % 5],
+            cockpitColor: attrPossibilities.cockpitColor[attrString[5] % 8],
+            speed: attrPossibilities.speed[attrString[6] % 4],
+            inertia: attrPossibilities.inertia[attrString[7] % 3],
+            shootingSpeed: attrPossibilities.shootingSpeed[attrString[8] % 7],
+            smokeColor: attrPossibilities.smokeColor[attrString[9] % 8],
+        };
+        console.log('speed: ', shipArgs.speed, 'inertia: ', shipArgs.inertia);
+        return new Ship(Object.assign({}, shipArgs, otherAttr));
+        
+        
+*/

@@ -17,8 +17,8 @@ const KEY = {
 };
 
 class Game extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             screen: {
                 width: window.innerWidth,
@@ -37,6 +37,8 @@ class Game extends Component {
         this.enemies = [];
         this.bullets = [];
         this.particles = [];
+        this.string1 = this.props.p1_ship;
+        this.string2 = this.props.p1_ship;
     }
 
     handleResize(value, e) {
@@ -50,7 +52,7 @@ class Game extends Component {
     }
 
     componentWillMount() {
-
+        console.log(this.props.socket)
     }
 
     componentDidMount() {
@@ -65,7 +67,16 @@ class Game extends Component {
         const context = this.refs.canvas.getContext('2d');
         // set variable 'context' to the canvas and save to state
         this.setState({ context: context });
+        
+        // set up a listener for updates
+        this.props.socket.on('update', (payload) => {
+            console.log('heard socket update', payload);
+            this.update(payload);
+        });
+        
+        // start the game
         this.startGame();
+        
         // function on the global window, calls the update function and then 
         // animates the next frame
         requestAnimationFrame(() => { this.update() });
@@ -79,26 +90,26 @@ class Game extends Component {
     }
 
     handleKeys(value, e) {
-        
         let keys = this.state.keys;
         if (e.keyCode === KEY.LEFT || e.keyCode === KEY.A) keys.left = value;
         if (e.keyCode === KEY.RIGHT || e.keyCode === KEY.D) keys.right = value;
         if (e.keyCode === KEY.UP || e.keyCode === KEY.W) keys.up = value;
         if (e.keyCode === KEY.SPACE) keys.space = value;
-        // this.socket.emit(`p${}_keydown`, { keys })
         this.setState({
             keys
         });
+        this.props.socket.emit('keys', { player: this.props.player, keys })
     }
 
-    update() {
+    update(payload) {
+        if (payload) {
+            console.log('payload heard at update');
+        }
         // for updating the new positions of everything
         // pull up the canvas
-            // this.state.context = this.refs.canvas.getContext('2d')
         const context = this.state.context;
         const keys = this.state.keys;
         const ship = this.ship[0];
-        // const partnerShip = this.ship[1];
 
         // store canvas state on the stack
         context.save();
@@ -112,15 +123,15 @@ class Game extends Component {
         context.globalAlpha = 1;
 
         // repopulate with new enemies if there are none left
-        if (!this.enemies.length) {
-            let count = this.state.enemyCount + 1;
-            this.setState({ enemyCount: count });
-            this.generateEnemies(count)
-        }
+        // if (!this.enemies.length) {
+        //     let count = this.state.enemyCount + 1;
+        //     this.setState({ enemyCount: count });
+        //     this.generateEnemies(count)
+        // }
 
         // check for collisions with enemies (either bullets or your ship)
-        this.checkCollisionsWith(this.bullets, this.enemies);
-        this.checkCollisionsWith(this.ship, this.enemies);
+        // this.checkCollisionsWith(this.bullets, this.enemies);
+        // this.checkCollisionsWith(this.ship, this.enemies);
 
         // remove or render
         this.updateObjects(this.particles, 'particles');
@@ -131,6 +142,15 @@ class Game extends Component {
 
         // pop the top state off the stack, restore context
         context.restore();
+
+        // update the socket
+        // this.props.socket.emit(`update`, {
+        //     player: this.props.player,
+        //     ships: this.ship,
+        //     enemies: this.enemies,
+        //     bullets: this.bullets,
+        //     particles: this.particles,  
+        // });
 
         // set up next frame 
         requestAnimationFrame(() => {this.update()});
@@ -156,120 +176,114 @@ class Game extends Component {
             currentScore: 0,
         });
 
-        // make your ship
-        // create a ship object
-        let randomAttrString =  '' + Math.floor(Math.random() * 10) + 
-            '' + Math.floor(Math.random() * 10) + 
-            '' + Math.floor(Math.random() * 10) + 
-            '' + Math.floor(Math.random() * 10) + 
-            '' + Math.floor(Math.random() * 10) + 
-            '' + Math.floor(Math.random() * 10) + 
-            '' + Math.floor(Math.random() * 10) + 
-            '' + Math.floor(Math.random() * 10) + 
-            '' + Math.floor(Math.random() * 10) + 
-            '' + Math.floor(Math.random() * 10) + ''; 
-
-        let ship = this.shipCreator(randomAttrString, { 
+        let ship1 = new Ship({
+            attr: this.string1, 
             position: {
                 x: this.state.screen.width / 2,
                 y: this.state.screen.height / 2,
-            },
-            create: this.createObject.bind(this),
-            onDie: this.gameOver.bind(this),
-        });
+            }, 
+            create: this.createObject.bind(this), 
+            onDie: this.gameOver.bind(this)
+        })
 
-        // let ship = new Ship({
+        // let ship1 = this.shipCreator(this.string1, { 
         //     position: {
-        //         x: this.state.screen.width/2,
-        //         y: this.state.screen.height/2,
+        //         x: this.state.screen.width / 2,
+        //         y: this.state.screen.height / 2,
         //     },
         //     create: this.createObject.bind(this),
         //     onDie: this.gameOver.bind(this),
         // });
 
-        // let partnerShip = new Ship({
+        // let ship2 = this.shipCreator(this.string1, {
         //     position: {
-        //         x: this.state.screen.width/2,
-        //         y: this.state.screen.height/2,
-        //     }, 
+        //         x: this.state.screen.width / 2,
+        //         y: this.state.screen.height / 2,
+        //     },
         //     create: this.createObject.bind(this),
         //     onDie: this.gameOver.bind(this),
         // });
 
+        // send the user's ship to the socket
+        this.props.socket.emit(`ship${this.props.player}`, {ship1: ship1})
+
         // save the ship object via the create object method
-        this.createObject(ship, 'ship');
-        // this.createObject(partnerShip, 'partnerShip');
+        // this.createObject(ship1, 'ship');
+        // this.createObject(ship2, 'ship');
 
         // make the enemies
-        this.enemies = [];
-        this.generateEnemies(this.state.enemyCount);
+        // this.enemies = [];
+        // this.generateEnemies(this.state.enemyCount);
     }
 
-    shipCreator(attrString, otherAttr) {
-        let attrPossibilities = {
-            bodyColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'],
-            wingShape: ['01', '02', '03', '04', '05'], 
-            wingColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'], 
-            tailShape: ['01', '02', '03', '04', '05'], 
-            tailColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'], 
-            cockpitShape: ['01', '02', '03', '04', '05'], 
-            cockpitColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'], 
-            speed: [0.8, 1, 1.5, 2], // how much movement it travels after each frame with a keydown,  
-            inertia: [.88, .93, .97, .99], // how quickly it slows down after releasing a key: 0.5 = immediately, 1 = never; 
-            shootingSpeed: [300, 35, 100, 250, 200, 75, 150], 
-            smokeColor: ['#ff9999', '#b3ff99', '#ffffb3', '#80ffdf', '#99d6ff', '#c299ff', '#ff80df', '#ffffff'], 
-        }
+    // shipCreator(attrString, otherAttr) {
+    //     console.log('attrstring is ', attrString);
+    //     attrString = JSON.stringify(attrString);
+    //     let attrPossibilities = {
+    //         bodyColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'],
+    //         wingShape: ['01', '02', '03', '04', '05'], 
+    //         wingColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'], 
+    //         tailShape: ['01', '02', '03', '04', '05'], 
+    //         tailColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'], 
+    //         cockpitShape: ['01', '02', '03', '04', '05'], 
+    //         cockpitColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'], 
+    //         speed: [0.8, 1, 1.5, 2], // how much movement it travels after each frame with a keydown,  
+    //         inertia: [.88, .93, .97, .99], // how quickly it slows down after releasing a key: 0.5 = immediately, 1 = never; 
+    //         shootingSpeed: [300, 35, 100, 250, 200, 75, 150], 
+    //         smokeColor: ['#ff9999', '#b3ff99', '#ffffb3', '#80ffdf', '#99d6ff', '#c299ff', '#ff80df', '#ffffff'], 
+    //     }
 
-        let shipArgs = {
-            bodyColor: attrPossibilities.bodyColor[attrString[0] % 8],
-            wingShape: attrPossibilities.wingShape[attrString[0] % 5],
-            wingColor: attrPossibilities.wingColor[attrString[1] % 8], 
-            tailShape: attrPossibilities.tailShape[attrString[2] % 5],
-            tailColor: attrPossibilities.tailColor[attrString[3] % 8],
-            cockpitShape: attrPossibilities.cockpitShape[attrString[4] % 5],
-            cockpitColor: attrPossibilities.cockpitColor[attrString[5] % 8],
-            speed: attrPossibilities.speed[attrString[6] % 4],
-            inertia: attrPossibilities.inertia[attrString[7] % 3],
-            shootingSpeed: attrPossibilities.shootingSpeed[attrString[8] % 7],
-            smokeColor: attrPossibilities.smokeColor[attrString[9] % 8],
-            ingame: true,
-        };
-        return new Ship(Object.assign({}, shipArgs, otherAttr));
-    }
+    //     let shipArgs = {
+    //         bodyColor: attrPossibilities.bodyColor[parseInt(attrString[0]) % 8],
+    //         wingShape: attrPossibilities.wingShape[parseInt(attrString[1]) % 5],
+    //         wingColor: attrPossibilities.wingColor[parseInt(attrString[2]) % 8], 
+    //         tailShape: attrPossibilities.tailShape[parseInt(attrString[3]) % 5],
+    //         tailColor: attrPossibilities.tailColor[parseInt(attrString[4]) % 8],
+    //         cockpitShape: attrPossibilities.cockpitShape[parseInt(attrString[5]) % 5],
+    //         cockpitColor: attrPossibilities.cockpitColor[parseInt(attrString[6]) % 8],
+    //         speed: attrPossibilities.speed[parseInt(attrString[7]) % 4],
+    //         inertia: attrPossibilities.inertia[parseInt(attrString[8]) % 3],
+    //         shootingSpeed: attrPossibilities.shootingSpeed[parseInt(attrString[9]) % 7],
+    //         smokeColor: attrPossibilities.smokeColor[parseInt(attrString[10]) % 8],
+    //         ingame: true,
+    //     };
+    //     return new Ship(Object.assign({}, shipArgs, otherAttr));
+    // }
 
-    createObject(item, group) {
-        this[group].push(item);
-    }
+    // createObject(item, group) {
+    //     this[group].push(item);
+    // }
 
-    generateEnemies(number) {
-        // generate a new enemy, quantity = the number passed into the function
-        let ship = this.ship[0];
-        for (let i = 0; i < number; i++) {
-            let enemy = new Enemy({
-                // size: 80, 
-                // give it a random position on the screen
-                position: {
-                    x: randomNumBetweenExcluding(0, this.state.screen.width, ship.position.x-60, ship.position.x+60), 
-                    y: randomNumBetweenExcluding(0, this.state.screen.height, ship.position.y-60, ship.position.y+60),
-                }, 
-                create: this.createObject.bind(this),
-                addScore: this.addScore.bind(this),
-            });
-            this.createObject(enemy, 'enemies')
-        }
-    }
+    // generateEnemies(number) {
+    //     // generate a new enemy, quantity = the number passed into the function
+    //     let ship = this.ship[0];
+    //     for (let i = 0; i < number; i++) {
+    //         let enemy = new Enemy({
+    //             // size: 80, 
+    //             // give it a random position on the screen
+    //             position: {
+    //                 x: randomNumBetweenExcluding(0, this.state.screen.width, ship.position.x-60, ship.position.x+60), 
+    //                 y: randomNumBetweenExcluding(0, this.state.screen.height, ship.position.y-60, ship.position.y+60),
+    //             }, 
+    //             create: this.createObject.bind(this),
+    //             addScore: this.addScore.bind(this),
+    //         });
+    //         this.createObject(enemy, 'enemies')
+    //     }
+    // }
 
     updateObjects(items, group) {
         // go through each item of the specified group and delete them or call their render functions
         let index = 0;
         for (let item of items) {
-            if (item.delete) {
-                // delete the object from the field
-                this[group].splice(index, 1);
-            } else {
+            // if (item.delete) {
+            //     // delete the object from the field
+            //     this[group].splice(index, 1);
+            // } else 
+            
                 // else call the render method attached to each object
                 items[index].render(this.state);
-            }
+        // }
             index++;
         }
     }

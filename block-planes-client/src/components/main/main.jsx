@@ -10,6 +10,7 @@ import Friends from '../friends/friends.jsx';
 import Marketplace from '../marketplace/marketplace.jsx';
 import Leaderboard from '../leaderboard/leaderboard.jsx';
 import Chat from '../chat/chat.jsx';
+import Game from '../game/game.jsx';
 import GameLanding from '../game/gameLanding.jsx';
 import WaitingRoom from '../game/waitingRoom.jsx';
 
