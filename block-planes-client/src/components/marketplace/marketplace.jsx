@@ -92,16 +92,21 @@ class Marketplace extends Component {
         const indexOfFirstPlane = indexOfLastPlane - planesPerPage;
         const currentPlanes = yourPlanes.slice(indexOfFirstPlane, indexOfLastPlane);
         
-        //calculating number of pages based on number of items per page
-        for (let i = 1; i <= Math.ceil(yourPlanes.length / planesPerPage); i++) {
-          pageNumbers.push(i);
-        }
-
         //render planes for current page
         const renderPlanes = currentPlanes.map((plane, index) => {
           return <Plane key={Math.random()} plane={plane} />
         });
 
+        //calculating number of pages based on number of items per page
+        for (let i = 1; i <= Math.ceil(yourPlanes.length / planesPerPage); i++) {
+          pageNumbers.push(i);
+        }
+
+
+        //render page numbers
+        const renderPageNumber = pageNumbers.map(number => {
+          return <li key={number} id={number} >{number}</li> 
+        });
 
         return (
             <div className="marketplace">
@@ -109,7 +114,9 @@ class Marketplace extends Component {
             Marketplace
 =======
                 Buy, trade and sell right hurr  
-
+              <div>
+                {renderPageNumber}
+              </div>
               <div>
                 {renderPlanes}
               </div>
