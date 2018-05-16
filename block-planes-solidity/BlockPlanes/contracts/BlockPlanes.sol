@@ -75,8 +75,8 @@ contract BlockPlanes is Ownable {
         return result;
     }
 
-    /// withdraw funds to the owner's account
-    function withdraw() external onlyOwner {
-        owner.transfer(this.balance);
-    }
+    // /// withdraw funds to the owner's account
+    // function withdraw() external onlyOwner {
+    //     owner.transfer(this.balance);
+    // }
 }

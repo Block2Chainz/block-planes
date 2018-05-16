@@ -4,3 +4,11 @@
   text-align: center;
   width: 100%;
 }
+
+.planes-to-buy {
+  width: 50% !important;
+}
+
+.planes-to-sell {
+  width: 50% !important;
+}

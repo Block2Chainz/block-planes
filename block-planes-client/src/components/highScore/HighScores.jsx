@@ -57,7 +57,7 @@ class HighScores extends Component {
               <p className="page-title">LEADERBOARD</p>
             </div>
           {/* ********HIGH SCORE TABLE******** */}
-          <div class="half-width">
+          <div className="half-width">
             <div className="table-title">
               <p >Weekly High Score</p>
             </div>
