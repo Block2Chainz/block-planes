@@ -9,7 +9,7 @@ const messages = require('../controllers/messages');
 const leaderboard = require('../controllers/leaderboard');
 
 router.post('/newAccount', account.createAccount);
-router.get('/signIn/:username/:password', account.signIn);
+router.get('/signIn/:username/:password/:blockchainAddress', account.signIn);
 router.get('/updateToken', account.updateToken);
 router.get('/signInToken', account.signInToken);
 

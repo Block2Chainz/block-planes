@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Grid } from 'semantic-ui-react';
-import { storeContract, storeUserAddress, storeUserPlanes } from "../../actions/index";
+import { storePlanes, logOut, selectPlane, deselectPlane } from "../../actions/index";
 import 'bluebird';
 import './hangar.css';
 import Web3 from 'web3';
@@ -11,9 +11,10 @@ import Plane from './plane.jsx';
 
 const mapDispatchToProps = dispatch => {
   return {
-    storeContract: contract => dispatch(storeContract(contract)),
-    storeUserAddress: address => dispatch(storeUserAddress(address)),
-    storeUserPlanes: user => dispatch(storeUserPlanes(user)),
+    logOut: () => dispatch(logOut()),
+    storePlanes: user => dispatch(storePlanes(user)),
+    selectPlane: plane => dispatch(selectPlane(plane)),
+    deselectPlane: () => dispatch(deselectPlane()),
   };
 };
 
@@ -22,6 +23,7 @@ const mapStateToProps = state => {
     contract: state.contract, 
     userPlanes: state.userPlanes, 
     userAddress: state.userAddress,
+    selectedPlane: state.selectedPlane,
   };
 };
 
@@ -35,42 +37,62 @@ class ConnectedHangar extends Component {
       this.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
     }
 
+    this.user;
     this.web3 = new Web3(this.web3Provider)
     this.blockplanes = TruffleContract(cryptoPlanes)
     this.blockplanes.setProvider(this.web3Provider)
   }
 
   componentDidMount() {
-    let userAddress, contract;
-    this.web3.eth.getCoinbase((err, address) => {
-      // storing the user blockchain address*****
-      userAddress = address;
-      // get the contract instance
-      this.blockplanes.deployed()
-      .then((instance) => {
-        // storing the contract*****
-        contract = instance;
-        return instance.getPlanesByOwner(userAddress);
-      }).then((planes) => {
-        // putting the plane ids into an array
-        let planeIds = [];
-        return planes.map((plane) => {
-            return plane.toNumber();
-        });
-      }).then((planeArray) => {
-        // getting the attributes for each plane in their collection
-        let hangar = [];
-        for (let i = 0; i < planeArray.length; i++) {
-          let planeAttr;
-          contract.planes(planeArray[i]).then((plane) => {
-            planeAttr = plane.toNumber();
-            hangar.push([planeArray[i], planeAttr]);
-            if (i === planeArray.length - 1) {
-              this.props.storeUserPlanes({ contract, userAddress, userPlanes: hangar });
-            }
-          });
-        }
+    // clear out any selected plane if 
+    // this.props.deselectPlane();
+    // checks if a friend ID was passed in as props
+    if (this.props.friend) {
+      // if so - fetches that user's planes and renders
+      this.user = this.props.friend;
+      this.fetchPlanes();
+    } else {
+      // no friend ID was passed in, 
+      web3.eth.getCoinbase((err, acct) => {
+        // place within a setTimeout, so that the App.js has time to decode the JWT and put the address into the store
+        setTimeout(() => {
+          // makes sure you are still signed into the metamask account that is associated with your account in our DB 
+          if (this.props.userAddress !== acct) {
+            // this means you signed into a different metamask account, so it signs you out 
+            alert('Please make sure you are signed in with the correct MetaMask Account!');
+            sessionStorage.removeItem('jwtToken');
+            this.props.logOut();
+          } else {
+            // fetches your planes and renders
+            this.user = this.props.userAddress;
+            this.fetchPlanes();
+          }
+        }, 500);
       })
+    }
+  }
+
+  fetchPlanes() {
+    this.props.contract.getPlanesByOwner(this.user)
+    .then((planes) => {
+      // putting the plane ids into an array
+      let planeIds = [];
+      return planes.map((plane) => {
+        return plane.toNumber();
+      });
+    }).then((planeArray) => {
+      // getting the attributes for each plane in their collection
+      let hangar = [];
+      for (let i = 0; i < planeArray.length; i++) {
+        let planeAttr;
+        this.props.contract.planes(planeArray[i]).then((plane) => {
+          planeAttr = plane.toNumber();
+          hangar.push([planeArray[i], planeAttr]);
+          if (i === planeArray.length - 1) {
+            this.props.storePlanes({ planes: hangar });
+          }
+        });
+      }
     });
   }
 
@@ -81,20 +103,44 @@ class ConnectedHangar extends Component {
       return true;
     }
   }
-    
-      
+
+  highlight(plane) {
+    if (!this.props.friend) {
+      if (this.props.selectedPlane === plane) {
+        this.props.deselectPlane(plane)
+      } else {
+        this.props.selectPlane(plane)
+      }
+    }
+  }
+
   render() {
       return (
+        <div>
+        <br/>
           <Grid>
+            {/* Should also generate a generic plane for all users and display it here */}
             <Grid.Row className='planerow'>
               {this.props.userPlanes.map((plane) => {
-                return <Plane
+                if (this.props.selectedPlane === plane[1]) {
+                  return <Plane
+                  selected={'highlight'}
                   key={Math.random()}
-                  plane={plane} />
+                  plane={plane}
+                  highlight={this.highlight.bind(this)} 
+                  />
+                } else {
+                  return <Plane 
+                  selected={'noHighlight'}
+                  key={plane[0]}
+                  plane={plane}
+                  highlight={this.highlight.bind(this)} />
+                }
               })
               }
             </Grid.Row>
           </Grid>
+          </div>
       )
   }
 }

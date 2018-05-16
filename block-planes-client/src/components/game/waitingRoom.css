@@ -1,0 +1,18 @@
+.ready {
+    padding-top: 1.5%;
+    padding-left: 2%;
+    background-color: #000000;
+    position: relative;
+    width: 100%;
+    border-bottom: 1px solid #ffffff;
+    color: #fff;
+    position: absolute;
+    opacity: 0.5;
+    text-align: center;
+    padding-right: 2%;
+    font-family: 'Orbitron';
+}
+
+#text {
+    opacity: 100% !important;
+}

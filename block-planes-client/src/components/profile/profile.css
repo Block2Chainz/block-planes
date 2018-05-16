@@ -1,60 +1,60 @@
 .userrowprofile {
-  padding-top: 1.5%;
-  padding-left: 2%;
-  background-color: #000000;
-  position: relative;
-  width: 100%;
-  border-bottom: 1px solid #ffffff;
-  color: #fff;
-  text-align: center;
-  padding-right: 2%;
-  font-family: 'Orbitron';
+    padding-top: 1.5%;
+    padding-left: 2%;
+    background-color: #000000;
+    position: relative;
+    width: 100%;
+    border-bottom: 1px solid #ffffff;
+    color: #fff;
+    text-align: center;
+    padding-right: 2%;
+    font-family: 'Orbitron';
 }
 
 .profilepic {
-  margin-left: 3%;
-  border: 1px solid #ffffff;
+    margin-left: 3%;
+    border: 1px solid #ffffff;
 }
 
 .joined {
-  text-align: center;
-  font-size: 120%;
+    text-align: center;
+    font-size: 120%;
 }
 
 .usernameprofile {
-  padding-top: 25%;
-  font-size: 500%;
-  margin-left: 3%;
-  text-align: left;
+    padding-top: 25%;
+    font-size: 500%;
+    margin-left: 3%;
+    text-align: left;
 }
 
 .points {
-  padding-top: 5%;
-  margin-right: 3%;
-  font-size: 500%;
-  text-align: right;
+    padding-top: 5%;
+    margin-right: 3%;
+    font-size: 500%;
+    text-align: right;
 }
 
 .hangar {
-  padding-top: 3%;
-  font-family: 'Orbitron';
-  margin-left: 40%;
-  text-align: center;
-  font-size: 400%;
-  color: #fff;
+    padding-top: 3%;
+    font-family: 'Orbitron';
+    margin-left: 40%;
+    text-align: center;
+    font-size: 400%;
+    color: #fff;
 }
 
 .dropzone {
-  width : 300px;
-  height : 300px;
-  border : 0px;
+    width: 300px;
+    height: 300px;
+    border: 0px;
 }
 
 .scoreprofile {
-  padding-top: 3%;
-  font-family: 'Orbitron';
-  margin-left: 40%;
-  text-align: right;
-  font-size: 200%;
-  color: #fff;
+    padding-top: 3%;
+    font-family: 'Orbitron';
+    margin-left: 40%;
+    text-align: right;
+    font-size: 200%;
+    color: #fff;
 }

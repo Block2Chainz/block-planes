@@ -4,7 +4,10 @@ import {
     STORE_CONTRACT,
     STORE_USER_ADDRESS,
     STORE_USER_PLANES,
-    TOGGLE_CHAT_VISIBILITY
+    TOGGLE_CHAT_VISIBILITY,
+    STORE_PLANES,
+    SELECT_PLANE,
+    DESELECT_PLANE,
 } from "../constants/action-types";
 
 export const logIn = user => ({
@@ -21,17 +24,21 @@ export const storeContract = (contract) => ({
     payload: contract
 });
 
-export const storeUserAddress = (address) => ({
-    type: STORE_USER_ADDRESS,
-    payload: address
-});
-
-export const storeUserPlanes = (planes) => ({
-    type: STORE_USER_PLANES,
+export const storePlanes = (planes) => ({
+    type: STORE_PLANES,
     payload: planes
 });
 
 export const toggleChatVisibility = (flag) => ({
     type: TOGGLE_CHAT_VISIBILITY,
     payload: flag
+});
+
+export const selectPlane = (plane) => ({
+    type: SELECT_PLANE,
+    payload: plane
+});
+
+export const deselectPlane = () => ({
+    type: DESELECT_PLANE,
 });

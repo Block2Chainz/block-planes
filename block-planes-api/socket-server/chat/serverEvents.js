@@ -5,7 +5,7 @@ const startingText = (funcName) => {
 `)
 };
 
-export const serverInitialState = ({ client, room }, { challenge, player }) => {
+module.exports.serverInitialState = ({ client, room }, { challenge, player }) => {
     if (!room.get('challenge')) {
         room.set('challenge', challenge);
 

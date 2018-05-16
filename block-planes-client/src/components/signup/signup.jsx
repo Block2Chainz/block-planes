@@ -107,7 +107,6 @@ class ConnectedSignup extends Component {
     }
     return (
       <div>
-        {console.log(this.state, 'state inside')}
         {(typeof web3 != 'undefined') ? (
           <div className='signup'>
             <Grid>

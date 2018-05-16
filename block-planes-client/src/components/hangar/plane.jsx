@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import { Grid } from 'semantic-ui-react';
 // import { connect } from "react-redux";
-import Ship from '../game/ship.js';
-import Particle from '../game/particle.js';
+import Ship from '../game/gameObjects/ship.js';
+import Particle from '../game/gameObjects/particle.js';
 import './plane.css';
 
 // const mapStateToProps = state => {
 //   return {
-//     contract: state.contract,
+//     se: state.contract,
 //     userPlanes: state.userPlanes,
 //     userAddress: state.userAddress,
 //   };
 // };
 
 class Plane extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       screen: {
         width: window.innerWidth,
@@ -47,8 +47,12 @@ class Plane extends Component {
 
     // ship.accelerate();
     // store canvas state on the stack
-
     context.save();
+    
+    if (this.props.selected === 'highlight') {
+      context.fillStyle = '#8b0000';
+      context.fillRect(0, 0, 150, 150);
+    }
     // resize the field if the window has been resized
     // context.scale(this.state.screen.ratio, this.state.screen.ratio);
     
@@ -69,8 +73,8 @@ class Plane extends Component {
 
     let ship = this.shipCreator(this.props.plane[1].toString(), {
       position: {
-        x: 50,
-        y: 0,
+        x: 75,
+        y: 25,
       },
       create: this.createObject.bind(this),
     });
@@ -88,24 +92,24 @@ class Plane extends Component {
       tailColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'],
       cockpitShape: ['01', '02', '03', '04', '05'],
       cockpitColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'],
-      speed: [0.15, 0.3, 0.4, 0.5],
-      inertia: [0.99, 0.98, 0.97, 0.96],
-      shootingSpeed: [300, 350, 400, 250, 200, 150, 100],
-      smokeColor: ['#ff9999', '#b3ff99', '#ffffb3', '#80ffdf', '#99d6ff', '#c299ff', '#ff80df', '#ffffff'],
+      speed: [0.8, 1, 1.5, 2], // how much movement it travels after each frame with a keydown,  
+      inertia: [.88, .93, .97, .99], // how quickly it slows down after releasing a key: 0.5 = immediately, 1 = never; 
+      shootingSpeed: [300, 35, 100, 250, 200, 75, 150],
+      smokeColor: ['#ff9999', '#b3ff99', '#ffffb3', '#80ffdf', '#99d6ff', '#c299ff', '#ff80df', '#ffffff'], 
     }
 
     let shipArgs = {
-      wingShape: attrPossibilities.wingShape[parseInt(attrString[0]) % 5],
-      wingColor: attrPossibilities.wingColor[parseInt(attrString[1]) % 8],
-      tailShape: attrPossibilities.tailShape[parseInt(attrString[2]) % 5],
-      tailColor: attrPossibilities.tailColor[parseInt(attrString[3]) % 8],
-      cockpitShape: attrPossibilities.cockpitShape[parseInt(attrString[4]) % 5],
-      cockpitColor: attrPossibilities.cockpitColor[parseInt(attrString[5]) % 8],
-      speed: attrPossibilities.speed[parseInt(attrString[6]) % 4],
-      inertia: attrPossibilities.inertia[parseInt(attrString[7]) % 3],
-      shootingSpeed: attrPossibilities.shootingSpeed[parseInt(attrString[8]) % 7],
-      smokeColor: attrPossibilities.smokeColor[parseInt(attrString[9]) % 8],
-      bodyColor: attrPossibilities.bodyColor[parseInt(attrString[10]) % 8],
+      bodyColor: attrPossibilities.bodyColor[parseInt(attrString[0]) % 8],
+      wingShape: attrPossibilities.wingShape[parseInt(attrString[1]) % 5],
+      wingColor: attrPossibilities.wingColor[parseInt(attrString[2]) % 8],
+      tailShape: attrPossibilities.tailShape[parseInt(attrString[3]) % 5],
+      tailColor: attrPossibilities.tailColor[parseInt(attrString[4]) % 8],
+      cockpitShape: attrPossibilities.cockpitShape[parseInt(attrString[5]) % 5],
+      cockpitColor: attrPossibilities.cockpitColor[parseInt(attrString[6]) % 8],
+      speed: attrPossibilities.speed[parseInt(attrString[7]) % 4],
+      inertia: attrPossibilities.inertia[parseInt(attrString[8]) % 3],
+      shootingSpeed: attrPossibilities.shootingSpeed[parseInt(attrString[9]) % 7],
+      smokeColor: attrPossibilities.smokeColor[parseInt(attrString[10]) % 8],
       ingame: false,
     };
     return new Ship(Object.assign({}, shipArgs, otherAttr, ));
@@ -133,11 +137,26 @@ class Plane extends Component {
     context.restore();
   }
 
+  select (e) {
+    e.preventDefault();
+    this.props.highlight(this.props.plane[1])
+  }
+
   render() {
     return (
-        <Grid.Column width={16} className='plane' >
-          <canvas ref='canvas' width={150} height={150} />
-        </Grid.Column>
+      <div onClick={(e) => this.select(e)} width={16} className='plane' >
+        <canvas ref='canvas' width={150} height={150} />
+        {this.props.selected === 'highlight' ? 
+          
+              <p>
+                Speed: {parseInt(JSON.stringify(this.props.plane[1]).slice(6, 7)) % 4} <br/>
+                Inertia: {parseInt(JSON.stringify(this.props.plane[1]).slice(7, 8)) % 3} <br />
+                Shooting Speed: {parseInt(JSON.stringify(this.props.plane[1]).slice(8, 9)) % 7}
+              </p>
+           : 
+          <div></div>
+        }
+      </div>
     )
   }  
 }

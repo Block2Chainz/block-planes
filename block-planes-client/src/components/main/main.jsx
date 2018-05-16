@@ -8,20 +8,11 @@ import Signup from '../signup/signup.jsx';
 import Profile from '../profile/profile.jsx';
 import Friends from '../friends/friends.jsx';
 import Marketplace from '../marketplace/marketplace.jsx';
-import Game from '../game/game.jsx';
 import Leaderboard from '../leaderboard/leaderboard.jsx';
 import Chat from '../chat/chat.jsx';
-
-
-/* <Main 
-userId={this.state.id} 
-
-username={this.state.username} 
-
-tokenLogin={this.tokenLogin} 
-
-logout={this.logout} /> */
-
+import Game from '../game/game.jsx';
+import GameLanding from '../game/gameLanding.jsx';
+import WaitingRoom from '../game/waitingRoom.jsx';
 
 const Main = (props) => (
     <main>
@@ -50,8 +41,11 @@ const Main = (props) => (
             }} />)
           )} />
             <Route path='/marketplace' component={Marketplace} />
-            <Route path='/game' component={Game} />
             <Route path='/leaderboard' component={Leaderboard} />
+            <Route path='/game' render={() => (sessionStorage.getItem('jwtToken') ?
+                (<GameLanding />)
+                : (<Redirect to={{ pathname: '/login' }} />))} />
+            <Route path='/waitingRoom' component={WaitingRoom} />
         </Switch>
     </main>
 )
