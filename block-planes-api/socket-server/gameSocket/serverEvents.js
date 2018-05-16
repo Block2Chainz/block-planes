@@ -12,10 +12,11 @@ module.exports.serverp2Ready = ({ client, room }, { ship }) => {
 };
 
 module.exports.serverUpdate = ({ client, room }) => {
-    console.log('emitting serverUpdate');
-    client.emit('update', { bullets: room.bullets, 
-                            particles: room.particles,
-                            ships: room.ships, 
-                            enemies: room.enemies,                     
+    console.log('updating');
+    client.emit('update', { bullets: room.get('bullets'), 
+                            particles: room.get('particles'),
+                            p1_ship: room.get('p1_ship'), 
+                            p2_ship: room.get('p2_ship'),
+                            enemies: room.get('enemies'),                     
                         });
 };

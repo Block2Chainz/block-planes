@@ -31,7 +31,7 @@ class ConnectedWaitingRoom extends Component {
         console.log('this.props.history: ', this.props.history);
         // checks if a room exists in props already
         let roomId;
-        if (!this.props.roomId) {
+        if (!this.props.roomId || !this.state.roomId) {
             // no room exists in props, so this is a game that we have started
             // we will generate a random string
             roomId = randomstring.generate();
@@ -45,6 +45,7 @@ class ConnectedWaitingRoom extends Component {
                 roomId: !this.props.roomId ? roomId : this.props.roomId,
                 // if there is no room in props, we created the game, so we will be player 1 
                 player: player,
+                ship: this.props.ship,
             }
         });
         // save the socket connection and the room in state
@@ -93,12 +94,12 @@ class ConnectedWaitingRoom extends Component {
                 }
 
                 {
-                    this.state.youReady && this.state.p1_ship && this.props.ship? 
+                    this.state.youReady ? 
                     <Game   socket={this.state.socket}
                             player={this.state.player}
-                            p1_ship={this.state.p1_ship} 
+                            p1_ship={this.props.ship} 
                             p2_ship={this.state.p2_ship} />
-                    :
+                :
                     <div></div>
                 }
             </div>

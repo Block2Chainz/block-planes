@@ -37,8 +37,6 @@ class Game extends Component {
         this.enemies = [];
         this.bullets = [];
         this.particles = [];
-        this.string1 = this.props.p1_ship;
-        this.string2 = this.props.p1_ship;
     }
 
     handleResize(value, e) {
@@ -49,10 +47,6 @@ class Game extends Component {
                 ratio: window.devicePixelRatio || 1,
             }
         }); 
-    }
-
-    componentWillMount() {
-        console.log(this.props.socket)
     }
 
     componentDidMount() {
@@ -83,10 +77,13 @@ class Game extends Component {
     }
 
     componentWillUnmount() {
+        console.log('component will unmount', this.props.socket.disconnect);
         // remove the listeners
         window.removeEventListener('keyup', this.handleKeys);
         window.removeEventListener('keydown', this.handleKeys);
         window.removeEventListener('resize', this.handleResize);
+        this.props.socket.emit('disconnect');
+        this.props.socket.disconnect();
     }
 
     handleKeys(value, e) {
@@ -177,7 +174,7 @@ class Game extends Component {
         });
 
         let ship1 = new Ship({
-            attr: this.string1, 
+            attr: this.props.p1_ship, 
             position: {
                 x: this.state.screen.width / 2,
                 y: this.state.screen.height / 2,
@@ -205,7 +202,7 @@ class Game extends Component {
         // });
 
         // send the user's ship to the socket
-        this.props.socket.emit(`ship${this.props.player}`, {ship1: ship1})
+        this.props.socket.emit(`shipGeneration`, {ship1: ship1})
 
         // save the ship object via the create object method
         // this.createObject(ship1, 'ship');
@@ -216,62 +213,11 @@ class Game extends Component {
         // this.generateEnemies(this.state.enemyCount);
     }
 
-    // shipCreator(attrString, otherAttr) {
-    //     console.log('attrstring is ', attrString);
-    //     attrString = JSON.stringify(attrString);
-    //     let attrPossibilities = {
-    //         bodyColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'],
-    //         wingShape: ['01', '02', '03', '04', '05'], 
-    //         wingColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'], 
-    //         tailShape: ['01', '02', '03', '04', '05'], 
-    //         tailColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'], 
-    //         cockpitShape: ['01', '02', '03', '04', '05'], 
-    //         cockpitColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'], 
-    //         speed: [0.8, 1, 1.5, 2], // how much movement it travels after each frame with a keydown,  
-    //         inertia: [.88, .93, .97, .99], // how quickly it slows down after releasing a key: 0.5 = immediately, 1 = never; 
-    //         shootingSpeed: [300, 35, 100, 250, 200, 75, 150], 
-    //         smokeColor: ['#ff9999', '#b3ff99', '#ffffb3', '#80ffdf', '#99d6ff', '#c299ff', '#ff80df', '#ffffff'], 
-    //     }
+    createObject(item, group) {
+        this[group].push(item);
+    }
 
-    //     let shipArgs = {
-    //         bodyColor: attrPossibilities.bodyColor[parseInt(attrString[0]) % 8],
-    //         wingShape: attrPossibilities.wingShape[parseInt(attrString[1]) % 5],
-    //         wingColor: attrPossibilities.wingColor[parseInt(attrString[2]) % 8], 
-    //         tailShape: attrPossibilities.tailShape[parseInt(attrString[3]) % 5],
-    //         tailColor: attrPossibilities.tailColor[parseInt(attrString[4]) % 8],
-    //         cockpitShape: attrPossibilities.cockpitShape[parseInt(attrString[5]) % 5],
-    //         cockpitColor: attrPossibilities.cockpitColor[parseInt(attrString[6]) % 8],
-    //         speed: attrPossibilities.speed[parseInt(attrString[7]) % 4],
-    //         inertia: attrPossibilities.inertia[parseInt(attrString[8]) % 3],
-    //         shootingSpeed: attrPossibilities.shootingSpeed[parseInt(attrString[9]) % 7],
-    //         smokeColor: attrPossibilities.smokeColor[parseInt(attrString[10]) % 8],
-    //         ingame: true,
-    //     };
-    //     return new Ship(Object.assign({}, shipArgs, otherAttr));
-    // }
-
-    // createObject(item, group) {
-    //     this[group].push(item);
-    // }
-
-    // generateEnemies(number) {
-    //     // generate a new enemy, quantity = the number passed into the function
-    //     let ship = this.ship[0];
-    //     for (let i = 0; i < number; i++) {
-    //         let enemy = new Enemy({
-    //             // size: 80, 
-    //             // give it a random position on the screen
-    //             position: {
-    //                 x: randomNumBetweenExcluding(0, this.state.screen.width, ship.position.x-60, ship.position.x+60), 
-    //                 y: randomNumBetweenExcluding(0, this.state.screen.height, ship.position.y-60, ship.position.y+60),
-    //             }, 
-    //             create: this.createObject.bind(this),
-    //             addScore: this.addScore.bind(this),
-    //         });
-    //         this.createObject(enemy, 'enemies')
-    //     }
-    // }
-
+    
     updateObjects(items, group) {
         // go through each item of the specified group and delete them or call their render functions
         let index = 0;
@@ -284,49 +230,15 @@ class Game extends Component {
                 // else call the render method attached to each object
                 items[index].render(this.state);
         // }
-            index++;
+        index++;
         }
     }
 
-    checkCollisionsWith(items1, items2) {
-        // loop through each item in one array, compare to each item in second array
-        let a = items1.length - 1;
-        let b;
-        for (a; a >= 0; a--) {
-            b = items2.length - 1;
-            for (b; b >= 0; b--) {
-                let item1 = items2[a];
-                let item2 = items2[b];
-                if (this.checkCollision(item1, item2)) {
-                    // destroy if a collision is detected
-                    item1.destroy();
-                    item2.destroy();
-                }
-            }
-        }
-    }
-
-    checkCollision(obj1, obj2) {
-        let vx = obj1.position.x - obj2.position.x;
-        let vy = obj1.position.y - obj2.position.y;
-        // pythagorean theorem formula a^2 + b^2 = c^2 
-        // gets the distance between the two objects based on their separation on the horizontal and vertical planes
-        let length = Math.sqrt(vx * vx + vy * vy);
-        // checks against the two radiuses added together
-        // example 
-            // obj 1 and 2 are 10 pixels away from each other's center
-            // if their radius's are greater than 5 pixels, a collision is registered
-        if (length < obj1.radius + obj2.radius) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
+    
     render() {
         let endgame;
         let message;
-
+        
         if (!this.state.inGame) {
             endgame = (
                 <div className="endgame">
@@ -338,20 +250,67 @@ class Game extends Component {
                 </div>
             )
         }
-
+        
         return (
             <div className="game">
-                {/* <span className="controls" >
-                    Use [A][S][W][D] or [←][↑][↓][→] to MOVE<br />
-                    Use [SPACE] to SHOOT
-                </span> */}
                 <canvas ref="canvas"
                     width={this.state.screen.width * this.state.screen.ratio}
                     height={this.state.screen.height * this.state.screen.ratio}
-                />
+                    />
             </div>
         );
     }
 }
 
 export default Game;
+// checkCollisionsWith(items1, items2) {
+    //     // loop through each item in one array, compare to each item in second array
+    //     let a = items1.length - 1;
+    //     let b;
+    //     for (a; a >= 0; a--) {
+        //         b = items2.length - 1;
+        //         for (b; b >= 0; b--) {
+            //             let item1 = items2[a];
+            //             let item2 = items2[b];
+            //             if (this.checkCollision(item1, item2)) {
+                //                 // destroy if a collision is detected
+                //                 item1.destroy();
+                //                 item2.destroy();
+                //             }
+                //         }
+                //     }
+                // }
+                
+                // checkCollision(obj1, obj2) {
+                    //     let vx = obj1.position.x - obj2.position.x;
+                    //     let vy = obj1.position.y - obj2.position.y;
+                    //     // pythagorean theorem formula a^2 + b^2 = c^2 
+                    //     // gets the distance between the two objects based on their separation on the horizontal and vertical planes
+                    //     let length = Math.sqrt(vx * vx + vy * vy);
+                    //     // checks against the two radiuses added together
+                    //     // example 
+                    //         // obj 1 and 2 are 10 pixels away from each other's center
+//         // if their radius's are greater than 5 pixels, a collision is registered
+//     if (length < obj1.radius + obj2.radius) {
+    //         return true;
+    //     } else {
+//         return false;
+//     }
+// }
+// generateEnemies(number) {
+//     // generate a new enemy, quantity = the number passed into the function
+//     let ship = this.ship[0];
+//     for (let i = 0; i < number; i++) {
+//         let enemy = new Enemy({
+//             // size: 80, 
+//             // give it a random position on the screen
+//             position: {
+//                 x: randomNumBetweenExcluding(0, this.state.screen.width, ship.position.x-60, ship.position.x+60), 
+//                 y: randomNumBetweenExcluding(0, this.state.screen.height, ship.position.y-60, ship.position.y+60),
+//             }, 
+//             create: this.createObject.bind(this),
+//             addScore: this.addScore.bind(this),
+//         });
+//         this.createObject(enemy, 'enemies')
+//     }
+// }
