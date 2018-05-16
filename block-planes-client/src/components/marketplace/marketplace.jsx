@@ -17,7 +17,7 @@ class Marketplace extends Component {
             currentPage: 1,
             planesPerPage: 9
         }
-
+        this.pageClick = this.pageClick.bind(this);
         if (typeof web3 != 'undefined') {
             this.web3Provider = web3.currentProvider;
             } else {
@@ -82,6 +82,11 @@ class Marketplace extends Component {
 
     }
 
+    pageClick(event) {
+      this.setState({
+        currentPage: Number(event.target.id)
+      });
+    }
 
     render() {
         const { yourPlanes, currentPage, planesPerPage } = this.state;
@@ -105,7 +110,7 @@ class Marketplace extends Component {
 
         //render page numbers
         const renderPageNumber = pageNumbers.map(number => {
-          return <li key={number} id={number} >{number}</li> 
+          return <li key={number} id={number} onClick={this.pageClick}>{number}</li> 
         });
 
         return (
