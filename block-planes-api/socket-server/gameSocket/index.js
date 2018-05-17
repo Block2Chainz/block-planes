@@ -13,7 +13,7 @@ io.on('connection', (client) => {
     console.log('client connected', client.handshake.query.ship);
     const { roomId, player } = client.handshake.query;
     const room = rooms.findOrCreate(roomId || 'default');
-    client.join(room.get('id'));
+    client.join(room.id);
 
     each(clientEvents, (handler, event) => {
         client.on(event, handler.bind(null, { io, client, room, player }));

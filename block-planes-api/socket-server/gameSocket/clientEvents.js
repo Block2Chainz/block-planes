@@ -14,24 +14,36 @@ const {
     accelerate,
     ServerGameLoop,
     randomNumBetweenExcluding,
-
 } = require('./game/helpers.js');
+
+const World = require('./game/world.js');
 
 /*****************************************
 CLIENT LISTENERS BELOW
 *****************************************/
-let timer;
 
 const clientp1Ready = ({ io, client, room, player }, { ship }) => {
     console.log('p1_ready heard', room, 'payload.ship: ', ship);
-    room.set('p1_ship', ship)
-    serverp1Ready({ io, client, room, player }, { ship });
+    if (room.world) {
+        room.world.connect(1, ship);
+    } else {
+        room.world = new World();
+        room.world.connect(1, ship);
+    }
+    let netPeer = room.world.buildPeerNetObject(player);
+    serverp1Ready({ io, client, room, player }, { netPeer });
 };
 
 const clientp2Ready = ({ io, client, room, player}, { ship }) => {
     console.log('p2_ready heard', io, client, room, player, 'payload.ship: ', payload.ship);
-    room.set('p2_ship', ship);
-    serverp2Ready({ io, client, room, player }, { ship });
+    if (room.world) {
+        room.world.connect(2, ship);
+    } else {
+        room.world = new World();
+        room.world.connect(2, ship);
+    }
+    let netPeer = world.buildPeerNetObject(player);
+    serverp2Ready({ io, client, room, player }, { netPeer });
 };
 
 const clientUpdate = ({ io, client, room, player }, payload) => {
@@ -42,54 +54,35 @@ const clientStart = ({ io, client, room, player }, payload) => {
     setInterval((room) => ServerGameLoop(room), 16);
 }
 
-const clientKeys = ({ io, client, room }, { player, keys }) => {
-    let ship = player === 1 ? room.get('p1_ship') : room.get('p2_ship');
-    
-    if (keys.up) {
-        ship = accelerate(room, ship);
-    }
-    if (keys.left) {
-        ship.rotation -= ship.rotationSpeed;
-        // ship.rotate('LEFT');
-    }
-    if (keys.right) {
-        ship.rotation += ship.rotationSpeed;
-        // ship.rotate('RIGHT');
-    }
-    if (keys.space && Date.now() - ship.lastShot > ship.shootingSpeed) {
-        const bullet = new bullet({ ship });
-        create(room, bullet, 'bullets');
-        // let bullets = room.get('bullets');
-        // bullets.push(bullet);
-        // room.set('bullets', bullet);
-        ship.lastShot = Date.now();
-    }
-    room.set(`p${player}_ship`, ship);
-    ship = null;
+const clientKeys = ({ io, client, room, player }, { keys }) => {
+    console.log('keys', keys);
+    room.world.queue.updates.push(keys);
 }
 
 const clientShipGeneration = ({ io, client, room, player }, payload) => {
     console.log('ship generation heard');
-    if (payload.ship1) {
-        room.set('p1_ship', payload.ship1);
-    }
-    if (payload.ship2) {
-        room.set('p2_ship', payload.ship2);
-    }
-
-    const updater = () => {
-        ServerGameLoop({ io, client, room, player });
-    }
-
     serverShipGeneration({ io, client, room, player }, payload);
-
-    timer = setInterval( updater, 16 ); //16
+    room.timer = setInterval( () => room.world.update(io), 1000 / 60 ); 
 }
 
 const clientDisconnect = ({ io, client, room, player }) => {
-    console.log('disconnecting', client.disconnect);
-    clearInterval(timer);
+    console.log('Client has disconnected');
+    // Remove any queued inputs that are waiting to be processed
+    var i = 0;
+    while (i < room.world.queue.updates.length) {
+        var update = room.world.queue.updates[i];
+        if (update.id === player) {
+            room.world.queue.updates.splice(i, 1);
+        } else {
+            i++;
+        }
+    }
+    // Remove client from server and from peer list
+    delete(room.world.peers[player]);
     client.disconnect(true);
+    if (!room.world.peers['1'] && !room.world.peers['2']) {
+        clearInterval(room.timer);
+    }
 }
 
 const clientEmitters = {

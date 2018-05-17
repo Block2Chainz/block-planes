@@ -1,14 +1,13 @@
 
 
-module.exports.serverp1Ready = ({ client, room }, { ship }) => {
+module.exports.serverp1Ready = ({ io, client, room, player }, { netPeer }) => {
     console.log('emitting serverp1 ready');
-    client.emit('p1_ready', ship);
-
+    client.emit('p1_ready', netPeer);
 };
 
-module.exports.serverp2Ready = ({ client, room }, { ship }) => {
+module.exports.serverp2Ready = ({ io, client, room, player }, { netPeer }) => {
     console.log('emitting serverp2 ready');
-    client.emit('p2_ready', ship);
+    client.emit('p2_ready', netPeer);
 };
 
 module.exports.serverUpdate = ({ client, room }) => {
