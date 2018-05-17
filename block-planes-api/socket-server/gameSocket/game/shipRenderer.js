@@ -33,4 +33,4 @@ let shipRenderer = (attrString) => {
     return shipArgs;
 }
 
-export default shipRenderer;
+module.exports = shipRenderer;

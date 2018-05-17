@@ -1,35 +1,28 @@
-// Rooms: {
-
-//     store: Map {
-//         
-//          ${roomId}: {
-//              
-//              id: ${roomId},
-//              p1_ship: ${ p1_ship attr string }
-//              p2_ship: ${ p2_ship attr string }
-//                      
-//          }
-//     }
-
-
-
-// }
-
-
 module.exports = class Rooms {
     constructor(io) {
         this.io = io;
-        this.store = new Map();
+        this.store = new Object;
     }
-
+    
     findOrCreate(roomId) {
         console.log('creating a room', roomId)
-        let room = this.store.get(roomId);
+        let room = this.store[roomId];
         if (!room) {
-            room = new Map();
-            room.set('id', roomId);
-            this.store.set(roomId, room);
+            room = new Object;
+            room.id = roomId;
+            this.store[roomId] = room;
         }
         return room;
     }
 }
+
+// Rooms: {
+//     store: {
+//         
+//          ${roomId}: {
+//              
+//                          id: ${roomId},
+//                                                
+//                      }
+//     }
+// }

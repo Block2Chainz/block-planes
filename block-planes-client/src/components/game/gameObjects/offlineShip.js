@@ -16,7 +16,7 @@ import shipRenderer from './shipRenderer.js';
 //      position: ${},
 // })
 
-export default class OfflineShip {
+export default class Ship {
     constructor(args) {
         this.position = args.position;
         this.velocity={
@@ -30,7 +30,10 @@ export default class OfflineShip {
         this.create = args.create;
         this.onDie = args.onDie || (() => console.log('cannot kill'));
         
+        console.log(args.attr);
         let attributes = shipRenderer(args.attr);
+        console.log(attributes, 'attributes');
+
         // ship characteristics
         this.bodyColor = attributes.bodyColor;
         this.wingShape = attributes.wingShape;
@@ -181,6 +184,15 @@ export default class OfflineShip {
         img4.src = `http://127.0.0.1:8887/cockpits/${this.cockpitShape}/cockpit_${this.cockpitShape}_${this.cockpitColor}.png`;
         context.drawImage(img4, 0, 0, 35, 35);
 
+        // context.beginPath();
+        // context.moveTo(0, -15);
+        // context.lineTo(10, 10);
+        // context.lineTo(5, 7);
+        // context.lineTo(-5, 7);
+        // context.lineTo(-10, 10);
+        // context.closePath();
+        // context.fill();
+        // context.stroke();
         context.restore();
 
     }

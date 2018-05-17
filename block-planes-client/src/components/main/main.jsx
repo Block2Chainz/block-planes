@@ -40,12 +40,13 @@ const Main = (props) => (
               pathname: '/login'
             }} />)
           )} />
-            <Route path='/marketplace' component={Marketplace} />
-            <Route path='/leaderboard' component={Leaderboard} />
-            <Route path='/game' render={() => (sessionStorage.getItem('jwtToken') ?
-                (<GameLanding />)
-                : (<Redirect to={{ pathname: '/login' }} />))} />
-            <Route path='/waitingRoom' component={WaitingRoom} />
+          <Route path='/game/:roomId' component={Game} />
+          <Route path='/marketplace' component={Marketplace} />
+          <Route path='/leaderboard' component={Leaderboard} />
+          <Route path='/game' render={() => (sessionStorage.getItem('jwtToken') ?
+              (<GameLanding />)
+              : (<Redirect to={{ pathname: '/login' }} />))} />
+          <Route path='/waitingRoom' component={WaitingRoom} />
         </Switch>
     </main>
 )

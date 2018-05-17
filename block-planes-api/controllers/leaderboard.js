@@ -25,7 +25,6 @@ const queryDb = () => {
   });
 };
 
-
 const getHiScore = (req, res) => {
   client.zrevrange('leaderboardHi', 0, 9, 'withscores', function(error, scores){
     let highScores = [];
@@ -33,7 +32,6 @@ const getHiScore = (req, res) => {
       let tup = scores.splice(0,2);
       highScores.push({name: tup[0].split('___')[0], picture: tup[0].split('___')[1], score: tup[1]});
     }
-
     res.send(highScores);
   });
 };
