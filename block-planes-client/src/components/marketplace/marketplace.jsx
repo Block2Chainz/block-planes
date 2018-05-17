@@ -15,7 +15,8 @@ class Marketplace extends Component {
             contract: null,
             userAddress: null,
             currentPage: 1,
-            planesPerPage: 12
+            planesPerPage: 12,
+            currentTab: 'Sell'
         }
         this.pageChange = this.pageChange.bind(this);
         if (typeof web3 != 'undefined') {
@@ -89,6 +90,7 @@ class Marketplace extends Component {
     }
 
     render() {
+        // console.log('current state:', this.state);
         const { yourPlanes, currentPage, planesPerPage } = this.state;
         const pageNumbers = [];
 
@@ -99,17 +101,38 @@ class Marketplace extends Component {
         
         //render planes for current page
         const renderPlanes = currentPlanes.map((plane, index) => {
+          console.log('flag1: ', plane);
           return (
             <Grid.Column className='plane-column'>
             <div className='single-plane'>
             <Plane key={Math.random()} plane={plane} />
             <div className='plane-menu'>
-              {/* <button>Buy!</button> */}
               <div>
                 <Button as='div' labelPosition='left'>
-                  <Label as='a' basic>2,048</Label>
-                  <Button icon>
-                    <Icon name='fork' />
+                  <Label as='a' basic>Price</Label>
+                  <Button>
+                    Sell!
+                  </Button>
+                </Button>
+              </div>
+            </div>
+            </div>
+            </Grid.Column>
+          )
+        });
+
+        const renderBuyPlanes = currentPlanes.map((plane, index) => {
+          console.log('flag1: ', plane);
+          return (
+            <Grid.Column className='plane-column'>
+            <div className='single-plane'>
+            <Plane key={Math.random()} plane={plane} />
+            <div className='plane-menu'>
+              <div>
+                <Button as='div' labelPosition='left'>
+                  <Label as='a' basic>Price</Label>
+                  <Button>
+                    Buy!
                   </Button>
                 </Button>
               </div>
@@ -135,7 +158,8 @@ class Marketplace extends Component {
 
               <div>
                 <div className='plane-grid'>
-                  <Grid columns={4} children={renderPlanes} className='plane-grid'/>
+                  {(this.state.currentTab === 'Sell') ? (<Grid columns={4} children={renderPlanes} className='plane-grid'/>) :
+                  (<Grid columns={4} children={renderBuyPlanes} className='plane-grid'/>)}
                 </div>
                 <div className='page-selector'>
                   <Pagination defaultActivePage={1} totalPages={pageNumbers.length} onPageChange={this.pageChange}/>
