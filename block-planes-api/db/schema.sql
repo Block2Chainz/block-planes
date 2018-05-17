@@ -13,6 +13,7 @@ CREATE TABLE users (
   `profile_picture` VARCHAR(255) NOT NULL,
   `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `total_points` VARCHAR(255) NOT NULL,
+  `blockchainAddress` VARCHAR(255) NOT NULL, 
   PRIMARY KEY (`id`),
   INDEX `username_idx` (`username`)
 );
