@@ -1,8 +1,31 @@
+.page-title {
+  color: white;
+  font-family: Orbitron;
+  font-size: 50px;
+  text-align: center;
+  padding-top: 50px;
+}
+
 .marketplace {
   font-family: 'Orbitron';
   color: white;
   text-align: center;
   width: 100%;
+}
+
+.page-selector {
+  /* position: relative; */
+  /* left: 100px; */
+  margin-bottom: 15px;
+  margin: auto;
+}
+
+.plane-grid {
+  /* position: relative; */
+  width: 80% !important;
+  margin: auto !important;
+  margin-top: 100px !important;
+  margin-bottom: 100px !important;
 }
 
 .planes-to-buy {
@@ -13,24 +36,33 @@
   width: 50% !important;
 }
 
-.plane-grid {
-  width: 100% !important;
-  margin: auto;
-}
 
 .single-plane {
-  width: 80% !important;
+  min-height: 350px !important;
+  min-width: 250px !important;
+  padding: none !important;
   margin: auto;
   /* left: 20% !important; */
 }
 
 .plane {
-  width: 80% !important;
+  width: 100% !important;
+  min-height: 300px !important;  
   margin: auto !important;
 }
 
 .canvas-plane {
   position: relative !important;
-  left: 8% !important;
+  left: 6% !important;
   top: 12px !important;
+}
+
+.plane-menu {
+  background-color: gray !important;
+  min-height: 50px !important;
+}
+
+.plane-column {
+  min-height: 350px !important;
+  min-width: 250px !important;
 }
