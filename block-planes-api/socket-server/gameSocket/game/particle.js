@@ -8,6 +8,7 @@ module.exports = class Particle {
         this.inertia = 0.98;
         // added color argument so it can be modified
         this.color = args.color || '#ffffff';
+        this.delete = false;
         this.render = (state) => {
             // Move
             this.position.x += this.velocity.x;

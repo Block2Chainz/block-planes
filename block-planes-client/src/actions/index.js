@@ -8,6 +8,7 @@ import {
     STORE_PLANES,
     SELECT_PLANE,
     DESELECT_PLANE,
+    SAVE_SOCKET,
 } from "../constants/action-types";
 
 export const logIn = user => ({
@@ -42,3 +43,8 @@ export const selectPlane = (plane) => ({
 export const deselectPlane = () => ({
     type: DESELECT_PLANE,
 });
+
+export const saveSocket = (socket) => ({
+    type: SAVE_SOCKET, 
+    payload: socket,
+})

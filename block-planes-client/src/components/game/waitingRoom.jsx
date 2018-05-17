@@ -1,18 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter, Redirect } from 'react-router-dom';
 import './waitingRoom.css';
 import io from 'socket.io-client/dist/socket.io.js';
 import randomstring from 'randomstring';
 
 import Ship from './gameObjects/ship';
 import { randomNumBetweenExcluding } from './gameObjects/helpers';
+// import { saveSocket } from "../../actions/index";
+
 import Game from './game.jsx';
 
 const mapStateToProps = state => {
     return {
-        ship: state.selectedPlane
+        ship: state.selectedPlane,
     };
 };
+
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         saveSocket: socket => dispatch(saveSocket(socket))
+//     }
+// }
 
 class ConnectedWaitingRoom extends Component {
     constructor(props) {
@@ -21,14 +30,13 @@ class ConnectedWaitingRoom extends Component {
             oppReady: false,
             youReady: false,
             roomId: false,
-            socket: null,
             player: null,
         }
         this.ready = this.ready.bind(this);
+        // this.checkStart = this.checkStart.bind(this);
     }
 
     componentWillMount() {
-        console.log('this.props.history: ', this.props.history);
         // checks if a room exists in props already
         let roomId;
         if (!this.props.roomId || !this.state.roomId) {
@@ -49,39 +57,60 @@ class ConnectedWaitingRoom extends Component {
             }
         });
         // save the socket connection and the room in state
-        this.setState({ socket, roomId, player }, () => console.log('this.state', this.state.roomId, this.state.player));
+        // this.props.saveSocket(socket);
+        this.setState({ socket, roomId, player }, () => console.log('state updated'));
     }
 
     componentDidMount() {
-        const { socket } = this.state;
+        const socket = this.state.socket;
+
         
-        socket.on('p1_ready', ({ ship }) => {
+        socket.once('p1_ready', ({ p1_ship }) => {
             if (this.state.player === 2) {
-                this.setState({ oppReady: true, p1_ship: ship  });
+                this.setState({ oppReady: true, p1_ship  })//, () => this.checkStart());
             } else if (this.state.player === 1) { 
-                this.setState({ youReady: true, p1_ship: ship });
+                this.setState({ youReady: true, p1_ship })//, () => this.checkStart());
             }
         });
       
-        socket.on('p2_ready', ({ ship }) => {
+        socket.once('p2_ready', ({ p2_ship }) => {
             if (this.state.player === 1) {
-                this.setState({ oppReady: true, p2_ship: ship });
+                this.setState({ oppReady: true, p2_ship })//, () => this.checkStart());
             } else if (this.state.player === 2) {
-                this.setState({ youReady: true, p2_ship: ship });
+                this.setState({ youReady: true, p2_ship })//, () => this.checkStart());
             }
         });
     }
 
+    // checkStart() {
+    //     if (this.state.socket !== null) {
+    //         console.log('props.socket is not null')
+    //         if (this.state.youReady) {
+    //             console.log('state.youready is truthys')
+    //             <Redirect to={'/game/'} />
+    //             // this.props.history.push({
+    //             //     pathname: `/game/${this.state.roomId}`,
+    //             //     state: {
+    //             //         p1_ship: this.state.p1_ship,
+    //             //         player: this.state.player, 
+    //             //         socket: this.state.socket,
+    //             //     }
+    //             // })
+    //         }
+    //     }
+    // }
+
     ready() {
-        const { socket } = this.state;
+        const socket = this.state.socket;
         socket.emit(`p${this.state.player}_ready`, { player: this.state.player, roomId: this.state.roomId, ship: this.props.ship });
     }
 
     render() {
+        // this.checkStart();
         return (
             <div>
                 {
-                    !this.state.youReady || !this.state.oppReady ? 
+                    !this.state.youReady ? 
                         (<div className='ready'>
                             <h3 id='text'>Game ID: </h3>
                             <h4 id='text'>{this.state.roomId}</h4>
@@ -95,10 +124,17 @@ class ConnectedWaitingRoom extends Component {
 
                 {
                     this.state.youReady ? 
-                    <Game   socket={this.state.socket}
-                            player={this.state.player}
-                            p1_ship={this.props.ship} 
-                            p2_ship={this.state.p2_ship} />
+                    <Game
+                    //  to={{
+                            // pathname: `/game/${this.state.roomId}`, 
+                            // state: {
+                                socket= {this.state.socket} 
+                                player= {this.state.player} 
+                                p1_ship= {this.props.ship} 
+                                p2_ship= {this.state.p2_ship} 
+                            // }
+                    // }}
+                    />
                 :
                     <div></div>
                 }
@@ -107,6 +143,6 @@ class ConnectedWaitingRoom extends Component {
     }
 }
 
-const WaitingRoom = connect(mapStateToProps)(ConnectedWaitingRoom);
+const WaitingRoom = withRouter(connect(mapStateToProps)(ConnectedWaitingRoom));
 
 export default WaitingRoom;

@@ -4,6 +4,7 @@ const {
      serverp1Ready,
      serverp2Ready,
      serverUpdate,
+     serverShipGeneration
 } = require('./serverEvents');
 
 const {
@@ -23,12 +24,14 @@ let timer;
 
 const clientp1Ready = ({ io, client, room, player }, { ship }) => {
     console.log('p1_ready heard', room, 'payload.ship: ', ship);
+    room.set('p1_ship', ship)
     serverp1Ready({ io, client, room, player }, { ship });
 };
 
 const clientp2Ready = ({ io, client, room, player}, { ship }) => {
     console.log('p2_ready heard', io, client, room, player, 'payload.ship: ', payload.ship);
-    serverp2Ready({ io, client, room, player }, payload);
+    room.set('p2_ship', ship);
+    serverp2Ready({ io, client, room, player }, { ship });
 };
 
 const clientUpdate = ({ io, client, room, player }, payload) => {
@@ -66,6 +69,7 @@ const clientKeys = ({ io, client, room }, { player, keys }) => {
 }
 
 const clientShipGeneration = ({ io, client, room, player }, payload) => {
+    console.log('ship generation heard');
     if (payload.ship1) {
         room.set('p1_ship', payload.ship1);
     }
@@ -77,13 +81,15 @@ const clientShipGeneration = ({ io, client, room, player }, payload) => {
         ServerGameLoop({ io, client, room, player });
     }
 
-    timer = setInterval( updater, 16 );
+    serverShipGeneration({ io, client, room, player }, payload);
+
+    timer = setInterval( updater, 16 ); //16
 }
 
 const clientDisconnect = ({ io, client, room, player }) => {
     console.log('disconnecting', client.disconnect);
     clearInterval(timer);
-    client.disconnect();
+    client.disconnect(true);
 }
 
 const clientEmitters = {

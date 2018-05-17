@@ -28,6 +28,7 @@ export default class Ship {
         this.lastShot = 0;
         this.create = args.create;
         this.onDie = args.onDie || (() => console.log('cannot kill'));
+        this.delete = false;
         
         // ship characteristics
         this.bodyColor = args.bodyColor;

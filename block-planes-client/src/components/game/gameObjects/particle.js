@@ -8,6 +8,7 @@ export default class Particle {
         this.inertia = 0.98;
         // added color argument so it can be modified
         this.color = args.color || '#ffffff';
+        this.delete = false;
     }
 
     destroy() {

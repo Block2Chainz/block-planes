@@ -1,6 +1,5 @@
 
 let shipRenderer = (attrString) => {
-    console.log(attrString, typeof(attrString), 'in ship renderer');
     attrString = JSON.stringify(attrString);
     let attrPossibilities = {
         bodyColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'],

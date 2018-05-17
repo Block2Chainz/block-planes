@@ -8,6 +8,7 @@ import {
     STORE_PLANES,
     SELECT_PLANE,
     DESELECT_PLANE,
+    SAVE_SOCKET,
 } from "../constants/action-types";
 
 const initialState = {
@@ -17,6 +18,7 @@ const initialState = {
     userPlanes: [],
     chatVisible: false,
     selectedPlane: null,
+    gameSocket: null,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -78,8 +80,13 @@ const rootReducer = (state = initialState, action) => {
         case DESELECT_PLANE: 
             return {
                 ...state, 
-                selectedPlane: 'hjlk',
-            }
+                selectedPlane: null,
+            };
+        case SAVE_SOCKET: 
+            return {
+                ...state, 
+                gameSocket: action.payload,
+            };
         default:
             return state;
     }

@@ -30,10 +30,7 @@ export default class OfflineShip {
         this.create = args.create;
         this.onDie = args.onDie || (() => console.log('cannot kill'));
         
-        console.log(args.attr);
         let attributes = shipRenderer(args.attr);
-        console.log(attributes, 'attributes');
-
         // ship characteristics
         this.bodyColor = attributes.bodyColor;
         this.wingShape = attributes.wingShape;

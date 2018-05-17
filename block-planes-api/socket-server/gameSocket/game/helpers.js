@@ -182,6 +182,29 @@ module.exports.accelerate = (room, ship) => {
   ship.velocity.x -= Math.sin(-ship.rotation * Math.PI / 180) * ship.speed;
   ship.velocity.y -= Math.cos(-ship.rotation * Math.PI / 180) * ship.speed;
 
+  // Move
+  ship.position.x += ship.velocity.x;
+  ship.position.y += ship.velocity.y;
+  ship.velocity.x *= ship.inertia;
+  ship.velocity.y *= ship.inertia;
+
+  // Rotation
+  if (ship.rotation >= 360) {
+    ship.rotation -= 360;
+  }
+  if (ship.rotation < 0) {
+    ship.rotation += 360;
+  }
+
+  // Screen edges
+  // Roll from one edge to the opposite
+  if (ship.position.x > state.screen.width) ship.position.x = 0;
+  else if (ship.position.x < 0) ship.position.x = state.screen.width;
+  if (ship.position.y > state.screen.height) ship.position.y = 0;
+  else if (ship.position.y < 0) ship.position.y = state.screen.height;
+
+
+
   // Thruster particles
   let posDelta = rotatePoint({
     x: 0,
