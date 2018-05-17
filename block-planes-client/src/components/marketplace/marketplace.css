@@ -22,20 +22,11 @@
 
 .plane-grid {
   /* position: relative; */
-  width: 80% !important;
+  width: 90% !important;
   margin: auto !important;
-  margin-top: 100px !important;
-  margin-bottom: 100px !important;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
 }
-
-.planes-to-buy {
-  width: 50% !important;
-}
-
-.planes-to-sell {
-  width: 50% !important;
-}
-
 
 .single-plane {
   min-height: 350px !important;
@@ -65,4 +56,14 @@
 .plane-column {
   min-height: 350px !important;
   min-width: 250px !important;
+}
+
+.body-div {
+  width: 80% !important;
+  margin: auto !important;  
+}
+
+.menu-div {
+  width: 80% !important;
+  margin: auto !important;
 }

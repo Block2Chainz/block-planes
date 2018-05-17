@@ -4,7 +4,7 @@ import cryptoplanes from '../../../../block-planes-solidity/BlockPlanes/build/co
 import TruffleContract from 'truffle-contract';
 import Web3 from 'web3';
 import Plane from '../hangar/plane.jsx';
-import { Pagination, Grid, Button, Icon, Label } from 'semantic-ui-react'
+import { Pagination, Grid, Button, Icon, Label, Input, Menu, Segment } from 'semantic-ui-react'
 
 
 class Marketplace extends Component {
@@ -16,7 +16,7 @@ class Marketplace extends Component {
             userAddress: null,
             currentPage: 1,
             planesPerPage: 12,
-            currentTab: 'Sell'
+            currentTab: 'Sell',
         }
         this.pageChange = this.pageChange.bind(this);
         if (typeof web3 != 'undefined') {
@@ -89,7 +89,13 @@ class Marketplace extends Component {
       });
     }
 
+    handleItemClick(e, { name }) {
+      this.setState({ activeItem: name });
+    }
+
     render() {
+        const { activeItem } = this.state
+
         // console.log('current state:', this.state);
         const { yourPlanes, currentPage, planesPerPage } = this.state;
         const pageNumbers = [];
@@ -156,7 +162,16 @@ class Marketplace extends Component {
               <p className="page-title">BUY AND SELL</p>
               </div> 
 
-              <div>
+             
+            
+              <div className='body-div'>
+                <div className='menu-div'>
+                <Menu fluid widths={2}>
+                  <Menu.Item name='buy' active={activeItem === 'buy'} onClick={this.handleItemClick} />
+                  <Menu.Item name='sell' active={activeItem === 'sell'} onClick={this.handleItemClick} />
+                </Menu>
+                </div>
+
                 <div className='plane-grid'>
                   {(this.state.currentTab === 'Sell') ? (<Grid columns={4} children={renderPlanes} className='plane-grid'/>) :
                   (<Grid columns={4} children={renderBuyPlanes} className='plane-grid'/>)}
