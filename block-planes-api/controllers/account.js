@@ -11,12 +11,14 @@ const createAccount = (req, res) => {
       res.send(err);
     } else {
       if (!data.length) {
-        db.query(`INSERT INTO users (full_name, username, password, profile_picture, total_points) 
-                VALUES (?, ?, ?, ?, ?) `, [req.body.fullName, req.body.newUsername, req.body.newPassword, req.body.profilePicture, 0], (err, data) => {
+        console.log(req.body);
+        db.query(`INSERT INTO users (full_name, username, password, profile_picture, total_points, blockchainAddress) 
+                VALUES (?, ?, ?, ?, ?, ?) `, [req.body.fullName, req.body.newUsername, req.body.newPassword, req.body.profilePicture, 0, req.body.blockchainAddress], (err, data) => {
             if (err) {
               res.send(err);
             } else {
               db.query('SELECT * FROM users WHERE id = ?', [data.insertId], (err, data) => {
+                console.log("back from the db", data);
                 if (err) {
                   res.send(err);
                 } else {
@@ -26,7 +28,8 @@ const createAccount = (req, res) => {
                           fullName: data[0].full_name,
                           profilePicture: data[0].profile_picture,
                           totalPoints: data[0].total_points,
-                          createdAt: data[0].created_at
+                          createdAt: data[0].created_at,
+                          blockchainAddress: data[0].blockchainAddress,
                         };
                         jwt.sign({user: user}, process.env.JWT_SECRET, (err, token) => {
                           res.json({ user: user, token: token });

@@ -6,7 +6,6 @@ import axios from 'axios';
 import './signup.css';
 import cryptoPlanes from '../../../../block-planes-solidity/BlockPlanes/build/contracts/BlockPlanes.json';
 
-
 const Promise = require('bluebird');
 const bcrypt = Promise.promisifyAll(require('bcrypt-nodejs'));
 
@@ -78,7 +77,8 @@ class ConnectedSignup extends Component {
                 newUsername: this.state.newUsername,
                 newPassword: hashedPassword,
                 profilePicture:
-                  'http://tekno.rakyatku.com/thumbs/img_660_442_asteroid-b_1492568184roid.jpg'
+                  'http://tekno.rakyatku.com/thumbs/img_660_442_asteroid-b_1492568184roid.jpg', 
+                blockchainAddress: this.state.blockAccount,
               };
               let component = this;
               axios

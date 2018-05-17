@@ -15,6 +15,10 @@ World.prototype.connect = function (player, shipAttributes) {
     this.peers[player].position.y = player === 1 ? 50 : 75;
 };
 
+World.prototype.createObject = function (type, obj) {
+    console.log('creating an object of type ', type, obj)
+};
+
 World.prototype.update = function (io) {
     this.processInputs();
     // emit to clients

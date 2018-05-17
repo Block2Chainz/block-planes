@@ -93,6 +93,7 @@ class ConnectedApp extends Component {
                 blockchainAddress: response.data.user.blockchainAddress,
               });
             } else {
+              console.log('LOGGINGOUT', response.data.user.blockchainAddress, 'account', account);
               // otherwise, alert that the site will not function correctly if signed in with the incorrect account
               alert('You are logging in with an different MetaMask account. Please log in with the correct MetaMask account');
               this.logout();

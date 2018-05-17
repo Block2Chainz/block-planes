@@ -10,7 +10,7 @@ const Particle = function (args) {
     this.delete = false;
 }
 
-Particle.prototype.update = function (state) {
+Particle.prototype.update = function () {
     // Move
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;

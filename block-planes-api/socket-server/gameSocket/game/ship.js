@@ -3,9 +3,10 @@ const Particle = require('./particle.js');
 const shipRenderer = require('./shipRenderer.js');
 const { rotatePoint, randomNumBetween } = require('./helpers.js');
 
-const Ship = function (args) {
+const Ship = function (args, world) {
     this.id = null;
     this.last_processed_input = null;
+    this.world = world;
 
     this.up = false;
     this.left = false;
@@ -27,6 +28,8 @@ const Ship = function (args) {
     this.smokeColor = attributes.smokeColor || '#ffffff';
 } 
 
+Ship.prototype.create = this.world.createObject;
+
 Ship.prototype.destroy = function () {
     this.delete = true;
 
@@ -46,7 +49,7 @@ Ship.prototype.destroy = function () {
             }
         });
 
-        this.create(particle, 'particles');
+        this.create('particles', particle);
     }
 }
 
