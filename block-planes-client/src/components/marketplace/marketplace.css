@@ -12,3 +12,25 @@
 .planes-to-sell {
   width: 50% !important;
 }
+
+.plane-grid {
+  width: 100% !important;
+  margin: auto;
+}
+
+.single-plane {
+  width: 80% !important;
+  margin: auto;
+  /* left: 20% !important; */
+}
+
+.plane {
+  width: 80% !important;
+  margin: auto !important;
+}
+
+.canvas-plane {
+  position: relative !important;
+  left: 8% !important;
+  top: 12px !important;
+}

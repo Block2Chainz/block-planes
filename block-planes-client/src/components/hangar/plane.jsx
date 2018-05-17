@@ -154,6 +154,7 @@ class Plane extends Component {
 
   render() {
     return (
+<<<<<<< HEAD
       <div onClick={(e) => this.select(e)} width={16} className='plane' >
         <canvas ref='canvas' width={150} height={150} />
         {this.props.selected === 'highlight' ? 
@@ -167,6 +168,11 @@ class Plane extends Component {
           <div></div>
         }
       </div>
+=======
+        <Grid.Column width={16} className='plane' >
+          <canvas ref='canvas' width={150} height={150} className='canvas-plane'/>
+        </Grid.Column>
+>>>>>>> implement Semantics UI pagination, center plane
     )
   }  
 }

@@ -4,7 +4,7 @@ import cryptoplanes from '../../../../block-planes-solidity/BlockPlanes/build/co
 import TruffleContract from 'truffle-contract';
 import Web3 from 'web3';
 import Plane from '../hangar/plane.jsx';
-import { Pagination } from 'semantic-ui-react'
+import { Pagination, Grid } from 'semantic-ui-react'
 
 
 class Marketplace extends Component {
@@ -15,9 +15,9 @@ class Marketplace extends Component {
             contract: null,
             userAddress: null,
             currentPage: 1,
-            planesPerPage: 9
+            planesPerPage: 12
         }
-        this.pageClick = this.pageClick.bind(this);
+        this.pageChange = this.pageChange.bind(this);
         if (typeof web3 != 'undefined') {
             this.web3Provider = web3.currentProvider;
             } else {
@@ -82,9 +82,9 @@ class Marketplace extends Component {
 
     }
 
-    pageClick(event) {
+    pageChange(e, { activePage }) {
       this.setState({
-        currentPage: Number(event.target.id)
+        currentPage: Number(activePage)
       });
     }
 
@@ -99,19 +99,19 @@ class Marketplace extends Component {
         
         //render planes for current page
         const renderPlanes = currentPlanes.map((plane, index) => {
-          return <Plane key={Math.random()} plane={plane} />
+          return (
+            <Grid.Column>
+            <div className='single-plane'>
+            <Plane key={Math.random()} plane={plane} />
+            </div>
+            </Grid.Column>
+          )
         });
 
         //calculating number of pages based on number of items per page
         for (let i = 1; i <= Math.ceil(yourPlanes.length / planesPerPage); i++) {
           pageNumbers.push(i);
         }
-
-
-        //render page numbers
-        const renderPageNumber = pageNumbers.map(number => {
-          return <li key={number} id={number} onClick={this.pageClick}>{number}</li> 
-        });
 
         return (
             <div className="marketplace">
@@ -120,10 +120,10 @@ class Marketplace extends Component {
 =======
                 Buy, trade and sell right hurr  
               <div>
-                {renderPageNumber}
+                <Pagination defaultActivePage={1} totalPages={pageNumbers.length} onPageChange={this.pageChange}/>
               </div>
               <div>
-                {renderPlanes}
+                <Grid columns={4} children={renderPlanes} className='plane-grid'/>
               </div>
 >>>>>>> set up pagination to render only nine plane per page
             </div>
