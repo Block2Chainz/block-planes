@@ -12,13 +12,16 @@ class Marketplace extends Component {
         super(props);
         this.state = {
             yourPlanes : [],
+            planesOnSale: [],
             contract: null,
             userAddress: null,
             currentPage: 1,
             planesPerPage: 12,
-            currentTab: 'Sell',
+            currentTab: 'Buy',
         }
         this.pageChange = this.pageChange.bind(this);
+        this.handleMenuClick = this.handleMenuClick.bind(this);
+        
         if (typeof web3 != 'undefined') {
             this.web3Provider = web3.currentProvider;
             } else {
@@ -89,15 +92,15 @@ class Marketplace extends Component {
       });
     }
 
-    handleItemClick(e, { name }) {
-      this.setState({ activeItem: name });
+    handleMenuClick(e, { name }) {
+      console.log('what is name:', name)
+      this.setState({ currentTab : name });
     }
 
     render() {
-        const { activeItem } = this.state
 
         // console.log('current state:', this.state);
-        const { yourPlanes, currentPage, planesPerPage } = this.state;
+        const { yourPlanes, currentPage, planesPerPage, planesOnSale } = this.state;
         const pageNumbers = [];
 
         //calculating plane index in current page
@@ -127,7 +130,7 @@ class Marketplace extends Component {
           )
         });
 
-        const renderBuyPlanes = currentPlanes.map((plane, index) => {
+        const renderBuyPlanes = planesOnSale.map((plane, index) => {
           console.log('flag1: ', plane);
           return (
             <Grid.Column className='plane-column'>
@@ -149,7 +152,9 @@ class Marketplace extends Component {
         });
 
         //calculating number of pages based on number of items per page
-        for (let i = 1; i <= Math.ceil(yourPlanes.length / planesPerPage); i++) {
+        let currentSelection;
+        (this.state.currentTab !== 'Buy') ? currentSelection = yourPlanes : currentSelection = planesOnSale;
+        for (let i = 1; i <= Math.ceil(currentSelection.length / planesPerPage); i++) {
           pageNumbers.push(i);
         }
 
@@ -167,8 +172,8 @@ class Marketplace extends Component {
               <div className='body-div'>
                 <div className='menu-div'>
                 <Menu fluid widths={2}>
-                  <Menu.Item name='buy' active={activeItem === 'buy'} onClick={this.handleItemClick} />
-                  <Menu.Item name='sell' active={activeItem === 'sell'} onClick={this.handleItemClick} />
+                  <Menu.Item name='Buy'  onClick={this.handleMenuClick} />
+                  <Menu.Item name='Sell' onClick={this.handleMenuClick} />
                 </Menu>
                 </div>
 
