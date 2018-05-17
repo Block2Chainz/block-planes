@@ -2,11 +2,48 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Image, Form, Grid, Button } from 'semantic-ui-react';
 import './header.css';
+import NotificationSystem from 'react-notification-system';
+import Socketio from 'socket.io-client';
+import { connect } from "react-redux";
 
-class Home extends Component {
+
+const mapStateToProps = state => {
+  return {
+    userId: state.id
+  };
+};
+
+class ConnectedHome extends Component {
+  constructor(props) {
+       super(props);
+       this.state = {
+           notificationSystem: this.refs.notificationSystem
+       };
+       this.addNotification = this.addNotification.bind(this);
+       this.socket = Socketio('http://localhost:4225');
+    }
+
+    notificationSystem = null;
+
+    componentDidMount() {
+      let component = this;
+        this.notificationSystem = this.refs.notificationSystem;
+    }
+
+    addNotification(event, notificationObj) {
+        event.preventDefault();
+        this.notificationSystem.addNotification({
+          title: 'New Message from ' + notificationObj.username,
+          message: notificationObj.messageText,
+          level: 'info'
+        });
+    }
+        
     render() {
+      let component = this;
         return (
             <div>
+              <NotificationSystem ref="notificationSystem" />
           <Grid>
             <Grid.Column width={8} >
                 <Grid.Row>
@@ -52,5 +89,7 @@ class Home extends Component {
         );
     }
 }
+
+const Home = connect(mapStateToProps)(ConnectedHome);
 
 export default Home;

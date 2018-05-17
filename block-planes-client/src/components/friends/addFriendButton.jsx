@@ -12,9 +12,11 @@ const mapStateToProps = state => {
 
 function ConnectedAddFriendButton(props) {
     if (props.friendState === 'not friends') {
-      return <Button className='ui inverted button' size='small' onClick={props.addFriend} >Add to Friends</Button>;
+      return <Button className='ui inverted button' size='small' onClick={props.addFriend} >Send Friend Request</Button>;
+    } else if (props.friendState === 'pending') {
+      return <Button className='ui inverted button' size='small' >Friend Request Pending</Button>;
     } else {
-      return <Button className='ui inverted button' size='small' >Already Friends</Button>;
+      return null;
     }
   }
 

@@ -22,6 +22,9 @@ CREATE TABLE friends (
   `id` INT AUTO_INCREMENT,
   `id_one` INT,
   `id_two` INT,
+  `pending` INT,
+  `request_by` INT,
+  `request_created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 );
 
