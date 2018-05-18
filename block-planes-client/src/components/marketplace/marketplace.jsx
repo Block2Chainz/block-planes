@@ -115,10 +115,10 @@ class Marketplace extends Component {
             <div className='single-plane'>
             <Plane key={Math.random()} plane={plane} />
             <div className='plane-menu'>
-              <div className='menu-button'>
                 <div className='plane-stats-div'>
                   <p className='plane-stats'>Speed: # <br/>Inertia: #<br/>Firing Rate: # </p>              
                 </div>
+              <div className='menu-button'>
                 <Button as='div' labelPosition='left'>
                   <Label as='a' basic>Price</Label>
                   <Button>

@@ -54,7 +54,7 @@
   height: 75px !important;
   /* min-height: 50px !important; */
   align-items: center !important;
-  justify-content: right !important;
+  justify-content: space-between !important;
 }
 
 .menu-button {
@@ -65,9 +65,9 @@
 }
 
 .plane-stats {
-  position: relative !important;
+  display: flex;
   font-size: 10px !important;
-  margin-left: -70% !important;  
+  margin-left: 10px !important;
 }
 
 .plane-stats-div {
