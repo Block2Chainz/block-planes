@@ -11,8 +11,6 @@ contract PlaneOwnership is BlockPlanes, ERC721 {
 
     using SafeMath for uint256;
 
-    uint256[2][] public planesForSale;
-
     mapping (uint => address) planeApprovals;
     mapping (uint => bool) planeSellStatus;
     mapping (uint => uint) planeSellPrice;
@@ -64,24 +62,24 @@ contract PlaneOwnership is BlockPlanes, ERC721 {
     }
 
     //put plane on sale
-    function sellPlane(uint256 _planeId, uint256 _planeAttr, uint256 price) public onlyOwnerOf(_planeId) {
-        planeSellStatus[_planeId] = true;
-        planeSellPrice[_planeId] = price;
-        planeSellCount[1] = planeSellCount[1] + 1;
-        planesForSale.push([_planeId, _planeAttr]);
-    }
+    // function sellPlane(uint256 _planeId, uint256 _planeAttr, uint256 price) public onlyOwnerOf(_planeId) {
+    //     planeSellStatus[_planeId] = true;
+    //     planeSellPrice[_planeId] = price;
+    //     planeSellCount[1] = planeSellCount[1] + 1;
+    //     planesForSale.push([_planeId, _planeAttr]);
+    // }
 
     //transfer ownership of plane once money is received
-    function buyPlane(address _from, address _to, uint256 _planeId) payable public {
-        require(planesForSale[_planeId] == true);
-        if (msg.value == planeSellPrice[_planeId]) {
-            planeToOwner[_planeId].transfer(msg.value);
-            ownerPlaneCount[planeToOwner[_planeId]] = ownerPlaneCount[planeToOwner[_planeId]].sub(1);
-            ownerPlaneCount[msg.sender] = ownerPlaneCount[msg.sender].add(1);
-            planeToOwner[_planeId] = msg.sender;
-            planesForSale[_planeId] = false;
-        } else {
-            revert();
-        }
-    }
+    // function buyPlane(address _from, address _to, uint256 _planeId) payable public {
+    //     require(planesForSale[_planeId] == true);
+    //     if (msg.value == planeSellPrice[_planeId]) {
+    //         planeToOwner[_planeId].transfer(msg.value);
+    //         ownerPlaneCount[planeToOwner[_planeId]] = ownerPlaneCount[planeToOwner[_planeId]].sub(1);
+    //         ownerPlaneCount[msg.sender] = ownerPlaneCount[msg.sender].add(1);
+    //         planeToOwner[_planeId] = msg.sender;
+    //         planesForSale[_planeId] = false;
+    //     } else {
+    //         revert();
+    //     }
+    // }
 }

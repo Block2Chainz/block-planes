@@ -33,33 +33,32 @@ class Marketplace extends Component {
         this.blockplanes.setProvider(this.web3Provider);
     }
 
-    componentDidMount() {
+    componentDidMount() {   
+        console.log('hello')   
         let userAddress, contract;
         let planesForSale = [];
         let planesWithAttr = [];
         this.web3.eth.getCoinbase((err, address) => {
           // storing the user blockchain address*****
           userAddress = address;
+          console.log(address);
           // get the contract instance
           this.blockplanes.deployed()
           .then((instance) => {
           this.setState({contract : instance, userAddress : address});
           contract = instance;
-          // instance.createRandomPlane({ from: this.web3.eth.accounts[0], value: this.web3.toWei(0.001, 'ether')});
-          setTimeout(function() {console.log('flag2', address, 'address: ', instance);}, 2000);
           return instance.getPlanesByOwner(address);
           }).then((planes) => {
             return planes.map((plane) => {
               return plane.toNumber();
             });
           }).then((planeArray) => {
-            console.log('plane array: ', planeArray);
             let hangar = [];
             for (let i = 0; i < planeArray.length; i++) {
               let planeAttr;
               contract.planes(planeArray[i]).then((plane) => {
-                planeAttr = plane.toNumber();
-                hangar.push([planeArray[i], planeAttr]);
+                planeAttr = plane[0].toNumber();
+                hangar.push([planeArray[i], planeAttr, plane[1]]);
                 if (i === planeArray.length - 1) {
                   this.setState({yourPlanes : hangar});
                 }
@@ -68,10 +67,6 @@ class Marketplace extends Component {
           });
           // console.log('planes on sale: ', planesForSale);
         });
-    }
-
-    getPlanesOnSale() {
-        console.log('plane array within marketplace: ', this.state.planes);
     }
 
     sellPlane(planeId) {
@@ -98,6 +93,7 @@ class Marketplace extends Component {
     }
 
     render() {
+        console.log(this.state)
         const { yourPlanes, currentPage, planesPerPage, planesOnSale, currentTab } = this.state;
         const pageNumbers = [];
 
@@ -173,14 +169,14 @@ class Marketplace extends Component {
                 Buy, trade and sell right hurr  
 
               <div>
-              <p className="page-title">BUY AND SELL</p>
+              <p className="page-title">WELCOME</p>
               </div> 
 
              
             
               <div className='body-div'>
                 <div className='menu-div'>
-                <Menu fluid widths={2}  color={'black'} inverted={false} huge className='menu-tab'>
+                <Menu fluid widths={2}  color={'black'} inverted={false} className='menu-tab'>
                   <Menu.Item name='Buy'   color={'red'} active={currentTab === 'Buy'} onClick={this.handleMenuClick} />
                   <Menu.Item name='Sell'  color={'red'} active={currentTab === 'Sell'} onClick={this.handleMenuClick} />
                 </Menu>
