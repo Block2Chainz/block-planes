@@ -110,13 +110,15 @@ class Marketplace extends Component {
         
         //render planes for current page
         const renderPlanes = currentPlanes.map((plane, index) => {
-          console.log('flag1: ', plane);
           return (
             <Grid.Column className='plane-column'>
             <div className='single-plane'>
             <Plane key={Math.random()} plane={plane} />
             <div className='plane-menu'>
-              <div>
+              <div className='menu-button'>
+                <div className='plane-stats-div'>
+                  <p className='plane-stats'>Speed: # <br/>Inertia: #<br/>Firing Rate: # </p>              
+                </div>
                 <Button as='div' labelPosition='left'>
                   <Label as='a' basic>Price</Label>
                   <Button>
@@ -137,7 +139,12 @@ class Marketplace extends Component {
             <div className='single-plane'>
             <Plane key={Math.random()} plane={plane} />
             <div className='plane-menu'>
-              <div>
+              <div className='menu-button'>
+                <div>
+                  <p>Speed: #</p>
+                  <p>Inertia: #</p>
+                  <p>Firing Rate: #</p>                  
+                </div>
                 <Button as='div' labelPosition='left'>
                   <Label as='a' basic>Price</Label>
                   <Button>
