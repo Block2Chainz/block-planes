@@ -21,6 +21,7 @@ class Marketplace extends Component {
         }
         this.pageChange = this.pageChange.bind(this);
         this.handleMenuClick = this.handleMenuClick.bind(this);
+        this.sellPlane = this.sellPlane.bind(this);
         
         if (typeof web3 != 'undefined') {
             this.web3Provider = web3.currentProvider;
@@ -69,8 +70,9 @@ class Marketplace extends Component {
         });
     }
 
-    sellPlane(planeId) {
-      this.state.contract.sellPlane(planeId, )
+    sellPlane(planeId, price) {
+      console.log('inside of sellPlane: ', typeof planeId, typeof price, this.state);
+      this.state.contract.sellPlane(planeId, price, { from: this.web3.eth.accounts[0]});
     }
 
     askPrice(planeId) {
@@ -108,7 +110,7 @@ class Marketplace extends Component {
         const currentPlanes = yourPlanes.slice(indexOfFirstPlane, indexOfLastPlane);
         
         //render planes for current page
-        const renderPlanes = currentPlanes.map((plane, index) => {
+        const renderOwnPlanes = currentPlanes.map((plane, index) => {
           return (
             <Grid.Column className='plane-column'>
             <div className='single-plane'>
@@ -120,7 +122,7 @@ class Marketplace extends Component {
               <div className='menu-button'>
                 <Button as='div' labelPosition='left'>
                   <Label as='a' basic>1000 ω</Label>
-                  <Button>
+                  <Button onClick={() => {this.sellPlane(plane[0], 200)}}>
                     Sell!
                   </Button>
                 </Button>
@@ -183,7 +185,7 @@ class Marketplace extends Component {
                 </div>
 
                 <div className='plane-grid'>
-                  {(this.state.currentTab === 'Sell') ? (<Grid columns={4} children={renderPlanes} className='plane-grid'/>) :
+                  {(this.state.currentTab === 'Sell') ? (<Grid columns={4} children={renderOwnPlanes} className='plane-grid'/>) :
                   (<Grid columns={4} children={renderBuyPlanes} className='plane-grid'/>)}
                 </div>
                 <div className='page-selector'>

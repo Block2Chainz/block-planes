@@ -62,12 +62,11 @@ contract PlaneOwnership is BlockPlanes, ERC721 {
     }
 
     //put plane on sale
-    // function sellPlane(uint256 _planeId, uint256 _planeAttr, uint256 price) public onlyOwnerOf(_planeId) {
-    //     planeSellStatus[_planeId] = true;
-    //     planeSellPrice[_planeId] = price;
-    //     planeSellCount[1] = planeSellCount[1] + 1;
-    //     planesForSale.push([_planeId, _planeAttr]);
-    // }
+    function sellPlane(uint256 _planeId, uint256 price) public onlyOwnerOf(_planeId) {
+        planes[_planeId].sell = true;
+        planeSellPrice[_planeId] = price;
+        planeSellCount[1] = planeSellCount[1] + 1;
+    }
 
     //transfer ownership of plane once money is received
     // function buyPlane(address _from, address _to, uint256 _planeId) payable public {
