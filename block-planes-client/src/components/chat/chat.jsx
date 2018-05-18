@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { Image, Form, Grid, Button } from 'semantic-ui-react';
 import { connect } from "react-redux";
 import Moment from 'moment';
@@ -14,18 +14,21 @@ import MessageInput from './messageInput.jsx';
 import MessageList from './messageList.jsx';
 import { animateScroll } from "react-scroll";
 import Socketio from 'socket.io-client';
+import NotificationSystem from 'react-notification-system';
 import './chat.css';
 
 const mapStateToProps = state => {
   return {
-    userId: state.id
+    userId: state.id,
+    username: state.username
   };
 };
 
-class ConnectedFriends extends Component {
+class ConnectedChat extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      notificationSystem: this.refs.notificationSystem,
       friendId: '',
       username: '',
       profilePicture: '',
@@ -38,11 +41,25 @@ class ConnectedFriends extends Component {
     this.updateFriendsPage = this.updateFriendsPage.bind(this);
     this.fetchFriends = this.fetchFriends.bind(this);
     this.fetchMessages = this.fetchMessages.bind(this);
+    this.fetchFriendByUsername = this.fetchFriendByUsername.bind(this);
+    this.addNotification = this.addNotification.bind(this);
     this.socket = Socketio('http://localhost:4225');
   }
 
+  notificationSystem = null;
+
+
   componentDidMount() {
     let component = this;
+    this.notificationSystem = this.refs.notificationSystem;
+    this.socket.on('returnmessage', function (message) {
+      if ((component.props.userId === message.friendId) && (message.username !== component.state.username)) {
+        component.addNotification(event, message);
+      }
+    });
+    if (this.props.location.state) {
+      this.fetchFriendByUsername(this.props.location.state.friendUsername);
+    }
     this.updateFriendsPage();
     this.scrollToBottom();
     this.socket.on('returnmessage', function (message) {
@@ -61,6 +78,22 @@ scrollToBottom() {
   if (someElement) {
     someElement.scrollTop = someElement.scrollHeight;
   }
+}
+
+addNotification(event, notificationObj) {
+  let component = this;
+  event.preventDefault();
+  this.notificationSystem.addNotification({
+    title: 'New Message from ' + notificationObj.username,
+    message: notificationObj.messageText,
+    level: 'info',
+    action: {
+      label: 'Go to Chat',
+      callback: function() {
+          component.fetchFriendByUsername(notificationObj.username);
+      }
+    }
+  });
 }
 
   updateFriendsPage(user) {
@@ -100,6 +133,22 @@ scrollToBottom() {
       });
   }
 
+  fetchFriendByUsername(username) {
+    let component = this;
+    axios
+      .get('/friendsFetchByUsername', {
+        params: {
+          username: username
+        }
+        })
+      .then(response => {
+        component.updateFriendsPage(response.data);
+      })
+      .catch(err => {
+        console.log('Error from login', err);
+      });
+  }
+
   fetchMessages() {
     let component = this;
     axios
@@ -124,6 +173,8 @@ scrollToBottom() {
     render() {
       if (this.state.friendId) {
         return (
+          <div>
+          <NotificationSystem ref="notificationSystem" />
             <Grid>
               <Grid.Row >
           </Grid.Row>
@@ -140,12 +191,15 @@ scrollToBottom() {
                  </div>
                  </div>
                  <div className='footer'>
-                 <MessageInput className='footer' friendId={this.state.friendId} username={this.state.username} userId={this.props.userId} fetchMessages={this.fetchMessages}/>
+                 <MessageInput className='footer' friendId={this.state.friendId} username={this.props.username} friendUsername={this.state.username} userId={this.props.userId} fetchMessages={this.fetchMessages}/>
                  </div>
           </Grid>
+          </div>
         );
       } else {
         return (
+          <div>
+          <NotificationSystem ref="notificationSystem" />
           <Grid>
        <Grid.Row >
           </Grid.Row>
@@ -154,12 +208,15 @@ scrollToBottom() {
           <p className='text2'>Or Search Users: </p>
             <SearchUsers className='searchusersbar' updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
           </Grid.Row>
+          <Grid.Row className='borderfriends'>
+          </Grid.Row>
         </Grid>
+        </div>
         );
       }
     }
 }
 
-const Friends = connect(mapStateToProps)(ConnectedFriends);
+const Chat = connect(mapStateToProps)(ConnectedChat);
 
-export default Friends;
+export default withRouter(Chat);

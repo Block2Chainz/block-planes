@@ -10,6 +10,12 @@ io.on('connection', (socket) => {
     socket.on('message', function (data) {
         io.emit('returnmessage', data);
       });
+      socket.on('friendRequestSent', function (data) {
+        io.emit('returnfriendRequestSent', data);
+      });
+      socket.on('friendRequestAccepted', function (data) {
+        io.emit('returnfriendRequestAccepted', data);
+      });
 });
 
 const PORT = process.env.PORT || 4225;

@@ -21,6 +21,11 @@ router.get('/search', search.fetchUsers);
 router.get('/friendsCheck', friends.checkIfFriends);
 router.post('/friendsAdd', friends.addFriend);
 router.get('/friendsFetch', friends.fetchFriends);
+router.get('/friendsFetchByUsername', friends.fetchFriendByUsername);
+router.get('/friendsDelete', friends.deleteFriend);
+router.get('/friendsFetchRequests', friends.fetchRequests);
+router.post('/friendsAccept', friends.acceptRequest);
+router.post('/friendsDecline', friends.declineRequest);
 
 router.get('/messages', messages.fetchMessages);
 router.post('/messages', messages.saveMessage);

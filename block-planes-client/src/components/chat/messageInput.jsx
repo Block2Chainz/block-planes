@@ -30,7 +30,8 @@ class MessageInput extends React.Component {
     this.socket.emit('message', {
       messageText: this.state.content,
       userId: component.props.userId,
-      friendId: component.props.friendId
+      friendId: component.props.friendId,
+      username: component.props.username
     });
     axios.post('/messages', {
       messageText: this.state.content,
@@ -48,7 +49,7 @@ class MessageInput extends React.Component {
     return (<div>
       <form className="ui form">
         <div className="field">
-          <input placeholder={"Send a message to " + this.props.username} rows="1" value={this.state.content} onChange={this.onChangeMessage} onSubmit={this.submitMessage}>
+          <input placeholder={"Send a message to " + this.props.friendUsername} rows="1" value={this.state.content} onChange={this.onChangeMessage} onSubmit={this.submitMessage}>
           </input>
         </div>
         <div className="hide">
