@@ -32,7 +32,6 @@ class ConnectedRequest extends React.Component {
         friendsTableId: component.props.request.id
       })
       .then(response => {
-        console.log('acceptRequest response', response);
         component.props.fetchRequests();
       })
       .catch(err => {

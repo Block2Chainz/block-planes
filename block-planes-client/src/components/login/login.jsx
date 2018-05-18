@@ -118,9 +118,9 @@ class ConnectedLogin extends Component {
                       <p className='splash2'>Time to get to work.</p>
                     </Grid.Row>
 
-                    <Grid.Row className='new-username-password'>
+                    <Grid.Row >
                       <p>Your MetaMask Account: </p>
-                      <p>{this.state.blockAccount} {' '}
+                      <p className='metamaskstring' >{this.state.blockAccount} {' '}
                       <a href='#' onClick={() => this.refresh()}><img width={'20px'} src="https://www.materialui.co/materialIcons/navigation/refresh_white_192x192.png"/></a>
                       </p>
                       <Form.Group>

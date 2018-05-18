@@ -53,9 +53,7 @@ class ConnectedChat extends Component {
     let component = this;
     this.notificationSystem = this.refs.notificationSystem;
     this.socket.on('returnmessage', function (message) {
-      console.log('received message in chat', message, this.state);
       if ((component.props.userId === message.friendId) && (message.username !== component.state.username)) {
-        console.log('this far', message)
         component.addNotification(event, message);
       }
     });
@@ -102,7 +100,6 @@ addNotification(event, notificationObj) {
     if (!user) {
       this.fetchFriends();
     } else {
-      console.log('user', user);
       this.setState({
         friendId: user.id,
         username: user.title,
@@ -111,7 +108,6 @@ addNotification(event, notificationObj) {
         totalPoints: user.totalPoints,
         createdAt: user.createdAt
       }, function() {
-        console.log('state before fetchFriends', this.state);
         this.fetchFriends();
       });
     }
@@ -146,7 +142,6 @@ addNotification(event, notificationObj) {
         }
         })
       .then(response => {
-        console.log('fetchfriendbyusername data', response);
         component.updateFriendsPage(response.data);
       })
       .catch(err => {

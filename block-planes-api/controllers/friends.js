@@ -25,7 +25,6 @@ const checkIfFriends = (req, res) => {
 }
 
 const addFriend = (req, res) => {
-  console.log('made it to add friend', req.body.userId, req.body.friendId, 1, req.body.userId );
   db.query(`INSERT INTO friends (id_one, id_two, pending, request_by) 
                 VALUES (?, ?, ?, ?) `, [req.body.userId, req.body.friendId, 1, req.body.userId], (err, data) => {
       if (err) {
@@ -78,12 +77,10 @@ const fetchFriends = (req, res) => {
 }
 
 const fetchFriendByUsername = (req, res) => {
-  console.log('params username', req.query.username);
   db.query('SELECT * FROM users WHERE username = ?', [req.query.username], (err, data) => {
     if (err) {
       console.log(err);
     } else {
-      console.log('friend data', data)
       res.send({
         id: data[0].id,
         title: data[0].username,
@@ -97,7 +94,6 @@ const fetchFriendByUsername = (req, res) => {
 }
 
 const deleteFriend = (req, res) => {
-  console.log('deleting friend', req.query.user, req.query.friend);
   db.query('DELETE FROM friends WHERE id_one = ? AND id_two = ? OR id_one = ? AND id_two = ?', [req.query.user, req.query.friend, req.query.friend, req.query.user], (err, data) => {
     if (err) {
       console.log(err);
@@ -110,14 +106,12 @@ const deleteFriend = (req, res) => {
 
 const fetchRequests = (req, res) => {
   const queryId = req.query.id;
-  console.log('queryID'. queryId);
   db.query('SELECT friends.id, request_by, request_created_at, users.username, users.profile_picture FROM friends ' +
   'INNER JOIN users ON users.id = friends.request_by ' +
   'WHERE id_one = (?) AND pending = ? AND request_by <> ? OR id_two = (?) AND pending = ? AND request_by <> ?', [queryId, 1, queryId, queryId, 1, queryId], (err, data) => {
     if (err) {
       console.log(err);
     } else {
-      console.log('requests data array to be manipulated',data);
       res.send(
         data.map((request) => {
           return {
@@ -137,7 +131,6 @@ const acceptRequest = (req, res) => {
       if (err) {
         res.send(err);
       } else {
-        console.log('after update in acceptRequest', data);
         res.send(data);
       }
     });

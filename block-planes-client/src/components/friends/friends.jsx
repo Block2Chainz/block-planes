@@ -59,7 +59,6 @@ class ConnectedFriends extends Component {
     this.updateFriendsPage();
     this.socket.on('returnfriendRequestSent', function (request) {
       if ((component.props.userId === request.recipientId) && (component.state.isRequestPage !== true)) {
-        console.log('on friend page, receiving request', this.state);
         component.friendRequestSentNotification(event, request);
       } else if ((component.props.userId === request.recipientId)) {
         component.toggleRequests();
@@ -212,7 +211,6 @@ ownFriendRequestSentNotification(event, notificationObj) {
         }
         })
       .then(response => {
-        console.log('requests data',response);
           component.setState({
             requests: response.data
           }, () => {
@@ -255,14 +253,6 @@ ownFriendRequestSentNotification(event, notificationObj) {
             <DeleteFriendButton className='deletefriendbutton' friendState={this.state.friendState} deleteFriend={this.deleteFriend} />
             </div>
           </Grid.Row>
-          <Grid.Row className='borderfriends'>
-          </Grid.Row>
-                  <Grid.Row className='userrow'>
-                  <div className='profilepic' >
-                <Image src={this.state.profilePicture} size='medium' rounded />
-                  <p className='joined'>Joined: {Moment(this.state.createdAt).format('MMMM Do YYYY')}</p>
-              </div>
-            </Grid.Row>
 
             <Grid.Row className='borderfriends'>
             </Grid.Row>

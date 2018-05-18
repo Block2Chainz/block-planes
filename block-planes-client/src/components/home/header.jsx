@@ -45,7 +45,6 @@ class ConnectedHeader extends Component {
       }
     });
     this.socket.on('returnfriendRequestAccepted', function (request) {
-      console.log('FR accepted');
       if ((component.props.userId === request.recipientId) && (window.location.pathname !== '/game')) {
         component.friendRequestAcceptedNotification(event, request);
       } else if ((component.props.username === request.username) && (window.location.pathname !== '/game')) {
