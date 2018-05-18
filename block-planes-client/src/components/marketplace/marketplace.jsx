@@ -98,10 +98,13 @@ class Marketplace extends Component {
     }
 
     render() {
-
-        // console.log('current state:', this.state);
-        const { yourPlanes, currentPage, planesPerPage, planesOnSale } = this.state;
+        const { yourPlanes, currentPage, planesPerPage, planesOnSale, currentTab } = this.state;
         const pageNumbers = [];
+
+        let buyClass = null;
+        let sellClass = null;
+
+        currentTab === 'Buy' ? (buyClass = '.menu-active') : (sellClass = '.menu-active');
 
         //calculating plane index in current page
         const indexOfLastPlane = currentPage * planesPerPage;
@@ -120,7 +123,7 @@ class Marketplace extends Component {
                 </div>
               <div className='menu-button'>
                 <Button as='div' labelPosition='left'>
-                  <Label as='a' basic>Price</Label>
+                  <Label as='a' basic>1000 ω</Label>
                   <Button>
                     Sell!
                   </Button>
@@ -133,7 +136,6 @@ class Marketplace extends Component {
         });
 
         const renderBuyPlanes = planesOnSale.map((plane, index) => {
-          console.log('flag1: ', plane);
           return (
             <Grid.Column className='plane-column'>
             <div className='single-plane'>
@@ -178,9 +180,9 @@ class Marketplace extends Component {
             
               <div className='body-div'>
                 <div className='menu-div'>
-                <Menu fluid widths={2}>
-                  <Menu.Item name='Buy'  onClick={this.handleMenuClick} />
-                  <Menu.Item name='Sell' onClick={this.handleMenuClick} />
+                <Menu fluid widths={2}  color={'black'} inverted={false} huge className='menu-tab'>
+                  <Menu.Item name='Buy'   color={'red'} active={currentTab === 'Buy'} onClick={this.handleMenuClick} />
+                  <Menu.Item name='Sell'  color={'red'} active={currentTab === 'Sell'} onClick={this.handleMenuClick} />
                 </Menu>
                 </div>
 

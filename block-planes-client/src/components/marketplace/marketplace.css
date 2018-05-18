@@ -91,7 +91,18 @@
 
 
 
-.menu-active {
-  color: black !important;
-  background-color: white !important;
+/* .menu-active {
+  color: white !important;
+  background-color: red !important;
+} */
+
+.menu-tab {
+  font-size: 14px !important;
+  /* color: white !important; */
 }
+
+.menu .item {
+  font-size: 24px !important;
+  padding: 2px !important;
+}
+
