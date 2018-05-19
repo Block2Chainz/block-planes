@@ -24,6 +24,7 @@ contract BlockPlanes is Ownable {
     struct Plane {
         uint attributes;
         bool sell;
+        uint price;
     }
 
     /// store all planes in an array
@@ -36,7 +37,7 @@ contract BlockPlanes is Ownable {
 
     /// takes in an attribute string and adds a plane struct to the planes array, then emits a new plane event
     function _createPlane(uint _attributes) internal {
-        uint id = planes.push(Plane(_attributes,false)) - 1;
+        uint id = planes.push(Plane(_attributes,false, 0)) - 1;
         planeToOwner[id] = msg.sender;
         ownerPlaneCount[msg.sender] = ownerPlaneCount[msg.sender].add(1);
         emit NewPlane(id, _attributes);

@@ -47,7 +47,7 @@ class Marketplace extends Component {
           // console.log('all planes: ', instance.planes()[1]);
           this.setState({contract : instance, userAddress : address});
           contract = instance;
-          // instance.createRandomPlane({ from: this.web3.eth.accounts[0], value: this.web3.toWei(0.001, 'ether')});
+          // instance.createRandomPlane({ from: this.web3.eth.accounts[0], value: this.web3.toWei(0.001, 'ether')});  
           return instance.getPlanesByOwner(address);
           }).then((planes) => {
             return planes.map((plane) => {
@@ -57,9 +57,11 @@ class Marketplace extends Component {
             let hangar = [];
             for (let i = 0; i < planeArray.length; i++) {
               let planeAttr;
+              let planePrice;
               contract.planes(planeArray[i]).then((plane) => {
                 planeAttr = plane[0].toNumber();
-                hangar.push([planeArray[i], planeAttr, plane[1]]);
+                planePrice = plane[2].toNumber();
+                hangar.push([planeArray[i], planeAttr, plane[1], planePrice]);
                 if (i === planeArray.length - 1) {
                   this.setState({yourPlanes : hangar});
                 }
@@ -103,17 +105,13 @@ class Marketplace extends Component {
     }
 
     sellPlane(event, planeInfo) {
-      event.preventDefault();
+      // event.preventDefault();
       // console.log('sellPlane target:', parseInt(event.target.price.value), planeInfo[0]);
       this.state.contract.sellPlane(planeInfo[0], parseInt(event.target.price.value), { from: this.web3.eth.accounts[0]});
     }
 
-    setPrice(e) {
-      let price = prompt('Please provide selling price:');
-    }
-
-    buyPlane() {
-
+    buyPlane(event, planeInfo) {
+      console.log('sellPlane target:', parseInt(event.target.cost.value), planeInfo);      
     }
 
     pageChange(e, { activePage }) {
@@ -153,9 +151,10 @@ class Marketplace extends Component {
                   <p className='plane-stats'>Speed: # <br/>Inertia: #<br/>Firing Rate: # </p>              
                 </div>
               <div className='menu-button'>
+              {(plane[2] === true) ? <label>Current posted price: {plane[3]}</label> : null }
               <form onSubmit={(e) => this.sellPlane(e, plane)}>
                 <input type='text' name='price' />
-                <button>Submit</button>
+                <button>Sell</button>
               </form>
                 {/* <Button as='div' labelPosition='left'>
                   <Label as='a' basic>1000 ω</Label>
@@ -180,12 +179,10 @@ class Marketplace extends Component {
                   <p className='plane-stats'>Speed: # <br/>Inertia: #<br/>Firing Rate: # </p>              
                 </div>
                 <div className='menu-button'>
-                <Button as='div' labelPosition='left'>
-                  <Label as='a' basic>Price</Label>
-                  <Button>
-                    Buy!
-                  </Button>
-                </Button>
+                <form onSubmit={(e) => this.buyPlane(e, plane)}>
+                <label>{plane[3]}</label>
+                <button>Buy</button>
+              </form>
               </div>
             </div>
             </div>
