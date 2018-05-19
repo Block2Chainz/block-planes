@@ -61,6 +61,7 @@ class ConnectedWaitingRoom extends Component {
         // save the socket connection and the room in state
         // this.props.saveSocket(socket);
         this.setState({ socket, roomId, player }, () => console.log('state updated'));
+        //send notification
     }
 
     componentDidMount() {
