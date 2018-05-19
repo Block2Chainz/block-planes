@@ -22,7 +22,7 @@ class Marketplace extends Component {
         this.pageChange = this.pageChange.bind(this);
         this.handleMenuClick = this.handleMenuClick.bind(this);
         this.sellPlane = this.sellPlane.bind(this);
-        
+
         if (typeof web3 != 'undefined') {
             this.web3Provider = web3.currentProvider;
             } else {
@@ -34,20 +34,20 @@ class Marketplace extends Component {
         this.blockplanes.setProvider(this.web3Provider);
     }
 
-    componentDidMount() {   
-        console.log('hello')   
+    componentWillMount() {   
         let userAddress, contract;
         let planesForSale = [];
         let planesWithAttr = [];
         this.web3.eth.getCoinbase((err, address) => {
           // storing the user blockchain address*****
           userAddress = address;
-          console.log(address);
           // get the contract instance
           this.blockplanes.deployed()
           .then((instance) => {
+          // console.log('all planes: ', instance.planes()[1]);
           this.setState({contract : instance, userAddress : address});
           contract = instance;
+          // instance.createRandomPlane({ from: this.web3.eth.accounts[0], value: this.web3.toWei(0.001, 'ether')});
           return instance.getPlanesByOwner(address);
           }).then((planes) => {
             return planes.map((plane) => {
@@ -66,16 +66,49 @@ class Marketplace extends Component {
               });
             }
           });
-          // console.log('planes on sale: ', planesForSale);
+        });
+        this.web3.eth.getCoinbase((err, address) => {
+          // storing the user blockchain address*****
+          userAddress = address;
+          // get the contract instance
+          this.blockplanes.deployed()
+          .then((instance) => {
+          // console.log('all planes: ', instance.planes()[1]);
+          // this.setState({contract : instance, userAddress : address});
+          contract = instance;
+          // instance.createRandomPlane({ from: this.web3.eth.accounts[0], value: this.web3.toWei(0.001, 'ether')});
+          return instance.getPlanesForSale();
+          }).then((planes) => {
+            return planes.map((plane) => {
+              return plane.toNumber();
+            });
+          }).then((planeArray) => {
+            let hangar = [];
+            for (let i = 0; i < planeArray.length; i++) {
+              let planeAttr;
+              let planePrice;
+              contract.planes(planeArray[i]).then((plane) => {
+                contract.getPlanePrice(planeArray[i]).then((price) => {
+                  planePrice = price.toNumber()
+                  planeAttr = plane[0].toNumber();
+                  hangar.push([planeArray[i], planeAttr, plane[1], planePrice]);
+                  if (i === planeArray.length - 1) {
+                    this.setState({planesOnSale : hangar});
+                  }
+                });
+              });
+            }
+          });
         });
     }
 
-    sellPlane(planeId, price) {
-      console.log('inside of sellPlane: ', typeof planeId, typeof price, this.state);
-      this.state.contract.sellPlane(planeId, price, { from: this.web3.eth.accounts[0]});
+    sellPlane(event, planeInfo) {
+      event.preventDefault();
+      // console.log('sellPlane target:', parseInt(event.target.price.value), planeInfo[0]);
+      this.state.contract.sellPlane(planeInfo[0], parseInt(event.target.price.value), { from: this.web3.eth.accounts[0]});
     }
 
-    askPrice(planeId) {
+    setPrice(e) {
       let price = prompt('Please provide selling price:');
     }
 
@@ -90,12 +123,11 @@ class Marketplace extends Component {
     }
 
     handleMenuClick(e, { name }) {
-      console.log('what is name:', name)
       this.setState({ currentTab : name });
     }
 
     render() {
-        console.log(this.state)
+        console.log('owned planes: ', this.state.yourPlanes, 'for Sale: ', this.state.planesOnSale)
         const { yourPlanes, currentPage, planesPerPage, planesOnSale, currentTab } = this.state;
         const pageNumbers = [];
 
@@ -111,6 +143,7 @@ class Marketplace extends Component {
         
         //render planes for current page
         const renderOwnPlanes = currentPlanes.map((plane, index) => {
+          let sellPrice;
           return (
             <Grid.Column className='plane-column'>
             <div className='single-plane'>
@@ -120,17 +153,21 @@ class Marketplace extends Component {
                   <p className='plane-stats'>Speed: # <br/>Inertia: #<br/>Firing Rate: # </p>              
                 </div>
               <div className='menu-button'>
-                <Button as='div' labelPosition='left'>
+              <form onSubmit={(e) => this.sellPlane(e, plane)}>
+                <input type='text' name='price' />
+                <button>Submit</button>
+              </form>
+                {/* <Button as='div' labelPosition='left'>
                   <Label as='a' basic>1000 ω</Label>
                   <Button onClick={() => {this.sellPlane(plane[0], 200)}}>
                     Sell!
                   </Button>
-                </Button>
+                </Button> */}
               </div>
             </div>
             </div>
             </Grid.Column>
-          )
+          );
         });
 
         const renderBuyPlanes = planesOnSale.map((plane, index) => {
@@ -139,12 +176,10 @@ class Marketplace extends Component {
             <div className='single-plane'>
             <Plane key={Math.random()} plane={plane} />
             <div className='plane-menu'>
-              <div className='menu-button'>
-                <div>
-                  <p>Speed: #</p>
-                  <p>Inertia: #</p>
-                  <p>Firing Rate: #</p>                  
+              <div className='plane-stats-div'>
+                  <p className='plane-stats'>Speed: # <br/>Inertia: #<br/>Firing Rate: # </p>              
                 </div>
+                <div className='menu-button'>
                 <Button as='div' labelPosition='left'>
                   <Label as='a' basic>Price</Label>
                   <Button>
@@ -171,7 +206,7 @@ class Marketplace extends Component {
                 Buy, trade and sell right hurr  
 
               <div>
-              <p className="page-title">WELCOME</p>
+              <p className="page-title">HANGAR</p>
               </div> 
 
              

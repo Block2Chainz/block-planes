@@ -76,8 +76,21 @@ contract BlockPlanes is Ownable {
         return result;
     }
 
-    // /// withdraw funds to the owner's account
-    // function withdraw() external onlyOwner {
-    //     owner.transfer(this.balance);
+  
+
+    // function getAllPlanes() external view returns(Plane[]) {
+    //     Plane[] memory result = new Plane[](totalPlaneCount[1]);
+    //     for (uint i = 0; i < totalPlaneCount[1]; i++) {
+    //         result[i] = planes[i];
+    //     }
+    //     return result;
+    // }
+
+    // function getAllPlanes() external view returns(uint[]) {
+    //     [] memory result = new Plane[](totalPlaneCount[1]);
+    //     for (uint i = 0; i < planes.length; i++) {
+    //       result.push(planes[i]);
+    //     }
+    //     return result;
     // }
 }
