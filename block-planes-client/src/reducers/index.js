@@ -13,7 +13,7 @@ import {
 
 const initialState = {
     loggedIn: false,
-    userId: null,
+    id: null,
     userAddress: '0x0',
     userPlanes: [],
     chatVisible: false,

@@ -78,6 +78,7 @@ class Plane extends Component {
         y: 25,
       },
       create: this.createObject.bind(this),
+      ingame: false,
     });
 
     // let ship = this.shipCreator(this.props.plane[1].toString(), {

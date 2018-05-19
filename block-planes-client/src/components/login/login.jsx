@@ -100,8 +100,7 @@ class ConnectedLogin extends Component {
         );
       }
         return (
-          <div>
-          {(typeof web3 != 'undefined') ? (
+          (typeof web3 != 'undefined') ? (
             <div className='login'>
               <Grid>
 
@@ -124,8 +123,8 @@ class ConnectedLogin extends Component {
                       <a href='#' onClick={() => this.refresh()}><img width={'20px'} src="https://www.materialui.co/materialIcons/navigation/refresh_white_192x192.png"/></a>
                       </p>
                       <Form.Group>
-                        <Form.Input name='username' size={'small'} placeholder='Username ' width={7} onChange={this.storeUserInfoInState.bind(this)} />
-                        <Form.Input name='password' size={'small'} placeholder='Password ' type='password' autoComplete='off' width={7} onChange={this.storeUserInfoInState.bind(this)} />
+                        <Form.Input name='username' size={'small'} placeholder='Username ' width={10} onChange={this.storeUserInfoInState.bind(this)} />
+                        <Form.Input name='password' size={'small'} placeholder='Password ' type='password' autoComplete='off' width={10} onChange={this.storeUserInfoInState.bind(this)} />
                       </Form.Group>
                     </Grid.Row>
 
@@ -146,8 +145,7 @@ class ConnectedLogin extends Component {
               </Grid>
             </div>) : (
             <img src="https://safetymanagementgroup.com/wp-content/uploads/2017/07/Oopsbutton.jpg"/>                
-            )}
-        </div>
+            )
         );
     }
 }

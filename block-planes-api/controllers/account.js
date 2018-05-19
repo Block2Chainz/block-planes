@@ -94,7 +94,7 @@ const updateToken = (req, res) => {
         profilePicture: data[0].profile_picture,
         totalPoints: data[0].total_points,
         createdAt: data[0].created_at,
-        blockchainAddress: data[0].blockchainAddress
+        blockchainAddress: data[0].blockchainAddress,
       };
       jwt.sign({ user }, process.env.JWT_SECRET, (err, token) => {
         res.json({ user, token });

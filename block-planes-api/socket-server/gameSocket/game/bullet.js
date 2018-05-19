@@ -9,23 +9,19 @@ const Bullet = function (args) {
     this.rotation = args.ship.rotation;
     this.velocity = { x: posDelta.x * 1.75, y: posDelta.y * 1.75 };
     this.radius = 2;
-}
-
-Bullet.prototype.destroy = () => {
-    this.delete = true;
+    this.owner = args.owner;
 }
 
 Bullet.prototype.update = function () {
     // Move
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
-
     // Delete if it goes out of bounds
     if (this.position.x < 0 ||
         this.position.y < 0 ||
         this.position.x > 1000 ||
         this.position.y > 1000) {
-        this.destroy();
+        this.delete = true;
     }
 }
 

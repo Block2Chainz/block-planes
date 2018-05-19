@@ -16,7 +16,6 @@ Particle.prototype.update = function () {
     this.position.y += this.velocity.y;
     this.velocity.x *= this.inertia;
     this.velocity.y *= this.inertia;
-
     // Shrink
     this.radius -= 0.1;
     if (this.radius < 0.1) {

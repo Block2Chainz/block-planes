@@ -30,20 +30,18 @@ const clientp1Ready = ({ io, client, room, player }, { ship }) => {
         room.world = new World();
         room.world.connect(1, ship);
     }
-    let netPeer = room.world.buildPeerNetObject(player);
-    serverp1Ready({ io, client, room, player }, { netPeer });
+    serverp1Ready({ io, client, room, player }, ship);
 };
 
 const clientp2Ready = ({ io, client, room, player}, { ship }) => {
-    console.log('p2_ready heard', io, client, room, player, 'payload.ship: ', payload.ship);
+    console.log('p2_ready heard', room, 'payload.ship: ', ship);
     if (room.world) {
         room.world.connect(2, ship);
     } else {
         room.world = new World();
         room.world.connect(2, ship);
     }
-    let netPeer = world.buildPeerNetObject(player);
-    serverp2Ready({ io, client, room, player }, { netPeer });
+    serverp2Ready({ io, client, room, player }, ship);
 };
 
 const clientUpdate = ({ io, client, room, player }, payload) => {
@@ -54,15 +52,18 @@ const clientStart = ({ io, client, room, player }, payload) => {
     setInterval((room) => ServerGameLoop(room), 16);
 }
 
-const clientKeys = ({ io, client, room, player }, { keys }) => {
-    console.log('keys', keys);
-    room.world.queue.updates.push(keys);
+const clientMove = ({ io, client, room, player }, positionData) => {
+    room.world.queue.updates.push(positionData);
+    // room.peers[positionData.id].position.x = positionData.x;
+    // room.peers[positionData.id].position.y = positionData.y;
+    // room.peers[positionData.id].rotation = positionData.rotation;
+    io.sockets.in(room).emit('server_state', room.peers)
 }
 
 const clientShipGeneration = ({ io, client, room, player }, payload) => {
     console.log('ship generation heard');
+    room.timer = setInterval( () => room.world.update(io, room), 1000 / 30 ); 
     serverShipGeneration({ io, client, room, player }, payload);
-    room.timer = setInterval( () => room.world.update(io), 1000 / 60 ); 
 }
 
 const clientDisconnect = ({ io, client, room, player }) => {
@@ -78,11 +79,10 @@ const clientDisconnect = ({ io, client, room, player }) => {
         }
     }
     // Remove client from server and from peer list
-    delete(room.world.peers[player]);
-    client.disconnect(true);
-    if (!room.world.peers['1'] && !room.world.peers['2']) {
-        clearInterval(room.timer);
-    }
+    clearInterval(room.timer);
+    clearInterval(room.world.update);
+    room.timer = null;
+    io.disconnect(true);
 }
 
 const clientEmitters = {
@@ -90,7 +90,7 @@ const clientEmitters = {
     'p2_ready': clientp2Ready,
     'start' : clientStart,
     'update': clientUpdate,
-    'keys' : clientKeys, 
+    'move_player' : clientMove, 
     'shipGeneration': clientShipGeneration,
     'disconnect': clientDisconnect,
 };

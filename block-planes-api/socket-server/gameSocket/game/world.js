@@ -3,12 +3,13 @@ var Ship = require('./ship.js');
 
 const World = function() {
     this.peers = new Object;
+    this.sprites = new Object; 
     this.queue = new Queue();
 }
 
 World.prototype.connect = function (player, shipAttributes) {
     // Create a new peer for this connection.
-    this.peers[player] = new Ship(shipAttributes);
+    this.peers[player] = new Ship(shipAttributes, this);
     this.peers[player].id = player;
     // Set peer's initial position
     this.peers[player].position.x = player === 1 ? 50 : 75;
@@ -16,14 +17,15 @@ World.prototype.connect = function (player, shipAttributes) {
 };
 
 World.prototype.createObject = function (type, obj) {
-    console.log('creating an object of type ', type, obj)
 };
 
-World.prototype.update = function (io) {
+World.prototype.update = function (io, room) {
+    // de-queue the pending player state changes (disconnections, etc)
     this.processInputs();
     // emit to clients
-    console.log('emitting state');
-    io.sockets.emit('server_state', this.buildPeersNetObject());
+    let peers = this.buildPeersNetObject();
+    // let sprites = this.buildSpritesNetObject();
+    io.sockets.in(room.id).emit('server_state', { peers, timestamp: Date.now() });
 };
 
 // Check whether this input seems to be valid (e.g. "make sense" according
@@ -43,13 +45,18 @@ World.prototype.processInputs = function () {
         if (!update) {
             break;
         }
-
         // Update the state of the peer, based on its input. *****************************************
         if (this.validateInput(update)) {
-            this.peers[update.id].applyInput(update);
+            this.peers[update.id].update(update);
             this.peers[update.id].last_processed_input = update.input_sequence_number;
         }
     }
+    // for (let id in this.sprites) {
+    //     if (this.sprites[id].delete) {
+    //         delete this.sprites[key];
+    //     };
+    //     sprites[id].update();
+    // }
 };
 
 // Build the object for the given peer id that is to be sent across the network
@@ -60,6 +67,7 @@ World.prototype.buildPeerNetObject = function (peer_id) {
             x: this.peers[peer_id].position.x,
             y: this.peers[peer_id].position.y,
         },
+        rotation: this.peers[peer_id].rotation,
         last_processed_input: this.peers[peer_id].last_processed_input
     };
 
@@ -67,9 +75,7 @@ World.prototype.buildPeerNetObject = function (peer_id) {
 
 // Build the object for the given peer id that is to be sent across the network
 World.prototype.buildPeersNetObject = function () {
-
     var netObj = new Object;
-
     for (var id in this.peers) {
         netObj[id] = {
             id: id,
@@ -77,11 +83,14 @@ World.prototype.buildPeersNetObject = function () {
                 x: this.peers[id].position.x,
                 y: this.peers[id].position.y,
             },
+            rotation: this.peers[id].rotation,
             last_processed_input: this.peers[id].last_processed_input
         };
     }
-
     return netObj;
+};
+
+World.prototype.buildSpritesNetObject = function() {
 
 };
 
