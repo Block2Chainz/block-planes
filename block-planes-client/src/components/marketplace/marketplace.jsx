@@ -18,6 +18,7 @@ class Marketplace extends Component {
             currentPage: 1,
             planesPerPage: 12,
             currentTab: 'Buy',
+            render: true,
         }
         this.pageChange = this.pageChange.bind(this);
         this.handleMenuClick = this.handleMenuClick.bind(this);
@@ -75,13 +76,11 @@ class Marketplace extends Component {
           // get the contract instance
           this.blockplanes.deployed()
           .then((instance) => {
-          // console.log('all planes: ', instance.planes()[1]);
           // this.setState({contract : instance, userAddress : address});
           contract = instance;
           // instance.createRandomPlane({ from: this.web3.eth.accounts[0], value: this.web3.toWei(0.001, 'ether')});
           return instance.getPlanesForSale();
           }).then((planes) => {
-            console.log('getting planes for sale')
             return planes.map((plane) => {
               return plane.toNumber();
             });
@@ -106,15 +105,13 @@ class Marketplace extends Component {
     }
 
     sellPlane(event, planeInfo) {
-      event.preventDefault();
-      // console.log('sellPlane target:', parseInt(event.target.price.value), planeInfo[0]);
-      this.state.contract.sellPlane(planeInfo[0], parseInt(event.target.price.value), { from: this.web3.eth.accounts[0]});
+      // event.preventDefault();
+      this.state.contract.sellPlane(planeInfo[0], parseInt(event.target.price.value) * 1000000000000000000, { from: this.web3.eth.accounts[0]});
     }
 
     buyPlane(event, planeInfo) {
-      event.preventDefault();      
-      let etherAmt = (1 / 1000000000000000000) * planeInfo[3];
-      console.log('buyPlane target:', planeInfo, planeInfo[3], etherAmt);
+      // event.preventDefault();      
+      let etherAmt = planeInfo[3] / 1000000000000000000;
       this.state.contract.buyPlane(planeInfo[0], { from: this.web3.eth.accounts[0], value: this.web3.toWei(etherAmt, 'ether')});      
     }
 
@@ -125,11 +122,11 @@ class Marketplace extends Component {
     }
 
     handleMenuClick(e, { name }) {
+      console.log('changing state')
       this.setState({ currentTab : name });
     }
 
     render() {
-        console.log('owned planes: ', this.state.yourPlanes, 'for Sale: ', this.state.planesOnSale)
         const { yourPlanes, currentPage, planesPerPage, planesOnSale, currentTab } = this.state;
         const pageNumbers = [];
 
@@ -155,7 +152,7 @@ class Marketplace extends Component {
                   <p className='plane-stats'>Speed: # <br/>Inertia: #<br/>Firing Rate: # </p>              
                 </div>
               <div className='menu-button'>
-              {(plane[2] === true) ? <label>Current posted price: {plane[3]}</label> : null }
+              {(plane[2] === true) ? <label>Current posted price: {parseInt(plane[3]) / 1000000000000000000}</label> : null }
               <form onSubmit={(e) => this.sellPlane(e, plane)}>
                 <input type='text' name='price' />
                 <button>Sell</button>
@@ -184,7 +181,7 @@ class Marketplace extends Component {
                 </div>
                 <div className='menu-button'>
                 <form onSubmit={(e) => this.buyPlane(e, plane)}>
-                <label>{plane[3]}</label>
+                <label>{plane[3] / 1000000000000000000}</label>
                 <button>Buy</button>
               </form>
               </div>
