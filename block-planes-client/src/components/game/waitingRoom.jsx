@@ -14,6 +14,7 @@ import Game from './game.jsx';
 const mapStateToProps = state => {
     return {
         ship: state.selectedPlane,
+        user: state.id,
     };
 };
 
@@ -42,12 +43,13 @@ class ConnectedWaitingRoom extends Component {
         if (!this.props.roomId || !this.state.roomId) {
             // no room exists in props, so this is a game that we have started
             // we will generate a random string
-            roomId = randomstring.generate();
+            roomId = 'abc';
+            // randomstring.generate();
         }
+        console.log('my userid: ',this.props.user);
+        let player = this.props.user  === 1 ? 2 : 1;
 
-        let player = !this.props.roomId ? 1 : 2;
-
-        const socket = io.connect('http://localhost:2345', {
+        let socket = io.connect('http://localhost:2345', {
             query: {
                 // if there is no room in props, we created the game, so we will use the random room string
                 roomId: !this.props.roomId ? roomId : this.props.roomId,
@@ -64,20 +66,21 @@ class ConnectedWaitingRoom extends Component {
     componentDidMount() {
         const socket = this.state.socket;
 
-        
-        socket.once('p1_ready', ({ p1_ship }) => {
+        socket.once('p1_ready', (payload) => {
+            console.log('receiving p1ready', payload)
             if (this.state.player === 2) {
-                this.setState({ oppReady: true, p1_ship  })//, () => this.checkStart());
+                this.setState({ oppReady: true, p1_ship: payload  })//, () => this.checkStart());
             } else if (this.state.player === 1) { 
-                this.setState({ youReady: true, p1_ship })//, () => this.checkStart());
+                this.setState({ youReady: true, p1_ship: payload })//, () => this.checkStart());
             }
         });
-      
-        socket.once('p2_ready', ({ p2_ship }) => {
+    
+        socket.once('p2_ready', (payload) => {
+            console.log('receiving p2ready', payload)
             if (this.state.player === 1) {
-                this.setState({ oppReady: true, p2_ship })//, () => this.checkStart());
+                this.setState({ oppReady: true, p2_ship: payload })//, () => this.checkStart());
             } else if (this.state.player === 2) {
-                this.setState({ youReady: true, p2_ship })//, () => this.checkStart());
+                this.setState({ youReady: true, p2_ship: payload })//, () => this.checkStart());
             }
         });
     }
@@ -110,7 +113,7 @@ class ConnectedWaitingRoom extends Component {
         return (
             <div>
                 {
-                    !this.state.youReady ? 
+                    !this.state.youReady || !this.state.oppReady? 
                         (<div className='ready'>
                             <h3 id='text'>Game ID: </h3>
                             <h4 id='text'>{this.state.roomId}</h4>
@@ -123,14 +126,14 @@ class ConnectedWaitingRoom extends Component {
                 }
 
                 {
-                    this.state.youReady ? 
+                    this.state.youReady && this.state.oppReady? 
                     <Game
                     //  to={{
                             // pathname: `/game/${this.state.roomId}`, 
                             // state: {
                                 socket= {this.state.socket} 
                                 player= {this.state.player} 
-                                p1_ship= {this.props.ship} 
+                                p1_ship= {this.state.p1_ship} 
                                 p2_ship= {this.state.p2_ship} 
                             // }
                     // }}

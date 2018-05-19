@@ -16,6 +16,13 @@ const rotatePoint = (p, center, angle) => {
   };
 };
 
+module.exports.rotatePoint = (p, center, angle) => {
+  return {
+    x: ((p.x - center.x) * Math.cos(angle) - (p.y - center.y) * Math.sin(angle)) + center.x,
+    y: ((p.x - center.x) * Math.sin(angle) + (p.y - center.y) * Math.cos(angle)) + center.y
+  };
+};
+
 /**
  * Random Number between 2 numbers
  */

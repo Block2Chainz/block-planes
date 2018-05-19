@@ -11,7 +11,7 @@ let shipRenderer = (attrString) => {
         cockpitColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'], 
         speed: [0.8, 1, 1.5, 2], // how much movement it travels after each frame with a keydown,  
         inertia: [.88, .93, .97, .99], // how quickly it slows down after releasing a key: 0.5 = immediately, 1 = never; 
-        shootingSpeed: [300, 35, 100, 250, 200, 75, 150], 
+        shootingSpeed: [35, 75, 100, 150, 200, 250, 300], 
         smokeColor: ['#ff9999', '#b3ff99', '#ffffb3', '#80ffdf', '#99d6ff', '#c299ff', '#ff80df', '#ffffff'], 
     }
 
@@ -27,7 +27,6 @@ let shipRenderer = (attrString) => {
         inertia: attrPossibilities.inertia[parseInt(attrString[8]) % 3],
         shootingSpeed: attrPossibilities.shootingSpeed[parseInt(attrString[9]) % 7],
         smokeColor: attrPossibilities.smokeColor[parseInt(attrString[10]) % 8],
-        ingame: true,
     };
 
     return shipArgs;

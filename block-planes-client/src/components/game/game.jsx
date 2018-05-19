@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './game.css';
 // import io from 'socket.io-client/dist/socket.io.js';
-import Ship from './gameObjects/ship';
+import Ship from './gameObjects/ship.js';
 import Enemy from './gameObjects/Enemy';
 import { randomNumBetweenExcluding } from './gameObjects/helpers'
 
@@ -20,8 +20,8 @@ class Game extends Component {
         super(props);
         this.state = {
             screen: {
-                width: 1000,
-                height: 1000,
+                width: 750,
+                height: 500,
                 ratio: window.devicePixelRadio || 1
             },
             keys: {
@@ -32,10 +32,11 @@ class Game extends Component {
             }, 
             inGame: false
         }
-        this.ship = [];
-        this.enemies = [];
-        this.bullets = [];
-        this.particles = [];
+        this.ship = {};
+        this.enemies = {};
+        this.sprites = {};
+        this.savedMoves = [];
+
     }
 
     componentDidMount() {
@@ -50,27 +51,28 @@ class Game extends Component {
         this.setState({ context });
         // set up a listeners
         socket.on('server_state', (payload) => {
-            console.log('heard update from server', payload);
             this.serverUpdate(payload);
         });
         socket.on('ship1', payload => {
-            this.ship[0] = payload;
+            // this.ship[1] = new Ship(this.props.p1_ship);
         });
         socket.on('ship2', payload => {
-            this.ship[1] = payload;
+            // this.ship[2] = new Ship(this.props.p2_ship);
         });        
         this.startGame();
-        // animates the next frame        
-        requestAnimationFrame(() => { this.update() });
+        // animates the next frame     
+        // requestAnimationFrame(() => { this.update() });
     }
     
     componentWillUnmount() {
         // remove the listeners
+        window.cancelAnimationFrame(this.update);
         window.removeEventListener('keyup', this.handleKeys);
         window.removeEventListener('keydown', this.handleKeys);
         window.removeEventListener('resize', this.handleResize);
         this.props.socket.emit('disconnect', { player: this.props.player }); // tells the server to disconnect
         this.props.socket.disconnect();
+        clearInterval(this.update);
     }
     
     handleKeys(value, e) {
@@ -80,32 +82,38 @@ class Game extends Component {
         if (e.keyCode === KEY.RIGHT || e.keyCode === KEY.D) keys.right = value;
         if (e.keyCode === KEY.UP || e.keyCode === KEY.W) keys.up = value;
         if (e.keyCode === KEY.SPACE) keys.space = value;
-        socket.emit('keys', { player: this.props.player, keys })
         this.setState({
             keys
         });
     }
     
     serverUpdate(payload) {
-        this.bullets = payload.bullets;
-        if (this.player === 1) {
-            this.ship[1] = payload.p2_ship || null;
-        } else if (this.player === 2) {
-            this.ship[0] = payload.p1_ship;
+        /*{
+            peers: {
+                1: {ship},
+                2: {ship}
+            },
+            sprites: {
+                id: {particle or bullet},
+                id: {particle or bullet},
+                ... etc.
+            }
+        }*/
+        // update the other player's ship
+        if (this.props.player === 1) {
+            this.ship[2].update(payload.peers[2]);
+        } else if (this.props.player === 2) {
+            this.ship[1].update(payload.peers[1]);
         }
-        this.particles = payload.particles;
-        this.enemies = payload.enemies;
     }
     
     update() {
+        this.props.socket.emit(`keys`, { id: this.props.player, keys: this.state.keys, timestamp: Date.now() });        
         // for updating the new positions of everything
         // pull up the canvas
         const context = this.state.context;
-        const keys = this.state.keys;
-        const ship = this.props.player === 1 ? this.ship[0] : this.ship[1];
         // store canvas state on the stack
         context.save();
-        // resize the field if the window has been resized
         context.scale(this.state.screen.ratio, this.state.screen.ratio);
         // add motion trails
         context.fillStyle = '#000';
@@ -113,14 +121,26 @@ class Game extends Component {
         context.fillRect(0, 0, this.state.screen.width, this.state.screen.height);
         context.globalAlpha = 1;
         // remove or render
-        this.updateObjects(this.particles, 'particles');
-        this.updateObjects(this.enemies, 'enemies');
-        this.updateObjects(this.bullets, 'bullets');
+        // this.updateObjects(this.sprites, 'sprites');
+        // this.updateObjects(this.enemies, 'enemies');
         this.updateObjects(this.ship, 'ship');
         // pop the top state off the stack, restore context
         context.restore();
         // set up next frame 
-        requestAnimationFrame(() => {this.update()});
+        // requestAnimationFrame(() => {this.update()});
+    }
+    
+    updateObjects(items) {
+        // go through each item of the specified group and delete them or call their render functions
+        for (let key in items) {
+            if (items[key].delete) {
+                // delete the object from the field
+                delete items[key];
+            } else {
+                // else call the render method 
+                items[key].render(this.state);
+            }
+        }
     }
     
     addScore(points) {
@@ -136,6 +156,11 @@ class Game extends Component {
             inGame: false,
         });
     }
+
+    emitUpdate(type, payload) {
+        const socket = this.props.socket;
+        socket.emit(type, payload);
+    }
     
     startGame() {
         this.setState({
@@ -143,173 +168,59 @@ class Game extends Component {
             currentScore: 0,
         });
         const socket = this.props.socket;
-        if (this.props.player === 1) {
-            let ship1 = new Ship({
-                attr: this.props.p1_ship, 
-                position: {
-                    x: this.state.screen.width / 2,
-                    y: this.state.screen.height / 2,
-                }, 
-                // create: this.createObject.bind(this), 
-                // onDie: this.gameOver.bind(this)
-            })
-            socket.emit(`shipGeneration`, { ship1 });
-        } else if (this.props.player === 2) {
-            let ship2 = new Ship({
-                attr: this.props.p2_ship,
-                position: {
-                    x: this.state.screen.width / 2,
-                    y: this.state.screen.height / 2,
-                },
-                // create: this.createObject.bind(this),
-                // onDie: this.gameOver.bind(this)
-            })
-            socket.emit(`shipGeneration`, { ship2 });
-        }
-        
-        requestAnimationFrame(() => { this.update() });
-    }
-    
-    // createObject(item, group) {
-    //     this[group].push(item);
-    // }
-    
-    updateObjects(items, group) {
-        // go through each item of the specified group and delete them or call their render functions
-        let index = 0;
-        console.log('updating items', items, group);
-        for (let item of items) {
-            if (item && item.delete) {
-                // delete the object from the field
-                this[group].splice(index, 1);
-            } else {
-                // else call the render method 
-                this.renderObject(items[index], group, index);
-            }
-            index++;
-        }
-    }
-    
-    renderObject(object, type, index) {
-        if (type === 'particles' && object !== null) {
-            // // Move
-            // object.position.x += object.velocity.x;
-            // object.position.y += object.velocity.y;
-            // object.velocity.x *= object.inertia;
-            // object.velocity.y *= object.inertia;
-            
-            // // Shrink
-            // object.radius -= 0.1;
-            // if (object.radius < 0.1) {
-            //     object.radius = 0.1;
-            // }
-            // if (object.lifeSpan-- < 0) {
-            //     object.delete = true;
-            // }
-            // Draw
-            const context = this.state.context;
-            context.save();
-            context.translate(object.position.x, object.position.y);
-            context.fillStyle = object.color;
-            context.lineWidth = 2;
-            context.beginPath();
-            context.moveTo(0, -object.radius);
-            context.arc(0, 0, object.radius, 0, 2 * Math.PI);
-            context.closePath();
-            context.fill();
-            context.restore();
-        } else if (type === 'enemies') {
-            console.log('')
-        } else if (type === 'bullets') {
-            console.log('')
-        } else if (type === 'ship' && object) {
-            if (this.state.inGame) {
-                if (index === this.props.player - 1) {
-                    // e.g. player is 1, index is 0 - update with the key input
-                    // player is 1, index is 1 - do not process key input (because index 1 is player 2's plane)
-                    // player is 2, index is 0 - do not process key input
-                    // player is 2, index is 1 - update with key input 
-                    if (this.state.keys.up) {
-                        object.velocity.x -= Math.sin(-object.rotation * Math.PI / 180) * object.speed ;
-                        object.velocity.y -= Math.cos(-object.rotation * Math.PI / 180) * object.speed ;
-                    }
-                    if (this.state.keys.left) {
-                        object.rotation -= object.rotationSpeed;
-                    }
-                    if (this.state.keys.right) {
-                        object.rotation += object.rotationSpeed;
-                    }
-                    // if (this.state.keys.space && Date.now() - this.lastShot > this.shootingSpeed) {
-                        //     // doesn't allow rapidly firing as quickly as you can press the spacebar
-                        //     const bullet = new Bullet({ ship: object });
-                        //     //this.create = this(game.jsx).createObject()
-                        //     this.create(bullet, 'bullets');
-                        //     this.lastShot = Date.now();
-                        // }
-                    }
-                    // Move
-                    object.position.x += object.velocity.x;
-                    object.position.y += object.velocity.y;
-                    object.velocity.x *= object.inertia;
-                    object.velocity.y *= object.inertia;
-                    
-                    // Rotation
-                    if (object.rotation >= 360) {
-                        object.rotation -= 360;
-                    }
-                    if (object.rotation < 0) {
-                        object.rotation += 360;
-                    }
-                    
-                    // Screen edges
-                    // Roll from one edge to the opposite
-                    if (object.position.x > this.state.screen.width) object.position.x = 0;
-                    else if (object.position.x < 0) object.position.x = this.state.screen.width;
-                    if (object.position.y > this.state.screen.height) object.position.y = 0;
-                    else if (object.position.y < 0) object.position.y = this.state.screen.height;
-                }
+        let ship1 = new Ship({
+            id: 1,
+            attr: this.props.p1_ship, 
+            position: {
+                x: 50,
+                y: 50,
+            }, 
+            player: this.props.player,
+            emitUpdate: this.emitUpdate.bind(this),
+            ingame: true,
+            // create: this.createObject.bind(this), 
+            // onDie: this.gameOver.bind(this)
+        });
+        let ship2 = new Ship({
+            id: 2,
+            attr: this.props.p2_ship,
+            position: {
+                x: 75,
+                y: 75,
+            }, 
+            player: this.props.player,
+            emitUpdate: this.emitUpdate.bind(this),
+            ingame: true
+            // create: this.createObject.bind(this),
+            // onDie: this.gameOver.bind(this)
+        });
+        this.ship['1'] = ship1;
+        this.ship['2'] = ship2;
 
-                const context = this.state.context;
-                context.save();
-                context.translate(object.position.x, object.position.y);
-                // + 0.785.... is the additional rotation of 45 degrees due to the img format
-                context.rotate((object.rotation) * Math.PI / 180 + 0.78539816);
-                // RENDER BODY
-                let img1 = new Image();
-                img1.src = `http://127.0.0.1:8887/bodies/body_${object.bodyColor}.png`;
-                context.drawImage(img1, 0, 0, 35, 35);
-                // RENDER WINGS
-                let img2 = new Image();
-                img2.src = `http://127.0.0.1:8887/wings/${object.wingShape}/wing_${object.wingShape}_${object.wingColor}.png`;
-                context.drawImage(img2, 0, 0, 35, 35);
-                // RENDER TAIL
-                let img3 = new Image();
-                img3.src = `http://127.0.0.1:8887/tails/${object.tailShape}/tail_${object.tailShape}_${object.tailColor}.png`;
-                context.drawImage(img3, 0, 0, 35, 35);
-                // RENDER COCKPIT
-                let img4 = new Image();
-                img4.src = `http://127.0.0.1:8887/cockpits/${object.cockpitShape}/cockpit_${object.cockpitShape}_${object.cockpitColor}.png`;
-                context.drawImage(img4, 0, 0, 35, 35);
-                // render
-                context.restore();
-            }
-        }
+        socket.emit(`shipGeneration`, { ship1: this.props.p1_ship, ship2: this.props.p2_ship});
+        setInterval(() => { this.update() }, 1000 / 60);   
+
+        // requestAnimationFrame(() => { this.update() });
+    }
+    
+    createObject(item, group) {
+        this[group].push(item);
+    }
         
-        render() {
-            let endgame;
-            let message;
-            
-            if (!this.state.inGame) {
-                endgame = (
-                    <div className="endgame">
-                    <p>Game over</p>
-                    <button
-                        onClick={this.startGame.bind(this)}>
-                        try again?
-                    </button>
-                </div>
-            )
-        }
+    render() {
+        let endgame;
+        let message;
+        
+        if (!this.state.inGame) {
+            endgame = (
+                <div className="endgame">
+                <p>Game over</p>
+                <button
+                    onClick={this.startGame.bind(this)}>
+                    try again?
+                </button>
+            </div>
+        )}
         
         return (
             <div className="game">
