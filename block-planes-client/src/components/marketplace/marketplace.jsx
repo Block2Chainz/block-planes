@@ -47,7 +47,7 @@ class Marketplace extends Component {
           // console.log('all planes: ', instance.planes()[1]);
           this.setState({contract : instance, userAddress : address});
           contract = instance;
-          // instance.createRandomPlane({ from: this.web3.eth.accounts[0], value: this.web3.toWei(0.001, 'ether')});  
+          // instance.createRandomPlane({ from: this.web3.eth.accounts[0], value: this.web3.toWei(0.001, 'ether')}); 
           return instance.getPlanesByOwner(address);
           }).then((planes) => {
             return planes.map((plane) => {
@@ -81,6 +81,7 @@ class Marketplace extends Component {
           // instance.createRandomPlane({ from: this.web3.eth.accounts[0], value: this.web3.toWei(0.001, 'ether')});
           return instance.getPlanesForSale();
           }).then((planes) => {
+            console.log('getting planes for sale')
             return planes.map((plane) => {
               return plane.toNumber();
             });
@@ -105,13 +106,16 @@ class Marketplace extends Component {
     }
 
     sellPlane(event, planeInfo) {
-      // event.preventDefault();
+      event.preventDefault();
       // console.log('sellPlane target:', parseInt(event.target.price.value), planeInfo[0]);
       this.state.contract.sellPlane(planeInfo[0], parseInt(event.target.price.value), { from: this.web3.eth.accounts[0]});
     }
 
     buyPlane(event, planeInfo) {
-      console.log('sellPlane target:', parseInt(event.target.cost.value), planeInfo);      
+      event.preventDefault();      
+      let etherAmt = (1 / 1000000000000000000) * planeInfo[3];
+      console.log('buyPlane target:', planeInfo, planeInfo[3], etherAmt);
+      this.state.contract.buyPlane(planeInfo[0], { from: this.web3.eth.accounts[0], value: this.web3.toWei(etherAmt, 'ether')});      
     }
 
     pageChange(e, { activePage }) {

@@ -12,8 +12,6 @@ contract PlaneOwnership is BlockPlanes, ERC721 {
     using SafeMath for uint256;
 
     mapping (uint => address) planeApprovals;
-    mapping (uint => bool) planeSellStatus;
-    mapping (uint => uint) planeSellPrice;
     mapping (uint => uint) public planeSellCount;
 
     /// emits an event when a transfer occurs
@@ -87,16 +85,17 @@ contract PlaneOwnership is BlockPlanes, ERC721 {
     }
 
     //transfer ownership of plane once money is received
-    // function buyPlane(address _from, address _to, uint256 _planeId) payable public {
-    //     require(planesForSale[_planeId] == true);
-    //     if (msg.value == planeSellPrice[_planeId]) {
-    //         planeToOwner[_planeId].transfer(msg.value);
-    //         ownerPlaneCount[planeToOwner[_planeId]] = ownerPlaneCount[planeToOwner[_planeId]].sub(1);
-    //         ownerPlaneCount[msg.sender] = ownerPlaneCount[msg.sender].add(1);
-    //         planeToOwner[_planeId] = msg.sender;
-    //         planesForSale[_planeId] = false;
-    //     } else {
-    //         revert();
-    //     }
-    // }
+    function buyPlane(uint256 _planeId) payable public {
+        require(planes[_planeId].sell == true);
+        if (msg.value == planes[_planeId].price) {
+            planeToOwner[_planeId].transfer(msg.value / 2); //transfer money to owner of plane
+            ownerPlaneCount[planeToOwner[_planeId]] = ownerPlaneCount[planeToOwner[_planeId]].sub(1); //subtract original owner plane count by 1
+            ownerPlaneCount[msg.sender] = ownerPlaneCount[msg.sender].add(1); //add to new owner plane count by one
+            planeToOwner[_planeId] = msg.sender; //reassign plane ownership to new owner
+            planes[_planeId].sell = false; //reset plane sell status to false
+            planeSellCount[1] = planeSellCount[1] - 1;
+        } else {
+            revert();
+        }
+    }
 }
