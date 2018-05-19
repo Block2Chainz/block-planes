@@ -51,17 +51,21 @@
 .plane-menu {
   display: flex;
   background-color: gray !important;
-  height: 75px !important;
+  height: 100px !important;
   /* min-height: 50px !important; */
   align-items: center !important;
   justify-content: space-between !important;
 }
 
-.menu-button {
+.menu-form {
   display: flex;
+  /* position: relative;
+  float: right !important; */
   margin-left: auto !important;
-  margin-right: 10px !important;
-  height: 40px !important;
+  margin-right: 5px !important;
+  height: 75px !important;
+  width: 120px !important;
+  justify-content: flex-end !important;
 }
 
 .plane-stats {
@@ -105,4 +109,52 @@
   font-size: 24px !important;
   padding: 2px !important;
 }
+
+img {
+  float: right !important;  
+  max-width: 22px !important;
+  max-height: 35px !important;
+  margin-left: 5px !important;
+}
+
+.price-label {
+  width: auto !important;
+  max-height: 35px !important;
+  font-size: 16px !important;
+  /* float: left !important; */
+  margin-top: 11px !important;
+}
+
+.buy-button {
+  /* float: right !important; */
+  width: 65px !important;
+  height: 30px !important;
+  border-radius: 10px !important;
+  margin-top: 5px !important;
+}
+
+.price-div {
+  display: flex;
+  /* position: relative !important; */
+  /* float: right !important; */
+  width: 80% !important;
+  justify-content: flex-end;
+  margin-right: 10px !important;
+}
+
+.buy-form {
+  /* display: flex; */
+  position: relative;
+  width: 80% !important;
+  float: right !important;
+  /* margin-left: auto !important; */
+}
+
+/* label .price {
+  font-size: 12px !important;
+} */
+
+/* form {
+  max-height: 40px !important;
+} */
 

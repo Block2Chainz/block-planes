@@ -4,7 +4,7 @@ import cryptoplanes from '../../../../block-planes-solidity/BlockPlanes/build/co
 import TruffleContract from 'truffle-contract';
 import Web3 from 'web3';
 import Plane from '../hangar/plane.jsx';
-import { Pagination, Grid, Button, Icon, Label, Input, Menu, Segment } from 'semantic-ui-react'
+import { Pagination, Grid, Button, Icon, Label, Input, Menu, Segment } from 'semantic-ui-react';
 
 
 class Marketplace extends Component {
@@ -178,12 +178,16 @@ class Marketplace extends Component {
             <div className='plane-menu'>
               <div className='plane-stats-div'>
                   <p className='plane-stats'>Speed: # <br/>Inertia: #<br/>Firing Rate: # </p>              
-                </div>
-                <div className='menu-button'>
-                <form onSubmit={(e) => this.buyPlane(e, plane)}>
-                <label>{plane[3] / 1000000000000000000}</label>
-                <button>Buy</button>
-              </form>
+              </div>
+              <div className='menu-form'>
+                <form onSubmit={(e) => this.buyPlane(e, plane)} className='buy-form'>
+                  <div className='price-div'>
+                  <label className='price-label'>{plane[3] / 1000000000000000000}</label><img src='https://openclipart.org/image/300px/svg_to_png/294014/ethereum-classic-logo.png'></img>
+                  </div>
+                  <div>
+                  <button className='buy-button'>Buy</button>
+                  </div>
+                </form>
               </div>
             </div>
             </div>
