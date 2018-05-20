@@ -151,18 +151,20 @@ class Marketplace extends Component {
                 <div className='plane-stats-div'>
                   <p className='plane-stats'>Speed: # <br/>Inertia: #<br/>Firing Rate: # </p>              
                 </div>
-              <div className='menu-button'>
-              {(plane[2] === true) ? <label>Current posted price: {parseInt(plane[3]) / 1000000000000000000}</label> : null }
-              <form onSubmit={(e) => this.sellPlane(e, plane)}>
-                <input type='text' name='price' />
-                <button>Sell</button>
-              </form>
-                {/* <Button as='div' labelPosition='left'>
-                  <Label as='a' basic>1000 ω</Label>
-                  <Button onClick={() => {this.sellPlane(plane[0], 200)}}>
-                    Sell!
-                  </Button>
-                </Button> */}
+              <div className='menu-sell-form'>
+                {(plane[2] === true) ? 
+                  <div className='posted-price-div'><label className='label-listed-price'>Listed Price: {parseInt(plane[3]) / 1000000000000000000}</label><img src='https://openclipart.org/image/300px/svg_to_png/294014/ethereum-classic-logo.png'></img></div> 
+                  : null 
+                }
+                <form onSubmit={(e) => this.sellPlane(e, plane)} className='form-sell'>
+                  <input type='text' name='price' className='sell-input'/>
+                  <div className='sell-buttons'>
+                    <button>Sell</button>
+                    {(plane[2] === true) ?
+                      <button>Unlist</button> : null
+                    }
+                  </div>
+                </form>
               </div>
             </div>
             </div>

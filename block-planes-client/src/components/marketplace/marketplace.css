@@ -14,14 +14,11 @@
 }
 
 .page-selector {
-  /* position: relative; */
-  /* left: 100px; */
   margin-bottom: 15px;
   margin: auto;
 }
 
 .plane-grid {
-  /* position: relative; */
   width: 90% !important;
   margin: auto !important;
   margin-top: 10px !important;
@@ -33,7 +30,6 @@
   min-width: 250px !important;
   padding: none !important;
   margin: auto;
-  /* left: 20% !important; */
 }
 
 .plane {
@@ -52,15 +48,12 @@
   display: flex;
   background-color: gray !important;
   height: 100px !important;
-  /* min-height: 50px !important; */
   align-items: center !important;
   justify-content: space-between !important;
 }
 
 .menu-form {
   display: flex;
-  /* position: relative;
-  float: right !important; */
   margin-left: auto !important;
   margin-right: 5px !important;
   height: 75px !important;
@@ -93,16 +86,8 @@
   margin: auto !important;
 }
 
-
-
-/* .menu-active {
-  color: white !important;
-  background-color: red !important;
-} */
-
 .menu-tab {
   font-size: 14px !important;
-  /* color: white !important; */
 }
 
 .menu .item {
@@ -112,21 +97,19 @@
 
 img {
   float: right !important;  
-  max-width: 22px !important;
-  max-height: 35px !important;
-  margin-left: 5px !important;
+  max-width: 18px !important;
+  max-height: 31px !important;
+  margin-left: 8px !important;
 }
 
 .price-label {
   width: auto !important;
   max-height: 35px !important;
   font-size: 16px !important;
-  /* float: left !important; */
   margin-top: 11px !important;
 }
 
 .buy-button {
-  /* float: right !important; */
   width: 65px !important;
   height: 30px !important;
   border-radius: 10px !important;
@@ -135,26 +118,51 @@ img {
 
 .price-div {
   display: flex;
-  /* position: relative !important; */
-  /* float: right !important; */
   width: 80% !important;
   justify-content: flex-end;
   margin-right: 10px !important;
 }
 
 .buy-form {
-  /* display: flex; */
   position: relative;
   width: 80% !important;
   float: right !important;
-  /* margin-left: auto !important; */
 }
 
-/* label .price {
-  font-size: 12px !important;
-} */
+.posted-price-div {
+  position: relative;
+  display: flex;
+  width: 90% !important;
+  height: 31px !important;
+  justify-content: flex-end;
+  align-items: center !important;
+  margin-right: 5px !important;
+  margin-bottom: 5px !important;
+  float: right !important;
+}
 
-/* form {
-  max-height: 40px !important;
-} */
+.menu-sell-form {
+  width: 60% !important;
+  height: 90% !important;
+}
 
+.label-listed-price {
+  display: flex;
+  align-items: center !important;
+  margin-top: 2px !important;
+}
+
+.form-sell {
+  display: flex;
+  justify-content: flex-end;
+  width: 90% !important;
+}
+
+.sell-input {
+  height: 50% !important;
+  margin-left: 10px !important;
+}
+
+.sell-buttons {
+  height: 50% !important;
+}
