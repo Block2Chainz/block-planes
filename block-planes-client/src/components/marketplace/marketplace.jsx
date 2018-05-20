@@ -143,6 +143,8 @@ class Marketplace extends Component {
         //render planes for current page
         const renderOwnPlanes = currentPlanes.map((plane, index) => {
           let sellPrice;
+          let buttonLabel;
+          (plane[2] === true) ? buttonLabel = 'Re-list' : buttonLabel = 'Sell';
           return (
             <Grid.Column className='plane-column'>
             <div className='single-plane'>
@@ -161,7 +163,7 @@ class Marketplace extends Component {
                     <input type='text' name='price' className='sell-input'/>
                   </div>
                   <div className='sell-buttons-div'>
-                  <button className='sell-button'>Sell</button>
+                  <button className='sell-button'>{buttonLabel}</button>
                     {(plane[2] === true) ?
                       <button className='sell-button'>Unlist</button> : null
                     }
