@@ -52,6 +52,14 @@
   justify-content: space-between !important;
 }
 
+.plane-menu-sell {
+  display: flex;
+  background-color: gray !important;
+  height: 110px !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
 .menu-form {
   display: flex;
   margin-left: auto !important;
@@ -144,6 +152,9 @@ img {
 .menu-sell-form {
   width: 60% !important;
   height: 90% !important;
+  margin: auto !important;
+  margin-right: 5px !important;
+
 }
 
 .label-listed-price {
@@ -153,16 +164,39 @@ img {
 }
 
 .form-sell {
-  display: flex;
-  justify-content: flex-end;
   width: 90% !important;
 }
 
 .sell-input {
-  height: 50% !important;
-  margin-left: 10px !important;
+  display: relative;
+  width: auto !important;
+  float: right !important;
 }
 
 .sell-buttons {
+  width: 80% !important;
+  height: 80% !important;
+}
+
+.sell-input-div {
+  position: relative;
+  width: 90% !important;
+  float: right !important;
   height: 50% !important;
+  left: 8% !important;
+}
+
+.sell-button {
+  position: relative;
+  width: 65px !important;
+  height: 30px !important;
+  border-radius: 10px !important;
+  margin-top: 5px !important;
+  margin: 5px !important;
+}
+
+.sell-buttons-div {
+  position: relative;
+  margin: auto !important;
+  left: 15% !important;
 }

@@ -147,7 +147,7 @@ class Marketplace extends Component {
             <Grid.Column className='plane-column'>
             <div className='single-plane'>
             <Plane key={Math.random()} plane={plane} />
-            <div className='plane-menu'>
+            <div className='plane-menu-sell'>
                 <div className='plane-stats-div'>
                   <p className='plane-stats'>Speed: # <br/>Inertia: #<br/>Firing Rate: # </p>              
                 </div>
@@ -157,11 +157,13 @@ class Marketplace extends Component {
                   : null 
                 }
                 <form onSubmit={(e) => this.sellPlane(e, plane)} className='form-sell'>
-                  <input type='text' name='price' className='sell-input'/>
-                  <div className='sell-buttons'>
-                    <button>Sell</button>
+                  <div className='sell-input-div'>
+                    <input type='text' name='price' className='sell-input'/>
+                  </div>
+                  <div className='sell-buttons-div'>
+                  <button className='sell-button'>Sell</button>
                     {(plane[2] === true) ?
-                      <button>Unlist</button> : null
+                      <button className='sell-button'>Unlist</button> : null
                     }
                   </div>
                 </form>
