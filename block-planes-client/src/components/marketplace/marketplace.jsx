@@ -160,7 +160,7 @@ class Marketplace extends Component {
                 }
                 <form onSubmit={(e) => this.sellPlane(e, plane)} className='form-sell'>
                   <div className='sell-input-div'>
-                    <input type='text' name='price' className='sell-input'/>
+                    <input type='text' name='price' className='sell-input' placeholder='Price for Sale'/>
                   </div>
                   <div className='sell-buttons-div'>
                   <button className='sell-button'>{buttonLabel}</button>

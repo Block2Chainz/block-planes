@@ -171,6 +171,7 @@ img {
   display: relative;
   width: auto !important;
   float: right !important;
+  text-align: right !important;
 }
 
 .sell-buttons {
@@ -198,5 +199,6 @@ img {
 .sell-buttons-div {
   position: relative;
   margin: auto !important;
-  left: 15% !important;
+  max-height: 32px !important;
+  left: 10% !important;
 }
