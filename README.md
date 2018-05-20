@@ -1,5 +1,5 @@
 # Introduction
-BlockPlanes is a top-down aerial shooter with unique and player-specific planes that can be bought, sold, and shown off. It is also a full social platform with live-chat, friends, and notifications. Play single player, against your friends, or against a random opponent. 
+BlockPlanes is a top-down aerial shooter with unique, randomly-generated, player-owned planes that can be bought, sold, and shown off. The plane attributes will be stored in an Ethereum smart contract as an ERC-721 token. It is also a full social platform with live-chat, friends, and notifications. Play single player, against your friends, or against a random opponent. 
 
 *** Note: this is still a work in progress and full functionality has not been completed *** 
 
