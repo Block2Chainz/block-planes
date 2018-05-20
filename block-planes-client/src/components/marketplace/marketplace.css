@@ -149,6 +149,18 @@ img {
   float: right !important;
 }
 
+.posted-price-div-null {
+  position: relative;
+  display: flex;
+  width: 90% !important;
+  height: 20px !important;
+  justify-content: flex-end;
+  align-items: center !important;
+  margin-right: 5px !important;
+  margin-bottom: 5px !important;
+  float: right !important;
+}
+
 .menu-sell-form {
   width: 60% !important;
   height: 90% !important;
@@ -200,5 +212,5 @@ img {
   position: relative;
   margin: auto !important;
   max-height: 32px !important;
-  left: 10% !important;
+  left: 9% !important;
 }

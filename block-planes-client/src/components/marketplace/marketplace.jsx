@@ -156,7 +156,7 @@ class Marketplace extends Component {
               <div className='menu-sell-form'>
                 {(plane[2] === true) ? 
                   <div className='posted-price-div'><label className='label-listed-price'>Listed Price: {parseInt(plane[3]) / 1000000000000000000}</label><img src='https://openclipart.org/image/300px/svg_to_png/294014/ethereum-classic-logo.png'></img></div> 
-                  : null 
+                  : <div className='posted-price-div-null'><label className='label-listed-price'></label></div>  
                 }
                 <form onSubmit={(e) => this.sellPlane(e, plane)} className='form-sell'>
                   <div className='sell-input-div'>
