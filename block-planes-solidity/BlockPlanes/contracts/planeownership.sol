@@ -74,6 +74,10 @@ contract PlaneOwnership is BlockPlanes, ERC721 {
     }
 
     function getPlanesForSale() external view returns(uint[]) {
+        if (planeSellCount[1] == 0) {
+            uint[] memory empty = new uint[](0);
+            return empty;
+        }
         uint[] memory result = new uint[](planeSellCount[1]);
         uint counter = 0;
         for (uint i = 0; i < planes.length; i++) {

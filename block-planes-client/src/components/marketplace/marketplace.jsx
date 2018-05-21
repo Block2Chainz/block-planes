@@ -5,6 +5,7 @@ import TruffleContract from 'truffle-contract';
 import Web3 from 'web3';
 import Plane from '../hangar/plane.jsx';
 import { Pagination, Grid, Button, Icon, Label, Input, Menu, Segment } from 'semantic-ui-react';
+import 'bluebird';
 
 
 class Marketplace extends Component {
@@ -52,7 +53,6 @@ class Marketplace extends Component {
         // get the contract instance
         this.blockplanes.deployed()
         .then((instance) => {
-        // console.log('all planes: ', instance.planes()[1]);
         this.setState({contract : instance, userAddress : address});
         contract = instance;
         // instance.createRandomPlane({ from: this.web3.eth.accounts[0], value: this.web3.toWei(0.001, 'ether')}); 
@@ -98,6 +98,9 @@ class Marketplace extends Component {
             return plane.toNumber();
           });
         }).then((planeArray) => {
+          if (planeArray.length === 0) {
+            this.setState({planesOnSale : []});
+          }
           let hangar = [];
           for (let i = 0; i < planeArray.length; i++) {
             let planeAttr;
@@ -123,7 +126,6 @@ class Marketplace extends Component {
     }
 
     unlistPlane(planeInfo) {
-      console.log('inside unlist plane', planeInfo);
       this.state.contract.unlistPlane(planeInfo[0], { from: this.web3.eth.accounts[0]});
     }
 
@@ -139,22 +141,16 @@ class Marketplace extends Component {
       });
     }
 
-    handleMenuClickBuy(e, { name }) {
-      let anyThis = this;
-      console.log('changing state')
-      this.getPlanesForSale();
-      setTimeout(function(){
-        anyThis.setState({ currentTab : name });
-      },500);
+    async handleMenuClickBuy(e, { name }) {
+      this.getPlanesByOwner();
+      await this.getPlanesForSale();
+      this.setState({ currentTab : name });
     }
 
-    handleMenuClickSell(e, { name }) {
-      let anyThis = this;
-      console.log('changing state');
-      this.getPlanesByOwner();
-      setTimeout(function(){
-        anyThis.setState({ currentTab : name });
-      },500);
+    async handleMenuClickSell(e, { name }) {
+      this.getPlanesForSale();
+      await this.getPlanesByOwner();
+      this.setState({ currentTab : name });      
     }
 
     render() {
@@ -177,9 +173,9 @@ class Marketplace extends Component {
           let buttonLabel;
           (plane[2] === true) ? buttonLabel = 'Re-list' : buttonLabel = 'Sell';
           return (
-            <Grid.Column className='plane-column'>
+            <Grid.Column className='plane-column' key={plane[0]}>
             <div className='single-plane'>
-            <Plane key={Math.random()} plane={plane} />
+            <Plane key={plane[0]} plane={plane} />
             <div className='plane-menu-sell'>
                 <div className='plane-stats-div'>
                   <p className='plane-stats'>Speed: # <br/>Inertia: #<br/>Firing Rate: # </p>              
@@ -209,9 +205,9 @@ class Marketplace extends Component {
 
         const renderBuyPlanes = planesOnSale.map((plane, index) => {
           return (
-            <Grid.Column className='plane-column'>
+            <Grid.Column className='plane-column' key={plane[0]}>
             <div className='single-plane'>
-            <Plane key={Math.random()} plane={plane} />
+            <Plane key={plane[0]} plane={plane} />
             <div className='plane-menu'>
               <div className='plane-stats-div'>
                   <p className='plane-stats'>Speed: # <br/>Inertia: #<br/>Firing Rate: # </p>              
