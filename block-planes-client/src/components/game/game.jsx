@@ -223,6 +223,16 @@ class Game extends Component {
             }
         }
     }
+
+    updateArray(items) {
+        for(let i = 0; i < items.length; i++) {
+            if (items[i].delete) {
+                items.splice(i, 1);
+            } else {
+                items[i].render(this.state);
+            }
+        }
+    }
     
     updateObjects(items) {
         // go through each item of the specified group and delete them or call their render functions

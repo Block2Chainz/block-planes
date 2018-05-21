@@ -7,6 +7,7 @@ const Bullet = function (args) {
     this.velocity = { x: posDelta.x * 1.75, y: posDelta.y * 1.75 };
     this.radius = 2;
     this.owner = args.owner;
+    this.player = args.player;
 }
 
 Bullet.prototype.destroy = function () {
