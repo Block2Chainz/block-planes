@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import './game.css';
 // import io from 'socket.io-client/dist/socket.io.js';
 import Ship from './gameObjects/ship.js';
-import Enemy from './gameObjects/Enemy';
+import Enemy from './gameObjects/enemy.js';
+import Bullet from './gameObjects/bullet.js';
 import { randomNumBetweenExcluding } from './gameObjects/helpers'
+import Particle from './gameObjects/particle.js';
 
 const KEY = {
     LEFT: 37,
@@ -34,7 +36,24 @@ class Game extends Component {
         }
         this.ship = {};
         this.enemies = {};
-        this.sprites = {};
+        this.bullets = {    1: [],
+                            2: []};
+        this.particles = {  1: [], 
+                            2: []};
+/*{
+    peers: {
+        1: {ship},
+        2: {ship}
+    },
+    bullets: {
+        1: [{bullet}, {bullet}, {bullet}],
+        2: [{bullet}, {bullet}],
+    },
+    particles: {
+        1: [{particle}, {particle}, {particle}],
+        2: [{particle}, {particle}, {particle}]
+    }
+}*/
         this.savedMoves = [];
 
     }
@@ -88,27 +107,59 @@ class Game extends Component {
     }
     
     serverUpdate(payload) {
-        /*{
-            peers: {
-                1: {ship},
-                2: {ship}
-            },
-            sprites: {
-                id: {particle or bullet},
-                id: {particle or bullet},
-                ... etc.
-            }
-        }*/
-        // update the other player's ship
+
+        // update the other player's stuff
         if (this.props.player === 1) {
             this.ship[2].update(payload.peers[2]);
+            this.updateOMatic(payload.bullets[2], 'bullets');
+            this.updateOMatic(payload.particles[2], 'particles');
         } else if (this.props.player === 2) {
             this.ship[1].update(payload.peers[1]);
+            this.updateOMatic(payload.bullets[1], 'bullets');
+            this.updateOMatic(payload.particles[1], 'particles');
+        }
+    }
+    
+    updateOMatic(pending, type) {
+        let otherPlayer = this.props.player === 1 ? '2' : '1';
+        let otherItems = this[type][otherPlayer];
+        // get a list of all the bullet data coming in
+        // loop through the list and update the bullets we have
+        for (let i = 0; i < pending.length; i++) {
+            // if there is a bullet on the server at the index, but no bullet at the index of our array
+            if (otherItems[i] === undefined) {
+                if (type === 'bullets') {
+                    otherItems.push(new Bullet({
+                        position: { x: this.ship[otherPlayer].position.x, 
+                                    y: this.ship[otherPlayer].position.y},
+                        owner: otherPlayer,
+                        player: this.props.player,
+                        rotation: pending[i].rotation,
+                    }));
+                } else if (type === 'particles') {
+                    otherItems.push(new Particle({
+                        position: {
+                            x: this.ship[otherPlayer].position.x,
+                            y: this.ship[otherPlayer].position.y,
+                        },
+                        owner: otherPlayer,
+                        player: this.props.player,
+                        lifeSpan: pending[i].lifeSpan, 
+                        velocity: pending[i].velocity,
+                        size: pending[i].size,
+                        color: pending[i].color,
+                    }));
+                }
+            } 
+            else {
+                // item exists, update its positioning
+                otherItems[i].update(pending[i]);
+            }
         }
     }
     
     update() {
-        this.props.socket.emit(`keys`, { id: this.props.player, keys: this.state.keys, timestamp: Date.now() });        
+        // this.props.socket.emit(`keys`, { id: this.props.player, keys: this.state.keys, timestamp: Date.now() });        
         // for updating the new positions of everything
         // pull up the canvas
         const context = this.state.context;
@@ -124,10 +175,24 @@ class Game extends Component {
         // this.updateObjects(this.sprites, 'sprites');
         // this.updateObjects(this.enemies, 'enemies');
         this.updateObjects(this.ship, 'ship');
+        this.updateArray(this.bullets['1'], 'bullets');
+        this.updateArray(this.bullets['2'], 'bullets');
+        this.updateArray(this.particles['1'], 'particles');
+        this.updateArray(this.particles['2'], 'particles');
         // pop the top state off the stack, restore context
         context.restore();
         // set up next frame 
         // requestAnimationFrame(() => {this.update()});
+    }
+
+    updateArray(items) {
+        for(let i = 0; i < items.length; i++) {
+            if (items[i].delete) {
+                items.splice(i, 1);
+            } else {
+                items[i].render(this.state);
+            }
+        }
     }
     
     updateObjects(items) {
@@ -178,7 +243,7 @@ class Game extends Component {
             player: this.props.player,
             emitUpdate: this.emitUpdate.bind(this),
             ingame: true,
-            // create: this.createObject.bind(this), 
+            create: this.createObject.bind(this), 
             // onDie: this.gameOver.bind(this)
         });
         let ship2 = new Ship({
@@ -190,8 +255,8 @@ class Game extends Component {
             }, 
             player: this.props.player,
             emitUpdate: this.emitUpdate.bind(this),
-            ingame: true
-            // create: this.createObject.bind(this),
+            ingame: true,
+            create: this.createObject.bind(this),
             // onDie: this.gameOver.bind(this)
         });
         this.ship['1'] = ship1;
@@ -203,8 +268,8 @@ class Game extends Component {
         // requestAnimationFrame(() => { this.update() });
     }
     
-    createObject(item, group) {
-        this[group].push(item);
+    createObject(item, group, player) {
+        this[group][player].push(item);
     }
         
     render() {

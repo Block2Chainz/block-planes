@@ -1,15 +1,13 @@
 const { rotatePoint } = require('./helpers');
 
 const Bullet = function (args) {
-    let posDelta = rotatePoint({ x: 0, y: -20 }, { x: 0, y: 0 }, args.ship.rotation * Math.PI / 180);
-    this.position = {
-        x: args.ship.position.x + posDelta.x,
-        y: args.ship.position.y + posDelta.y
-    };
-    this.rotation = args.ship.rotation;
+    let posDelta = rotatePoint({ x: 0, y: -20 }, { x: 0, y: 0 }, args.rotation * Math.PI / 180);
+    this.position = { x: args.position.x + posDelta.x, y: args.position.y + posDelta.y };
+    this.rotation = args.rotation;
     this.velocity = { x: posDelta.x * 1.75, y: posDelta.y * 1.75 };
     this.radius = 2;
     this.owner = args.owner;
+    this.player = args.player;
 }
 
 Bullet.prototype.update = function () {

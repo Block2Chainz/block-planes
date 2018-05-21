@@ -1,7 +1,12 @@
 export default class Particle {
     constructor(args) {
-        this.position = args.position
-        this.velocity = args.velocity
+        this.player = args.player;
+        this.owner = args.owner;
+
+        this.position = args.position;
+        this.targetPosition = args.position;
+
+        this.velocity = args.velocity;
         this.radius = args.size;
         this.lifeSpan = args.lifeSpan;
         // added inertia argument so it can be modified
@@ -15,12 +20,23 @@ export default class Particle {
         this.delete = true;
     }
 
+    update(updateObj) {
+        this.targetPosition.x = updateObj.x;
+        this.targetPosition.y = updateObj.y;
+    }
+
     render(state) {
-        // Move
-        this.position.x += this.velocity.x;
-        this.position.y += this.velocity.y;
-        this.velocity.x *= this.inertia;
-        this.velocity.y *= this.inertia;
+        if (this.player == this.owner) {
+            // Move
+            this.position.x += this.velocity.x;
+            this.position.y += this.velocity.y;
+            this.velocity.x *= this.inertia;
+            this.velocity.y *= this.inertia;
+        } else {
+            // INTERPOLATE
+            this.position.x += (this.targetPosition.x - this.position.x) * 0.16;
+            this.position.y += (this.targetPosition.y - this.position.y) * 0.16;
+        }
 
         // Shrink
         this.radius -= 0.1;

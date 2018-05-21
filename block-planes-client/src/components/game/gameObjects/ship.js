@@ -20,7 +20,7 @@ export default class Ship {
         this.rotationSpeed = 6; //6
         this.radius = 20;
         this.lastShot = 0;
-        // this.create = args.create;
+        this.create = args.create;
         // this.onDie = args.onDie || (() => console.log('cannot kill'));
         this.emitUpdate = args.emitUpdate;
 
@@ -86,23 +86,36 @@ export default class Ship {
             this.velocity.y -= Math.cos(-this.rotation * Math.PI / 180) * this.speed;
         }
         // Thruster particles
-        // let posDelta = rotatePoint({ x: 0, y: -55 }, { x: 0, y: 0 }, (this.rotation - 180) * Math.PI / 180);
-        // const particle = new Particle({
-        //     lifeSpan: randomNumBetween(20, 40),
-        //     size: randomNumBetween(1, 3),
-        //     position: {
-        //         x: this.position.x + posDelta.x + randomNumBetween(-2, 2),
-        //         y: this.position.y + posDelta.y + randomNumBetween(-2, 2)
-        //     },
-        //     color: this.smokeColor,
-        //     velocity: {
-        //         x: posDelta.x / randomNumBetween(3, 5),
-        //         y: posDelta.y / randomNumBetween(3, 5)
-        //     }
-        // });
+        let posDelta = rotatePoint({ x: 0, y: -55 }, { x: 0, y: 0 }, (this.rotation - 180) * Math.PI / 180);
+        let x = this.position.x + posDelta.x + randomNumBetween(-2, 2);
+        let y = this.position.y + posDelta.y + randomNumBetween(-2, 2);
+        let size = randomNumBetween(1, 3);
+        let lifeSpan = randomNumBetween(20, 40);
+        let velocityx = posDelta.x / randomNumBetween(3, 5);
+        let velocityy = posDelta.y / randomNumBetween(3, 5);
 
-        // //this.create = this(game.jsx).createObject()
-        // this.create(particle, 'particles');
+        const particle = new Particle({
+            lifeSpan,
+            size,
+            position: {
+                x,
+                y
+            },
+            color: this.smokeColor,
+            velocity: {
+                x: velocityx,
+                y: velocityy,
+            }
+        });
+
+        this.create(particle, 'particles', this.player);
+        this.emitUpdate('particle_generated', { owner: this.player, 
+                                                position: {x, y}, 
+                                                size, 
+                                                lifeSpan, 
+                                                velocity: {x: velocityx, y: velocityy},
+                                                color: this.smokeColor,
+                                            });
     }
 
     // state is passed in from game.jsx (state = game.jsx's state)
@@ -112,7 +125,7 @@ export default class Ship {
                 // *** YOU
                 // if the specified buttons are pressed, activate the respective functions
                 if (state.keys.up) {
-                    this.accelerate(1);
+                    this.accelerate(1, state);
                 }   
                 if (state.keys.left) {
                     this.rotate('LEFT');
@@ -122,12 +135,16 @@ export default class Ship {
                 }
                 if (state.keys.space && Date.now() - this.lastShot > this.shootingSpeed) {
                     // doesn't allow rapidly firing as quickly as you can press the spacebar
-                    // const bullet = new Bullet({
-                    //     ship: this
-                    // });
-                    //this.create = this(game.jsx).createObject()
-                    // this.create(bullet, 'bullets');
-                    // this.lastShot = Date.now();
+                    const bullet = new Bullet({
+                        ship: this,
+                        owner: this.player,
+                        player: this.player,
+                        rotation: this.rotation,
+                    });
+                    // this.create = this(game.jsx).createObject()
+                    this.create(bullet, 'bullets', this.player);
+                    this.lastShot = Date.now();
+                    this.emitUpdate('player_shot', { owner: this.player, position: this.position, rotation: this.rotation });
                 }
                 // Move
                 this.position.x += this.velocity.x;
@@ -159,12 +176,7 @@ export default class Ship {
                 // INTERPOLATE
                 this.position.x += (this.targetPosition.x - this.position.x) * 0.16;
                 this.position.y += (this.targetPosition.y - this.position.y) * 0.16;
-                let angle = this.targetRotation;
                 this.rotation += (this.targetRotation - this.rotation);
-                // let direction = (angle - this.rotation) / (Math.PI * 2);
-                // direction -= Math.round(dir);
-                // direction = direction * Math.PI * 2;
-                // this.rotation += direction;
             }
         }
         // Draw
