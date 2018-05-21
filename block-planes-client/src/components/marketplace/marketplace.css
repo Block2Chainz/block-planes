@@ -103,7 +103,7 @@
   padding: 2px !important;
 }
 
-img {
+.eth-symbol{
   float: right !important;  
   max-width: 18px !important;
   max-height: 31px !important;

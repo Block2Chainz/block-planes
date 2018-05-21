@@ -44,6 +44,7 @@ class ConnectedHangar extends Component {
   }
 
   componentDidMount() {
+<<<<<<< HEAD
     // clear out any selected plane if 
     // this.props.deselectPlane();
     // checks if a friend ID was passed in as props
@@ -91,6 +92,23 @@ class ConnectedHangar extends Component {
           if (i === planeArray.length - 1) {
             this.props.storePlanes({ planes: hangar });
           }
+=======
+    let userAddress, contract;
+    this.web3.eth.getCoinbase((err, address) => {
+      // storing the user blockchain address*****
+      userAddress = address;
+      // get the contract instance
+      this.blockplanes.deployed()
+      .then((instance) => {
+        // storing the contract*****
+        contract = instance;
+        return instance.getPlanesByOwner(userAddress);
+      }).then((planes) => {
+        // putting the plane ids into an array
+        let planeIds = [];
+        return planes.map((plane) => {
+            return plane.toNumber();
+>>>>>>> update planes for sale and owned on buy/sell tab click
         });
       }
     });
