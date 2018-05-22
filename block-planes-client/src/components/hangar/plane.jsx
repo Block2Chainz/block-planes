@@ -149,26 +149,24 @@ class Plane extends Component {
 
   select (e) {
     e.preventDefault();
-    this.props.highlight(this.props.plane[1])
+    this.props.highlight(this.props.plane[1]);
   }
 
   render() {
     return (
-      // <div onClick={(e) => this.select(e)} width={16} className='plane' >
-      //   <canvas ref='canvas' width={150} height={150} />
       <div>
         {this.props.selected === 'highlight' ? 
-          <div onClick={(e) => this.select(e)} width={16} className='plane blinking-border' >
-              <canvas ref='canvas' width={150} height={150} />
-              <div>
-              <p>
+          <div onClick={(e) => this.select(e)} width={16} className='plane blinking-border selected-plane-background' >
+          <canvas ref='canvas' width={150} height={150} />
+            <div>
+              <p className='selected-plane-stats'>
                 Speed: {parseInt(JSON.stringify(this.props.plane[1]).slice(6, 7)) % 4} <br/>
                 Inertia: {parseInt(JSON.stringify(this.props.plane[1]).slice(7, 8)) % 3} <br />
                 Shooting Speed: {parseInt(JSON.stringify(this.props.plane[1]).slice(8, 9)) % 7}
               </p>
-              </div>
+            </div>
           </div>
-           : 
+          : 
           <div>
             <div onClick={(e) => this.select(e)} width={16} className='plane' >
             <canvas ref='canvas' width={150} height={150} />
@@ -176,7 +174,7 @@ class Plane extends Component {
           </div>
         }
       </div>
-    )
+    );
   }  
 }
 

@@ -120,32 +120,33 @@ class ConnectedHangar extends Component {
 
   render() {
       return (
-        <div>
-        <br/>
-          <Grid>
-            {/* Should also generate a generic plane for all users and display it here */}
-            <Grid.Row className='planerow'>
-      {console.log('flag3:', this.props.userPlanes)}
-              {this.props.userPlanes.map((plane) => {
-                if (this.props.selectedPlane === plane[1]) {
-                  return <Plane
-                  selected={'highlight'}
-                  key={Math.random()}
-                  plane={plane}
-                  highlight={this.highlight.bind(this)} 
-                  />
-                } else {
-                  return <Plane 
-                  selected={'noHighlight'}
-                  key={plane[0]}
-                  plane={plane}
-                  highlight={this.highlight.bind(this)} />
+        <div className='center-content'>
+          <br/>
+          <div className='planes-outerdiv'>
+            <Grid>
+              {/* Should also generate a generic plane for all users and display it here */}
+              <Grid.Row className='planerow'>
+                {this.props.userPlanes.map((plane) => {
+                  if (this.props.selectedPlane === plane[1]) {
+                    return <Plane
+                    selected={'highlight'}
+                    key={Math.random()}
+                    plane={plane}
+                    highlight={this.highlight.bind(this)} 
+                    />
+                  } else {
+                    return <Plane 
+                    selected={'noHighlight'}
+                    key={plane[0]}
+                    plane={plane}
+                    highlight={this.highlight.bind(this)} />
+                  }
+                })
                 }
-              })
-              }
-            </Grid.Row>
-          </Grid>
+              </Grid.Row>
+            </Grid>
           </div>
+        </div>
       )
   }
 }
