@@ -257,7 +257,7 @@ ownFriendRequestSentNotification(event, notificationObj) {
             </div>
           </Grid.Row>
 
-            <Grid.Row className='borderfriends'>
+            <Grid.Row>
             </Grid.Row>
 
             <Grid.Row className='userrow'>
@@ -297,8 +297,6 @@ ownFriendRequestSentNotification(event, notificationObj) {
           <p className='text2'>Or Search Users: </p>
             <SearchUsers  updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
           </Grid.Row>
-          <Grid.Row className='borderfriends'>
-          </Grid.Row>
           <div>
           <div className='inner'>
                  <RequestList id={this.props.userId} requests={this.state.requests} fetchRequests={this.fetchRequests} />
@@ -321,9 +319,7 @@ ownFriendRequestSentNotification(event, notificationObj) {
           <p className='text2'>Or Search Users: </p>
             <SearchUsers updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
           </Grid.Row>
-          <Grid.Row className='borderfriends'>
-          </Grid.Row>
-          <Grid.Row >
+          <div>
           <div className='norequests'>
           <span>You have no new friend requests.</span>
                  </div>
@@ -344,8 +340,6 @@ ownFriendRequestSentNotification(event, notificationObj) {
           <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
           <p className='text2'>Or Search Users: </p>
             <SearchUsers  updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
-          </Grid.Row>
-          <Grid.Row className='borderfriends'>
           </Grid.Row>
         </Grid>
         </div>

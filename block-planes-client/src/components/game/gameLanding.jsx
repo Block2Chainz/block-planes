@@ -83,7 +83,7 @@ class ConnectedGameLanding extends Component {
                 <Grid.Row>
                 </Grid.Row>
 
-                <Grid.Row className='landing'>
+                <Grid.Row className='landing-title'>
                     <Grid.Column width={16}>
                         <p className='hangar'>Hangar</p>
                         <h3> Select a Plane </h3>
@@ -94,7 +94,7 @@ class ConnectedGameLanding extends Component {
                 { typeof(this.props.selectedPlane) !== 'number' ?
                     <div></div> : 
                     
-                    <Grid.Row className='landing'>
+                    <Grid.Row className='landing-challenge'>
                         <Grid.Column width={8}> 
                             <h3>Join Random</h3>
                         </Grid.Column>
