@@ -38,8 +38,8 @@ export default class Enemy {
         // Draw
         const context = state.context;
         context.save();
-        context.translate(this.targetPosition.x, this.targetPosition.y);
-        context.rotate(this.targetRotation * Math.PI / 180);
+        context.translate(this.position.x, this.position.y);
+        context.rotate(this.rotation * Math.PI / 180);
         context.strokeStyle = '#FFF';
         context.lineWidth = 2;
         context.beginPath();

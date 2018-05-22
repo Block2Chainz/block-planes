@@ -74,8 +74,6 @@ const clientDisconnect = ({ io, client, room, player }) => {
     console.log('Client has disconnected');
     // Remove client from server 
     clearInterval(room.timer);
-    // clearInterval(room.world.update);
-    room.timer = null;
     client.disconnect(true);
 }
 
