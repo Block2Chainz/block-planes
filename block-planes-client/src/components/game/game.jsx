@@ -6,6 +6,7 @@ import Enemy from './gameObjects/enemy.js';
 import Bullet from './gameObjects/bullet.js';
 import { randomNumBetweenExcluding } from './gameObjects/helpers'
 import Particle from './gameObjects/particle.js';
+import axios from 'axios';
 
 const KEY = {
     LEFT: 37,
@@ -83,10 +84,9 @@ class Game extends Component {
         socket.on('powered_up', payload => this.powerUpHandler(payload));
         socket.on('player_died', payload => this.playerDied(payload));
         socket.on('player_respawn', payload => this.respawn(payload));
+        socket.on('game_over', payload => this.gameOver(payload));
 
         this.startGame();
-        // animates the next frame     
-        // requestAnimationFrame(() => { this.update() });
     }
     
     componentWillUnmount() {
@@ -97,7 +97,7 @@ class Game extends Component {
         window.removeEventListener('resize', this.handleResize);
         this.props.socket.emit('disconnect', { player: this.props.player }); // tells the server to disconnect
         this.props.socket.disconnect();
-        clearInterval(this.update);
+        clearInterval(interval);
     }
     
     handleKeys(value, e) {
@@ -206,8 +206,6 @@ class Game extends Component {
         this.updateArray(this.particles['2'], 'particles');
         this.updateArray(this.enemies, 'enemies');
         context.restore();
-        // set up next frame 
-        // requestAnimationFrame(() => {this.update()});
     }
 
     updateArray(items) {
@@ -266,7 +264,6 @@ class Game extends Component {
             emitUpdate: this.emitUpdate.bind(this),
             ingame: true,
             create: this.createObject.bind(this), 
-            // onDie: this.playerDied.bind(this)
         });
         let ship2 = new Ship({
             id: 2,
@@ -279,15 +276,12 @@ class Game extends Component {
             emitUpdate: this.emitUpdate.bind(this),
             ingame: true,
             create: this.createObject.bind(this),
-            // onDie: this.gameOver.bind(this)
         });
         this.ship['1'] = ship1;
         this.ship['2'] = ship2;
 
         socket.emit(`shipGeneration`, { ship1: this.props.p1_ship, ship2: this.props.p2_ship});
-        setInterval(() => { this.update() }, 1000 / 60);   
-
-        // requestAnimationFrame(() => { this.update() });
+        const interval = setInterval(() => { this.update() }, 1000 / 60);   
     }
     
     createObject(item, group, player) {
@@ -296,35 +290,29 @@ class Game extends Component {
 
     playerDied(payload) {
         this.setState({ lives: payload.lives }, () => {
-            if (this.state.lives < 1) {
-                this.gameOver();
-            } else {
-                console.log('payload.player', payload.player, 'this.ship', this.ship)
-                this.ship[payload.player].destroy();
-            }
+            this.ship[payload.player].destroy();
         });
     }
 
     respawn(payload) {
-        console.log('respawning', payload);
         this.ship[payload.owner].position = { x: 50, y: 50 };
         this.ship[payload.owner].targetPosition = { x: 50, y: 50 };
         this.ship[payload.owner].ingame = true;
         this.ship[payload.owner].delete = false;
     }
 
-    gameOver() {
-        this.setState({
-            inGame: false,
-        });
+    gameOver(payload) {
+        this.setState({ inGame: false });
 
-        // Replace top score
-        if (this.state.currentScore > this.state.topScore) {
-            this.setState({
-                topScore: this.state.currentScore,
-            });
-            localStorage['topscore'] = this.state.currentScore;
-        }
+        this.ship[1].ingame = false;
+        this.ship[2].ingame = false;
+
+        axios.post('/scores', { user: this.props.user, score: payload.score })
+        .then(response => {
+            console.log(response);    
+        }).catch(err => {
+            console.log(err);
+        });
     }
         
     render() {

@@ -133,6 +133,7 @@ class ConnectedWaitingRoom extends Component {
                     //  to={{
                             // pathname: `/game/${this.state.roomId}`, 
                             // state: {
+                                userId= {this.props.user}
                                 socket= {this.state.socket} 
                                 player= {this.state.player} 
                                 p1_ship= {this.state.p1_ship} 

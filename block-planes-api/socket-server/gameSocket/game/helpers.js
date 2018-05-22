@@ -81,7 +81,9 @@ module.exports.checkCollisionsWith = (items1, items2, type, socket, room, world)
 					item2.destroy();
 					socket.in(room).emit('player_died', { player: item1.id, lives: world.lives });
 					world.respawnTimer(item1.id, socket, room);
-				} 
+				} else if (type === 'enemies' && item1.invincible === true) {
+					item2.destroy();
+				}
 			}
 		}	
 	}
