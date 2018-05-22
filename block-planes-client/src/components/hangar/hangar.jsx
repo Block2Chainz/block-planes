@@ -6,7 +6,7 @@ import 'bluebird';
 import './hangar.css';
 import Web3 from 'web3';
 import TruffleContract from 'truffle-contract'
-import cryptoPlanes from '../../../../block-planes-solidity/BlockPlanes/build/contracts/BlockPlanes.json';
+import cryptoPlanes from '../../../../block-planes-solidity/BlockPlanes/build/contracts/PlaneOwnership.json';
 import Plane from './plane.jsx';
 
 const mapDispatchToProps = dispatch => {
@@ -44,7 +44,6 @@ class ConnectedHangar extends Component {
   }
 
   componentDidMount() {
-<<<<<<< HEAD
     // clear out any selected plane if 
     // this.props.deselectPlane();
     // checks if a friend ID was passed in as props
@@ -74,8 +73,10 @@ class ConnectedHangar extends Component {
   }
 
   fetchPlanes() {
+    console.log('hangar account: ', this.user, this.props.contract);
     this.props.contract.getPlanesByOwner(this.user)
     .then((planes) => {
+      console.log('flag1: ', planes);
       // putting the plane ids into an array
       let planeIds = [];
       return planes.map((plane) => {
@@ -87,28 +88,11 @@ class ConnectedHangar extends Component {
       for (let i = 0; i < planeArray.length; i++) {
         let planeAttr;
         this.props.contract.planes(planeArray[i]).then((plane) => {
-          planeAttr = plane.toNumber();
+          planeAttr = plane[0].toNumber();
           hangar.push([planeArray[i], planeAttr]);
           if (i === planeArray.length - 1) {
             this.props.storePlanes({ planes: hangar });
           }
-=======
-    let userAddress, contract;
-    this.web3.eth.getCoinbase((err, address) => {
-      // storing the user blockchain address*****
-      userAddress = address;
-      // get the contract instance
-      this.blockplanes.deployed()
-      .then((instance) => {
-        // storing the contract*****
-        contract = instance;
-        return instance.getPlanesByOwner(userAddress);
-      }).then((planes) => {
-        // putting the plane ids into an array
-        let planeIds = [];
-        return planes.map((plane) => {
-            return plane.toNumber();
->>>>>>> update planes for sale and owned on buy/sell tab click
         });
       }
     });

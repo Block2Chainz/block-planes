@@ -32,12 +32,6 @@
   margin: auto;
 }
 
-.plane {
-  width: 100% !important;
-  height: 275px !important;  
-  margin: auto !important;
-}
-
 .canvas-plane {
   position: relative !important;
   left: 6% !important;

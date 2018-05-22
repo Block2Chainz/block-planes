@@ -12,7 +12,8 @@ CREATE TABLE users (
   `full_name` VARCHAR(255) NOT NULL,
   `profile_picture` VARCHAR(255) NOT NULL,
   `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
-  `total_points` VARCHAR(255) NOT NULL,
+  `total_points` VARCHAR(255) NOT NULL DEFAULT 0,
+  `high_score` VARCHAR(255) NOT NULL DEFAULT 0,
   `blockchainAddress` VARCHAR(255) NOT NULL, 
   PRIMARY KEY (`id`),
   INDEX `username_idx` (`username`)
