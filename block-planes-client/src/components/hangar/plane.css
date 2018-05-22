@@ -10,3 +10,15 @@
 .highlight {
   color: red
 }
+
+@keyframes border-pulsate {
+  0%   { border-color: white; }
+  50% { border-color: rgba(0, 255, 255, 0); }
+  100%   { border-color: white; }
+}
+
+.blinking-border {
+  /* margin: 20px auto; */
+  border: 2px solid white;
+  animation: border-pulsate 750ms infinite;
+}
