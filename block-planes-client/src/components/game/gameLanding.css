@@ -1,5 +1,5 @@
 .landing {
-    padding-top: 1.5%;
+    /* padding-top: 1.5%; */
     padding-left: 2%;
     background-color: #000000;
     position: relative;
@@ -9,4 +9,13 @@
     text-align: center;
     padding-right: 2%;
     font-family: 'Orbitron';
+}
+
+.hangar {
+  font-family: 'Orbitron';
+  margin: auto;
+  text-align: center;
+  font-size: 400%;
+  color: #fff;
+  padding-top: 10px !important;
 }

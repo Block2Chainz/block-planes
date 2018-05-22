@@ -5,11 +5,11 @@
     padding-left: 2%;
     background-color: #000000;
     position: relative;
-    border-bottom: 1px solid #ffffff;
     color: #fff;
     text-align: center;
     padding-right: 2%;
     font-family: 'Orbitron';
+    margin-bottom: 50px !important;
 }
 
 .planes-outerdiv {
