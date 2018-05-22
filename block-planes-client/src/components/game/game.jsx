@@ -21,6 +21,7 @@ class Game extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            yourLives: 10,
             screen: {
                 width: 750,
                 height: 500,
@@ -39,7 +40,11 @@ class Game extends Component {
         this.bullets = {    1: [],
                             2: []};
         this.particles = {  1: [], 
-                            2: []};
+                            2: [],
+                            3: []};
+
+        this.powerUps = [];
+        this.enemies = [];
 /*{
     peers: {
         1: {ship},
@@ -51,11 +56,13 @@ class Game extends Component {
     },
     particles: {
         1: [{particle}, {particle}, {particle}],
-        2: [{particle}, {particle}, {particle}]
-    }
+        2: [{particle}, {particle}, {particle}],
+        3: [{particle}]
+    },
+    enemies: [{enemy}, {enemy}, {enemy}, {enemy}],
+    powerUps: [{powerUp}, {powerUp}, {powerUp}, {powerUp}],
 }*/
         this.savedMoves = [];
-
     }
 
     componentDidMount() {
@@ -68,16 +75,14 @@ class Game extends Component {
         // set variable 'context' to the canvas and save to state
         const context = this.refs.canvas.getContext('2d');
         this.setState({ context });
-        // set up a listeners
-        socket.on('server_state', (payload) => {
-            this.serverUpdate(payload);
-        });
-        socket.on('ship1', payload => {
-            // this.ship[1] = new Ship(this.props.p1_ship);
-        });
-        socket.on('ship2', payload => {
-            // this.ship[2] = new Ship(this.props.p2_ship);
-        });        
+        // set up listeners
+        socket.on('server_state', (payload) => this.serverUpdate(payload));
+        socket.on('ship1', payload => {});
+        socket.on('ship2', payload => {});
+        socket.on('powered_up', payload => this.powerUpHandler(payload));
+        socket.on('player_died', payload => this.playerDied(payload));
+        socket.on('player_respawn', payload => this.respawn(payload));
+
         this.startGame();
         // animates the next frame     
         // requestAnimationFrame(() => { this.update() });
@@ -106,64 +111,82 @@ class Game extends Component {
         });
     }
     
-    serverUpdate(payload) {
+    powerUpHandler(payload) {
+        this.ship[payload.player].powerUp(payload);
+    };
 
+    serverUpdate(payload) {
         // update the other player's stuff
         if (this.props.player === 1) {
+            // if (payload.peers[1].delete === true) this.ship[1].destroy();
             this.ship[2].update(payload.peers[2]);
-            this.updateOMatic(payload.bullets[2], 'bullets');
-            this.updateOMatic(payload.particles[2], 'particles');
+            this.updateOMatic(payload.bullets[2], 'bullets', 2);
+            this.updateOMatic(payload.particles[2], 'particles', 2);
         } else if (this.props.player === 2) {
+            // if (payload.peers[2].delete === true) this.ship[2].destroy();
             this.ship[1].update(payload.peers[1]);
-            this.updateOMatic(payload.bullets[1], 'bullets');
-            this.updateOMatic(payload.particles[1], 'particles');
+            this.updateOMatic(payload.bullets[1], 'bullets', 1);
+            this.updateOMatic(payload.particles[1], 'particles', 1);
         }
+        this.updateOMatic(payload.particles[3], 'particles', 3);
+        this.updateOMatic(payload.enemies, 'enemies');
     }
     
-    updateOMatic(pending, type) {
-        let otherPlayer = this.props.player === 1 ? '2' : '1';
-        let otherItems = this[type][otherPlayer];
-        // get a list of all the bullet data coming in
-        // loop through the list and update the bullets we have
-        for (let i = 0; i < pending.length; i++) {
-            // if there is a bullet on the server at the index, but no bullet at the index of our array
-            if (otherItems[i] === undefined) {
-                if (type === 'bullets') {
-                    otherItems.push(new Bullet({
-                        position: { x: this.ship[otherPlayer].position.x, 
-                                    y: this.ship[otherPlayer].position.y},
-                        owner: otherPlayer,
-                        player: this.props.player,
-                        rotation: pending[i].rotation,
-                    }));
-                } else if (type === 'particles') {
-                    otherItems.push(new Particle({
-                        position: {
-                            x: this.ship[otherPlayer].position.x,
-                            y: this.ship[otherPlayer].position.y,
-                        },
-                        owner: otherPlayer,
-                        player: this.props.player,
-                        lifeSpan: pending[i].lifeSpan, 
-                        velocity: pending[i].velocity,
-                        size: pending[i].size,
-                        color: pending[i].color,
-                    }));
+    updateOMatic(pending, type, otherPlayer) {
+        if (type === 'bullets' || type === 'particles') {
+            // get a list of all the bullet data coming in
+            let otherItems = this[type][otherPlayer];
+            // loop through the list and update the bullets we have
+            for (let i = 0; i < pending.length; i++) {
+                // if there is a bullet on the server at the index, but no bullet at the index of our array
+                if (otherItems[i] === undefined) {
+                    if (type === 'bullets') {
+                        otherItems.push(new Bullet({
+                            position: { x: pending[i].x, 
+                                        y: pending[i].y},
+                            owner: otherPlayer,
+                            player: this.props.player,
+                            rotation: pending[i].rotation,
+                        }));
+                    } else if (type === 'particles') {
+                        otherItems.push(new Particle({
+                            position: {
+                                x: pending[i].x,
+                                y: pending[i].y,
+                            },
+                            owner: otherPlayer,
+                            player: this.props.player,
+                            lifeSpan: pending[i].lifeSpan, 
+                            velocity: pending[i].velocity,
+                            size: pending[i].size,
+                            color: pending[i].color,
+                        }));
+                    }
                 }
-            } 
-            else {
-                // item exists, update its positioning
-                otherItems[i].update(pending[i]);
+                else {
+                    // item exists, update its positioning
+                    otherItems[i].update(pending[i]);
+                }
             }
+            if (otherItems.length > pending.length) otherItems.splice(pending.length);
+        } else {
+            for (let i = 0; i < pending.length; i++) {
+                if (this[type][i] === undefined) {
+                    if (type === 'enemies') {
+                        this[type].push(new Enemy(pending[i]));
+                    }
+                } else {
+                    this[type][i].update(pending[i]);
+                }
+            }
+            // if (this[type].length > pending.length) this[type].splice(pending.length);
         }
     }
     
     update() {
-        // this.props.socket.emit(`keys`, { id: this.props.player, keys: this.state.keys, timestamp: Date.now() });        
         // for updating the new positions of everything
         // pull up the canvas
         const context = this.state.context;
-        // store canvas state on the stack
         context.save();
         context.scale(this.state.screen.ratio, this.state.screen.ratio);
         // add motion trails
@@ -172,14 +195,12 @@ class Game extends Component {
         context.fillRect(0, 0, this.state.screen.width, this.state.screen.height);
         context.globalAlpha = 1;
         // remove or render
-        // this.updateObjects(this.sprites, 'sprites');
-        // this.updateObjects(this.enemies, 'enemies');
         this.updateObjects(this.ship, 'ship');
         this.updateArray(this.bullets['1'], 'bullets');
         this.updateArray(this.bullets['2'], 'bullets');
         this.updateArray(this.particles['1'], 'particles');
         this.updateArray(this.particles['2'], 'particles');
-        // pop the top state off the stack, restore context
+        this.updateArray(this.enemies, 'enemies');
         context.restore();
         // set up next frame 
         // requestAnimationFrame(() => {this.update()});
@@ -198,10 +219,7 @@ class Game extends Component {
     updateObjects(items) {
         // go through each item of the specified group and delete them or call their render functions
         for (let key in items) {
-            if (items[key].delete) {
-                // delete the object from the field
-                delete items[key];
-            } else {
+            if (!items[key].delete) {            
                 // else call the render method 
                 items[key].render(this.state);
             }
@@ -244,7 +262,7 @@ class Game extends Component {
             emitUpdate: this.emitUpdate.bind(this),
             ingame: true,
             create: this.createObject.bind(this), 
-            // onDie: this.gameOver.bind(this)
+            // onDie: this.playerDied.bind(this)
         });
         let ship2 = new Ship({
             id: 2,
@@ -270,6 +288,45 @@ class Game extends Component {
     
     createObject(item, group, player) {
         this[group][player].push(item);
+    }
+
+    playerDied(payload) {
+        this.setState({ lives: payload.lives }, () => {
+            if (this.state.lives < 1) {
+                this.gameOver();
+            } else {
+                console.log('payload.player', payload.player, 'this.ship', this.ship)
+                this.ship[payload.player].destroy();
+            }
+        });
+    }
+
+    respawn(payload) {
+        console.log('respawning', payload, 'this.player', this.props.player);
+        let attr = this.ship[payload.owner].attr;
+        this.ship[payload.owner] = new Ship({
+            id: payload.owner, 
+            player: this.props.player,
+            create: this.createObject.bind(this), 
+            position: { x: 50, y: 50 },  
+            emitUpdate: this.emitUpdate.bind(this),
+            ingame: true,
+            attr,
+        });
+    }
+
+    gameOver() {
+        this.setState({
+            inGame: false,
+        });
+
+        // Replace top score
+        if (this.state.currentScore > this.state.topScore) {
+            this.setState({
+                topScore: this.state.currentScore,
+            });
+            localStorage['topscore'] = this.state.currentScore;
+        }
     }
         
     render() {
@@ -298,67 +355,4 @@ class Game extends Component {
     }
 }
 
-// checkCollisionsWith(items1, items2) {
-    //     // loop through each item in one array, compare to each item in second array
-    //     let a = items1.length - 1;
-    //     let b;
-    //     for (a; a >= 0; a--) {
-        //         b = items2.length - 1;
-        //         for (b; b >= 0; b--) {
-            //             let item1 = items2[a];
-            //             let item2 = items2[b];
-            //             if (this.checkCollision(item1, item2)) {
-                //                 // destroy if a collision is detected
-                //                 item1.destroy();
-                //                 item2.destroy();
-                //             }
-                //         }
-                //     }
-                // }
-                
-                // checkCollision(obj1, obj2) {
-                    //     let vx = obj1.position.x - obj2.position.x;
-                    //     let vy = obj1.position.y - obj2.position.y;
-                    //     // pythagorean theorem formula a^2 + b^2 = c^2 
-                    //     // gets the distance between the two objects based on their separation on the horizontal and vertical planes
-                    //     let length = Math.sqrt(vx * vx + vy * vy);
-                    //     // checks against the two radiuses added together
-                    //     // example 
-                    //         // obj 1 and 2 are 10 pixels away from each other's center
-//         // if their radius's are greater than 5 pixels, a collision is registered
-//     if (length < obj1.radius + obj2.radius) {
-    //         return true;
-    //     } else {
-        //         return false;
-        //     }
-        // }
-        // generateEnemies(number) {
-            //     // generate a new enemy, quantity = the number passed into the function
-            //     let ship = this.ship[0];
-            //     for (let i = 0; i < number; i++) {
-                //         let enemy = new Enemy({
-                    //             // size: 80, 
-                    //             // give it a random position on the screen
-                    //             position: {
-                        //                 x: randomNumBetweenExcluding(0, this.state.screen.width, ship.position.x-60, ship.position.x+60), 
-                        //                 y: randomNumBetweenExcluding(0, this.state.screen.height, ship.position.y-60, ship.position.y+60),
-                        //             }, 
-                        //             create: this.createObject.bind(this),
-                        //             addScore: this.addScore.bind(this),
-                        //         });
-                        //         this.createObject(enemy, 'enemies')
-//     }
-// }
-
-// const Game = connect(mapStateToProps)(ConnectedGame);
-
-// handleResize(value, e) {
-//     this.setState({
-//         screen: {
-//             width: window.innerWidth,
-//             height: window.innerHeight - 120,
-//             ratio: window.devicePixelRatio || 1,
-//         }
-//     }); 
-// }
 export default Game;

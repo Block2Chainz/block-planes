@@ -10,6 +10,10 @@ const Bullet = function (args) {
     this.player = args.player;
 }
 
+Bullet.prototype.destroy = function () {
+    this.delete = true;
+}
+    
 Bullet.prototype.update = function () {
     // Move
     this.position.x += this.velocity.x;
@@ -19,7 +23,7 @@ Bullet.prototype.update = function () {
         this.position.y < 0 ||
         this.position.x > 1000 ||
         this.position.y > 1000) {
-        this.delete = true;
+        this.destroy();
     }
 }
 

@@ -10,7 +10,7 @@ export default class Bullet {
 
         let posDelta = rotatePoint({ x: 0, y: -20 }, { x: 0, y: 0 }, args.rotation * Math.PI / 180);
         if (args.ship !== undefined) {
-            // if a ship is given to it, aka you are shooting it
+            // if a ship is given to it, aka you are controlling the shooting
             this.position = { x: args.ship.position.x + posDelta.x, y: args.ship.position.y + posDelta.y };
             this.rotation = args.ship.rotation;
             this.velocity = { x: posDelta.x * 1.75, y: posDelta.y * 1.75 };

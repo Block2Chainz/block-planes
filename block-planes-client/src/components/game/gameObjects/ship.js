@@ -6,8 +6,8 @@ import shipRenderer from './shipRenderer.js';
 export default class Ship {
     constructor(args) {
         this.id = args.id || null;
+        this.attr = args.attr;
         this.player = args.player;
-        this.socket = args.socket;
         this.position = args.position;
         this.targetPosition = args.position;
         this.velocity = { 
@@ -20,8 +20,11 @@ export default class Ship {
         this.rotationSpeed = 6; //6
         this.radius = 20;
         this.lastShot = 0;
+
+        this.shadowColor = '#ffffff'
+        this.glow = 500;
+
         this.create = args.create;
-        // this.onDie = args.onDie || (() => console.log('cannot kill'));
         this.emitUpdate = args.emitUpdate;
 
         let attributes = shipRenderer(args.attr);
@@ -38,38 +41,73 @@ export default class Ship {
         this.inertia = attributes.inertia; // modify in arguments when called
         this.shootingSpeed = attributes.shootingSpeed; // lower is better
         this.smokeColor = attributes.smokeColor;    
-        this.ingame = args.ingame    
+        this.ingame = args.ingame
+
+        setTimeout(this.makeVulnerable.bind(this), 3000);
     }
 
     destroy() {
         // set its delete property to true, for the game.jsx to delete on next render
         this.delete = true;
-        // this.onDie = this(game.jsx).gameOver()
         // this.onDie();
-
         // generate new 60 new particles in an explosion
-        // for (let i = 0; i < 60; i++) {
-        //     const particle = new Particle({
-        //         lifeSpan: this.ingame ? randomNumBetween(60, 100) : randomNumBetween(0, 10),
-        //         size: randomNumBetween(1, 4),
-        //         position: {
-        //             x: this.position.x + randomNumBetween(-this.radius/4, this.radius/4),
-        //             y: this.position.y + randomNumBetween(-this.radius / 4, this.radius / 4)  
-        //         },
-        //         velocity: {
-        //             x: randomNumBetween(-1.5, 1.5),
-        //             y: randomNumBetween(-1.5, 1.5)
-        //         }
-        //     });
+        for (let i = 0; i < 60; i++) {
+            let posDelta = rotatePoint({ x: 0, y: -55 }, { x: 0, y: 0 }, (this.rotation - 180) * Math.PI / 180);
+            let x = this.position.x + posDelta.x + randomNumBetween(-2, 2);
+            let y = this.position.y + posDelta.y + randomNumBetween(-2, 2);
+            let size = randomNumBetween(1, 3);
+            let lifeSpan = randomNumBetween(20, 40);
+            let velocityx = posDelta.x / randomNumBetween(3, 5);
+            let velocityy = posDelta.y / randomNumBetween(3, 5);
 
-        //     this.create(particle, 'particles');
-        // }
+            const particle = new Particle({ lifeSpan, size, position: { x, y }, velocity: { x: velocityx, y: velocityy, }, owner: this.player, player: this.player });
+
+            this.create(particle, 'particles', this.player);
+            this.emitUpdate('particle_generated', {
+                owner: this.player,
+                position: { x, y },
+                size,
+                lifeSpan,
+                velocity: { x: velocityx, y: velocityy },
+                color: this.smokeColor,
+            });
+        }
     }
 
     update(updateObj) {
         this.targetPosition.x = updateObj.position.x;
         this.targetPosition.y = updateObj.position.y;
         this.targetRotation = updateObj.rotation;
+        this.delete = updateObj.delete;
+    }
+
+    powerUp(powerUp) {
+        if (powerUp.type === 'invincible') {
+            let component = this;
+            this.glow = 500;
+            this.shadowColor = '#53f442'; //*** fix color */
+            setTimeout(() => component.makeVulnerable(), 5000);
+        } else if (powerUp.type === 'speed') {
+            let component = this;
+            this.speed += 0.75;
+            this.inertia -= 0.05;
+            this.glow = 500;
+            this.shadowColor = '#53f442'; //***fix color */ 
+            setTimeout(() => component.slowDown(), 10000);
+        }
+    }
+    
+    slowDown() {
+        this.speed -= 0.75;
+        this.glow = 0;
+        this.shadowColor = 'white'
+        this.inertia += 0.05;
+    }
+
+    makeVulnerable() {
+        this.invincible = false;
+        this.shadowColor = 'white'
+        this.glow = 0;
     }
 
     rotate(dir) {
@@ -97,15 +135,11 @@ export default class Ship {
         const particle = new Particle({
             lifeSpan,
             size,
-            position: {
-                x,
-                y
-            },
+            position: { x, y },
             color: this.smokeColor,
-            velocity: {
-                x: velocityx,
-                y: velocityy,
-            }
+            velocity: { x: velocityx, y: velocityy },
+            owner: this.player, 
+            player: this.player,
         });
 
         this.create(particle, 'particles', this.player);
@@ -180,6 +214,7 @@ export default class Ship {
             }
         }
         // Draw
+        if (!this.delete) {  
         const context = state.context;
         context.save();
         context.translate(this.position.x, this.position.y);
@@ -201,6 +236,9 @@ export default class Ship {
         let img4 = new Image();
         img4.src = `http://127.0.0.1:8887/cockpits/${this.cockpitShape}/cockpit_${this.cockpitShape}_${this.cockpitColor}.png`;
         context.drawImage(img4, 0, 0, 35, 35);
-        context.restore();
+
+        context.shadowBlur = this.glow;
+        context.shadowColor = this.shadowColor;
+        context.restore();}
     }
 }

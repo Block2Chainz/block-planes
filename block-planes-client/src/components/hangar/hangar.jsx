@@ -107,7 +107,7 @@ class ConnectedHangar extends Component {
   highlight(plane) {
     if (!this.props.friend) {
       if (this.props.selectedPlane === plane) {
-        this.props.deselectPlane(plane)
+        this.props.deselectPlane()
       } else {
         this.props.selectPlane(plane)
       }

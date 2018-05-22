@@ -66,7 +66,6 @@ const clientParticle = ({ io, client, room, player }, particleData) => {
 }
 
 const clientShipGeneration = ({ io, client, room, player }, payload) => {
-    console.log('ship generation heard');
     room.timer = setInterval( () => room.world.update(io, room), 1000 / 30 ); 
     serverShipGeneration({ io, client, room, player }, payload);
 }

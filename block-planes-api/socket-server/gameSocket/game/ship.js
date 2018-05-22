@@ -7,6 +7,7 @@ const Ship = function (args, world) {
     this.id = null;
     this.last_processed_input = null;
     this.world = world;
+    this.attributes = typeof args === 'number' ? args : parseInt(args);
 
     this.up = false;
     this.left = false;
@@ -21,7 +22,7 @@ const Ship = function (args, world) {
     this.lastShot = 0;
     this.delete = false;
 
-    let attributes = shipRenderer(args);
+    let attributes = shipRenderer(this.attributes);
     // ship characteristics
     this.bodyColor = attributes.bodyColor;
     this.wingShape = attributes.wingShape;
@@ -34,33 +35,42 @@ const Ship = function (args, world) {
     this.inertia = attributes.inertia || 0.99; // modify in arguments when called
     this.shootingSpeed = attributes.shootingSpeed || 300; // lower is better
     this.smokeColor = attributes.smokeColor || '#ffffff';
-} 
 
-Ship.prototype.create = function (args) {
-    this.world.createObject(args);
-}
+    this.invincible = true;
+    this.glow = 50;
+    this.shadowColor = 'white';
+
+    setTimeout(this.makeVulnerable.bind(this), 2000);
+} 
 
 Ship.prototype.destroy = function () {
     this.delete = true;
+    this.world.lives--;
+};
 
-    // generate new 60 new particles in an explosion
-    for (let i = 0; i < 60; i++) {
-        const particle = new Particle({
-            lifeSpan: this.ingame ? randomNumBetween(60, 100) : randomNumBetween(0, 10),
-            size: randomNumBetween(1, 4),
-            color: this.smokeColor,
-            position: {
-                x: this.position.x + randomNumBetween(-this.radius / 4, this.radius / 4),
-                y: this.position.y + randomNumBetween(-this.radius / 4, this.radius / 4)
-            },
-            velocity: {
-                x: randomNumBetween(-1.5, 1.5),
-                y: randomNumBetween(-1.5, 1.5)
-            }
-        });
-
-        this.create('particles', particle);
+Ship.prototype.powerUp = function (powerUp) {
+    if (powerUp.type === 'invincible') {
+        let component = this;
+        setTimeout(function () {
+            component.makeVulnerable();
+        }, 5000);
+    } else if (powerUp.type === 'speed') {
+        let component = this;
+        this.speed += 0.75;
+        this.inertia -= 0.05;
+        setTimeout(function () {
+            component.slowDown();
+        }, 10000);
     }
+}
+
+Ship.prototype.slowDown = function () {
+    this.speed -= 0.75;
+    this.inertia += 0.05;
+}
+
+Ship.prototype.makeVulnerable = function () {
+    this.invincible = false;
 }
 
 Ship.prototype.update = function (input) {
@@ -69,41 +79,6 @@ Ship.prototype.update = function (input) {
     this.position.y = input.y;
     this.rotation = input.rotation; 
 
-// SHOOTING
-    // if (input.space && Date.now() - this.lastShot > this.shootingSpeed) {
-    //         // doesn't allow rapidly firing as quickly as you can press the spacebar
-    //     const bullet = new Bullet({
-    //         ship: this
-    //     });
-    //     this.create(bullet, 'bullets');
-    //     this.lastShot = Date.now();
-    //     // create bullet
-    // }
-// ACCELERATION
-    // this.up = input.up;
-    // this.left = input.left;
-    // this.right = input.right;
-
-    // if (this.up) {
-    //     this.velocity.x -= Math.sin(-this.rotation * Math.PI / 180) * this.speed * dt;
-    //     this.velocity.y -= Math.cos(-this.rotation * Math.PI / 180) * this.speed * dt;
-    //     // Thruster particles
-    //     let posDelta = rotatePoint({ x: 0, y: -55 }, { x: 0, y: 0 }, (this.rotation - 180) * Math.PI / 180);
-    //     const particle = new Particle({
-    //         lifeSpan: randomNumBetween(20, 40),
-    //         size: randomNumBetween(1, 3),
-    //         position: {
-    //             x: this.position.x + posDelta.x + randomNumBetween(-2, 2),
-    //             y: this.position.y + posDelta.y + randomNumBetween(-2, 2)
-    //         },
-    //         color: this.smokeColor,
-    //         velocity: {
-    //             x: posDelta.x / randomNumBetween(3, 5),
-    //             y: posDelta.y / randomNumBetween(3, 5)
-    //         }
-    //     });
-    //     this.create(particle, 'particles');
-    // };
 // ROTATION
     // if (this.left) this.rotation -= this.rotationSpeed * dt;
     // if (this.right) this.rotation += this.rotationSpeed * dt;
