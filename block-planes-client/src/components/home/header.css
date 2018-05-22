@@ -13,11 +13,29 @@
     padding-right: 2%;
   }
 
-  .title {
+  .titlegame {
     font-family: 'Orbitron';
     color: white;
-      font-size: 200%;
+    display: block;
+    position: absolute;
+    top: 10px;
+    z-index: 1;
+    left: 20px;
+  }
+
+  .titlemenu {
+    font-family: 'Orbitron';
+    color: white;
+    float: left;
+  }
+
+  .menuitem {
+    font-family: 'Orbitron';
+    color: white;
       text-align: left;
+      border-bottom: 1px solid #ffffff;
+      padding-top: 14% !important;
+      padding-bottom: 14% !important;
   }
   
   .create-account {
@@ -167,4 +185,19 @@
     margin-left: 45%;
     padding-bottom: 5%;
     margin-bottom: 5%;
+}
+
+.logbutton {
+  text-align: right !important;
+  float: right !important;
+  margin-top: 1% !important;
+}
+
+.homebg {
+  background-color: black;
+  border: 0px;
+}
+
+.topofsite {
+  border-bottom: 1px solid #ffffff !important;
 }

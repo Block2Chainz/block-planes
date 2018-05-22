@@ -16,6 +16,9 @@ io.on('connection', (socket) => {
       socket.on('friendRequestAccepted', function (data) {
         io.emit('returnfriendRequestAccepted', data);
       });
+      socket.on('gameInvite', function (data) {
+        io.emit('returnGameInvite', data);
+      });
 });
 
 const PORT = process.env.PORT || 4225;

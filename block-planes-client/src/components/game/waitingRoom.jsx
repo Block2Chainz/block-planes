@@ -38,6 +38,7 @@ class ConnectedWaitingRoom extends Component {
     }
 
     componentWillMount() {
+        console.log('roomid in waitingroom', this.props.roomId);
         // checks if a room exists in props already
         let roomId;
         if (!this.props.roomId || !this.state.roomId) {

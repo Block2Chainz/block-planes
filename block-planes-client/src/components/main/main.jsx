@@ -13,10 +13,12 @@ import Chat from '../chat/chat.jsx';
 import Game from '../game/game.jsx';
 import GameLanding from '../game/gameLanding.jsx';
 import WaitingRoom from '../game/waitingRoom.jsx';
+import SinglePlayer from '../singleplayer/SinglePlayer.js';
+
 
 const Main = (props) => (
-    <main>
-        <Header logout={props.logout}/>
+    <main onClick={props.toggleMenu}>
+        {/* <Header logout={props.logout}/> */}
         <Switch>
         <Route exact path='/' render={() => <Redirect to={{ pathname: '/home' }} />} />
             <Route path='/home' component={Home} />
@@ -29,7 +31,7 @@ const Main = (props) => (
             }} />)
           )} />
           <Route path='/friends' render={() => (sessionStorage.getItem('jwtToken') ?
-            (<Friends  />)
+            (<Friends  toggleMenu={props.toggleMenu}/>)
             : (<Redirect to={{
               pathname: '/login'
             }} />)
@@ -47,6 +49,7 @@ const Main = (props) => (
               (<GameLanding />)
               : (<Redirect to={{ pathname: '/login' }} />))} />
           <Route path='/waitingRoom' component={WaitingRoom} />
+          <Route path='/singleplayer' component={SinglePlayer} />
         </Switch>
     </main>
 )

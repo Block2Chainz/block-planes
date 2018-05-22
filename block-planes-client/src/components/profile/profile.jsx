@@ -78,10 +78,8 @@ class ConnectedProfile extends Component {
 
     render() {
         return (
+          <div className='profilebg'>
           <Grid>
-
-          <Grid.Row>
-          </Grid.Row>
 
           <Grid.Row className='userrowprofile'>
               <div className='profilepic' >
@@ -108,7 +106,7 @@ class ConnectedProfile extends Component {
           </Grid.Row>
 
         </Grid>
-
+        </div>
         );
     }
 }
