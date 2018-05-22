@@ -7,6 +7,7 @@ import Bullet from './gameObjects/bullet.js';
 import { randomNumBetweenExcluding } from './gameObjects/helpers'
 import Particle from './gameObjects/particle.js';
 import axios from 'axios';
+import PowerUp from './gameObjects/powerUp';
 
 const KEY = {
     LEFT: 37,
@@ -131,6 +132,7 @@ class Game extends Component {
         }
         this.updateOMatic(payload.particles[3], 'particles', 3);
         this.updateOMatic(payload.bullets[3], 'bullets', 3);
+        this.updateOMatic(payload.powerUps, 'powerUps');
         this.updateOMatic(payload.enemies, 'enemies');
     }
     
@@ -177,18 +179,20 @@ class Game extends Component {
                 if (this[type][i] === undefined) {
                     if (type === 'enemies') {
                         this[type].push(new Enemy(pending[i]));
+                    } else if (type === 'powerUps') {
+                        console.log('CREATING NEW POWERUP', pending[i], 'powerups', this[type])
+                        this[type].push(new PowerUp(pending[i]));
                     }
                 } else {
                     this[type][i].update(pending[i]);
                 }
             }
-            // if (this[type].length > pending.length) this[type].splice(pending.length);
+            if (this[type].length > pending.length) this[type].splice(pending.length);
         }
     }
     
     update() {
         // for updating the new positions of everything
-        // pull up the canvas
         const context = this.state.context;
         context.save();
         context.scale(this.state.screen.ratio, this.state.screen.ratio);
@@ -204,7 +208,9 @@ class Game extends Component {
         this.updateArray(this.bullets['3'], 'bullets');
         this.updateArray(this.particles['1'], 'particles');
         this.updateArray(this.particles['2'], 'particles');
+        this.updateArray(this.particles['3'], 'particles');
         this.updateArray(this.enemies, 'enemies');
+        this.updateArray(this.powerUps, 'powerUps');
         context.restore();
     }
 
@@ -257,8 +263,8 @@ class Game extends Component {
             id: 1,
             attr: this.props.p1_ship, 
             position: {
-                x: 50,
-                y: 50,
+                x: 350,
+                y: 225,
             }, 
             player: this.props.player,
             emitUpdate: this.emitUpdate.bind(this),
@@ -269,8 +275,8 @@ class Game extends Component {
             id: 2,
             attr: this.props.p2_ship,
             position: {
-                x: 75,
-                y: 75,
+                x: 375,
+                y: 225,
             }, 
             player: this.props.player,
             emitUpdate: this.emitUpdate.bind(this),
@@ -295,18 +301,18 @@ class Game extends Component {
     }
 
     respawn(payload) {
-        this.ship[payload.owner].position = { x: 50, y: 50 };
-        this.ship[payload.owner].targetPosition = { x: 50, y: 50 };
+        this.ship[payload.owner].position = { x: 325, y: 250 };
+        this.ship[payload.owner].targetPosition = { x: 325, y: 250 };
         this.ship[payload.owner].ingame = true;
         this.ship[payload.owner].delete = false;
+        this.ship[payload.owner].powerUp({type: 'invincible'});
     }
 
     gameOver(payload) {
         this.setState({ inGame: false });
-
         this.ship[1].ingame = false;
         this.ship[2].ingame = false;
-
+        // send the score to the db
         axios.post('/scores', { user: this.props.user, score: payload.score })
         .then(response => {
             console.log(response);    

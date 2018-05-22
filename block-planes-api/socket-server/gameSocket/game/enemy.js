@@ -2,12 +2,11 @@ const Bullet = require('./Bullet.js');
 const Particle = require('./particle.js');
 const { asteroidVertices, randomNumBetween, randomNumBetweenExcluding, randomNumBetweenExcludingTwoRanges } = require('./helpers.js');
 
-
-
-
 const Enemy = function (args, world) {
     this.type = args.type;
     this.world = world;
+    this.delete = false;
+    
     this.position = {
         x: randomNumBetweenExcludingTwoRanges(0, 750, this.world.peers['1'].position.x - 60, this.world.peers['1'].position.x + 60, this.world.peers['2'].position.x - 60, this.world.peers['2'].position.x + 60),
         y: randomNumBetweenExcludingTwoRanges(0, 500, this.world.peers['1'].position.y - 60, this.world.peers['1'].position.y + 60, this.world.peers['2'].position.y - 60, this.world.peers['2'].position.y + 60)
@@ -20,7 +19,8 @@ const Enemy = function (args, world) {
 
     if (args.type === 'normal') {
         // splits into smaller normal ones 
-        this.radius = args.size || 20;
+        this.radius = args.size || 50;
+        if (this.radius < 10) this.delete = true;
     } else if (args.type === 'fast') {
         // moves much faster, is smaller
         this.velocity = {
@@ -40,7 +40,6 @@ const Enemy = function (args, world) {
     }
     this.rotation = 0;
     this.score = (80 / this.radius) * 5;
-    this.delete = false;
 }
 
 Enemy.prototype.destroy = function (owner) {
@@ -68,10 +67,21 @@ Enemy.prototype.destroy = function (owner) {
 
     if (this.type === 'normal') {
         // Break into smaller enemies
-        for (let i = 0; i < 7; i++) {
+        for (let i = 0; i < 2; i++) {
             let enemy = new Enemy({
                 size: this.radius / 2,
                 type: 'normal',
+                position: {
+                    x: this.position.x + randomNumBetween(-this.radius / 4, this.radius / 4),
+                    y: this.position.y + randomNumBetween(-this.radius / 4, this.radius / 4)
+                },
+            }, this.world);
+            this.world.createObject('enemies', enemy);
+        }
+    } else if (this.type === 'master') {
+        for (let i = 0; i < 7; i++) {
+            let enemy = new Enemy({
+                type: 'fast',
                 position: {
                     x: randomNumBetween(-10, 20) + this.position.x,
                     y: randomNumBetween(-10, 20) + this.position.y
@@ -79,14 +89,12 @@ Enemy.prototype.destroy = function (owner) {
             }, this.world);
             this.world.createObject('enemies', enemy);
         }
-    } else if (this.type === 'master') {
-        // Break into fast ones
     }
 }
 
 Enemy.prototype.update = function () {
     // shoot if you are a blast type 
-    if (this.type === 'blast' && Date.now() - this.lastShot > 500) {
+    if ((this.type === 'blast' || this.type === 'master') && Date.now() - this.lastShot > 2000) {
         const bullet = new Bullet({
             owner: 3,
             rotation: this.rotation,

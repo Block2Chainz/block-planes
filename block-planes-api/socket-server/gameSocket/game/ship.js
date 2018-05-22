@@ -40,7 +40,8 @@ const Ship = function (args, world) {
     this.glow = 50;
     this.shadowColor = 'white';
 
-    setTimeout(this.makeVulnerable.bind(this), 2000);
+    setTimeout(this.makeVulnerable.bind(this), 5000);
+    this.powerUp = this.powerUp.bind(this);
 } 
 
 Ship.prototype.destroy = function () {
@@ -51,15 +52,16 @@ Ship.prototype.destroy = function () {
 Ship.prototype.powerUp = function (powerUp) {
     if (powerUp.type === 'invincible') {
         let component = this;
-        setTimeout(function () {
-            component.makeVulnerable();
+        this.invincible = true;
+        setTimeout(() => {
+            this.makeVulnerable();
         }, 5000);
     } else if (powerUp.type === 'speed') {
         let component = this;
         this.speed += 0.75;
         this.inertia -= 0.05;
-        setTimeout(function () {
-            component.slowDown();
+        setTimeout(() => {
+            this.slowDown();
         }, 10000);
     }
 }

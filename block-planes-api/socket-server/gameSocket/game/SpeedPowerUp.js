@@ -1,8 +1,5 @@
 const Particle = require('./Particle');
-const {
-	asteroidVertices,
-	randomNumBetween
-} = require('./helpers');
+const {	asteroidVertices, randomNumBetween,	randomNumBetweenExcludingTwoRanges } = require('./helpers');
 
 const SpeedPowerUp = function (world) {
 	this.type = 'speed';
@@ -26,16 +23,11 @@ SpeedPowerUp.prototype.destroy = function () {
 	// Explode
 	for (let i = 0; i < this.radius; i++) {
 		const particle = new Particle({
+			owner: 3,
 			lifeSpan: randomNumBetween(60, 100),
 			size: randomNumBetween(1, 3),
-			position: {
-			x: this.position.x + randomNumBetween(-this.radius/4, this.radius/4),
-			y: this.position.y + randomNumBetween(-this.radius/4, this.radius/4)
-			},
-			velocity: {
-			x: randomNumBetween(-1.5, 1.5),
-			y: randomNumBetween(-1.5, 1.5)
-			}
+			position: { x: this.position.x + randomNumBetween(-this.radius/4, this.radius/4), y: this.position.y + randomNumBetween(-this.radius/4, this.radius/4) },
+			velocity: { x: randomNumBetween(-1.5, 1.5), y: randomNumBetween(-1.5, 1.5) }
 		});
 		this.world.createObject('particles', particle);
 	}
@@ -51,10 +43,10 @@ SpeedPowerUp.prototype.update = function () {
 		this.rotation += 360;
 	}
 	// Screen edges
-	if(this.position.x > state.screen.width + this.radius) this.position.x = -this.radius;
-	else if(this.position.x < -this.radius) this.position.x = state.screen.width + this.radius;
-	if(this.position.y > state.screen.height + this.radius) this.position.y = -this.radius;
-	else if(this.position.y < -this.radius) this.position.y = state.screen.height + this.radius;
+	// if(this.position.x > state.screen.width + this.radius) this.position.x = -this.radius;
+	// else if(this.position.x < -this.radius) this.position.x = state.screen.width + this.radius;
+	// if(this.position.y > state.screen.height + this.radius) this.position.y = -this.radius;
+	// else if(this.position.y < -this.radius) this.position.y = state.screen.height + this.radius;
 }	
 
 

@@ -47,17 +47,16 @@ module.exports.randomNumBetweenExcludingTwoRanges = (min, max, r1Min, r1Max, r2M
 // checking for collisions between objects
 module.exports.checkCollisionsWith = (items1, items2, type, socket, room, world) => {
 	if (type !== undefined) {
-		let ship1 = items1['1'];
-		let ship2 = items1['2'];
+		let ship1 = items1[1];
+		let ship2 = items1[2];
 		items1 = [ship1, ship2];
 	}
-	
 	// loop through each item in one array, compare to each item in second array
 	let a = items1.length - 1;
 	let b;
-	for (a; a > -1; --a) {
+	for (let a = 0; a < items1.length; a++) {
 		b = items2.length - 1;
-		for (b; b > -1; --b) {
+		for (let b = 0; b < items2.length; b++) {
 			let item1 = items1[a];
 			let item2 = items2[b];
 			if (checkCollision(item1, item2)) {
@@ -67,13 +66,13 @@ module.exports.checkCollisionsWith = (items1, items2, type, socket, room, world)
 					item1.powerUp(item2);
 					item2.destroy();
 					world.powerUpCountdown();
-					socket.in(room).emit('powered_up', { type: item2.type });
+					socket.in(room).emit('powered_up', { player: item1.id, type: item2.type });
 				} else if (type === undefined) {
 					// undefined - bullets and enemies
-					// your bullets kill the enemies, destroy the bullet, destroy the enemy, add your score
+					// your bullets kill the enemies, destroy the bullet, add your score
 					item1.destroy();
 					item2.destroy(item1.owner);
-				} else if ((type === 'enemies' || type === 'enemyBullets') && item1.invincible === false && !item1.delete) {
+				} else if ((type === 'enemies' || type === 'enemyBullets') && !item1.invincible && !item1.delete) {
 					// enemyBullets - player and enemy bullets
 					// enemies - player and enemies
 					// destroy the player, destroy the item (enemy or bullet), emit player died event

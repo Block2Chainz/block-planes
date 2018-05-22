@@ -28,6 +28,9 @@ export default class Ship {
         this.create = args.create;
         this.emitUpdate = args.emitUpdate;
 
+        this.invincible = true;
+        this.speedy = false;
+
         let attributes = shipRenderer(args.attr);
         
         // ship characteristics
@@ -85,31 +88,24 @@ export default class Ship {
 
     powerUp(powerUp) {
         if (powerUp.type === 'invincible') {
-            let component = this;
-            this.glow = 500;
-            this.shadowColor = '#53f442'; //*** fix color */
-            setTimeout(() => component.makeVulnerable(), 5000);
+            this.invincible = true;
+            setTimeout(() => this.makeVulnerable(), 5000);
         } else if (powerUp.type === 'speed') {
-            let component = this;
+            this.speedy = true;
             this.speed += 0.75;
             this.inertia -= 0.05;
-            this.glow = 500;
-            this.shadowColor = '#53f442'; //***fix color */ 
-            setTimeout(() => component.slowDown(), 10000);
+            setTimeout(() => this.slowDown(), 10000);
         }
     }
     
     slowDown() {
+        this.speedy = false;
         this.speed -= 0.75;
-        this.glow = 0;
-        this.shadowColor = 'white'
         this.inertia += 0.05;
     }
 
     makeVulnerable() {
         this.invincible = false;
-        this.shadowColor = 'white'
-        this.glow = 0;
     }
 
     rotate(dir) {
@@ -213,6 +209,10 @@ export default class Ship {
                 this.position.x += (this.targetPosition.x - this.position.x) * 0.16;
                 this.position.y += (this.targetPosition.y - this.position.y) * 0.16;
                 this.rotation += (this.targetRotation - this.rotation);
+                // if (this.position.x > state.screen.width) this.position.x = 0;
+                // else if (this.position.x < 0) this.position.x = state.screen.width;
+                // if (this.position.y > state.screen.height) this.position.y = 0;
+                // else if (this.position.y < 0) this.position.y = state.screen.height;
             }
         }
         // Draw
@@ -222,6 +222,18 @@ export default class Ship {
             context.translate(this.position.x, this.position.y);
             // + 0.785.... is the additional rotation of 45 degrees due to the img format
             context.rotate((this.rotation) * Math.PI / 180 + 0.78539816);
+            
+            if ((this.invincible === true || this.speedy === true ) && this.ingame) {
+                let img0 = new Image();
+                if (this.invincible === true) {
+                    img0.src = `http://127.0.0.1:8887/yellow.png`;
+                } else if (this.speedy === true) {
+                    img0.src = `http://127.0.0.1:8887/blue.png`;
+                } else if (this.speedy === true && this.invincible === true) {
+                    img0.src = `http://127.0.0.1:8887/green.png`;
+                }
+                context.drawImage(img0, 0, 0, 35, 35);
+            }
             // RENDER BODY
             let img1 = new Image();
             img1.src = `http://127.0.0.1:8887/bodies/body_${this.bodyColor}.png`;
@@ -239,8 +251,8 @@ export default class Ship {
             img4.src = `http://127.0.0.1:8887/cockpits/${this.cockpitShape}/cockpit_${this.cockpitShape}_${this.cockpitColor}.png`;
             context.drawImage(img4, 0, 0, 35, 35);
 
-            context.shadowBlur = this.glow;
-            context.shadowColor = this.shadowColor;
+            // context.shadowBlur = this.glow;
+            // context.shadowColor = this.shadowColor;
             context.restore();
         }
     }

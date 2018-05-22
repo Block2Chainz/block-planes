@@ -72,20 +72,8 @@ const clientShipGeneration = ({ io, client, room, player }, payload) => {
 
 const clientDisconnect = ({ io, client, room, player }) => {
     console.log('Client has disconnected');
-    // Remove any queued inputs that are waiting to be processed
-    var i = 0;
-    while (i < room.world.queue.updates.length) {
-        var update = room.world.queue.updates[i];
-        if (update.id === player) {
-            room.world.queue.updates.splice(i, 1);
-        } else {
-            i++;
-        }
-    }
-    // Remove client from server and from peer list
+    // Remove client from server 
     clearInterval(room.timer);
-    // clearInterval(room.world.update);
-    room.timer = null;
     client.disconnect(true);
 }
 

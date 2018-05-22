@@ -24,17 +24,22 @@ export default class Enemy {
         this.targetPosition.y = updateObj.y;
         this.targetRotation = updateObj.rotation;
         this.delete = updateObj.delete;
+        if (this.size !== updateObj.size) this.vertices = asteroidVertices(8, updateObj.size);
+        this.size = updateObj.size;
+        this.type = updateObj.type;
+        this.velocity = updateObj.velocity;
     }
 
     render (state) {
         // INTERPOLATE
-        // this.position.x += (this.targetPosition.x - this.position.x) * 0.16;
-        // this.position.y += (this.targetPosition.y - this.position.y) * 0.16;
+        this.position.x += (this.targetPosition.x - this.position.x) * 0.16;
+        this.position.y += (this.targetPosition.y - this.position.y) * 0.16;
+        this.rotation += (this.targetRotation - this.rotation);
         // Draw
         const context = state.context;
         context.save();
-        context.translate(this.targetPosition.x, this.targetPosition.y);
-        context.rotate(this.targetRotation * Math.PI / 180);
+        context.translate(this.position.x, this.position.y);
+        context.rotate(this.rotation * Math.PI / 180);
         context.strokeStyle = '#FFF';
         context.lineWidth = 2;
         context.beginPath();

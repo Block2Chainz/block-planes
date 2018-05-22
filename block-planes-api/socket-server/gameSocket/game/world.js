@@ -1,5 +1,5 @@
 const Queue = require('./queue.js');
-let { checkCollisionsWith } = require('./helpers.js');
+let { checkCollisionsWith, randomNumBetween } = require('./helpers.js');
 
 const Ship = require('./ship.js');
 const Bullet = require('./bullet.js');
@@ -21,8 +21,7 @@ const World = function () {
     this.enemies = [];
     this.enemyBullets = [];
 
-    this.invincibilityPowerUps = [];
-    this.speedPowerUps = [];
+    this.powerUps = [];
     this.powerUpType = 'speed';
 
     this.queue = new Queue();
@@ -33,9 +32,10 @@ World.prototype.connect = function (player, shipAttributes) {
     this.peers[player] = new Ship(shipAttributes, this);
     this.peers[player].id = player;
     // Set peer's initial position
-    this.peers[player].position.x = player === 1 ? 50 : 100;
-    this.peers[player].position.y = player === 1 ? 50 : 100;
+    this.peers[player].position.x = player === 1 ? 350 : 375;
+    this.peers[player].position.y = 225;
     checkCollisionsWith = checkCollisionsWith.bind(this);
+    this.powerUpCountdown();
 };
 
 World.prototype.createObject = function (type, obj) {
@@ -69,7 +69,7 @@ World.prototype.update = function (io, room) {
             this.particles[i].update();
         }
     }
-
+    // update enemies
     for (let i = 0; i < this.enemies.length; i++) {
         if (this.enemies[i].delete) {
             this.enemies.splice(i, 1);
@@ -77,7 +77,7 @@ World.prototype.update = function (io, room) {
             this.enemies[i].update();
         }
     }
-
+    // update enemy bullets
     for (let i = 0; i < this.enemyBullets.length; i++) {
         if (this.enemyBullets[i].delete) {
             this.enemyBullets.splice(i, 1);
@@ -85,20 +85,35 @@ World.prototype.update = function (io, room) {
             this.enemyBullets[i].update();
         }
     }
+    // update powerUps
+    for (let i = 0; i < this.powerUps.length; i++) {
+        if (this.powerUps[i].delete) {
+            this.powerUps.splice(i, 1);
+        } else {
+            this.powerUps[i].update();
+        }
+    }
     // if there are no enemies
     if (this.enemies.length === 0) {
-        this.enemies.push(new Enemy({
-            type: 'blast'
-        }, this));
+        this.generateEnemies();
+        this.enemyCount++;
     }
     // check collisions 
-    // checkCollisionsWith(this.peers, this.powerUps, 'powerUps', io.sockets, room.id, this);
+    checkCollisionsWith(this.peers, this.powerUps, 'powerUps', io.sockets, room.id, this);
     checkCollisionsWith(this.peers, this.enemyBullets, 'enemyBullets', io.sockets, room.id, this);
     checkCollisionsWith(this.peers, this.enemies, 'enemies', io.sockets, room.id, this);
     checkCollisionsWith(this.bullets, this.enemies, undefined, io.sockets, room.id, this);
     
     io.sockets.in(room.id).emit('server_state', this.buildClientObject());
 
+};
+
+World.prototype.generateEnemies = function () {
+    for (let i = 0; i < this.enemyCount; i++) {
+        this.enemies.push(new Enemy({ type: 'normal' }, this));
+    }
+    this.enemies.push(new Enemy({ type: 'blast' }, this));
+    this.enemies.push(new Enemy({ type: 'master' }, this));
 };
 // Check whether this input seems to be valid (e.g. "make sense" according
 // to the physical rules of the World) simply return true for now
@@ -144,7 +159,7 @@ World.prototype.buildClientObject = function () {
         // lives: this.lives,
         // scores: this.scores,
         enemies: this.buildEnemiesPacket(),
-        // powerUps: this.buildPowerUpsPacket(),
+        powerUps: this.buildPowerUpsPacket(),
     };
     return obj;
 };
@@ -232,38 +247,44 @@ World.prototype.buildEnemiesPacket = function () {
 // Build the power ups object
 World.prototype.buildPowerUpsPacket = function () {
     // Build the power ups
+        let arr = [];
+        for (let powerUp of this.powerUps) {
+            arr.push({
+                x: powerUp.position.x,
+                y: powerUp.position.y,
+                type: powerUp.type,
+            })
+        }
+        return arr;
+    // {x: x, y: y, type: type} 
 };
 // Generate a power up
 World.prototype.generatePowerUp = function () {
+    console.log(this.powerUpType);
+    let powerUp;
     if (this.powerUpType === 'speed') {
+        console.log('creating the object');
         this.powerUpType = 'invincible';
-        let powerUp = new InvincibilityPowerUp(this);
+        powerUp = new InvincibilityPowerUp(this);
     } else {
         this.powerUpType = 'speed';
-        let powerUp = new SpeedPowerUp(this);
+        powerUp = new SpeedPowerUp(this);
     }
     this.powerUps.push(powerUp);
 };
 // Power up timer
 World.prototype.powerUpCountdown = function () {
-    let component = this;
     let randomNumber = randomNumBetween(10000, 20000)
-    setTimeout(function () {
-        if (component.ship['1'] && component.ship['2']) {
-            component.generatePowerUp();
-        } else 
-        // if (component.state.inGame) 
-        {
-            setTimeout(function () {
-                component.generatePowerUp();
-            }, 3000 * 1000/60)
-        }
+    setTimeout(() => {
+        console.log('**********GENERATING POWERUP*********')
+        this.generatePowerUp();
     }, randomNumber);
 };
 World.prototype.respawnTimer = function (owner, socket, room) {
     setTimeout(() => {
         this.peers[owner].delete = false;
-        this.peers[owner].postition = { x: 50, y: 50 };
+        this.peers[owner].postition = { x: 325, y: 250 };
+        this.peers[owner].powerUp({type: 'invincible'});
         socket.in(room).emit('player_respawn', {
             owner, 
             position: {
