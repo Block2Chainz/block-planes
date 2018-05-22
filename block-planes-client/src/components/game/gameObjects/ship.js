@@ -20,7 +20,8 @@ export default class Ship {
         this.rotationSpeed = 6; //6
         this.radius = 20;
         this.lastShot = 0;
-
+        this.delete = false;
+        
         this.shadowColor = '#ffffff'
         this.glow = 500;
 
@@ -49,6 +50,7 @@ export default class Ship {
     destroy() {
         // set its delete property to true, for the game.jsx to delete on next render
         this.delete = true;
+        this.ingame = false;
         // this.onDie();
         // generate new 60 new particles in an explosion
         for (let i = 0; i < 60; i++) {
@@ -215,30 +217,31 @@ export default class Ship {
         }
         // Draw
         if (!this.delete) {  
-        const context = state.context;
-        context.save();
-        context.translate(this.position.x, this.position.y);
-        // + 0.785.... is the additional rotation of 45 degrees due to the img format
-        context.rotate((this.rotation) * Math.PI / 180 + 0.78539816);
-        // RENDER BODY
-        let img1 = new Image();
-        img1.src = `http://127.0.0.1:8887/bodies/body_${this.bodyColor}.png`;
-        context.drawImage(img1, 0, 0, 35, 35);
-        // RENDER WINGS
-        let img2 = new Image();
-        img2.src = `http://127.0.0.1:8887/wings/${this.wingShape}/wing_${this.wingShape}_${this.wingColor}.png`;
-        context.drawImage(img2, 0, 0, 35, 35);
-        // RENDER TAIL
-        let img3 = new Image();
-        img3.src = `http://127.0.0.1:8887/tails/${this.tailShape}/tail_${this.tailShape}_${this.tailColor}.png`;
-        context.drawImage(img3, 0, 0, 35, 35);
-        // RENDER COCKPIT
-        let img4 = new Image();
-        img4.src = `http://127.0.0.1:8887/cockpits/${this.cockpitShape}/cockpit_${this.cockpitShape}_${this.cockpitColor}.png`;
-        context.drawImage(img4, 0, 0, 35, 35);
+            const context = state.context;
+            context.save();
+            context.translate(this.position.x, this.position.y);
+            // + 0.785.... is the additional rotation of 45 degrees due to the img format
+            context.rotate((this.rotation) * Math.PI / 180 + 0.78539816);
+            // RENDER BODY
+            let img1 = new Image();
+            img1.src = `http://127.0.0.1:8887/bodies/body_${this.bodyColor}.png`;
+            context.drawImage(img1, 0, 0, 35, 35);
+            // RENDER WINGS
+            let img2 = new Image();
+            img2.src = `http://127.0.0.1:8887/wings/${this.wingShape}/wing_${this.wingShape}_${this.wingColor}.png`;
+            context.drawImage(img2, 0, 0, 35, 35);
+            // RENDER TAIL
+            let img3 = new Image();
+            img3.src = `http://127.0.0.1:8887/tails/${this.tailShape}/tail_${this.tailShape}_${this.tailColor}.png`;
+            context.drawImage(img3, 0, 0, 35, 35);
+            // RENDER COCKPIT
+            let img4 = new Image();
+            img4.src = `http://127.0.0.1:8887/cockpits/${this.cockpitShape}/cockpit_${this.cockpitShape}_${this.cockpitColor}.png`;
+            context.drawImage(img4, 0, 0, 35, 35);
 
-        context.shadowBlur = this.glow;
-        context.shadowColor = this.shadowColor;
-        context.restore();}
+            context.shadowBlur = this.glow;
+            context.shadowColor = this.shadowColor;
+            context.restore();
+        }
     }
 }

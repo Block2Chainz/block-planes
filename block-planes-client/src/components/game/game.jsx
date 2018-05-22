@@ -38,7 +38,8 @@ class Game extends Component {
         this.ship = {};
         this.enemies = {};
         this.bullets = {    1: [],
-                            2: []};
+                            2: [], 
+                            3: []};
         this.particles = {  1: [], 
                             2: [],
                             3: []};
@@ -129,6 +130,7 @@ class Game extends Component {
             this.updateOMatic(payload.particles[1], 'particles', 1);
         }
         this.updateOMatic(payload.particles[3], 'particles', 3);
+        this.updateOMatic(payload.bullets[3], 'bullets', 3);
         this.updateOMatic(payload.enemies, 'enemies');
     }
     
@@ -163,6 +165,7 @@ class Game extends Component {
                         }));
                     }
                 }
+                if (otherItems.length > pending.length) otherItems.splice(pending.length);
                 else {
                     // item exists, update its positioning
                     otherItems[i].update(pending[i]);
@@ -195,9 +198,10 @@ class Game extends Component {
         context.fillRect(0, 0, this.state.screen.width, this.state.screen.height);
         context.globalAlpha = 1;
         // remove or render
-        this.updateObjects(this.ship, 'ship');
+        this.updateObjects(this.ship);
         this.updateArray(this.bullets['1'], 'bullets');
         this.updateArray(this.bullets['2'], 'bullets');
+        this.updateArray(this.bullets['3'], 'bullets');
         this.updateArray(this.particles['1'], 'particles');
         this.updateArray(this.particles['2'], 'particles');
         this.updateArray(this.enemies, 'enemies');
@@ -302,17 +306,11 @@ class Game extends Component {
     }
 
     respawn(payload) {
-        console.log('respawning', payload, 'this.player', this.props.player);
-        let attr = this.ship[payload.owner].attr;
-        this.ship[payload.owner] = new Ship({
-            id: payload.owner, 
-            player: this.props.player,
-            create: this.createObject.bind(this), 
-            position: { x: 50, y: 50 },  
-            emitUpdate: this.emitUpdate.bind(this),
-            ingame: true,
-            attr,
-        });
+        console.log('respawning', payload);
+        this.ship[payload.owner].position = { x: 50, y: 50 };
+        this.ship[payload.owner].targetPosition = { x: 50, y: 50 };
+        this.ship[payload.owner].ingame = true;
+        this.ship[payload.owner].delete = false;
     }
 
     gameOver() {

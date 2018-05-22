@@ -31,7 +31,8 @@ const Enemy = function (args, world) {
     } else if (args.type === 'blast') {
         // shoots and spins around
         this.radius = 20;
-        this.rotationSpeed = 1.5
+        this.rotationSpeed = 1.5;
+        this.lastShot = 0;
     } else if (args.type === 'master') {
         // large and slow, but can shoot
         // on death splits into many small ones 
@@ -84,6 +85,16 @@ Enemy.prototype.destroy = function (owner) {
 }
 
 Enemy.prototype.update = function () {
+    // shoot if you are a blast type 
+    if (this.type === 'blast' && Date.now() - this.lastShot > 500) {
+        const bullet = new Bullet({
+            owner: 3,
+            rotation: this.rotation,
+            position: this.position,
+        });
+        this.lastShot = Date.now();
+        this.world.createObject('enemyBullets', bullet);
+    }
     // Move
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;

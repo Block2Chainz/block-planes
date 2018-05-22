@@ -77,10 +77,18 @@ World.prototype.update = function (io, room) {
             this.enemies[i].update();
         }
     }
+
+    for (let i = 0; i < this.enemyBullets.length; i++) {
+        if (this.enemyBullets[i].delete) {
+            this.enemyBullets.splice(i, 1);
+        } else {
+            this.enemyBullets[i].update();
+        }
+    }
     // if there are no enemies
     if (this.enemies.length === 0) {
         this.enemies.push(new Enemy({
-            type: 'big'
+            type: 'blast'
         }, this));
     }
     // check collisions 
@@ -173,6 +181,14 @@ World.prototype.buildBulletsPacket = function () {
             rotation: bullet.rotation
         });
     }
+    for (let bullet of this.enemyBullets) {
+        obj[3].push({
+            owner: 3, 
+            x: bullet.position.x,
+            y: bullet.position.y,
+            rotation: bullet.rotation,
+        });
+    }
     return obj;
 };
 // Build the particles object
@@ -247,6 +263,7 @@ World.prototype.powerUpCountdown = function () {
 World.prototype.respawnTimer = function (owner, socket, room) {
     setTimeout(() => {
         this.peers[owner].delete = false;
+        this.peers[owner].postition = { x: 50, y: 50 };
         socket.in(room).emit('player_respawn', {
             owner, 
             position: {
