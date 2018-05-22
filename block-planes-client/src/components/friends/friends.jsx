@@ -40,7 +40,7 @@ class ConnectedFriends extends Component {
       requests: [],
       isRequestPage: false
     };
-
+    let component = this;
     this.updateFriendsPage = this.updateFriendsPage.bind(this);
     this.addFriend = this.addFriend.bind(this);
     this.deleteFriend = this.deleteFriend.bind(this);
@@ -52,9 +52,11 @@ class ConnectedFriends extends Component {
   }
 
   notificationSystem = null;
+  
 
   componentDidMount() {
     let component = this;
+     
     this.notificationSystem = this.refs.notificationSystem;
     this.updateFriendsPage();
     this.socket.on('returnfriendRequestSent', function (request) {
@@ -239,7 +241,7 @@ ownFriendRequestSentNotification(event, notificationObj) {
     render() {
       if (this.state.friendId) {
         return (
-          <div>
+          <div className='friendsbg'>
           <NotificationSystem ref="notificationSystem" />
             <Grid>
               <Grid.Row >
@@ -283,7 +285,7 @@ ownFriendRequestSentNotification(event, notificationObj) {
         );
       } else if (this.state.isRequestPage === true && this.state.requests.length) {
         return (
-          <div>
+          <div className='friendsbg'>
           <NotificationSystem ref="notificationSystem" />
         <Grid>
               <Grid.Row >
@@ -308,6 +310,7 @@ ownFriendRequestSentNotification(event, notificationObj) {
       return (
         <div>
         <NotificationSystem ref="notificationSystem" />
+        <div className='friendsbg'>
         <Grid>
               <Grid.Row >
           </Grid.Row>
@@ -319,19 +322,21 @@ ownFriendRequestSentNotification(event, notificationObj) {
           </Grid.Row>
           <Grid.Row className='borderfriends'>
           </Grid.Row>
-          <div>
+          <Grid.Row >
           <div className='norequests'>
           <span>You have no new friend requests.</span>
                  </div>
-                 </div>
+                 </Grid.Row>
           </Grid>
+          </div>
           </div>
       );
       } else {
         return (
           <div>
           <NotificationSystem ref="notificationSystem" />
-          <Grid>
+          <div className='friendsbg'>
+          <Grid className='friendsbg'>
        <Grid.Row >
           </Grid.Row>
           <Grid.Row className='searchbar'> <Button className='ui inverted button' size='small' onClick={this.toggleRequests} >Requests</Button><p className='text1' >Select a Friend: </p>
@@ -342,6 +347,7 @@ ownFriendRequestSentNotification(event, notificationObj) {
           <Grid.Row className='borderfriends'>
           </Grid.Row>
         </Grid>
+        </div>
         </div>
         );
       }

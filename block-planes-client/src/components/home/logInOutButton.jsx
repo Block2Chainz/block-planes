@@ -12,7 +12,7 @@ const mapStateToProps = state => {
 
 function ConnectedLogInOutButton(props) {
     if (!!props.userId) {
-      return <Button className='ui inverted button' size='small' onClick={props.logout} >Log Out</Button>;
+      return <Button className='ui inverted button logbutton' size='small' onClick={props.logout} >Log Out</Button>;
     }
     return <Link to='/login'><Button className='ui inverted button' size='small' >Log In</Button></Link>;
   }

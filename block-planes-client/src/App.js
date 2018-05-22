@@ -3,6 +3,7 @@ import {  BrowserRouter} from 'react-router-dom';
 import axios from 'axios';
 import { connect } from "react-redux";
 import { logIn, logOut, storeContract } from "./actions/index"
+import Header from './components/home/header.jsx';
 
 import Web3 from 'web3';
 import TruffleContract from 'truffle-contract'
@@ -119,7 +120,7 @@ class ConnectedApp extends Component {
     return (
       <div className="App">
         <BrowserRouter>
-          <Main tokenLogin={this.tokenLogin} logout={this.logout}/>
+        <Header logout={this.logout} tokenLogin={this.tokenLogin}/>
         </BrowserRouter>
       </div>
     );

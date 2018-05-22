@@ -42,9 +42,11 @@ class ConnectedHome extends Component {
     render() {
       let component = this;
         return (
-            <div>
+            <div className='homebg'>
               <NotificationSystem ref="notificationSystem" />
           <Grid>
+          <Grid.Row >
+          </Grid.Row>
             <Grid.Column width={8} >
                 <Grid.Row>
                   <div className="ui inverted container blurb">

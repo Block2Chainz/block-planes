@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
-import { Image, Form, Grid, Button } from 'semantic-ui-react';
+import { Image, Form, Grid, Button, Sidebar, Menu, Segment, Icon, Item } from 'semantic-ui-react';
 import { toggleChatVisibility } from "../../actions/index.js";
 import LogInOutButton from './logInOutButton.jsx';
+import Main from '../main/main.jsx';
 import './header.css';
 import Socketio from 'socket.io-client';
 import NotificationSystem from 'react-notification-system';
@@ -23,10 +24,16 @@ class ConnectedHeader extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      notificationSystem: this.refs.notificationSystem
+      notificationSystem: this.refs.notificationSystem,
+      visible: false
     };
+    let component = this;
     this.addNotification = this.addNotification.bind(this);
+    this.toggleMenu = this.toggleMenu.bind(this);
     this.socket = Socketio('http://localhost:4225');
+    document.body.addEventListener('click', function(event) {
+      component.toggleMenu();
+    }); 
   }
 
   notificationSystem = null;
@@ -51,7 +58,14 @@ class ConnectedHeader extends Component {
         component.ownfriendRequestAcceptedNotification(event, request);
       }
     });
+    this.socket.on('returnGameInvite', function (request) {
+      if ((component.props.userId === request.recipientId)) {
+        component.gameInviteNotification(event, request);
+      }
+    });
   }
+
+  toggleVisibility = () => this.setState({ visible: !this.state.visible })
 
   addNotification(event, notificationObj) {
     let component = this;
@@ -108,40 +122,57 @@ class ConnectedHeader extends Component {
     });
   }
 
+  gameInviteNotification(event, notificationObj) {
+    let component = this;
+    event.preventDefault();
+    this.notificationSystem.addNotification({
+      title: 'Game Invite from ' + notificationObj.username,
+      level: 'info',
+      action: {
+        label: 'Accept',
+        callback: function () {
+          component.props.history.push({
+            pathname: '/game',
+            state: { roomId: notificationObj.roomId }
+          })
+        }
+      }
+    });
+  }
+
+  toggleMenu() {
+    if (this.state.visible === true) {
+      this.setState({
+        visible: false
+      });
+    }
+  }
+
   render() {
+    const { visible } = this.state
     return (
       <div>
         <NotificationSystem ref="notificationSystem" />
-        <header className='login-header' >
-          <Grid>
-            <Grid.Row>
-              <Grid.Column width={2}>
-                <Link to='/home'><h1 className='title' >BlockPlanes</h1></Link>
-              </Grid.Column>
-              <Grid.Column width={2}>
-                <Link to='/profile'><Button className='ui inverted button' size={'small'}>Profile</Button></Link>
-              </Grid.Column>
-              <Grid.Column width={2}>
-                <Link to='/friends'><Button className='ui inverted button' size={'small'}>Friends</Button></Link>
-              </Grid.Column>
-              <Grid.Column width={2}>
-                <Link to='/chat'><Button className='ui inverted button' size={'small'}>Chat</Button></Link>
-              </Grid.Column>
-              <Grid.Column width={2}>
-                <Link to='/marketplace'><Button className='ui inverted button' size={'small'}>Marketplace</Button></Link>
-              </Grid.Column>
-              <Grid.Column width={2}>
-                <Link to='/leaderboard'><Button className='ui inverted button' size={'small'}>Leaderboard</Button></Link>
-              </Grid.Column>
-              <Grid.Column width={2}>
-                <Link to='/game'><Button className='ui inverted button' size={'small'}>Find Game</Button></Link>
-              </Grid.Column>
-              <Grid.Column width={2}>
-                <LogInOutButton logout={this.props.logout} />
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </header>
+        <div>
+          <div className='topofsite'>
+        <Link to='/home' className='inverted'><h1 className='title' >BlockPlanes</h1></Link>
+        <div className='header item titlemenu menuinSP' onClick={this.toggleVisibility}><i className="sidebar icon" />Menu</div>
+        </div>
+        <LogInOutButton className='logbutton' logout={this.props.logout} />
+          <Sidebar as={Menu} animation='push' width='thin' visible={visible} icon='labeled' vertical inverted>
+            <Link to='/home'><a className="header item menuitem">Home</a></Link>
+            <Link to='/profile'><a className="header item menuitem">{this.props.username || 'Profile'}</a></Link>
+            <Link to='/friends'><a className="header item menuitem">Friends</a></Link>
+            <Link to='/chat'><a className="header item menuitem">Chat</a></Link>
+            <Link to='/marketplace'><a className="header item menuitem">Marketplace</a></Link>
+            <Link to='/leaderboard'><a className="header item menuitem">Leaderboard</a></Link>
+            <Link to='/game'><a className="header item menuitem">Find Game</a></Link>
+            <Link to='/singleplayer'><a className="header item menuitem">Single Player Game</a></Link>
+          </Sidebar>
+
+          <Main tokenLogin={this.props.tokenLogin} logout={this.logout} toggleMenu={this.toggleMenu}/>
+
+      </div>
       </div>
     );
   }
