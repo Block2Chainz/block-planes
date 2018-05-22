@@ -6,7 +6,7 @@ import { logIn, logOut, storeContract } from "./actions/index"
 
 import Web3 from 'web3';
 import TruffleContract from 'truffle-contract'
-import cryptoPlanes from '../../block-planes-solidity/BlockPlanes/build/contracts/BlockPlanes.json';
+import cryptoPlanes from '../../block-planes-solidity/BlockPlanes/build/contracts/PlaneOwnership.json';
 
 import Main from './components/main/main.jsx';
 import './App.css';

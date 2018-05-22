@@ -12,6 +12,7 @@ contract PlaneOwnership is BlockPlanes, ERC721 {
     using SafeMath for uint256;
 
     mapping (uint => address) planeApprovals;
+    mapping (uint => uint) public planeSellCount;
 
     /// emits an event when a transfer occurs
     event Transfer(address from, address to, uint planeId);
@@ -56,5 +57,54 @@ contract PlaneOwnership is BlockPlanes, ERC721 {
         require(planeApprovals[_tokenId] == msg.sender);
         address owner = ownerOf(_tokenId);
         _transfer(owner, msg.sender, _tokenId);
+    }
+
+    //put plane on sale
+    function sellPlane(uint256 _planeId, uint256 price) public onlyOwnerOf(_planeId) {
+        if (planes[_planeId].sell == false) {
+            planeSellCount[1] = planeSellCount[1] + 1;
+        }
+        planes[_planeId].sell = true;
+        planes[_planeId].price = price;
+    }
+
+    function unlistPlane(uint256 _planeId) public onlyOwnerOf(_planeId) {
+        planes[_planeId].sell = false;
+        planeSellCount[1] = planeSellCount[1] - 1;
+    }
+
+    function getPlanesForSale() external view returns(uint[]) {
+        if (planeSellCount[1] == 0) {
+            uint[] memory empty = new uint[](0);
+            return empty;
+        }
+        uint[] memory result = new uint[](planeSellCount[1]);
+        uint counter = 0;
+        for (uint i = 0; i < planes.length; i++) {
+            if (planes[i].sell == true) {
+                result[counter] = i;
+                counter++;
+            }
+        }
+        return result;
+    }
+
+    function getPlanePrice(uint _planeId) public view returns(uint) {
+        return planes[_planeId].price;
+    }
+
+    //transfer ownership of plane once money is received
+    function buyPlane(uint256 _planeId) payable public {
+        require(planes[_planeId].sell == true);
+        if (msg.value == planes[_planeId].price) {
+            planeToOwner[_planeId].transfer(msg.value / 2); //transfer money to owner of plane
+            ownerPlaneCount[planeToOwner[_planeId]] = ownerPlaneCount[planeToOwner[_planeId]].sub(1); //subtract original owner plane count by 1
+            ownerPlaneCount[msg.sender] = ownerPlaneCount[msg.sender].add(1); //add to new owner plane count by one
+            planeToOwner[_planeId] = msg.sender; //reassign plane ownership to new owner
+            planes[_planeId].sell = false; //reset plane sell status to false
+            planeSellCount[1] = planeSellCount[1] - 1;
+        } else {
+            revert();
+        }
     }
 }

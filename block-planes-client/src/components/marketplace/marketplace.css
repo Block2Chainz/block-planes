@@ -1,6 +1,210 @@
+.page-title {
+  color: white;
+  font-family: Orbitron;
+  font-size: 50px;
+  text-align: center;
+  padding-top: 50px;
+}
+
 .marketplace {
   font-family: 'Orbitron';
   color: white;
   text-align: center;
   width: 100%;
+}
+
+.page-selector {
+  margin-bottom: 15px;
+  margin: auto;
+}
+
+.plane-grid {
+  width: 90% !important;
+  margin: auto !important;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+.single-plane {
+  min-height: 350px !important;
+  min-width: 250px !important;
+  padding: none !important;
+  margin: auto;
+}
+
+.canvas-plane {
+  position: relative !important;
+  left: 6% !important;
+  top: 20px !important;
+}
+
+.plane-menu {
+  display: flex;
+  background-color: gray !important;
+  height: 100px !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.plane-menu-sell {
+  display: flex;
+  background-color: gray !important;
+  height: 110px !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.menu-form {
+  display: flex;
+  margin-left: auto !important;
+  margin-right: 5px !important;
+  height: 75px !important;
+  width: 120px !important;
+  justify-content: flex-end !important;
+}
+
+.plane-stats {
+  display: flex;
+  font-size: 10px !important;
+  margin-left: 10px !important;
+}
+
+.plane-stats-div {
+  display: flex;
+  text-align: left !important;
+}
+.plane-column {
+  min-height: 350px !important;
+  min-width: 250px !important;
+}
+
+.body-div {
+  width: 80% !important;
+  margin: auto !important;  
+}
+
+.menu-div {
+  width: 80% !important;
+  margin: auto !important;
+}
+
+.menu-tab {
+  font-size: 14px !important;
+}
+
+.menu .item {
+  font-size: 24px !important;
+  padding: 2px !important;
+}
+
+.eth-symbol{
+  float: right !important;  
+  max-width: 18px !important;
+  max-height: 31px !important;
+  margin-left: 8px !important;
+}
+
+.price-label {
+  width: auto !important;
+  max-height: 35px !important;
+  font-size: 16px !important;
+  margin-top: 11px !important;
+}
+
+.buy-button {
+  width: 65px !important;
+  height: 30px !important;
+  border-radius: 10px !important;
+  margin-top: 5px !important;
+}
+
+.price-div {
+  display: flex;
+  width: 80% !important;
+  justify-content: flex-end;
+  margin-right: 10px !important;
+}
+
+.buy-form {
+  position: relative;
+  width: 80% !important;
+  float: right !important;
+}
+
+.posted-price-div {
+  position: relative;
+  display: flex;
+  width: 90% !important;
+  height: 31px !important;
+  justify-content: flex-end;
+  align-items: center !important;
+  margin-right: 5px !important;
+  margin-bottom: 5px !important;
+  float: right !important;
+}
+
+.posted-price-div-null {
+  position: relative;
+  display: flex;
+  width: 90% !important;
+  height: 20px !important;
+  justify-content: flex-end;
+  align-items: center !important;
+  margin-right: 5px !important;
+  margin-bottom: 5px !important;
+  float: right !important;
+}
+
+.menu-sell-form {
+  width: 60% !important;
+  height: 90% !important;
+  margin: auto !important;
+  margin-right: 5px !important;
+
+}
+
+.label-listed-price {
+  display: flex;
+  align-items: center !important;
+  margin-top: 2px !important;
+}
+
+.form-sell {
+  width: 90% !important;
+}
+
+.sell-input {
+  display: relative;
+  width: auto !important;
+  float: right !important;
+  text-align: right !important;
+}
+
+.sell-buttons {
+  width: 80% !important;
+  height: 80% !important;
+}
+
+.sell-input-div {
+  position: relative;
+  width: 90% !important;
+  float: right !important;
+  height: 50% !important;
+  left: 8% !important;
+}
+
+.sell-button {
+  position: relative;
+  width: 65px !important;
+  height: 30px !important;
+  border-radius: 10px !important;
+  margin-top: 5px !important;
+  margin: 5px !important;
+}
+
+.sell-buttons-div {
+  position: relative;
+  margin: auto !important;
+  max-height: 32px !important;
+  left: 9% !important;
 }
