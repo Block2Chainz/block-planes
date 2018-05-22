@@ -13,7 +13,6 @@ class Leaderboard extends Component {
     render() {
         return (
             <div>
-            {console.log('inside leaderboard render')}
             <HighScores/>
             </div>
         )

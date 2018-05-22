@@ -73,10 +73,8 @@ class ConnectedHangar extends Component {
   }
 
   fetchPlanes() {
-    console.log('hangar account: ', this.user, this.props.contract);
     this.props.contract.getPlanesByOwner(this.user)
     .then((planes) => {
-      console.log('flag1: ', planes);
       // putting the plane ids into an array
       let planeIds = [];
       return planes.map((plane) => {
@@ -90,7 +88,6 @@ class ConnectedHangar extends Component {
         this.props.contract.planes(planeArray[i]).then((plane) => {
           planeAttr = plane[0].toNumber();
           hangar.push([planeArray[i], planeAttr]);
-          console.log('hangar: ', hangar);
           if (i === planeArray.length - 1) {
             this.props.storePlanes({ planes: hangar });
           }

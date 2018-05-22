@@ -48,7 +48,6 @@ class Marketplace extends Component {
       let planesForSale = [];
       let planesWithAttr = [];
       this.web3.eth.getCoinbase((err, address) => {
-        console.log('user account: ', address);
         // storing the user blockchain address*****
         userAddress = address;
         // get the contract instance
