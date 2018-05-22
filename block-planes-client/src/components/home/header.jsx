@@ -155,7 +155,7 @@ class ConnectedHeader extends Component {
         <NotificationSystem ref="notificationSystem" />
         <div>
           <div className='topofsite'>
-        <Link to='/home' className='inverted'><h1 className='title' >BlockPlanes</h1></Link>
+        <Link to='/home' className='inverted'><h1 className='titlegame' >BlockPlanes</h1></Link>
         <div className='header item titlemenu menuinSP' onClick={this.toggleVisibility}><i className="sidebar icon" />Menu</div>
         </div>
         <LogInOutButton className='logbutton' logout={this.props.logout} />

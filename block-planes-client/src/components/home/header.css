@@ -13,9 +13,14 @@
     padding-right: 2%;
   }
 
-  .title {
+  .titlegame {
     font-family: 'Orbitron';
     color: white;
+    display: block;
+    position: absolute;
+    top: 10px;
+    z-index: 1;
+    left: 20px;
   }
 
   .titlemenu {
@@ -186,7 +191,6 @@
   text-align: right !important;
   float: right !important;
   margin-top: 1% !important;
-  /* padding-left: 90%; */
 }
 
 .homebg {

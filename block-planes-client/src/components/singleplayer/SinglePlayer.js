@@ -454,7 +454,7 @@ class SinglePlayer extends Component {
         <div className="endgame">
           <p>Game over, man!</p>
           <p>{message}</p>
-          <button
+          <button className='buttongame'
             onClick={ this.startGame.bind(this) }>
             try again?
           </button>

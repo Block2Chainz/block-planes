@@ -90,6 +90,8 @@ class ConnectedHangar extends Component {
         this.props.contract.planes(planeArray[i]).then((plane) => {
           planeAttr = plane[0].toNumber();
           hangar.push([planeArray[i], planeAttr]);
+      console.log('flag2: ', hangar);
+          
           if (i === planeArray.length - 1) {
             this.props.storePlanes({ planes: hangar });
           }
@@ -123,6 +125,7 @@ class ConnectedHangar extends Component {
           <Grid>
             {/* Should also generate a generic plane for all users and display it here */}
             <Grid.Row className='planerow'>
+      {console.log('flag3:', this.props.userPlanes)}
               {this.props.userPlanes.map((plane) => {
                 if (this.props.selectedPlane === plane[1]) {
                   return <Plane

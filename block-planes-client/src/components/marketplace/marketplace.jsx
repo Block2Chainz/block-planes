@@ -244,8 +244,8 @@ class Marketplace extends Component {
               <div className='body-div'>
                 <div className='menu-div'>
                 <Menu fluid widths={2}  color={'black'} inverted={false} className='menu-tab'>
-                  <Menu.Item name='Buy'   color={'red'} active={currentTab === 'Buy'} onClick={this.handleMenuClickBuy} />
-                  <Menu.Item name='Sell'  color={'red'} active={currentTab === 'Sell'} onClick={this.handleMenuClickSell} />
+                  <Menu.Item className='itemmarket' name='Buy'   color={'red'} active={currentTab === 'Buy'} onClick={this.handleMenuClickBuy} />
+                  <Menu.Item className='itemmarket' name='Sell'  color={'red'} active={currentTab === 'Sell'} onClick={this.handleMenuClickSell} />
                 </Menu>
                 </div>
 
