@@ -325,7 +325,7 @@ class Game extends Component {
         // send the score to the db
         axios.post('/scores', { user: this.props.user, score: payload.score })
         .then(response => {
-            console.log(response);    
+            console.log(response);
         }).catch(err => {
             console.log(err);
         });
