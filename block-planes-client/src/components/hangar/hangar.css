@@ -1,4 +1,6 @@
 .planerow {
+    display: flex;
+    justify-content: center !important;
     padding-top: 1.5%;
     padding-left: 2%;
     background-color: #000000;
