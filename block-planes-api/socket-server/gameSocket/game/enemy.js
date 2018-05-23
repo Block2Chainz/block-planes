@@ -44,8 +44,8 @@ const Enemy = function (args, world) {
 
 Enemy.prototype.destroy = function (owner) {
     if (owner !== undefined) {
-        this.world.scores[owner] += this.score;
-    }
+        this.world.scores[owner] += Math.round(this.score);
+    } 
     this.delete = true;
     // Explode
     for (let i = 0; i < this.radius; i++) {

@@ -39,6 +39,11 @@
   padding-bottom: 14% !important;
 }
 
+.menuitem:hover {
+  background-color: grey !important;
+  color: black !important;
+}
+
 .create-account {
   padding-top: 20px;
   padding-bottom: 1%;
@@ -232,8 +237,32 @@
 .homebg {
   background-color: black;
   border: 0px;
+  /* position: relative; */
 }
 
 .topofsite {
   border-bottom: 1px solid #ffffff !important;
+}
+
+.homeSection {
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute;
+}
+
+
+.firstportion {
+  top: 0%;
+}
+
+.secondportion {
+  top: 100%;
+}
+
+.thirdportion {
+  top: 200%;
+}
+
+.fourthportion {
+  top: 300%;
 }

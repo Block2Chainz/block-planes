@@ -40,18 +40,19 @@ class ConnectedWaitingRoom extends Component {
 
     componentWillMount() {
         // checks if a room exists in props already
-        let roomId;
-        if (!this.props.roomId || !this.state.roomId) {
-            // no room exists in props, so this is a game that we have started
-            // we will generate a random string
-            roomId = 'abc';
-            // randomstring.generate();
-        }
+        // let roomId;
+        // if (!this.props.roomId || !this.state.roomId) {
+        //     // no room exists in props, so this is a game that we have started
+        //     // we will generate a random string
+        //     roomId = 'abc';
+        //     // randomstring.generate();
+        // }
         let player = this.props.user  === 1 ? 2 : 1;
+        let roomId = this.props.location.state.roomId;
         let socket = io.connect('http://localhost:2345', {
             query: {
                 // if there is no room in props, we created the game, so we will use the random room string
-                roomId: !this.props.roomId ? roomId : this.props.roomId,
+                roomId,
                 // if there is no room in props, we created the game, so we will be player 1 
                 player: player,
                 ship: this.props.ship,
@@ -80,8 +81,6 @@ class ConnectedWaitingRoom extends Component {
             }
         });
         socket.on('connected', payload => {
-            console.log('heard connected', payload, 'player', this.state.player, 'button', this.state.bool);
-
             if (this.state.player !== parseInt(payload.player)) {
                 this.enableButton();
             }

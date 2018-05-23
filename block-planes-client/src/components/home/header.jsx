@@ -123,15 +123,14 @@ class ConnectedHeader extends Component {
   }
 
   gameInviteNotification(event, notificationObj) {
-    let component = this;
     event.preventDefault();
     this.notificationSystem.addNotification({
       title: 'Game Invite from ' + notificationObj.username,
       level: 'info',
       action: {
         label: 'Accept',
-        callback: function () {
-          component.props.history.push({
+        callback: () => {
+          this.props.history.push({
             pathname: '/game',
             state: { roomId: notificationObj.roomId }
           })
@@ -156,7 +155,7 @@ class ConnectedHeader extends Component {
         <div>
           <div className='topofsite'>
             <Link to='/home' className='inverted'><h1 className='titlegame' >BlockPlanes</h1></Link>
-            <div className='header item titlemenu menuinSP' onClick={this.toggleVisibility}><i className="sidebar icon" />Menu</div>
+            <a className='header item titlemenu menuinSP' href='#/' onClick={this.toggleVisibility}><i className="sidebar icon" />Menu</a>
           </div>
           <Sidebar as={Menu} direction='right' animation='push' width='thin' visible={visible} icon='labeled' vertical inverted>
             <Link to='/home'><p className="header item menuitem">Home</p></Link>

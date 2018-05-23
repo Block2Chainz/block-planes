@@ -13,7 +13,7 @@ const SpeedPowerUp = function (world) {
 	};
 	this.rotation = 0;
 	this.rotationSpeed = randomNumBetween(-10000, -10000)
-	this.radius = 20;
+	this.radius = 50;
 	this.vertices = asteroidVertices(8, 20);
 	this.world = world;
 }

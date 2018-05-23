@@ -23,7 +23,6 @@ class Game extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            yourLives: 10,
             screen: {
                 width: 750,
                 height: 500,
@@ -48,6 +47,8 @@ class Game extends Component {
 
         this.powerUps = [];
         this.enemies = [];
+        this.scores = { 1: 0, 2: 0, };
+        this.lives = 0;
 /*{
     peers: {
         1: {ship},
@@ -64,6 +65,10 @@ class Game extends Component {
     },
     enemies: [{enemy}, {enemy}, {enemy}, {enemy}],
     powerUps: [{powerUp}, {powerUp}, {powerUp}, {powerUp}],
+    scores: {
+        1: number,
+        2: number
+    }
 }*/
         this.savedMoves = [];
     }
@@ -95,7 +100,7 @@ class Game extends Component {
         window.removeEventListener('resize', this.handleResize);
         this.props.socket.emit('disconnect', { player: this.props.player }); // tells the server to disconnect
         this.props.socket.disconnect();
-        clearInterval(interval);
+        clearInterval(this.interval);
     }
     
     handleKeys(value, e) {
@@ -131,6 +136,9 @@ class Game extends Component {
         this.updateOMatic(payload.bullets[3], 'bullets', 3);
         this.updateOMatic(payload.powerUps, 'powerUps');
         this.updateOMatic(payload.enemies, 'enemies');
+        this.scores[1] = payload.scores[1];
+        this.scores[2] = payload.scores[2];
+        this.lives = payload.lives;
     }
     
     updateOMatic(pending, type, otherPlayer) {
@@ -177,7 +185,6 @@ class Game extends Component {
                     if (type === 'enemies') {
                         this[type].push(new Enemy(pending[i]));
                     } else if (type === 'powerUps') {
-                        console.log('CREATING NEW POWERUP', pending[i], 'powerups', this[type])
                         this[type].push(new PowerUp(pending[i]));
                     }
                 } else {
@@ -294,7 +301,7 @@ class Game extends Component {
         this.ship['2'] = ship2;
 
         socket.emit(`shipGeneration`, { ship1: this.props.p1_ship, ship2: this.props.p2_ship});
-        const interval = setInterval(() => { this.update() }, 1000 / 60);   
+        this.interval = setInterval(() => { this.update() }, 1000 / 60);   
     }
     
     createObject(item, group, player) {
@@ -344,11 +351,21 @@ class Game extends Component {
         )}
         
         return (
-            <div className="game">
-                <canvas ref="canvas"
+
+            <div>
+                {endgame}
+
+                <span className='stats'>
+                    <div className="score lives" >Lives: {this.lives}</div>
+                    <div className="score current-score" >Your Score: { this.props.player === 1 ? this.scores[1] : this.scores[2] }</div>
+                    <div className="score top-score" >Friend Score: { this.props.player === 1 ? this.scores[2] : this.scores[1] }</div>
+                    <div className="barunderscore" ></div>
+                </span>
+
+                <canvas ref="canvas" className='game canvas-multi-player'
                     width={this.state.screen.width * this.state.screen.ratio}
                     height={this.state.screen.height * this.state.screen.ratio}
-                    />
+                />
             </div>
         );
     }

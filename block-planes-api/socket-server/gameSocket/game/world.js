@@ -15,7 +15,7 @@ const World = function () {
     this.particles = [];
     this.powerUps = [];
     this.lives = 10;
-    this.scores = { '1': 0, '2': 0 };
+    this.scores = { 1: 0, 2: 0 };
     
     this.enemyCount = 1;
     this.enemies = [];
@@ -156,8 +156,8 @@ World.prototype.buildClientObject = function () {
         peers: this.buildPeersPacket(),
         bullets: this.buildBulletsPacket(),
         particles: this.buildParticlesPacket(),
-        // lives: this.lives,
-        // scores: this.scores,
+        lives: this.lives,
+        scores: this.scores,
         enemies: this.buildEnemiesPacket(),
         powerUps: this.buildPowerUpsPacket(),
     };

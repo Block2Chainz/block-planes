@@ -44,7 +44,8 @@ class ConnectedHome extends Component {
         return (
           <div className='homebg'>
             <NotificationSystem ref="notificationSystem" />
-            <Grid>
+
+            <Grid className='homeSection firstportion'>
 
               <Grid.Row >
               </Grid.Row>
@@ -71,9 +72,11 @@ class ConnectedHome extends Component {
                 </div>
               </Grid.Column>
 
+              <Grid.Row><img src='http://localhost:8887/chevron.png' width='20px'/></Grid.Row>
+
             </Grid>
 
-            <Grid>
+            <Grid className='homeSection secondportion'>
               <span className='secondhalf'></span>
 
               <Grid.Row className='secondhalfheader'>
@@ -85,21 +88,21 @@ class ConnectedHome extends Component {
                   <br/><br/>If you’re reading this, the world needs your help.
                   <br/><br/>That’s right, the <strong>WORLD</strong>.
                   <br/><br/>The terrorist organization known as <strong>EVILGROUP.NAME</strong> is mobilizing an air force to destroy life as we know it…
-                  <br/><br/>and, you know, in general. <br/><br/>That’s why we started <strong>BLOCKPLANES</strong>. 
+                  <br/><br/>and, you know, in general. 
+                  <br/><br/>That’s why we started <strong>BLOCKPLANES</strong>. 
                   <br/><br/>To supply any able bodied pilot with the means to take down these monsters.
                   <br/><br/>So what do you say?
                   <br/><br/>We have the <strong>PLANES</strong>. Do you have the <strong>GUTS?</strong>
-                  <br/><br/>
                 </p>
               </Grid.Row>
 
-              <Grid.Row className='signupbuttonhome'>
+              {/* <Grid.Row className='signupbuttonhome'>
                 <Link to='/signup'><Button className='ui inverted button' size='massive' >Sign Up</Button></Link>
-              </Grid.Row>
+              </Grid.Row> */}
 
             </Grid>
 
-            <Grid>
+            <Grid className='homeSection thirdportion'>
               <span className='thirdline'></span>  
               
               <Grid.Row>
@@ -108,7 +111,7 @@ class ConnectedHome extends Component {
 
               <Grid.Row className='thirdpara'>
                 <p className='thirdpara'>
-                  <br/><br/>BlockPlanes are an ERC-721 <strong>crypto-collectible</strong>.
+                  <br/><br/>BlockPlanes are an <a href='http://erc721.org'>ERC-721</a> <strong>crypto-collectible</strong>.
                   <br/><br/>You are also able to take your planes and fly them in an <strong>action-packed</strong> aerial shooter.
                   <br/><br/>The randomized planes you purchase are uniquely yours, and only yours. You can purchase a brand new randomly-generated plane, 
                   <br/>or you can buy and sell planes on the BlockPlanes marketplace.
@@ -121,7 +124,7 @@ class ConnectedHome extends Component {
 
             </Grid>
 
-            <Grid>
+            <Grid className='homeSection fourthportion'>
               <span className='thirdline'></span>
 
               <Grid.Row>
@@ -131,17 +134,32 @@ class ConnectedHome extends Component {
               <Grid.Row className='thirdpara'>
                 <Grid.Column width={5}>
                   <p className='thirdpara'>Sean Malone</p><br/>
-                  <img width='150px' src='http://localhost:8887/profile.png'/>
+                  <a href='#'><img width='150px' src='http://localhost:8887/profile.png'/></a>
                 </Grid.Column>
                 <Grid.Column width={6}>
                   <p className='thirdpara'>Joseph Nguyen</p><br/>
-                  <img width='150px' src='http://localhost:8887/profile.png' />
+                  <a href='#'><img width='150px' src='http://localhost:8887/profile.png'/></a>
                 </Grid.Column>
                 <Grid.Column width={5}>
                   <p className='thirdpara'>Nick Vrdoljak</p><br/>
-                  <img width='150px' src='http://localhost:8887/profile.png' />
+                  <a href='https://www.linkedin.com/in/nicholas-vrdoljak-52111453/'><img width='150px' src='http://localhost:8887/profile.png'/></a>
                 </Grid.Column>
               </Grid.Row>
+
+              <span className='thirdline'></span>
+
+              <Grid.Row>
+                <p className='thirdtext'>About the Site</p>
+              </Grid.Row>
+
+              <Grid.Row className='thirdpara'>
+                <p className='thirdpara'>
+                <br/><br/><br/><br/>
+                </p>
+              </Grid.Row>
+
+              <span className='thirdline'></span>
+
 
             </Grid>
         </div>

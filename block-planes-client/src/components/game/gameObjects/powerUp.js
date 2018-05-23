@@ -7,28 +7,12 @@ export default class PowerUp {
         this.position = { x: args.x, y: args.y };
         this.rotation = 0;
         this.rotationSpeed = 15;
-        this.radius = 20;
-        this.vertices = asteroidVertices(8, args.size)
+        this.radius = 50;
+        // this.vertices = asteroidVertices(8, args.size)
     }
 
     destroy() {
         this.delete = true;
-        // // Explode
-        // for (let i = 0; i < this.radius; i++) {
-        //     const particle = new Particle({
-        //         lifeSpan: randomNumBetween(60, 100),
-        //         size: randomNumBetween(1, 3),
-        //         position: {
-        //             x: this.position.x + randomNumBetween(-this.radius / 4, this.radius / 4),
-        //             y: this.position.y + randomNumBetween(-this.radius / 4, this.radius / 4)
-        //         },
-        //         velocity: {
-        //             x: randomNumBetween(-1.5, 1.5),
-        //             y: randomNumBetween(-1.5, 1.5)
-        //         }
-        //     });
-        //     this.create(particle, 'particles');
-        // }
     }
 
     update(updateObj) {
@@ -60,7 +44,7 @@ export default class PowerUp {
         let img = new Image();
         if (this.type === 'invincible') img.src = `http://127.0.0.1:8887/yellow.png`;
         if (this.type === 'speed') img.src = `http://127.0.0.1:8887/blue.png`;
-        context.drawImage(img, 0, 0, 35, 35);
+        context.drawImage(img, -20, -20, 75, 75);
         // context.rotate(this.rotation * Math.PI / 180);
         // if (this.type === 'invincible') {
         //     context.strokeStyle = '#42f4bc'

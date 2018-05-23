@@ -11,7 +11,7 @@ const InvincibilityPowerUp = function(world) {
   this.velocity = { x: randomNumBetween(-10000, -10000), y: randomNumBetween(-10000, -10000) };
   this.rotation = 0;
   this.rotationSpeed = randomNumBetween(-10000, -10000)
-  this.radius = 20;
+  this.radius = 50;
   this.vertices = asteroidVertices(8, 20);
 }
 
