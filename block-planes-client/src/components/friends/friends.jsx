@@ -329,9 +329,10 @@ class ConnectedFriends extends Component {
               <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
               <p className='text2'>Or Search Users: </p>
               <SearchUsers updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
-              <div className='addfriendbutton'>
+              {/* <div className='addfriendbutton'>
                 <AddFriendButton className='addfriendbutton' friendState={this.state.friendState} addFriend={this.addFriend} />
                 <DeleteFriendButton className='deletefriendbutton' friendState={this.state.friendState} deleteFriend={this.deleteFriend} />
+<<<<<<< HEAD
               </div>
             </Grid.Row>
 
@@ -372,6 +373,9 @@ class ConnectedFriends extends Component {
             </Grid.Row>
 
               <Grid.Row>
+=======
+              </div> */}
+>>>>>>> move add or delete friend button to under friend username
               </Grid.Row>
 
               <Grid.Row className='userrow'>
@@ -379,11 +383,13 @@ class ConnectedFriends extends Component {
                   <Image src={this.state.profilePicture} size='medium' rounded />
                   <p className='joined'>Joined: {Moment(this.state.createdAt).format('MMMM Do YYYY')}</p>
                 </div>
-                <Grid.Column width={6} >
-                  <p className='username2'>{this.state.username}</p>
+                <Grid.Column width={5} className='friend-username-col'>
+                  <div className='friend-username'>
+                    <p className='friend-username-label'>{this.state.username}</p>
+                    <AddFriendButton className='addfriendbutton' friendState={this.state.friendState} addFriend={this.addFriend} />
+                    <DeleteFriendButton className='deletefriendbutton' friendState={this.state.friendState} deleteFriend={this.deleteFriend} />
+                  </div>
                 </Grid.Column >
-
-                
                 <Grid.Column className='friend-score-column'>
                   <p className='friend-profile-score'>Total Score</p>
                   <p className='friend-profile-score'>{this.state.totalPoints}</p>
