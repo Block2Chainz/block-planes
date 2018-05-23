@@ -125,10 +125,10 @@ class ConnectedProfile extends Component {
                   <p className='scoreprofile'>{this.state.highScore}</p>
                 </Grid.Column>
               </Grid.Row>
-                  <p className='hangar'>Hangar</p>
-                  <Grid.Row>
-                    <Hangar />
-                  </Grid.Row>
+                <p className='hangar'>Hangar</p>
+              <Grid.Row>
+                <Hangar />
+              </Grid.Row>
             </Grid>
           </div>
         );

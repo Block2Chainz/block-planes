@@ -145,3 +145,8 @@ margin-left: 3%;
     height: auto;
     margin: 0;
 }
+
+.profile-pic-column {
+  width: 350px !important;
+  margin-left: 5%;
+}

@@ -240,6 +240,7 @@ class ConnectedFriends extends Component {
     });
   }
 
+<<<<<<< HEAD
   fetchUserScores() {
     let component = this;
     axios
@@ -376,13 +377,29 @@ class ConnectedFriends extends Component {
 =======
               </div> */}
 >>>>>>> move add or delete friend button to under friend username
+=======
+    render() {
+      if (this.state.friendId) {
+        return (
+          <div >
+            <NotificationSystem ref="notificationSystem" />
+            <Grid>
+              <Grid.Row > 
+                <Button className='ui inverted button' size='small' onClick={this.toggleRequests} >Requests</Button>
+                <p className='text1' >Select a Friend: </p>
+                <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
+                <p className='text2'>Or Search Users: </p>
+                <SearchUsers updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
+>>>>>>> adjust profile pic border
               </Grid.Row>
 
               <Grid.Row className='userrow'>
-                <div className='profilepic' >
-                  <Image src={this.state.profilePicture} size='medium' rounded />
-                  <p className='joined'>Joined: {Moment(this.state.createdAt).format('MMMM Do YYYY')}</p>
-                </div>
+                <Grid.Column className='profile-pic-column'>
+                  <div className='profilepic' >
+                    <Image src={this.state.profilePicture} size='medium' rounded />
+                    <p className='joined'>Joined: {Moment(this.state.createdAt).format('MMMM Do YYYY')}</p>
+                  </div>
+                </Grid.Column>
                 <Grid.Column width={5} className='friend-username-col'>
                   <div className='friend-username'>
                     <p className='friend-username-label'>{this.state.username}</p>
@@ -397,7 +414,7 @@ class ConnectedFriends extends Component {
                   <p className='friend-profile-score'>0</p>
                 </Grid.Column>
               </Grid.Row>
-                    <p className='hangar'>Hangar</p>
+                <p className='hangar'>Hangar</p>
               <Grid.Row>
                 <Hangar friend={this.state.friendId} />
               </Grid.Row>
