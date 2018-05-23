@@ -396,7 +396,7 @@ class ConnectedFriends extends Component {
               <Grid.Row className='userrow'>
                 <Grid.Column className='profile-pic-column'>
                   <div className='profilepic' >
-                    <Image src={this.state.profilePicture} size='medium' rounded />
+                    <Image className='friend-pic' src={this.state.profilePicture} size='medium' rounded />
                     <p className='joined'>Joined: {Moment(this.state.createdAt).format('MMMM Do YYYY')}</p>
                   </div>
                 </Grid.Column>

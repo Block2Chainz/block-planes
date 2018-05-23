@@ -150,3 +150,9 @@ margin-left: 3%;
   width: 350px !important;
   margin-left: 5%;
 }
+
+.friend-pic {
+  width: 300px !important;
+  height: 300px !important;
+  border: 0px;
+}
