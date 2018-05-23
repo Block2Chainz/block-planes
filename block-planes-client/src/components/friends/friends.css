@@ -6,16 +6,8 @@ html, body {
 }
 
 .userrow {
-  /* padding-top: 1.5%;
-  padding-left: 2%;
-  background-color: #000000;
-  position: relative;
-  width: 100%;
-  color: #fff;
-  text-align: center;
-  padding-right: 2%; */
   display: flex;
-  margin-top: 5%;
+  margin-top: 1%;
   padding-top: 1.5%;
   padding-left: 3%;
   background-color: #000000;
@@ -31,8 +23,10 @@ html, body {
 }
 
 .profilepic {
-  /* margin-left: 3%;
-  border: 1px solid #ffffff; */
+  border-radius: 7px;
+  margin-left: 3%;
+  border: 7px solid #ffffff;
+  width: 302px;
 }
 
 .joined {
@@ -155,4 +149,10 @@ margin-left: 3%;
   width: 300px !important;
   height: 300px !important;
   border: 0px;
+}
+
+.friend-search-bar {
+  margin-top: 5%;
+  position: absolute;
+  top: 10%;
 }
