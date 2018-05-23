@@ -70,11 +70,8 @@ class Game extends Component {
 
     componentDidMount() {
         const socket = this.props.socket;
-        // keyup, key state is false
         window.addEventListener('keyup', this.handleKeys.bind(this, false));
-        // keydown, key state is true
         window.addEventListener('keydown', this.handleKeys.bind(this, true));
-        // window.addEventListener('resize', this.handleResize.bind(this, false));
         // set variable 'context' to the canvas and save to state
         const context = this.refs.canvas.getContext('2d');
         this.setState({ context });
@@ -86,7 +83,7 @@ class Game extends Component {
         socket.on('player_died', payload => this.playerDied(payload));
         socket.on('player_respawn', payload => this.respawn(payload));
         socket.on('game_over', payload => this.gameOver(payload));
-
+        // start the game
         this.startGame();
     }
     

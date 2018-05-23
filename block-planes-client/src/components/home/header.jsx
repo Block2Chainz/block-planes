@@ -155,19 +155,19 @@ class ConnectedHeader extends Component {
         <NotificationSystem ref="notificationSystem" />
         <div>
           <div className='topofsite'>
-        <Link to='/home' className='inverted'><h1 className='titlegame' >BlockPlanes</h1></Link>
-        <div className='header item titlemenu menuinSP' onClick={this.toggleVisibility}><i className="sidebar icon" />Menu</div>
-        </div>
-        <LogInOutButton className='logbutton' logout={this.props.logout} />
-          <Sidebar as={Menu} animation='push' width='thin' visible={visible} icon='labeled' vertical inverted>
-            <Link to='/home'><a className="header item menuitem">Home</a></Link>
-            <Link to='/profile'><a className="header item menuitem">{this.props.username || 'Profile'}</a></Link>
-            <Link to='/friends'><a className="header item menuitem">Friends</a></Link>
-            <Link to='/chat'><a className="header item menuitem">Chat</a></Link>
-            <Link to='/marketplace'><a className="header item menuitem">Marketplace</a></Link>
-            <Link to='/leaderboard'><a className="header item menuitem">Leaderboard</a></Link>
-            <Link to='/game'><a className="header item menuitem">Find Game</a></Link>
-            <Link to='/singleplayer'><a className="header item menuitem">Single Player Game</a></Link>
+            <Link to='/home' className='inverted'><h1 className='titlegame' >BlockPlanes</h1></Link>
+            <div className='header item titlemenu menuinSP' onClick={this.toggleVisibility}><i className="sidebar icon" />Menu</div>
+          </div>
+          <Sidebar as={Menu} direction='right' animation='push' width='thin' visible={visible} icon='labeled' vertical inverted>
+            <Link to='/home'><p className="header item menuitem">Home</p></Link>
+            <Link to='/profile'><p className="header item menuitem">{this.props.username || 'Profile'}</p></Link>
+            <Link to='/friends'><p className="header item menuitem">Friends</p></Link>
+            <Link to='/chat'><p className="header item menuitem">Chat</p></Link>
+            <Link to='/marketplace'><p className="header item menuitem">Marketplace</p></Link>
+            <Link to='/leaderboard'><p className="header item menuitem">Leaderboard</p></Link>
+            <Link to='/game'><p className="header item menuitem">Find Game</p></Link>
+            <Link to='/singleplayer'><p className="header item menuitem">Single Player</p></Link>
+            <LogInOutButton logout={this.props.logout} />
           </Sidebar>
 
           <Main tokenLogin={this.props.tokenLogin} logout={this.logout} toggleMenu={this.toggleMenu}/>

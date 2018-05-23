@@ -17,7 +17,7 @@ export default class Ship {
 
         this.rotation = 0;
         this.targetRotation = 0;
-        this.rotationSpeed = 6; //6
+        this.rotationSpeed = 6;
         this.radius = 20;
         this.lastShot = 0;
         this.delete = false;

@@ -52,11 +52,9 @@ class ConnectedFriends extends Component {
   }
 
   notificationSystem = null;
-  
 
   componentDidMount() {
     let component = this;
-     
     this.notificationSystem = this.refs.notificationSystem;
     this.updateFriendsPage();
     this.socket.on('returnfriendRequestSent', function (request) {

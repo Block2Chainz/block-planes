@@ -16,17 +16,17 @@ let shipRenderer = (attrString) => {
     }
 
     let shipArgs = {
-        bodyColor: attrPossibilities.bodyColor[parseInt(attrString[0]) % 8],
-        wingShape: attrPossibilities.wingShape[parseInt(attrString[1]) % 5],
-        wingColor: attrPossibilities.wingColor[parseInt(attrString[2]) % 8], 
-        tailShape: attrPossibilities.tailShape[parseInt(attrString[3]) % 5],
-        tailColor: attrPossibilities.tailColor[parseInt(attrString[4]) % 8],
-        cockpitShape: attrPossibilities.cockpitShape[parseInt(attrString[5]) % 5],
-        cockpitColor: attrPossibilities.cockpitColor[parseInt(attrString[6]) % 8],
-        speed: attrPossibilities.speed[parseInt(attrString[7]) % 4],
-        inertia: attrPossibilities.inertia[parseInt(attrString[8]) % 3],
-        shootingSpeed: attrPossibilities.shootingSpeed[parseInt(attrString[9]) % 7],
-        smokeColor: attrPossibilities.smokeColor[parseInt(attrString[10]) % 8],
+        bodyColor: attrPossibilities.bodyColor[parseInt(attrString[0]) % attrPossibilities.bodyColor.length],
+        wingShape: attrPossibilities.wingShape[parseInt(attrString[1]) % attrPossibilities.wingShape.length],
+        wingColor: attrPossibilities.wingColor[parseInt(attrString[2]) % attrPossibilities.wingColor.length], 
+        tailShape: attrPossibilities.tailShape[parseInt(attrString[3]) % attrPossibilities.tailShape.length],
+        tailColor: attrPossibilities.tailColor[parseInt(attrString[4]) % attrPossibilities.tailColor.length],
+        cockpitShape: attrPossibilities.cockpitShape[parseInt(attrString[5]) % attrPossibilities.cockpitShape.length],
+        cockpitColor: attrPossibilities.cockpitColor[parseInt(attrString[6]) % attrPossibilities.cockpitColor.length],
+        speed: attrPossibilities.speed[parseInt(attrString[7]) % attrPossibilities.speed.length],
+        inertia: attrPossibilities.inertia[parseInt(attrString[8]) % attrPossibilities.inertia.length],
+        shootingSpeed: attrPossibilities.shootingSpeed[parseInt(attrString[9]) % attrPossibilities.shootingSpeed.length],
+        smokeColor: attrPossibilities.smokeColor[parseInt(attrString[10]) % attrPossibilities.smokeColor.length],
     };
 
     return shipArgs;

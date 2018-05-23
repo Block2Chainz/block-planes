@@ -94,7 +94,7 @@ class ConnectedApp extends Component {
               });
             } else {
               // otherwise, alert that the site will not function correctly if signed in with the incorrect account
-              alert('You are logging in with an different MetaMask account. Please log in with the correct MetaMask account');
+              alert('You are logging in with a different MetaMask account. Please log in with the correct MetaMask account');
               this.logout();
             }
           });
@@ -118,7 +118,7 @@ class ConnectedApp extends Component {
     return (
       <div className="App">
         <BrowserRouter>
-        <Header logout={this.logout} tokenLogin={this.tokenLogin}/>
+          <Header logout={this.logout} tokenLogin={this.tokenLogin}/>
         </BrowserRouter>
       </div>
     );
