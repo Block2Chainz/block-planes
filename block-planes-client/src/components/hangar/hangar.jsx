@@ -82,7 +82,7 @@ class ConnectedHangar extends Component {
       });
     }).then((planeArray) => {
       // getting the attributes for each plane in their collection
-      let hangar = [[999999,1111111111111111]];
+      let hangar = [[999999,50000071117]];
       for (let i = 0; i < planeArray.length; i++) {
         let planeAttr;
         this.props.contract.planes(planeArray[i]).then((plane) => {

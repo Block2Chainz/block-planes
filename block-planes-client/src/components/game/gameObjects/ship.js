@@ -1,4 +1,4 @@
-import Bullet from './Bullet';
+import Bullet from './bullet';
 import Particle from './particle';
 import { rotatePoint, randomNumBetween } from './helpers';
 import shipRenderer from './shipRenderer.js';

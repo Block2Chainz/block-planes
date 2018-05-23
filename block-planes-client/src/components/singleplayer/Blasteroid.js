@@ -61,17 +61,7 @@ export default class Blasteroid {
   render(state){
     let component = this;
 
-    // setTimeout(function() {
-    //   if(Date.now() - component.lastShot > 50) {
-    //     console.log('fire!');
-    //     const bullet = new Bullet({ship: component});
-    //     component.create(bullet, 'bullets');
-    //     component.lastShot = Date.now();
-    //   }
-    // }, 1000);
-
-    if(Date.now() - this.lastShot > 500) {
-      console.log('fire!');
+    if(Date.now() - this.lastShot > 1000) {
       const blasteroidBullet = new BlasteroidBullet({ship: this});
       this.create(blasteroidBullet, 'blasteroidBullets');
       this.lastShot = Date.now();

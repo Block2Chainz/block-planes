@@ -26,16 +26,13 @@ export default class Ship {
     this.glow = 50;
     this.shadowColor = '#fffa7c';
     let makeVulnerable = () => {
-      console.log('before',this.invincible)
       this.invincible = false;
       this.glow = 0;
-      console.log('after',this.invincible)
     }
     makeVulnerable = makeVulnerable.bind(this);
     this.makeVulnerable = this.makeVulnerable.bind(this);
     setTimeout(function() {
       makeVulnerable();
-      console.log()
     }, 2000);
 
     let attributes = shipRenderer(args.attr);
@@ -101,7 +98,6 @@ export default class Ship {
   }
 
   invincibilityPowerUpEffect() {
-    console.log('INV PU starting!')
     let component = this;
     this.invincible = true;
     if (this.speedBoost === true) {
@@ -112,17 +108,13 @@ export default class Ship {
     }
     setTimeout(function() {
       component.makeVulnerable();
-      console.log('INV PU ending!')
     }, 5000);
   }
 
   speedPowerUpEffect() {
-    console.log('speed PU starting!')
     let component = this;
     this.speedBoost = true;
-    console.log('speed before', this.speed);
     this.speed += 1.5;
-    console.log('speed after', this.speed);
     this.inertia -= 0.1;
     this.glow = 50;
     if (component.invincible === true) {
@@ -132,17 +124,13 @@ export default class Ship {
     }
     setTimeout(function() {
       component.slowDown();
-      console.log('speed PU ending!')
     }, 10000);
   }
 
   fireRatePowerUpEffect() {
-    console.log('FR PU starting!')
     let component = this;
     this.fireRateBoost = true;
-    console.log('FR before', this.shootingSpeed);
-    this.shootingSpeed -= 200;
-    console.log('FR after', this.shootingSpeed);
+    this.shootingSpeed -= 150;
     this.glow = 50;
     if (component.invincible === true) {
        component.shadowColor = '#ffaa2a';
@@ -151,32 +139,25 @@ export default class Ship {
     }
     setTimeout(function() {
       component.normalFireRate();
-      console.log('FR PU ending!')
     }, 10000);
   }
 
   makeVulnerable = () => {
-    console.log('before',this.invincible)
     this.invincible = false;
     if (this.speedBoost === true) {
       this.shadowColor = '#51c7ff';
         } else {
       this.glow = 0;
     }
-    console.log('after',this.invincible)
   }
 
   slowDown = () => {
     let component = this;
     this.speedBoost = false;
-    console.log('speed before end', this.speed);
     this.speed -= 1.5;
-    console.log('speed after end', this.speed);
     this.inertia += 0.1;
     if (this.invincible === true) {
-      console.log('changing shadow color to yellow', this.glow)
       this.shadowColor = '#fffa7c';
-      console.log('changing shadow color to yellow', this.glow)
     } else {
       this.glow = 0;
       this.shadowColor = '#fffa7c';
@@ -186,13 +167,9 @@ export default class Ship {
   normalFireRate = () => {
     let component = this;
     this.fireRateBoost = false;
-    console.log('FR before end', this.shootingSpeed);
-    this.shootingSpeed += 200;
-    console.log('FR after end', this.shootingSpeed);
+    this.shootingSpeed += 150;
     if (this.invincible === true) {
-      console.log('changing shadow color to yellow', this.glow)
       this.shadowColor = '#fffa7c';
-      console.log('changing shadow color to yellow', this.glow)
     } else {
       this.glow = 0;
       this.shadowColor = '#fffa7c';
@@ -233,7 +210,6 @@ export default class Ship {
       this.rotate('RIGHT');
     }
     if(state.keys.space && Date.now() - this.lastShot > this.shootingSpeed){
-      console.log('shooting speed', this.shootingSpeed);
       const bullet = new Bullet({ship: this});
       this.create(bullet, 'bullets');
       this.lastShot = Date.now();
@@ -263,24 +239,7 @@ export default class Ship {
     const context = state.context;
     context.save();
     context.translate(this.position.x, this.position.y);
-    // context.rotate(this.rotation * Math.PI / 180);
     context.rotate((this.rotation) * Math.PI / 180 + 0.78539816);
-
-    // context.strokeStyle = this.color;
-    // context.fillStyle = '#000000';
-    // context.lineWidth = 2;
-    // context.shadowBlur = this.glow;
-    // context.shadowColor = this.shadowColor;
-    // context.beginPath();
-    // context.moveTo(0, -15);
-    // context.lineTo(30, 30);
-    // context.lineTo(5, 7);
-    // context.lineTo(-5, 7);
-    // context.lineTo(-30, 30);
-    // context.closePath();
-    // context.fill();
-    // context.stroke();
-
 
     // RENDER BODY
         
