@@ -319,7 +319,9 @@ ownFriendRequestSentNotification(event, notificationObj) {
           <p className='text2'>Or Search Users: </p>
             <SearchUsers updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
           </Grid.Row>
-          <div>
+          <Grid.Row className='borderfriends'>
+          </Grid.Row>
+          <Grid.Row >
           <div className='norequests'>
           <span>You have no new friend requests.</span>
                  </div>

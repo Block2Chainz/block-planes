@@ -79,34 +79,32 @@ class ConnectedProfile extends Component {
     render() {
         return (
           <div className='profilebg'>
-          <Grid>
-
-          <Grid.Row className='userrowprofile'>
-              <div className='profilepic' >
-              <Dropzone className='dropzone' onDrop={this.handleDrop} accept="image/*">
-              <Image src={this.props.profilePicture} size='medium' rounded />
-                </Dropzone>
-              <p className='joined'>Joined: {Moment(this.props.createdAt).format('MMMM Do YYYY')}</p>
-              </div>
-
-              <Grid.Column width={6} >
-                  <p className='usernameprofile'>{this.props.username}</p>
-              </Grid.Column >
-
-              <Grid.Column width={6} >
-              <p className='scoreprofile'>Total Score</p>
-                <p className='scoreprofile'>{this.props.totalPoints}</p>
-                <p className='scoreprofile'>High Score</p>
-                <p className='scoreprofile'>0</p>
-          </Grid.Column>
-                </Grid.Row>
-                <p className='hangar'>Hangar</p>
-                <Grid.Row>
-                <Hangar />
-          </Grid.Row>
-
-        </Grid>
-        </div>
+            <Grid className='profile-grid'>
+              <Grid.Row className='userrowprofile'>
+                <Grid.Column className='profile-pic-column'>
+                  <div className='profilepic' >
+                    <Dropzone className='dropzone' onDrop={this.handleDrop} accept="image/*">
+                      <Image src={this.props.profilePicture} size='medium' rounded />
+                    </Dropzone>
+                    <p className='joined'>Joined: {Moment(this.props.createdAt).format('MMMM Do YYYY')}</p>
+                  </div>
+                </Grid.Column>
+                <Grid.Column width={5} className='username-column'>
+                    <p className='usernameprofile'>{this.props.username}</p>
+                </Grid.Column>
+                <Grid.Column className='profile-score-column' >
+                  <p className='scoreprofile'>Total Score</p>
+                  <p className='scoreprofile'>{this.props.totalPoints}</p>
+                  <p className='scoreprofile'>High Score</p>
+                  <p className='scoreprofile'>0</p>
+                </Grid.Column>
+              </Grid.Row>
+                  <p className='hangar'>Hangar</p>
+                  <Grid.Row>
+                    <Hangar />
+                  </Grid.Row>
+            </Grid>
+          </div>
         );
     }
 }
