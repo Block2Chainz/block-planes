@@ -5,9 +5,9 @@ module.exports = class Rooms {
     }
     
     findOrCreate(roomId) {
-        console.log('creating a room', roomId)
         let room = this.store[roomId];
         if (!room) {
+            console.log('creating a room', roomId)
             room = new Object;
             room.id = roomId;
             this.store[roomId] = room;

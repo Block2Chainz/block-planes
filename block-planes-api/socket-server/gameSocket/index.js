@@ -14,7 +14,9 @@ io.on('connection', (client) => {
     const { roomId, player } = client.handshake.query;
     const room = rooms.findOrCreate(roomId || 'default');
     client.join(room.id);
-    io.sockets.in(room.id).emit('connected', {player});
+    
+    console.log('', roomId, player)
+    io.sockets.in(room.id).emit('connected', { player });
 
     each(clientEvents, (handler, event) => {
         client.on(event, handler.bind(null, { io, client, room, player }));

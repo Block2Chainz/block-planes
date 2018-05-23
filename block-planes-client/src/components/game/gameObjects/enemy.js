@@ -40,15 +40,39 @@ export default class Enemy {
         context.save();
         context.translate(this.position.x, this.position.y);
         context.rotate(this.rotation * Math.PI / 180);
-        context.strokeStyle = '#FFF';
-        context.lineWidth = 2;
-        context.beginPath();
-        context.moveTo(0, -this.radius);
-        for (let i = 1; i < this.vertices.length; i++) {
-            context.lineTo(this.vertices[i].x, this.vertices[i].y);
+        if (this.type === 'master') {
+            let img = new Image();
+            img.src = `http://127.0.0.1:8887/enemies/master.png`;
+            context.drawImage(img, 0, 0, 75, 75);
+        } else if (this.type === 'blast') {
+            let img = new Image();
+            img.src = `http://127.0.0.1:8887/enemies/blast.png`;
+            context.drawImage(img, 0, 0, 75, 75);
+        } else if (this.type === 'fast') {
+            let img = new Image();
+            img.src = `http://127.0.0.1:8887/enemies/fast.png`;
+            context.drawImage(img, 0, 0, 35, 35);
+        } else if (this.type === 'normal') {
+            context.strokeStyle = '#fff';
+            context.lineWidth = 2;
+            context.beginPath();
+            context.moveTo(0, -this.radius);
+            for (let i = 1; i < this.vertices.length; i++) {
+                context.lineTo(this.vertices[i].x, this.vertices[i].y);
+            }
+            context.closePath();
+            context.stroke();
+        } else {
+            context.strokeStyle = '#f1f1f1';
+            context.lineWidth = 2;
+            context.beginPath();
+            context.moveTo(0, -this.radius);
+            for (let i = 1; i < this.vertices.length; i++) {
+                context.lineTo(this.vertices[i].x, this.vertices[i].y);
+            }
+            context.closePath();
+            context.stroke();
         }
-        context.closePath();
-        context.stroke();
         context.restore();
     }
 }

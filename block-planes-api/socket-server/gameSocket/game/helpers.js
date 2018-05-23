@@ -71,7 +71,7 @@ module.exports.checkCollisionsWith = (items1, items2, type, socket, room, world)
 					// undefined - bullets and enemies
 					// your bullets kill the enemies, destroy the bullet, add your score
 					item1.destroy();
-					item2.destroy(item1.id);
+					item2.takeDamage(item1.id);
 				} else if ((type === 'enemies' || type === 'enemyBullets') && !item1.invincible && !item1.delete) {
 					// enemyBullets - player and enemy bullets
 					// enemies - player and enemies

@@ -205,7 +205,7 @@ export default class Ship {
             } else {
                 // *** NOT YOU
                 // INTERPOLATE
-                if (this.targetPosition.x - this.position.x > 100 || this.targetPosition.x - this.position.x < -100) {
+                if (this.targetPosition.x - this.position.x > 250 || this.targetPosition.x - this.position.x < -250) {
                     // too much motion (likely going off screen) - don't interpolate
                     this.position.x = this.targetPosition.x;
                 } else {
@@ -213,7 +213,7 @@ export default class Ship {
                     this.position.x += (this.targetPosition.x - this.position.x) * 0.16;
                 }
 
-                if (this.targetPosition.y - this.position.y > 100 || this.targetPosition.y - this.position.y < -100) {
+                if (this.targetPosition.y - this.position.y > 250 || this.targetPosition.y - this.position.y < -250) {
                     this.position.y = this.targetPosition.y;
                 } else {
                     this.position.y += (this.targetPosition.y - this.position.y) * 0.16;
