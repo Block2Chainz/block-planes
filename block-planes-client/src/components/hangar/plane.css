@@ -2,11 +2,40 @@
   font-family: 'Orbitron';
   color: white;
   text-align: center;
-  width: 100%;
-  margin-left: 50%;
   border: 1px solid white;
+  font-size: 8px !important;
+  position: relative !important;
 }
 
-.highlight {
-  color: red
+.selected-plane-background {
+  background-color: rgb(94, 203, 249) !important;  
+}
+
+.selected-plane-stats {
+  font-family: 'Orbitron';
+  color: black;
+  font-size: 12px;
+  margin-bottom: -50px !important;
+  position: absolute !important;
+  bottom: 60px !important;
+  left: 10px !important;
+  text-align: left !important;
+}
+
+@keyframes border-pulsate {
+  0%   { border-color: white; }
+  /* 50% { border-color: rgb(121, 209, 247); } */
+  50% { border-color: black; }  
+  100%   { border-color: white; }
+}
+
+.blinking-border {
+  /* margin: 20px auto; */
+  border: 2px solid white;
+  animation: border-pulsate 750ms infinite;
+}
+
+canvas {
+  max-width: 100% !important;
+  max-height: 100% !important;
 }

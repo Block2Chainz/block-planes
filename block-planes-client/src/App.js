@@ -81,7 +81,6 @@ class ConnectedApp extends Component {
           this.web3.eth.getCoinbase((err, account) => {
             if(account === response.data.user.blockchainAddress) {
               // if they match, then save the login information
-              console.log('logging in with ', response.data.user.blockchainAddress);
               this.props.logIn({
                 // this gets the data off of the jwt token and saves it into state
                 id: response.data.user.id,
@@ -94,7 +93,6 @@ class ConnectedApp extends Component {
                 blockchainAddress: response.data.user.blockchainAddress,
               });
             } else {
-              console.log('LOGGINGOUT', response.data.user.blockchainAddress, 'account', account);
               // otherwise, alert that the site will not function correctly if signed in with the incorrect account
               alert('You are logging in with an different MetaMask account. Please log in with the correct MetaMask account');
               this.logout();

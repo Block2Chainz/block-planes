@@ -5,7 +5,7 @@ body {
   color: #ffffff;
 }
 
-canvas {
+.canvas-single-player {
   display: block;
   background-color: #000000;
   position: absolute;

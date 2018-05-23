@@ -48,7 +48,6 @@ class Marketplace extends Component {
       let planesForSale = [];
       let planesWithAttr = [];
       this.web3.eth.getCoinbase((err, address) => {
-        console.log('user account: ', address);
         // storing the user blockchain address*****
         userAddress = address;
         // get the contract instance
@@ -178,25 +177,33 @@ class Marketplace extends Component {
             <div className='single-plane'>
             <Plane key={plane[0]} plane={plane} />
             <div className='plane-menu-sell'>
-                <div className='plane-stats-div'>
-                  <p className='plane-stats'>Speed: # <br/>Inertia: #<br/>Firing Rate: # </p>              
-                </div>
+              <div className='plane-stats-div'>
+                <p className='plane-stats'>Speed: # <br/>Inertia: #<br/>Firing Rate: # </p>              
+              </div>
               <div className='menu-sell-form'>
                 {(plane[2] === true) ? 
-                  <div className='posted-price-div'><label className='label-listed-price'>Listed Price: {parseInt(plane[3]) / 1000000000000000000}</label><img className='eth-symbol' src='https://openclipart.org/image/300px/svg_to_png/294014/ethereum-classic-logo.png'></img></div> 
-                  : <div className='posted-price-div-null'><label className='label-listed-price'></label></div>  
+                  <div className='posted-price-div'>
+                    <label className='label-listed-price'>Listed Price: {parseInt(plane[3]) / 1000000000000000000}</label>
+                    <img className='eth-symbol' src='https://openclipart.org/image/300px/svg_to_png/294014/ethereum-classic-logo.png'></img>
+                  </div> :
+                  <div className='posted-price-div-null'>
+                    <label className='label-listed-price'></label>
+                    <br/>
+                  </div>  
                 }
-                <form  className='form-sell' onSubmit={(e) => this.sellPlane(e, plane)}>
-                  <div className='sell-input-div'>
-                    <input type='text' name='price' className='sell-input' placeholder='Price for Sale'/>
-                  </div>
-                  <div className='sell-buttons-div'>
-                  <button className='sell-button'>{buttonLabel}</button>
-                    {(plane[2] === true) ?
-                      <button type='button' className='sell-button' onClick={(e) => this.unlistPlane(plane)}>Unlist</button> : null
-                    }
-                  </div>
-                </form>
+                <div className='form-div'>
+                  <form  className='form-sell' onSubmit={(e) => this.sellPlane(e, plane)}>
+                    <div className='sell-input-div'>
+                      <input type='text' name='price' className='sell-input' placeholder='Price'/>
+                    </div>
+                    <div className='sell-buttons-div'>
+                      <button className='sell-button'>{buttonLabel}</button>
+                      {(plane[2] === true) ?
+                        <button type='button' className='sell-button' onClick={(e) => this.unlistPlane(plane)}>Unlist</button> : null
+                      }
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
             </div>
@@ -213,10 +220,11 @@ class Marketplace extends Component {
               <div className='plane-stats-div'>
                   <p className='plane-stats'>Speed: # <br/>Inertia: #<br/>Firing Rate: # </p>              
               </div>
+              <br/>
               <div className='menu-form'>
                 <form onSubmit={(e) => this.buyPlane(e, plane)} className='buy-form'>
                   <div className='price-div'>
-                  <label className='price-label'>{plane[3] / 1000000000000000000}</label><img className='eth-symbol' src='https://openclipart.org/image/300px/svg_to_png/294014/ethereum-classic-logo.png'></img>
+                  <label className='price-label'>{plane[3] / 1000000000000000000}</label><img className='eth-symbol-buy' src='https://openclipart.org/image/300px/svg_to_png/294014/ethereum-classic-logo.png'></img>
                   </div>
                   <div>
                   <button className='buy-button'>Buy</button>
@@ -237,6 +245,7 @@ class Marketplace extends Component {
         }
 
         return (
+          <div className='marketplace-full-body'>
             <div className="marketplace">
               <div>
               <p className="page-title">HANGAR</p>
@@ -258,6 +267,7 @@ class Marketplace extends Component {
                 </div>
               </div>
             </div>
+          </div>
         )
     }
 }

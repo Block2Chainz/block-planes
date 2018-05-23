@@ -16,6 +16,7 @@
 .page-selector {
   margin-bottom: 15px;
   margin: auto;
+  text-align: center !important;
 }
 
 .plane-grid {
@@ -26,8 +27,8 @@
 }
 
 .single-plane {
-  min-height: 350px !important;
-  min-width: 250px !important;
+  width: 100%;
+  height: 100%;
   padding: none !important;
   margin: auto;
 }
@@ -44,14 +45,21 @@
   height: 100px !important;
   align-items: center !important;
   justify-content: space-between !important;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
 }
 
 .plane-menu-sell {
+  width: 100%;
   display: flex;
   background-color: gray !important;
   height: 110px !important;
   align-items: center !important;
   justify-content: space-between !important;
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
 }
 
 .menu-form {
@@ -67,15 +75,17 @@
   display: flex;
   font-size: 10px !important;
   margin-left: 10px !important;
+  max-width: 100%;
 }
 
 .plane-stats-div {
   display: flex;
   text-align: left !important;
+  width: 45%;
 }
 .plane-column {
-  min-height: 350px !important;
-  min-width: 250px !important;
+  max-height: 25% !important;
+  max-width: 25% !important;
 }
 
 .body-div {
@@ -97,18 +107,26 @@
   padding: 2px !important;
 }
 
-.eth-symbol{
-  float: right !important;  
-  max-width: 18px !important;
-  max-height: 31px !important;
-  margin-left: 8px !important;
+.price-div {
+  display: flex;
+  width: 80% !important;
+  align-items: center;
+  justify-content: center;
+  max-height:50%;
+  margin: auto;
 }
 
 .price-label {
   width: auto !important;
-  max-height: 35px !important;
-  font-size: 16px !important;
-  margin-top: 11px !important;
+  font-size: 100%;
+}
+
+.eth-symbol-buy {
+  box-sizing: border-box;
+  margin-bottom: 3px;
+  width: 20%;
+  height: 100%;
+  margin-left: 4px !important;
 }
 
 .buy-button {
@@ -118,93 +136,82 @@
   margin-top: 5px !important;
 }
 
-.price-div {
-  display: flex;
-  width: 80% !important;
-  justify-content: flex-end;
-  margin-right: 10px !important;
-}
-
 .buy-form {
   position: relative;
   width: 80% !important;
   float: right !important;
 }
 
-.posted-price-div {
+.menu-sell-form {
   position: relative;
   display: flex;
-  width: 90% !important;
-  height: 31px !important;
-  justify-content: flex-end;
+  align-items: center;
+  width: 55%;
+  height: 90% !important;
+  margin: 1% !important;
+}
+
+.posted-price-div {
+  position: absolute;
+  display: flex;
+  width: 100% !important;
+  height: 30%;
+  justify-content: center;
   align-items: center !important;
   margin-right: 5px !important;
   margin-bottom: 5px !important;
-  float: right !important;
+  top: 8%;
 }
 
 .posted-price-div-null {
-  position: relative;
-  display: flex;
-  width: 90% !important;
+  width: 100% !important;
   height: 20px !important;
-  justify-content: flex-end;
-  align-items: center !important;
   margin-right: 5px !important;
   margin-bottom: 5px !important;
-  float: right !important;
-}
-
-.menu-sell-form {
-  width: 60% !important;
-  height: 90% !important;
-  margin: auto !important;
-  margin-right: 5px !important;
-
 }
 
 .label-listed-price {
-  display: flex;
-  align-items: center !important;
+  max-width: 100%;
   margin-top: 2px !important;
+  font-size: 70%;
+}
+
+.eth-symbol{
+  box-sizing: border-box;
+  margin-bottom: 3px;
+  width: 7%;
+  height: 65%;
+  margin-left: 4px !important;
 }
 
 .form-sell {
-  width: 90% !important;
-}
-
-.sell-input {
-  display: relative;
-  width: auto !important;
-  float: right !important;
-  text-align: right !important;
-}
-
-.sell-buttons {
-  width: 80% !important;
-  height: 80% !important;
+  position: relative;
+  width: 100% !important;
 }
 
 .sell-input-div {
-  position: relative;
-  width: 90% !important;
-  float: right !important;
-  height: 50% !important;
-  left: 8% !important;
+  width: 100%;
+  margin-bottom: 4px;
 }
 
-.sell-button {
-  position: relative;
-  width: 65px !important;
-  height: 30px !important;
-  border-radius: 10px !important;
-  margin-top: 5px !important;
-  margin: 5px !important;
+.sell-input {
+  width: 80%;
+  text-align: right !important;
 }
 
-.sell-buttons-div {
-  position: relative;
-  margin: auto !important;
-  max-height: 32px !important;
-  left: 9% !important;
+/* center pagination text */
+.ui.pagination.menu .item { 
+  justify-content: center !important;
+}
+
+.form-div {
+  position: absolute;
+  top: 40%;
+}
+
+.marketplace-full-body {
+  position: absolute;
+  margin: 0px;
+  width:100%;
+  height: 80%;
 }

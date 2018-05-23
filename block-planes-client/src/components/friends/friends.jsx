@@ -257,7 +257,7 @@ ownFriendRequestSentNotification(event, notificationObj) {
             </div>
           </Grid.Row>
 
-            <Grid.Row className='borderfriends'>
+            <Grid.Row>
             </Grid.Row>
 
             <Grid.Row className='userrow'>
@@ -296,8 +296,6 @@ ownFriendRequestSentNotification(event, notificationObj) {
           <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
           <p className='text2'>Or Search Users: </p>
             <SearchUsers  updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
-          </Grid.Row>
-          <Grid.Row className='borderfriends'>
           </Grid.Row>
           <div>
           <div className='inner'>
@@ -344,8 +342,6 @@ ownFriendRequestSentNotification(event, notificationObj) {
           <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
           <p className='text2'>Or Search Users: </p>
             <SearchUsers  updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
-          </Grid.Row>
-          <Grid.Row className='borderfriends'>
           </Grid.Row>
         </Grid>
         </div>

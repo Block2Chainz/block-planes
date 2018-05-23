@@ -49,10 +49,10 @@ class Plane extends Component {
     // store canvas state on the stack
     context.save();
     
-    if (this.props.selected === 'highlight') {
-      context.fillStyle = '#8b0000';
-      context.fillRect(0, 0, 150, 150);
-    }
+    // if (this.props.selected === 'highlight') {
+    //   context.fillStyle = '#8b0000';
+    //   context.fillRect(0, 0, 150, 150);
+    // }
     // resize the field if the window has been resized
     // context.scale(this.state.screen.ratio, this.state.screen.ratio);
     
@@ -149,26 +149,32 @@ class Plane extends Component {
 
   select (e) {
     e.preventDefault();
-    this.props.highlight(this.props.plane[1])
+    this.props.highlight(this.props.plane[1]);
   }
 
   render() {
     return (
-      <div onClick={(e) => this.select(e)} width={16} className='plane' >
-      {console.log('rendering plane woohoo', this.props.plane)}
-        <canvas ref='canvas' width={150} height={150} />
+      <div>
         {this.props.selected === 'highlight' ? 
-          
-              <p>
+          <div onClick={(e) => this.select(e)} width={16} className='plane blinking-border selected-plane-background' >
+          <canvas ref='canvas' width={150} height={150} />
+            <div>
+              <p className='selected-plane-stats'>
                 Speed: {parseInt(JSON.stringify(this.props.plane[1]).slice(6, 7)) % 4} <br/>
                 Inertia: {parseInt(JSON.stringify(this.props.plane[1]).slice(7, 8)) % 3} <br />
                 Shooting Speed: {parseInt(JSON.stringify(this.props.plane[1]).slice(8, 9)) % 7}
               </p>
-           : 
-          <div></div>
+            </div>
+          </div>
+          : 
+          <div>
+            <div onClick={(e) => this.select(e)} width={16} className='plane' >
+            <canvas ref='canvas' width={150} height={150} />
+            </div>
+          </div>
         }
       </div>
-    )
+    );
   }  
 }
 

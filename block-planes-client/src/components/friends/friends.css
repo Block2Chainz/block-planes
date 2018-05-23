@@ -11,7 +11,7 @@ html, body {
   background-color: #000000;
   position: relative;
   width: 100%;
-  border-bottom: 1px solid #ffffff;
+  /* border-bottom: 1px solid #ffffff; */
   color: #fff;
   text-align: center;
   padding-right: 2%;
@@ -43,11 +43,12 @@ html, body {
 
 .searchbar {
   margin-left: 25%;
+  margin-bottom: 15px !important;
 }
 
-.borderfriends {
+/* .borderfriends {
   border-bottom: 1px solid #ffffff;
-}
+} */
 
 .text1 {
   color: #fff;

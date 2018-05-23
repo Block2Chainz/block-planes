@@ -73,10 +73,8 @@ class ConnectedHangar extends Component {
   }
 
   fetchPlanes() {
-    console.log('hangar account: ', this.user, this.props.contract);
     this.props.contract.getPlanesByOwner(this.user)
     .then((planes) => {
-      console.log('flag1: ', planes);
       // putting the plane ids into an array
       let planeIds = [];
       return planes.map((plane) => {
@@ -84,14 +82,12 @@ class ConnectedHangar extends Component {
       });
     }).then((planeArray) => {
       // getting the attributes for each plane in their collection
-      let hangar = [];
+      let hangar = [[9999, 1111111111111111]];
       for (let i = 0; i < planeArray.length; i++) {
         let planeAttr;
         this.props.contract.planes(planeArray[i]).then((plane) => {
           planeAttr = plane[0].toNumber();
           hangar.push([planeArray[i], planeAttr]);
-      console.log('flag2: ', hangar);
-          
           if (i === planeArray.length - 1) {
             this.props.storePlanes({ planes: hangar });
           }
@@ -120,32 +116,33 @@ class ConnectedHangar extends Component {
 
   render() {
       return (
-        <div>
-        <br/>
-          <Grid>
-            {/* Should also generate a generic plane for all users and display it here */}
-            <Grid.Row className='planerow'>
-      {console.log('flag3:', this.props.userPlanes)}
-              {this.props.userPlanes.map((plane) => {
-                if (this.props.selectedPlane === plane[1]) {
-                  return <Plane
-                  selected={'highlight'}
-                  key={Math.random()}
-                  plane={plane}
-                  highlight={this.highlight.bind(this)} 
-                  />
-                } else {
-                  return <Plane 
-                  selected={'noHighlight'}
-                  key={plane[0]}
-                  plane={plane}
-                  highlight={this.highlight.bind(this)} />
+        <div className='center-content'>
+          <br/>
+          <div className='planes-outerdiv'>
+            <Grid>
+              {/* Should also generate a generic plane for all users and display it here */}
+              <Grid.Row className='planerow'>
+                {this.props.userPlanes.map((plane) => {
+                  if (this.props.selectedPlane === plane[1]) {
+                    return <Plane
+                    selected={'highlight'}
+                    key={Math.random()}
+                    plane={plane}
+                    highlight={this.highlight.bind(this)} 
+                    />
+                  } else {
+                    return <Plane 
+                    selected={'noHighlight'}
+                    key={plane[0]}
+                    plane={plane}
+                    highlight={this.highlight.bind(this)} />
+                  }
+                })
                 }
-              })
-              }
-            </Grid.Row>
-          </Grid>
+              </Grid.Row>
+            </Grid>
           </div>
+        </div>
       )
   }
 }

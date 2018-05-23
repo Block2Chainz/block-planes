@@ -1,12 +1,22 @@
 .planerow {
+    display: flex;
+    justify-content: center !important;
     padding-top: 1.5%;
     padding-left: 2%;
     background-color: #000000;
     position: relative;
-    width: 100%;
-    border-bottom: 1px solid #ffffff;
     color: #fff;
     text-align: center;
     padding-right: 2%;
     font-family: 'Orbitron';
+    margin-bottom: 50px !important;
+}
+
+.planes-outerdiv {
+  width: 75% !important;
+}
+
+.center-content {
+  display: flex;
+  justify-content: center;
 }
