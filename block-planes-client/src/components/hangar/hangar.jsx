@@ -82,7 +82,7 @@ class ConnectedHangar extends Component {
       });
     }).then((planeArray) => {
       // getting the attributes for each plane in their collection
-      let hangar = [[9999, 1111111111111111]];
+      let hangar = [[999999,1111111111111111]];
       for (let i = 0; i < planeArray.length; i++) {
         let planeAttr;
         this.props.contract.planes(planeArray[i]).then((plane) => {
@@ -107,7 +107,7 @@ class ConnectedHangar extends Component {
   highlight(plane) {
     if (!this.props.friend) {
       if (this.props.selectedPlane === plane) {
-        this.props.deselectPlane(plane)
+        this.props.deselectPlane()
       } else {
         this.props.selectPlane(plane)
       }

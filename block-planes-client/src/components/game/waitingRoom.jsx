@@ -32,28 +32,27 @@ class ConnectedWaitingRoom extends Component {
             youReady: false,
             roomId: false,
             player: null,
+            bool: true,
         }
         this.ready = this.ready.bind(this);
         // this.checkStart = this.checkStart.bind(this);
     }
 
     componentWillMount() {
-        console.log('roomid in waitingroom', this.props.roomId);
         // checks if a room exists in props already
-        let roomId;
-        if (!this.props.roomId || !this.state.roomId) {
-            // no room exists in props, so this is a game that we have started
-            // we will generate a random string
-            roomId = 'abc';
-            // randomstring.generate();
-        }
-        console.log('my userid: ',this.props.user);
+        // let roomId;
+        // if (!this.props.roomId || !this.state.roomId) {
+        //     // no room exists in props, so this is a game that we have started
+        //     // we will generate a random string
+        //     roomId = 'abc';
+        //     // randomstring.generate();
+        // }
         let player = this.props.user  === 1 ? 2 : 1;
-
+        let roomId = this.props.location.state.roomId;
         let socket = io.connect('http://localhost:2345', {
             query: {
                 // if there is no room in props, we created the game, so we will use the random room string
-                roomId: !this.props.roomId ? roomId : this.props.roomId,
+                roomId,
                 // if there is no room in props, we created the game, so we will be player 1 
                 player: player,
                 ship: this.props.ship,
@@ -67,24 +66,29 @@ class ConnectedWaitingRoom extends Component {
 
     componentDidMount() {
         const socket = this.state.socket;
-
-        socket.once('p1_ready', (payload) => {
-            console.log('receiving p1ready', payload)
+        socket.once('p1_ready', payload => {
             if (this.state.player === 2) {
-                this.setState({ oppReady: true, p1_ship: payload  })//, () => this.checkStart());
+                this.setState({ oppReady: true, p1_ship: payload, bool: false  })//, () => this.checkStart());
             } else if (this.state.player === 1) { 
-                this.setState({ youReady: true, p1_ship: payload })//, () => this.checkStart());
+                this.setState({ youReady: true, p1_ship: payload, bool: false })//, () => this.checkStart());
             }
         });
-    
-        socket.once('p2_ready', (payload) => {
-            console.log('receiving p2ready', payload)
+        socket.once('p2_ready', payload => {
             if (this.state.player === 1) {
-                this.setState({ oppReady: true, p2_ship: payload })//, () => this.checkStart());
+                this.setState({ oppReady: true, p2_ship: payload, bool: false })//, () => this.checkStart());
             } else if (this.state.player === 2) {
-                this.setState({ youReady: true, p2_ship: payload })//, () => this.checkStart());
+                this.setState({ youReady: true, p2_ship: payload, bool: false })//, () => this.checkStart());
             }
         });
+        socket.on('connected', payload => {
+            if (this.state.player !== parseInt(payload.player)) {
+                this.enableButton();
+            }
+        });
+    }
+
+    enableButton() {
+        this.setState({ bool: false })
     }
 
     // checkStart() {
@@ -120,7 +124,7 @@ class ConnectedWaitingRoom extends Component {
                             <h3 id='text'>Game ID: </h3>
                             <h4 id='text'>{this.state.roomId}</h4>
                             <h1 id='text'>Please prepare yourself and press "READY" when you're good to go!</h1>
-                            <button disabled={this.state.youReady} onClick={() => this.ready()}>Ready</button>
+                            <button disabled={ this.state.bool } onClick={() => this.ready()}>Ready</button>
                             <h6 id='text'>{this.state.oppReady ? 'Opponent is ready' : 'Waiting for opponent to be ready'}<br/>
                                 {this.state.youReady ? 'You are ready' : ''}</h6>
                         </div>) : 
@@ -133,6 +137,7 @@ class ConnectedWaitingRoom extends Component {
                     //  to={{
                             // pathname: `/game/${this.state.roomId}`, 
                             // state: {
+                                userId= {this.props.user}
                                 socket= {this.state.socket} 
                                 player= {this.state.player} 
                                 p1_ship= {this.state.p1_ship} 

@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import './game.css';
 // import io from 'socket.io-client/dist/socket.io.js';
 import Ship from './gameObjects/ship.js';
-import Enemy from './gameObjects/Enemy';
+import Enemy from './gameObjects/enemy.js';
+import Bullet from './gameObjects/bullet.js';
 import { randomNumBetweenExcluding } from './gameObjects/helpers'
+import Particle from './gameObjects/particle.js';
+import axios from 'axios';
+import PowerUp from './gameObjects/powerUp';
 
 const KEY = {
     LEFT: 37,
@@ -34,34 +38,58 @@ class Game extends Component {
         }
         this.ship = {};
         this.enemies = {};
-        this.sprites = {};
-        this.savedMoves = [];
+        this.bullets = {    1: [],
+                            2: [], 
+                            3: []};
+        this.particles = {  1: [], 
+                            2: [],
+                            3: []};
 
+        this.powerUps = [];
+        this.enemies = [];
+        this.scores = { 1: 0, 2: 0, };
+        this.lives = 0;
+/*{
+    peers: {
+        1: {ship},
+        2: {ship}
+    },
+    bullets: {
+        1: [{bullet}, {bullet}, {bullet}],
+        2: [{bullet}, {bullet}],
+    },
+    particles: {
+        1: [{particle}, {particle}, {particle}],
+        2: [{particle}, {particle}, {particle}],
+        3: [{particle}]
+    },
+    enemies: [{enemy}, {enemy}, {enemy}, {enemy}],
+    powerUps: [{powerUp}, {powerUp}, {powerUp}, {powerUp}],
+    scores: {
+        1: number,
+        2: number
+    }
+}*/
+        this.savedMoves = [];
     }
 
     componentDidMount() {
         const socket = this.props.socket;
-        // keyup, key state is false
         window.addEventListener('keyup', this.handleKeys.bind(this, false));
-        // keydown, key state is true
         window.addEventListener('keydown', this.handleKeys.bind(this, true));
-        // window.addEventListener('resize', this.handleResize.bind(this, false));
         // set variable 'context' to the canvas and save to state
         const context = this.refs.canvas.getContext('2d');
         this.setState({ context });
-        // set up a listeners
-        socket.on('server_state', (payload) => {
-            this.serverUpdate(payload);
-        });
-        socket.on('ship1', payload => {
-            // this.ship[1] = new Ship(this.props.p1_ship);
-        });
-        socket.on('ship2', payload => {
-            // this.ship[2] = new Ship(this.props.p2_ship);
-        });        
+        // set up listeners
+        socket.on('server_state', (payload) => this.serverUpdate(payload));
+        socket.on('ship1', payload => {});
+        socket.on('ship2', payload => {});
+        socket.on('powered_up', payload => this.powerUpHandler(payload));
+        socket.on('player_died', payload => this.playerDied(payload));
+        socket.on('player_respawn', payload => this.respawn(payload));
+        socket.on('game_over', payload => this.gameOver(payload));
+        // start the game
         this.startGame();
-        // animates the next frame     
-        // requestAnimationFrame(() => { this.update() });
     }
     
     componentWillUnmount() {
@@ -72,7 +100,7 @@ class Game extends Component {
         window.removeEventListener('resize', this.handleResize);
         this.props.socket.emit('disconnect', { player: this.props.player }); // tells the server to disconnect
         this.props.socket.disconnect();
-        clearInterval(this.update);
+        clearInterval(this.interval);
     }
     
     handleKeys(value, e) {
@@ -87,32 +115,89 @@ class Game extends Component {
         });
     }
     
+    powerUpHandler(payload) {
+        this.ship[payload.player].powerUp(payload);
+    };
+
     serverUpdate(payload) {
-        /*{
-            peers: {
-                1: {ship},
-                2: {ship}
-            },
-            sprites: {
-                id: {particle or bullet},
-                id: {particle or bullet},
-                ... etc.
-            }
-        }*/
-        // update the other player's ship
+        // update the other player's stuff
         if (this.props.player === 1) {
+            // if (payload.peers[1].delete === true) this.ship[1].destroy();
             this.ship[2].update(payload.peers[2]);
+            this.updateOMatic(payload.bullets[2], 'bullets', 2);
+            this.updateOMatic(payload.particles[2], 'particles', 2);
         } else if (this.props.player === 2) {
+            // if (payload.peers[2].delete === true) this.ship[2].destroy();
             this.ship[1].update(payload.peers[1]);
+            this.updateOMatic(payload.bullets[1], 'bullets', 1);
+            this.updateOMatic(payload.particles[1], 'particles', 1);
+        }
+        this.updateOMatic(payload.particles[3], 'particles', 3);
+        this.updateOMatic(payload.bullets[3], 'bullets', 3);
+        this.updateOMatic(payload.powerUps, 'powerUps');
+        this.updateOMatic(payload.enemies, 'enemies');
+        this.scores[1] = payload.scores[1];
+        this.scores[2] = payload.scores[2];
+        this.lives = payload.lives;
+    }
+    
+    updateOMatic(pending, type, otherPlayer) {
+        if (type === 'bullets' || type === 'particles') {
+            // get a list of all the bullet data coming in
+            let otherItems = this[type][otherPlayer];
+            // loop through the list and update the bullets we have
+            for (let i = 0; i < pending.length; i++) {
+                // if there is a bullet on the server at the index, but no bullet at the index of our array
+                if (otherItems[i] === undefined) {
+                    if (type === 'bullets') {
+                        otherItems.push(new Bullet({
+                            position: { x: pending[i].x, 
+                                        y: pending[i].y},
+                            owner: otherPlayer,
+                            player: this.props.player,
+                            rotation: pending[i].rotation,
+                        }));
+                    } else if (type === 'particles') {
+                        otherItems.push(new Particle({
+                            position: {
+                                x: pending[i].x,
+                                y: pending[i].y,
+                            },
+                            owner: otherPlayer,
+                            player: this.props.player,
+                            lifeSpan: pending[i].lifeSpan, 
+                            velocity: pending[i].velocity,
+                            size: pending[i].size,
+                            color: pending[i].color,
+                        }));
+                    }
+                }
+                if (otherItems.length > pending.length) otherItems.splice(pending.length);
+                else {
+                    // item exists, update its positioning
+                    otherItems[i].update(pending[i]);
+                }
+            }
+            if (otherItems.length > pending.length) otherItems.splice(pending.length);
+        } else {
+            for (let i = 0; i < pending.length; i++) {
+                if (this[type][i] === undefined) {
+                    if (type === 'enemies') {
+                        this[type].push(new Enemy(pending[i]));
+                    } else if (type === 'powerUps') {
+                        this[type].push(new PowerUp(pending[i]));
+                    }
+                } else {
+                    this[type][i].update(pending[i]);
+                }
+            }
+            if (this[type].length > pending.length) this[type].splice(pending.length);
         }
     }
     
     update() {
-        this.props.socket.emit(`keys`, { id: this.props.player, keys: this.state.keys, timestamp: Date.now() });        
         // for updating the new positions of everything
-        // pull up the canvas
         const context = this.state.context;
-        // store canvas state on the stack
         context.save();
         context.scale(this.state.screen.ratio, this.state.screen.ratio);
         // add motion trails
@@ -121,22 +206,42 @@ class Game extends Component {
         context.fillRect(0, 0, this.state.screen.width, this.state.screen.height);
         context.globalAlpha = 1;
         // remove or render
-        // this.updateObjects(this.sprites, 'sprites');
-        // this.updateObjects(this.enemies, 'enemies');
-        this.updateObjects(this.ship, 'ship');
-        // pop the top state off the stack, restore context
+        this.updateObjects(this.ship);
+        this.updateArray(this.bullets['1'], 'bullets');
+        this.updateArray(this.bullets['2'], 'bullets');
+        this.updateArray(this.bullets['3'], 'bullets');
+        this.updateArray(this.particles['1'], 'particles');
+        this.updateArray(this.particles['2'], 'particles');
+        this.updateArray(this.particles['3'], 'particles');
+        this.updateArray(this.enemies, 'enemies');
+        this.updateArray(this.powerUps, 'powerUps');
         context.restore();
-        // set up next frame 
-        // requestAnimationFrame(() => {this.update()});
+    }
+
+    updateArray(items) {
+        for(let i = 0; i < items.length; i++) {
+            if (items[i].delete) {
+                items.splice(i, 1);
+            } else {
+                items[i].render(this.state);
+            }
+        }
+    }
+
+    updateArray(items) {
+        for(let i = 0; i < items.length; i++) {
+            if (items[i].delete) {
+                items.splice(i, 1);
+            } else {
+                items[i].render(this.state);
+            }
+        }
     }
     
     updateObjects(items) {
         // go through each item of the specified group and delete them or call their render functions
         for (let key in items) {
-            if (items[key].delete) {
-                // delete the object from the field
-                delete items[key];
-            } else {
+            if (!items[key].delete) {            
                 // else call the render method 
                 items[key].render(this.state);
             }
@@ -172,39 +277,62 @@ class Game extends Component {
             id: 1,
             attr: this.props.p1_ship, 
             position: {
-                x: 50,
-                y: 50,
+                x: 350,
+                y: 225,
             }, 
             player: this.props.player,
             emitUpdate: this.emitUpdate.bind(this),
             ingame: true,
-            // create: this.createObject.bind(this), 
-            // onDie: this.gameOver.bind(this)
+            create: this.createObject.bind(this), 
         });
         let ship2 = new Ship({
             id: 2,
             attr: this.props.p2_ship,
             position: {
-                x: 75,
-                y: 75,
+                x: 375,
+                y: 225,
             }, 
             player: this.props.player,
             emitUpdate: this.emitUpdate.bind(this),
-            ingame: true
-            // create: this.createObject.bind(this),
-            // onDie: this.gameOver.bind(this)
+            ingame: true,
+            create: this.createObject.bind(this),
         });
         this.ship['1'] = ship1;
         this.ship['2'] = ship2;
 
         socket.emit(`shipGeneration`, { ship1: this.props.p1_ship, ship2: this.props.p2_ship});
-        setInterval(() => { this.update() }, 1000 / 60);   
-
-        // requestAnimationFrame(() => { this.update() });
+        this.interval = setInterval(() => { this.update() }, 1000 / 60);   
     }
     
-    createObject(item, group) {
-        this[group].push(item);
+    createObject(item, group, player) {
+        this[group][player].push(item);
+    }
+
+    playerDied(payload) {
+        this.setState({ lives: payload.lives }, () => {
+            this.ship[payload.player].destroy();
+        });
+    }
+
+    respawn(payload) {
+        this.ship[payload.owner].position = { x: 325, y: 250 };
+        this.ship[payload.owner].targetPosition = { x: 325, y: 250 };
+        this.ship[payload.owner].ingame = true;
+        this.ship[payload.owner].delete = false;
+        this.ship[payload.owner].powerUp({type: 'invincible'});
+    }
+
+    gameOver(payload) {
+        this.setState({ inGame: false });
+        this.ship[1].ingame = false;
+        this.ship[2].ingame = false;
+        // send the score to the db
+        axios.post('/scores', { user: this.props.user, score: payload.score })
+        .then(response => {
+            console.log(response);
+        }).catch(err => {
+            console.log(err);
+        });
     }
         
     render() {
@@ -223,77 +351,24 @@ class Game extends Component {
         )}
         
         return (
-            <div className="game">
-                <canvas ref="canvas"
+
+            <div>
+                {endgame}
+
+                <span className='stats'>
+                    <div className="score lives" >Lives: {this.lives}</div>
+                    <div className="score current-score" >Your Score: { this.props.player === 1 ? this.scores[1] : this.scores[2] }</div>
+                    <div className="score top-score" >Friend Score: { this.props.player === 1 ? this.scores[2] : this.scores[1] }</div>
+                    <div className="barunderscore" ></div>
+                </span>
+
+                <canvas ref="canvas" className='game canvas-multi-player'
                     width={this.state.screen.width * this.state.screen.ratio}
                     height={this.state.screen.height * this.state.screen.ratio}
-                    />
+                />
             </div>
         );
     }
 }
 
-// checkCollisionsWith(items1, items2) {
-    //     // loop through each item in one array, compare to each item in second array
-    //     let a = items1.length - 1;
-    //     let b;
-    //     for (a; a >= 0; a--) {
-        //         b = items2.length - 1;
-        //         for (b; b >= 0; b--) {
-            //             let item1 = items2[a];
-            //             let item2 = items2[b];
-            //             if (this.checkCollision(item1, item2)) {
-                //                 // destroy if a collision is detected
-                //                 item1.destroy();
-                //                 item2.destroy();
-                //             }
-                //         }
-                //     }
-                // }
-                
-                // checkCollision(obj1, obj2) {
-                    //     let vx = obj1.position.x - obj2.position.x;
-                    //     let vy = obj1.position.y - obj2.position.y;
-                    //     // pythagorean theorem formula a^2 + b^2 = c^2 
-                    //     // gets the distance between the two objects based on their separation on the horizontal and vertical planes
-                    //     let length = Math.sqrt(vx * vx + vy * vy);
-                    //     // checks against the two radiuses added together
-                    //     // example 
-                    //         // obj 1 and 2 are 10 pixels away from each other's center
-//         // if their radius's are greater than 5 pixels, a collision is registered
-//     if (length < obj1.radius + obj2.radius) {
-    //         return true;
-    //     } else {
-        //         return false;
-        //     }
-        // }
-        // generateEnemies(number) {
-            //     // generate a new enemy, quantity = the number passed into the function
-            //     let ship = this.ship[0];
-            //     for (let i = 0; i < number; i++) {
-                //         let enemy = new Enemy({
-                    //             // size: 80, 
-                    //             // give it a random position on the screen
-                    //             position: {
-                        //                 x: randomNumBetweenExcluding(0, this.state.screen.width, ship.position.x-60, ship.position.x+60), 
-                        //                 y: randomNumBetweenExcluding(0, this.state.screen.height, ship.position.y-60, ship.position.y+60),
-                        //             }, 
-                        //             create: this.createObject.bind(this),
-                        //             addScore: this.addScore.bind(this),
-                        //         });
-                        //         this.createObject(enemy, 'enemies')
-//     }
-// }
-
-// const Game = connect(mapStateToProps)(ConnectedGame);
-
-// handleResize(value, e) {
-//     this.setState({
-//         screen: {
-//             width: window.innerWidth,
-//             height: window.innerHeight - 120,
-//             ratio: window.devicePixelRatio || 1,
-//         }
-//     }); 
-// }
 export default Game;

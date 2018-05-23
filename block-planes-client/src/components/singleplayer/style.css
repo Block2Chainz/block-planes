@@ -16,26 +16,35 @@ body {
   width: 100%;
   height: 100%;
 }
-.current-score {
-  font-family: 'Orbitron';
-  left: 25%;
-}
-.lives {
-  font-family: 'Orbitron';
-  left: 75%;
-}
-.top-score {
-  font-family: 'Orbitron';
-  right: 20px;
-}
+
 .score {
   font-family: 'Orbitron';
-  display: block;
+  /* display: block; */
   position: absolute;
-  top: 15px;
+  bottom: 15px;
   z-index: 1;
   font-size: 20px;
 }
+
+.lives {
+  font-family: 'Orbitron';
+  left: 10%;
+}
+
+.current-score {
+  font-family: 'Orbitron';
+  left: 30%;
+}
+
+.top-score {
+  font-family: 'Orbitron';
+  left: 50%;
+}
+
+.stats {
+  width: 200px;
+}
+
 .controls {
   display: block;
   position: absolute;
@@ -47,6 +56,7 @@ body {
   text-align: center;
   line-height: 1.6;
 }
+
 .endgame{
   position: absolute;
   top: 50%;
@@ -56,6 +66,7 @@ body {
   z-index: 1;
   text-align: center;
 }
+
 .buttongame{
   border: 4px solid #ffffff;
   background-color: transparent;
@@ -66,6 +77,7 @@ body {
   font-family: 'PT Mono', serif;
   cursor: pointer;
 }
+
 .buttongame:hover{
   background-color: #ffffff;
   color: #000000;
@@ -73,11 +85,10 @@ body {
 
 .menuinSP {
   display: block;
-  position: absolute;
-  top: 50px;
+  position: fixed;
+  top: 10px;
   z-index: 1;
-  left: 20px;
-
+  right: 20px;
 }
 
 .titlegame {

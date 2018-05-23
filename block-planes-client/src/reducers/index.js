@@ -17,7 +17,7 @@ const initialState = {
     userAddress: '0x0',
     userPlanes: [],
     chatVisible: false,
-    selectedPlane: null,
+    selectedPlane: 1111111111111111,
     gameSocket: null,
 };
 

@@ -465,11 +465,15 @@ class SinglePlayer extends Component {
     return (
       <div>
         { endgame }
-        <span className="score current-score" >Score: {this.state.currentScore}</span>
-        <span className="score lives" >Lives: {this.state.lives}</span>
-        <span className="score top-score" >Top Score: {this.state.topScore}</span>
-        <span className="barunderscore" ></span>
-        <canvas ref="canvas" className='canvas-single-player'
+
+        <span className='stats'>
+          <div className="score lives" >Lives: {this.state.lives}</div>
+          <div className="score current-score" >Score: {this.state.currentScore}</div>
+          <div className="score top-score" >Top Score: {this.state.topScore}</div>
+          <div className="barunderscore" ></div>
+        </span>
+        
+        <canvas ref = "canvas" className = 'canvas-single-player'
           width={this.state.screen.width * this.state.screen.ratio}
           height={this.state.screen.height * this.state.screen.ratio}
         />

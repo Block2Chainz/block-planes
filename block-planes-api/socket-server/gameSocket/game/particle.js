@@ -1,4 +1,5 @@
 const Particle = function (args) {
+    this.owner = args.owner,
     this.position = args.position
     this.velocity = args.velocity
     this.radius = args.size;

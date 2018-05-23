@@ -1,190 +1,231 @@
 .login-header {
-    top: 0;
-    padding-top: 1.5%;
-    padding-left: 2%;
-    margin-top: 0px;
-    background-color: #000000;
-    height: 72px;
-    position: relative;
-    width: 100%;
-    border-bottom: 1px solid #ffffff;
-    color: #fff;
-    text-align: right;
-    padding-right: 2%;
-  }
+  top: 0;
+  padding-top: 1.5%;
+  padding-left: 2%;
+  margin-top: 0px;
+  background-color: #000000;
+  height: 72px;
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid #ffffff;
+  color: #fff;
+  text-align: right;
+  padding-right: 2%;
+}
 
-  .titlegame {
-    font-family: 'Orbitron';
-    color: white;
-    display: block;
-    position: absolute;
-    top: 10px;
-    z-index: 1;
-    left: 20px;
-  }
+.titlegame {
+  font-family: 'Orbitron';
+  color: white;
+  display: block;
+  position: absolute;
+  top: 10px;
+  z-index: 1;
+  left: 20px;
+}
 
-  .titlemenu {
-    font-family: 'Orbitron';
-    color: white;
-    float: left;
-  }
+.titlemenu {
+  font-family: 'Orbitron';  
+  color: white;
+  float: right;
+}
 
-  .menuitem {
-    font-family: 'Orbitron';
-    color: white;
-      text-align: left;
-      border-bottom: 1px solid #ffffff;
-      padding-top: 14% !important;
-      padding-bottom: 14% !important;
-  }
-  
-  .create-account {
-    padding-top: 20px;
-    padding-bottom: 1%;
-    margin-left: 20%;
+.menuitem {
+  font-family: 'Orbitron';
+  font-size: 12px;
+  color: white;
+  text-align: left;
+  border-bottom: 1px solid #ffffff;
+  padding-top: 14% !important;
+  padding-bottom: 14% !important;
+}
 
-  }
-  
-  .new-username-password {
-    padding-top: 20px;
-  }
-  
-  .agree-terms {
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-  
-  .left-side-Login {
-    margin-top: 5%;
-    margin-right: auto!important;
-    position: relative;
-    display: block;
-    width: 100px;
-  }
-  
-  .left-picture {
-    margin-right: 18%;
-    padding-top: 5%;
-    }
-  
-  .splash {
-    font-size: 300%;
-  }
-  
-  .info {
-    margin-right: 20%;
-  }
+.menuitem:hover {
+  background-color: grey !important;
+  color: black !important;
+}
 
-  .about1 {
-    font-family: 'Orbitron';
+.create-account {
+  padding-top: 20px;
+  padding-bottom: 1%;
+  margin-left: 20%;
+}
 
-    margin-left: 5%;
-      color: #fff;
-      background-color: #000000;
-      font-size: 300%;
-  }
+.new-username-password {
+  padding-top: 20px;
+}
 
-  .about2 {
-    font-family: 'Orbitron';
+.agree-terms {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 
-    margin-left: 20%;
-      color: #fff;
-      background-color: #000000;
-      font-size: 300%;
-  }
+.left-side-Login {
+  margin-top: 5%;
+  margin-right: auto!important;
+  position: relative;
+  display: block;
+  width: 100px;
+}
 
-  .about3 {
-    font-family: 'Orbitron';
+.left-picture {
+  margin-right: 18%;
+  padding-top: 5%;
+}
 
-    margin-left: 35%;
-      color: #fff;
-      background-color: #000000;
-      font-size: 300%;
-      margin-bottom: 15%;
-  }
+.splash {
+  font-size: 300%;
+}
 
-  .about4 {
-    font-family: 'Orbitron';
+.info {
+  margin-right: 20%;
+}
 
-    margin-left: 20%;
-      color: #fff;
-      background-color: #000000;
-      margin-bottom: 5%;
-  }
+.about1 {
+  font-family: 'Orbitron';
+  margin-left: 5%;
+  color: #fff;
+  background-color: #000000;
+  font-size: 300%;
+}
 
-  .signUpButton {
-      background-color: #fff;
-      color: #000000;
-  }
+.about2 {
+  font-family: 'Orbitron';
+  margin-left: 20%;
+  color: #fff;
+  background-color: #000000;
+  font-size: 300%;
+}
 
-  .blurb {
-    font-family: 'Orbitron';
+.about3 {
+  font-family: 'Orbitron';
+  margin-left: 35%;
+  color: #fff;
+  background-color: #000000;
+  font-size: 300%;
+  margin-bottom: 15%;
+}
 
-      font-size: 16px;
-      margin-top: 15%;
-      color: #fff;
-      background-color: #000000;
-  }
+.about4 {
+  font-family: 'Orbitron';
+  margin-left: 20%;
+  color: #fff;
+  background-color: #000000;
+  margin-bottom: 5%;
+}
 
-  .headbutt {
-      margin-right: 10%;
-  }
+.signUpButton {
+  background-color: #fff;
+  color: #000000;
+}
 
-  .userheader {
-    padding-top: 5%;
-    font-family: 'Orbitron';
-    color: white;
-      font-size: 100%;
-      text-align: left;
-  }
+.blurb {
+  font-family: 'Orbitron';
+  font-size: 16px;
+  margin-top: 15%;
+  color: #fff;
+  background-color: #000000;
+}
 
-  .secondhalf {
-    top: 0;
-    padding-top: 1.5%;
-    padding-left: 2%;
-    margin-top: 0px;
-    background-color: #000000;
-    height: 72px;
-    position: relative;
-    width: 100%;
-    border-bottom: 1px solid #ffffff;
-    color: #fff;
-    text-align: center;
-    padding-right: 2%;
-  }
+.headbutt {
+  margin-right: 10%;
+}
 
-  .secondhalftext {
-    font-family: 'Orbitron';
+.userheader {
+  padding-top: 5%;
+  font-family: 'Orbitron';
+  color: white;
+  font-size: 100%;
+  text-align: left;
+}
 
-    margin-left: 32%;
-      color: #fff;
-      background-color: #000000;
-      font-size: 60px;
-  }
+.secondhalf {
+  top: 0;
+  padding-top: 1.5%;
+  padding-left: 2%;
+  margin-top: 0px;
+  background-color: #000000;
+  height: 72px;
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid #ffffff;
+  color: #fff;
+  text-align: center;
+  padding-right: 2%;
+}
 
-  .mid-picture2 {
-    margin-left: 35%;
-  }
+.secondhalftext {
+  font-family: 'Orbitron';
+  margin: 0 auto;
+  color: #fff;
+  background-color: #000000;
+  font-size: 60px;
+}
 
-  .secondhalfpara {
-    font-family: 'Courier';
-    font-size: 120%;
-    padding-top: 1%;
-      color: #fff;
-      background-color: #000000;
-  }
+.mid-picture2 {
+  margin-left: 35%;
+}
 
-  .secondhalfpara2 {
-    text-align: center;
-    margin-left: 13%;
-    padding-top: 1%;
-    padding-bottom: 1%;
-  }
+.secondhalfpara {
+  font-family: 'Courier';
+  font-size: 120%;
+  padding-top: 1%;
+  color: #fff;
+  text-align: center;
+  background-color: #000000;
+  margin: 0 auto;
+}
 
-  .signupbuttonhome {
-    margin-left: 45%;
-    padding-bottom: 5%;
-    margin-bottom: 5%;
+.secondhalfpara2 {
+  text-align: center;
+  margin: 0 auto;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.signupbuttonhome {
+  margin-left: 45%;
+  padding-bottom: 5%;
+  margin-bottom: 5%;
+}
+
+.thirdline {
+  top: 0;
+  padding-top: 1.5%;
+  padding-left: 2%;
+  margin-top: 0px;
+  background-color: #000000;
+  height: 72px;
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid #ffffff;
+  color: #fff;
+  text-align: center;
+  padding-right: 2%;
+}
+
+.thirdtext {
+  font-family: 'Orbitron';
+  text-align: center;
+  color: #fff;
+  background-color: #000000;
+  font-size: 60px;
+  padding-top: 1.5%;
+  padding-left: 2%;
+  padding-right: 2%;
+  margin-top: 0px;
+  height: auto;
+  position: relative;
+  margin: 0 auto;
+}
+
+.thirdpara {
+  font-family: 'Courier';
+  font-size: 110%;
+  /* padding-top: 1%; */
+  text-align: center;
+  color: #fff;
+  margin: 0 auto;
+  background-color: #000000;
 }
 
 .logbutton {
@@ -196,8 +237,32 @@
 .homebg {
   background-color: black;
   border: 0px;
+  /* position: relative; */
 }
 
 .topofsite {
   border-bottom: 1px solid #ffffff !important;
+}
+
+.homeSection {
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute;
+}
+
+
+.firstportion {
+  top: 0%;
+}
+
+.secondportion {
+  top: 100%;
+}
+
+.thirdportion {
+  top: 200%;
+}
+
+.fourthportion {
+  top: 300%;
 }
