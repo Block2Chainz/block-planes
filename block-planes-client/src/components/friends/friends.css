@@ -53,10 +53,6 @@ html, body {
   margin-bottom: 15px !important;
 }
 
-/* .borderfriends {
-  border-bottom: 1px solid #ffffff;
-} */
-
 .text1 {
   color: #fff;
   font-family: 'Orbitron';
@@ -163,4 +159,14 @@ margin-left: 3%;
   display: flex;
   justify-content: center;
   width: 100%;
+}
+
+.hangar-profile {
+  padding-top: 3%;
+  font-family: 'Orbitron';
+  /* margin-left: 40%; */
+  margin: auto;
+  text-align: center;
+  font-size: 400%;
+  color: #fff;
 }

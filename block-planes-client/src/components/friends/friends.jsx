@@ -368,7 +368,7 @@ class ConnectedFriends extends Component {
                   <p className='friend-profile-score'>0</p>
                 </Grid.Column>
               </Grid.Row>
-                <p className='hangar'>Hangar</p>
+                <p className='hangar-profile'>Hangar</p>
               <Grid.Row>
                 <Hangar friend={this.state.friendId} />
               </Grid.Row>
