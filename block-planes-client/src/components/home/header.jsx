@@ -131,8 +131,9 @@ class ConnectedHeader extends Component {
         label: 'Accept',
         callback: () => {
           this.props.history.push({
-            pathname: '/game',
-            state: { roomId: notificationObj.roomId }
+            pathname: `/waitingRoom`,
+            state: {  roomId: notificationObj.roomId,
+                      player: 2 }
           })
         }
       }

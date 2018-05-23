@@ -17,6 +17,9 @@ const World = function () {
     this.lives = 10;
     this.scores = { 1: 0, 2: 0 };
     
+    this.width = 1700;
+    this.height = 1200;
+    
     this.enemyCount = 1;
     this.enemies = [];
     this.enemyBullets = [];
@@ -32,8 +35,8 @@ World.prototype.connect = function (player, shipAttributes) {
     this.peers[player] = new Ship(shipAttributes, this);
     this.peers[player].id = player;
     // Set peer's initial position
-    this.peers[player].position.x = player === 1 ? 350 : 375;
-    this.peers[player].position.y = 225;
+    this.peers[player].position.x = player === 1 ? 750 : 800;
+    this.peers[player].position.y = 600;
     checkCollisionsWith = checkCollisionsWith.bind(this);
     // this.powerUpCountdown();
 };
@@ -110,10 +113,10 @@ World.prototype.update = function (io, room) {
 
 World.prototype.generateEnemies = function () {
     for (let i = 0; i < this.enemyCount; i++) {
-        this.enemies.push(new Enemy({ type: 'normal' }, this));
+        this.enemies.push(new Enemy({ type: 'blast' }, this));
+        this.enemies.push(new Enemy({ type: 'master' }, this));
     }
-    this.enemies.push(new Enemy({ type: 'blast' }, this));
-    this.enemies.push(new Enemy({ type: 'master' }, this));
+    this.enemies.push(new Enemy({ type: 'normal' }, this));
 };
 // Check whether this input seems to be valid (e.g. "make sense" according
 // to the physical rules of the World) simply return true for now
@@ -282,15 +285,11 @@ World.prototype.powerUpCountdown = function () {
 World.prototype.respawnTimer = function (owner, socket, room) {
     setTimeout(() => {
         this.peers[owner].delete = false;
-        this.peers[owner].postition = { x: 325, y: 250 };
+        this.peers[owner].postition = { x: 750, y: 600 };
         this.peers[owner].powerUp({type: 'invincible'});
         socket.in(room).emit('player_respawn', {
             owner, 
-            position: {
-                x: 0, 
-                y: 0,
-            }, 
-        })
+            position: { x: 750, y: 600, }, })
     }, 3000);
 };
 

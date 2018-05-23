@@ -47,20 +47,20 @@ class ConnectedWaitingRoom extends Component {
         //     roomId = 'abc';
         //     // randomstring.generate();
         // }
-        let player = this.props.user  === 1 ? 2 : 1;
+        let player = this.props.location.state.player;
         let roomId = this.props.location.state.roomId;
         let socket = io.connect('http://localhost:2345', {
             query: {
                 // if there is no room in props, we created the game, so we will use the random room string
                 roomId,
                 // if there is no room in props, we created the game, so we will be player 1 
-                player: player,
+                player,
                 ship: this.props.ship,
             }
         });
         // save the socket connection and the room in state
         // this.props.saveSocket(socket);
-        this.setState({ socket, roomId, player }, () => console.log('state updated'));
+        this.setState({ socket, roomId, player }, () => console.log('state updated', this.props.location.state));
         //send notification
     }
 
@@ -81,6 +81,7 @@ class ConnectedWaitingRoom extends Component {
             }
         });
         socket.on('connected', payload => {
+            console.log('connected, payload', payload);
             if (this.state.player !== parseInt(payload.player)) {
                 this.enableButton();
             }

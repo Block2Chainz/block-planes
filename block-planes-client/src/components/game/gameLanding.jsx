@@ -105,7 +105,7 @@ class ConnectedGameLanding extends Component {
 
         {
           this.state.play ?
-            <Redirect to={{pathname: "/waitingRoom", state: {roomId: this.state.roomId}}} /> :
+            <Redirect to={{pathname: "/waitingRoom", state: {roomId: this.state.roomId, player: 1}}} /> :
             <div></div>
         }
       </Grid>
