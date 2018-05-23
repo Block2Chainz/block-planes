@@ -27,7 +27,7 @@ const Main = (props) => (
           <Route path='/profile' render={() => (sessionStorage.getItem('jwtToken') ? (<Profile  />) : (<Redirect to={{ pathname: '/login' }} />) )} />
           <Route path='/friends' render={() => (sessionStorage.getItem('jwtToken') ? (<Friends  toggleMenu={props.toggleMenu}/>) : (<Redirect to={{ pathname: '/login' }} />))} />
           <Route path='/chat' render={() => (sessionStorage.getItem('jwtToken') ? (<Chat  />) : (<Redirect to={{ pathname: '/login' }} />) )} />
-          <Route path='/game/:roomId' render={() => (sessionStorage.getItem('jwtToken') ? (<Game />) : (<Redirect to={{ pathname: '/login' }} />))} />
+          {/* <Route path='/game/:roomId' render={() => (sessionStorage.getItem('jwtToken') ? (<Game />) : (<Redirect to={{ pathname: '/login' }} />))} /> */}
           <Route path='/marketplace' render={() => (sessionStorage.getItem('jwtToken') ? (<Marketplace />) : (<Redirect to={{ pathname: '/login' }} />))} />
           <Route path='/leaderboard' render={() => (sessionStorage.getItem('jwtToken') ? (<Leaderboard />) : (<Redirect to={{ pathname: '/login' }} />))} />
           <Route path='/game' render={() => (sessionStorage.getItem('jwtToken') ? (<GameLanding />) : (<Redirect to={{ pathname: '/login' }} />))} /> 

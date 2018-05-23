@@ -24,8 +24,8 @@ class Game extends Component {
         super(props);
         this.state = {
             screen: {
-                width: 750,
-                height: 500,
+                width: 1700,
+                height: 1200,
                 ratio: window.devicePixelRadio || 1
             },
             keys: {
