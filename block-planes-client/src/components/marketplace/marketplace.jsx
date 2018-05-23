@@ -177,25 +177,33 @@ class Marketplace extends Component {
             <div className='single-plane'>
             <Plane key={plane[0]} plane={plane} />
             <div className='plane-menu-sell'>
-                <div className='plane-stats-div'>
-                  <p className='plane-stats'>Speed: # <br/>Inertia: #<br/>Firing Rate: # </p>              
-                </div>
+              <div className='plane-stats-div'>
+                <p className='plane-stats'>Speed: # <br/>Inertia: #<br/>Firing Rate: # </p>              
+              </div>
               <div className='menu-sell-form'>
                 {(plane[2] === true) ? 
-                  <div className='posted-price-div'><label className='label-listed-price'>Listed Price: {parseInt(plane[3]) / 1000000000000000000}</label><img className='eth-symbol' src='https://openclipart.org/image/300px/svg_to_png/294014/ethereum-classic-logo.png'></img></div> 
-                  : <div className='posted-price-div-null'><label className='label-listed-price'></label></div>  
+                  <div className='posted-price-div'>
+                    <label className='label-listed-price'>Listed Price: {parseInt(plane[3]) / 1000000000000000000}</label>
+                    <img className='eth-symbol' src='https://openclipart.org/image/300px/svg_to_png/294014/ethereum-classic-logo.png'></img>
+                  </div> :
+                  <div className='posted-price-div-null'>
+                    <label className='label-listed-price'></label>
+                    <br/>
+                  </div>  
                 }
-                <form  className='form-sell' onSubmit={(e) => this.sellPlane(e, plane)}>
-                  <div className='sell-input-div'>
-                    <input type='text' name='price' className='sell-input' placeholder='Price for Sale'/>
-                  </div>
-                  <div className='sell-buttons-div'>
-                  <button className='sell-button'>{buttonLabel}</button>
-                    {(plane[2] === true) ?
-                      <button type='button' className='sell-button' onClick={(e) => this.unlistPlane(plane)}>Unlist</button> : null
-                    }
-                  </div>
-                </form>
+                <div className='form-div'>
+                  <form  className='form-sell' onSubmit={(e) => this.sellPlane(e, plane)}>
+                    <div className='sell-input-div'>
+                      <input type='text' name='price' className='sell-input' placeholder='Price for Sale'/>
+                    </div>
+                    <div className='sell-buttons-div'>
+                      <button className='sell-button'>{buttonLabel}</button>
+                      {(plane[2] === true) ?
+                        <button type='button' className='sell-button' onClick={(e) => this.unlistPlane(plane)}>Unlist</button> : null
+                      }
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
             </div>
@@ -212,6 +220,7 @@ class Marketplace extends Component {
               <div className='plane-stats-div'>
                   <p className='plane-stats'>Speed: # <br/>Inertia: #<br/>Firing Rate: # </p>              
               </div>
+              <br/>
               <div className='menu-form'>
                 <form onSubmit={(e) => this.buyPlane(e, plane)} className='buy-form'>
                   <div className='price-div'>

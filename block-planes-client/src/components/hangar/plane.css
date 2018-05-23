@@ -35,3 +35,7 @@
   animation: border-pulsate 750ms infinite;
 }
 
+canvas {
+  max-width: 100% !important;
+  max-height: 100% !important;
+}
