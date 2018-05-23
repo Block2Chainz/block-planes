@@ -48,6 +48,7 @@ class ConnectedHangar extends Component {
     // this.props.deselectPlane();
     // checks if a friend ID was passed in as props
     if (this.props.friend) {
+      console.log(this.props.friends);
       // if so - fetches that user's planes and renders
       this.user = this.props.friend;
       this.fetchPlanes();

@@ -371,21 +371,54 @@ class ConnectedFriends extends Component {
             <Grid.Row >
             </Grid.Row>
 
-            <Grid.Row > <Button className='ui inverted button' size='small' onClick={this.toggleRequests} >Requests</Button>
-              <p className='text1' >Select a Friend: </p>
-              <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
-              <p className='text2'>Or Search Users: </p>
-              <SearchUsers  updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
-            </Grid.Row>
+              <Grid.Row>
+              </Grid.Row>
 
-            <Grid.Row className='borderfriends'>
-            </Grid.Row>
+              <Grid.Row className='userrow'>
+                <div className='profilepic' >
+                  <Image src={this.state.profilePicture} size='medium' rounded />
+                  <p className='joined'>Joined: {Moment(this.state.createdAt).format('MMMM Do YYYY')}</p>
+                </div>
 
-            <div>
-              <div className='inner'>
-                <RequestList id={this.props.userId} requests={this.state.requests} fetchRequests={this.fetchRequests} />
-              </div>
-            </div>
+                <Grid.Column width={6} >
+                  <p className='username2'>{this.state.username}</p>
+                </Grid.Column >
+
+                
+                <Grid.Column>
+                  <p className='score2'>Total Score</p>
+                </Grid.Column>
+                <Grid.Column>
+                  <p className='score2'>{this.state.totalPoints}</p>
+                  <p className='score2'>High Score</p>
+                  <p className='score2'>0</p>
+                </Grid.Column>
+              </Grid.Row>
+                    <p className='hangar'>Hangar</p>
+              <Grid.Row>
+                <Hangar friend={this.state.friendId} />
+              </Grid.Row>
+            </Grid>
+          </div>
+        );
+      } else if (this.state.isRequestPage === true && this.state.requests.length) {
+        return (
+          <div >
+          <NotificationSystem ref="notificationSystem" />
+        <Grid>
+              <Grid.Row >
+          </Grid.Row>
+          <Grid.Row > <Button className='ui inverted button' size='small' onClick={this.toggleRequests} >Requests</Button>
+          <p className='text1' >Select a Friend: </p>
+          <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
+          <p className='text2'>Or Search Users: </p>
+            <SearchUsers  updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
+          </Grid.Row>
+          <div>
+          <div className='inner'>
+                 <RequestList id={this.props.userId} requests={this.state.requests} fetchRequests={this.fetchRequests} />
+                 </div>
+                 </div>
           </Grid>
         </div>
       );
