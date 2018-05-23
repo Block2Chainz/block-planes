@@ -18,6 +18,8 @@ const pullData = new CronJob ( '10 * * * * *', function() {
 
 const queryDb = () => {
   db.query('SELECT username, id, profile_picture FROM users', (err, data) => {
+    client.del('leaderboardHi');
+    client.del('leaderboardTotal');
     for (let i = 0; i < data.length; i++) {
       client.zadd('leaderboardHi', data[i].id, data[i].username + '___' + data[i].profile_picture);
       client.zadd('leaderboardTotal', data[i].id, data[i].username + '___' + data[i].profile_picture);
