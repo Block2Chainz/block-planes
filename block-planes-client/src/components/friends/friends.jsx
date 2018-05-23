@@ -336,28 +336,6 @@ class ConnectedFriends extends Component {
               <Hangar friend={this.state.friendId} />
             </Grid.Row>
           </Grid>
-<<<<<<< HEAD
-          </div>
-        );
-      } else if (this.state.isRequestPage === true && this.state.requests.length) {
-        return (
-          <div >
-          <NotificationSystem ref="notificationSystem" />
-        <Grid>
-              <Grid.Row >
-          </Grid.Row>
-          <Grid.Row > <Button className='ui inverted button' size='small' onClick={this.toggleRequests} >Requests</Button>
-          <p className='text1' >Select a Friend: </p>
-          <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
-          <p className='text2'>Or Search Users: </p>
-            <SearchUsers  updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
-          </Grid.Row>
-          <div>
-          <div className='inner'>
-                 <RequestList id={this.props.userId} requests={this.state.requests} fetchRequests={this.fetchRequests} />
-                 </div>
-                 </div>
-=======
         </div>
       );
     } else if (this.state.isRequestPage === true && this.state.requests.length) {
@@ -383,7 +361,6 @@ class ConnectedFriends extends Component {
                 <RequestList id={this.props.userId} requests={this.state.requests} fetchRequests={this.fetchRequests} />
               </div>
             </div>
->>>>>>> waiting room bug fixed
           </Grid>
         </div>
       );
@@ -420,18 +397,6 @@ class ConnectedFriends extends Component {
         <div>
           <NotificationSystem ref="notificationSystem" />
           <div >
-<<<<<<< HEAD
-          <Grid >
-       <Grid.Row >
-          </Grid.Row>
-          <Grid.Row > <Button className='ui inverted button' size='small' onClick={this.toggleRequests} >Requests</Button><p className='text1' >Select a Friend: </p>
-          <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
-          <p className='text2'>Or Search Users: </p>
-            <SearchUsers  updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
-          </Grid.Row>
-        </Grid>
-        </div>
-=======
             <Grid >
               <Grid.Row >
               </Grid.Row>
@@ -446,7 +411,6 @@ class ConnectedFriends extends Component {
               </Grid.Row>
             </Grid>
           </div>
->>>>>>> waiting room bug fixed
         </div>
       );
     }
