@@ -225,7 +225,7 @@ class ConnectedSinglePlayer extends Component {
 
   makeShip() {
     let ship = new Ship({
-      attr: this.props.ship || 2222222222222222,
+      attr: this.props.ship || 50000071117,
       position: {
         x: this.state.screen.width/2,
         y: this.state.screen.height/2
