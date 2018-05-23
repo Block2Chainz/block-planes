@@ -35,7 +35,7 @@ World.prototype.connect = function (player, shipAttributes) {
     this.peers[player].position.x = player === 1 ? 350 : 375;
     this.peers[player].position.y = 225;
     checkCollisionsWith = checkCollisionsWith.bind(this);
-    this.powerUpCountdown();
+    // this.powerUpCountdown();
 };
 
 World.prototype.createObject = function (type, obj) {
@@ -276,7 +276,6 @@ World.prototype.generatePowerUp = function () {
 World.prototype.powerUpCountdown = function () {
     let randomNumber = randomNumBetween(10000, 20000)
     setTimeout(() => {
-        console.log('**********GENERATING POWERUP*********')
         this.generatePowerUp();
     }, randomNumber);
 };

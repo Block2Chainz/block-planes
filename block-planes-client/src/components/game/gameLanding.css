@@ -1,13 +1,22 @@
-.landing-title {
-    /* padding-top: 1.5%; */
+.landingPage {
+    text-align: center;
+    margin: 0 auto;
+    color: #fff;
+    font-family: 'Orbitron';
+    top: 0;
+    padding-top: 1.5%;
     padding-left: 2%;
-    background-color: #000000;
+    padding-right: 2%;
+    margin-top: 0px;
     position: relative;
     width: 100%;
     border-bottom: 1px solid #ffffff;
-    color: #fff;
+}
+
+.landing {
     text-align: center;
-    padding-right: 2%;
+    margin: 0 auto;
+    color: #fff;
     font-family: 'Orbitron';
 }
 
@@ -32,4 +41,22 @@
   font-size: 400%;
   color: #fff;
   padding-top: 10px !important;
+    top: 0;
+    padding-top: 1.5%;
+    padding-left: 2%;
+    padding-right: 2%;
+    margin-top: 0px;
+    position: relative;
+    width: 100%;
+    border-bottom: 1px solid #ffffff;
+}
+
+.joinGameButton {
+    display: block;
+    position: fixed;
+    top: 40px;
+    z-index: 1;
+    right: 20px;
+    background-clip: red;
+    color: red;
 }

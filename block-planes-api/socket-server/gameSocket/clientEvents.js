@@ -26,6 +26,7 @@ const clientp1Ready = ({ io, client, room, player }, { ship }) => {
     console.log('p1_ready heard', room, 'payload.ship: ', ship);
     if (room.world) {
         room.world.connect(1, ship);
+        room.world.powerUpCountdown();
     } else {
         room.world = new World();
         room.world.connect(1, ship);
@@ -37,6 +38,7 @@ const clientp2Ready = ({ io, client, room, player}, { ship }) => {
     console.log('p2_ready heard', room, 'payload.ship: ', ship);
     if (room.world) {
         room.world.connect(2, ship);
+        room.world.powerUpCountdown();
     } else {
         room.world = new World();
         room.world.connect(2, ship);
@@ -72,7 +74,6 @@ const clientShipGeneration = ({ io, client, room, player }, payload) => {
 
 const clientDisconnect = ({ io, client, room, player }) => {
     console.log('Client has disconnected');
-    // Remove client from server 
     clearInterval(room.timer);
     client.disconnect(true);
 }

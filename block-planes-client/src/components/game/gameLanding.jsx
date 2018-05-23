@@ -62,8 +62,8 @@ class ConnectedGameLanding extends Component {
     }
   }
 
-  selectFriend(friendId) {
-    this.setState({ selectedFriend: friendId })
+  selectFriend(friendId, friendName) {
+    this.setState({ selectedFriend: friendId, friendName: friendName })
   }
 
   joinGame() {
@@ -77,53 +77,40 @@ class ConnectedGameLanding extends Component {
     this.setState({ play: true, roomId: roomId });
   }
 
-    render() {
-        return (
-            <Grid>
-                <Grid.Row>
-                </Grid.Row>
+  render() {
+    return (
+      <Grid >
+        <Grid.Row>
+        </Grid.Row>
 
-                <Grid.Row className='landing-title'>
-                    <Grid.Column width={16}>
-                        <p className='hangar'>Hangar</p>
-                        <h3> Select a Plane </h3>
-                        <Hangar />
-                    </Grid.Column>
-                </Grid.Row>
+        <span className='landingPage'> Select a Plane </span>
+        <Hangar />
 
-                { typeof(this.props.selectedPlane) !== 'number' ?
-                    <div></div> : 
-                    
-                    <Grid.Row className='landing-challenge'>
-                        <Grid.Column width={8}> 
-                            <h3>Join Random</h3>
-                        </Grid.Column>
+        {typeof (this.props.selectedPlane) !== 'number' ?
+          <div></div> :
+          <Grid.Row className='landing'>
+              <h3>Select a Friend</h3>
+              <Friends gameLanding={true} selectFriend={this.selectFriend.bind(this)} />
+          </Grid.Row>
+        }
 
-                        <Grid.Column width={8}>
-                            <h3>Challenge Friend</h3>
-                            <Friends selectFriend={this.selectFriend.bind(this)}/>
-                        </Grid.Column>
-                    </Grid.Row>
-                }
+        {this.state.selectedFriend ?
+          <Grid.Row className='landing'>
+              <Button className='joinGameButton' onClick={() => this.joinGame()}>
+                Invite {this.state.friendName} to Play a Game
+              </Button>
+          </Grid.Row> :
+          <div></div>
+        }
 
-                { this.state.selectedFriend ? 
-                    <Grid.Row className='landing'>
-                        <Grid.Column width={8}>
-                            <Button onClick={() => this.joinGame()}>
-                            </Button>
-                        </Grid.Column>
-                    </Grid.Row>    :
-                    <div></div>
-                }
-
-                {
-                    this.state.play ? 
-                    <Redirect to="/waitingRoom" params={{ friend: this.state.selectedFriend }} />:
-                    <div></div>
-                }
-            </Grid>
-        )
-    }
+        {
+          this.state.play ?
+            <Redirect to="/waitingRoom" roomId={this.state.roomId} /> :
+            <div></div>
+        }
+      </Grid>
+    )
+  }
 }
 
 const GameLanding = connect(mapStateToProps, mapDispatchToProps)(ConnectedGameLanding);

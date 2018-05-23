@@ -84,16 +84,16 @@ class ConnectedFriends extends Component {
         }
       }
     });
-}
+  }
 
-ownFriendRequestSentNotification(event, notificationObj) {
-  let component = this;
-  event.preventDefault();
-  component.notificationSystem.addNotification({
-    title: 'Friend Request sent to ' + notificationObj.recipientUsername + '!',
-    level: 'info'
-  });
-}
+  ownFriendRequestSentNotification(event, notificationObj) {
+    let component = this;
+    event.preventDefault();
+    component.notificationSystem.addNotification({
+      title: 'Friend Request sent to ' + notificationObj.recipientUsername + '!',
+      level: 'info'
+    });
+  }
 
   updateFriendsPage(user) {
     if (!user) {
@@ -133,7 +133,7 @@ ownFriendRequestSentNotification(event, notificationObj) {
       } else {
         this.setState({ friendState: '' });
         if (this.props.selectFriend) {
-          this.props.selectFriend(this.state.friendId);
+          this.props.selectFriend(this.state.friendId, this.state.username);
         }
       }
     })
@@ -237,49 +237,106 @@ ownFriendRequestSentNotification(event, notificationObj) {
     });
   }
 
-    render() {
-      if (this.state.friendId) {
-        return (
-          <div >
+  render() {
+    if (this.props.gameLanding && !this.state.friendId) {
+      return (
+        <div >
           <NotificationSystem ref="notificationSystem" />
-            <Grid>
-              <Grid.Row >
-          </Grid.Row>
-          <Grid.Row > <Button className='ui inverted button' size='small' onClick={this.toggleRequests} >Requests</Button><p className='text1' >Select a Friend: </p>
-          <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
-          <p className='text2'>Or Search Users: </p>
-            <SearchUsers updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
-            <div className='addfriendbutton'>
-            <AddFriendButton className='addfriendbutton' friendState={this.state.friendState} addFriend={this.addFriend} />
-            <DeleteFriendButton className='deletefriendbutton' friendState={this.state.friendState} deleteFriend={this.deleteFriend} />
-            </div>
-          </Grid.Row>
+          <Grid>
+            <Grid.Row >
+            </Grid.Row>
+
+            <Grid.Row > 
+              <p className='text1' >Select a Friend: </p>
+              <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)} />
+            </Grid.Row>
+
+            <Grid.Row className='borderfriends'>
+            </Grid.Row>
+          </Grid>
+        </div>
+      );
+    } else if (this.props.gameLanding && this.state.friendId) {
+      return (
+        <div >
+          <NotificationSystem ref="notificationSystem" />
+          <Grid>
+            <Grid.Row >
+            </Grid.Row>
+
+            <Grid.Row >
+              <p className='text1' >Select a Friend: </p>
+              <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)} />
+            </Grid.Row>
+
+            <Grid.Row className='borderfriends'>
+            </Grid.Row>
+
+            <Grid.Row className='userrow'>
+              <div className='profilepic' >
+                <Image width='75px' src={this.state.profilePicture} size='medium' rounded />
+                <p className='joined'>Joined: {Moment(this.state.createdAt).format('MMMM Do YYYY')}</p>
+              </div>
+
+              <Grid.Column width={5} >
+                <p className='username2'>{this.state.username}</p>
+              </Grid.Column >
+
+              <Grid.Column width={5} >
+                <p className='score2'>Total Score</p>
+                <p className='score2'>{this.state.totalPoints}</p>
+                <p className='score2'>High Score</p>
+                <p className='score2'>0</p>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </div>
+      );
+    } else if (this.state.friendId) {
+      return (
+        <div >
+        <NotificationSystem ref="notificationSystem" />
+          <Grid>
+            <Grid.Row >
+            </Grid.Row>
+
+            <Grid.Row > <Button className='ui inverted button' size='small' onClick={this.toggleRequests} >Requests</Button><p className='text1' >Select a Friend: </p>
+              <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
+              <p className='text2'>Or Search Users: </p>
+              <SearchUsers updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
+              <div className='addfriendbutton'>
+                <AddFriendButton className='addfriendbutton' friendState={this.state.friendState} addFriend={this.addFriend} />
+                <DeleteFriendButton className='deletefriendbutton' friendState={this.state.friendState} deleteFriend={this.deleteFriend} />
+              </div>
+            </Grid.Row>
 
             <Grid.Row>
             </Grid.Row>
 
             <Grid.Row className='userrow'>
               <div className='profilepic' >
-              <Image src={this.state.profilePicture} size='medium' rounded />
-              <p className='joined'>Joined: {Moment(this.state.createdAt).format('MMMM Do YYYY')}</p>
+                <Image src={this.state.profilePicture} size='medium' rounded />
+                <p className='joined'>Joined: {Moment(this.state.createdAt).format('MMMM Do YYYY')}</p>
               </div>
 
               <Grid.Column width={6} >
-              <p className='username2'>{this.state.username}</p>
+                <p className='username2'>{this.state.username}</p>
               </Grid.Column >
 
               <Grid.Column width={6} >
-              <p className='score2'>Total Score</p>
+                <p className='score2'>Total Score</p>
                 <p className='score2'>{this.state.totalPoints}</p>
                 <p className='score2'>High Score</p>
                 <p className='score2'>0</p>
-          </Grid.Column>
-                </Grid.Row>
-                <p className='hangar'>Hangar</p>
-                <Grid.Row>
-            <Hangar friend={this.state.friendId} />
-          </Grid.Row>
+              </Grid.Column>
+            </Grid.Row>
+            <p className='hangar'>Hangar</p>
+
+            <Grid.Row>
+              <Hangar friend={this.state.friendId} />
+            </Grid.Row>
           </Grid>
+<<<<<<< HEAD
           </div>
         );
       } else if (this.state.isRequestPage === true && this.state.requests.length) {
@@ -300,39 +357,70 @@ ownFriendRequestSentNotification(event, notificationObj) {
                  <RequestList id={this.props.userId} requests={this.state.requests} fetchRequests={this.fetchRequests} />
                  </div>
                  </div>
+=======
+        </div>
+      );
+    } else if (this.state.isRequestPage === true && this.state.requests.length) {
+      return (
+        <div >
+        <NotificationSystem ref="notificationSystem" />
+          <Grid>
+            <Grid.Row >
+            </Grid.Row>
+
+            <Grid.Row > <Button className='ui inverted button' size='small' onClick={this.toggleRequests} >Requests</Button>
+              <p className='text1' >Select a Friend: </p>
+              <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
+              <p className='text2'>Or Search Users: </p>
+              <SearchUsers  updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
+            </Grid.Row>
+
+            <Grid.Row className='borderfriends'>
+            </Grid.Row>
+
+            <div>
+              <div className='inner'>
+                <RequestList id={this.props.userId} requests={this.state.requests} fetchRequests={this.fetchRequests} />
+              </div>
+            </div>
+>>>>>>> waiting room bug fixed
           </Grid>
-          </div>
+        </div>
       );
     } else if (this.state.isRequestPage === true) {
       return (
         <div>
-        <NotificationSystem ref="notificationSystem" />
-        <div >
-        <Grid>
-              <Grid.Row >
-          </Grid.Row>
-          <Grid.Row > <Button className='ui inverted button' size='small' onClick={this.toggleRequests} >Requests</Button>
-          <p className='text1' >Select a Friend: </p>
-          <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
-          <p className='text2'>Or Search Users: </p>
-            <SearchUsers updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
-          </Grid.Row>
-          <Grid.Row className='borderfriends'>
-          </Grid.Row>
-          <Grid.Row >
-          <div className='norequests'>
-          <span>You have no new friend requests.</span>
-                 </div>
-                 </Grid.Row>
-          </Grid>
-          </div>
-          </div>
-      );
-      } else {
-        return (
-          <div>
           <NotificationSystem ref="notificationSystem" />
           <div >
+            <Grid>
+              <Grid.Row >
+              </Grid.Row>
+
+              <Grid.Row > <Button className='ui inverted button' size='small' onClick={this.toggleRequests} >Requests</Button>
+                <p className='text1' >Select a Friend: </p>
+                  <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
+                <p className='text2'>Or Search Users: </p>
+                <SearchUsers updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
+              </Grid.Row>
+
+              <Grid.Row className='borderfriends'>
+              </Grid.Row>
+
+              <Grid.Row >
+                <div className='norequests'>
+                  <span>You have no new friend requests.</span>
+                </div>
+              </Grid.Row>
+            </Grid>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <NotificationSystem ref="notificationSystem" />
+          <div >
+<<<<<<< HEAD
           <Grid >
        <Grid.Row >
           </Grid.Row>
@@ -343,10 +431,26 @@ ownFriendRequestSentNotification(event, notificationObj) {
           </Grid.Row>
         </Grid>
         </div>
+=======
+            <Grid >
+              <Grid.Row >
+              </Grid.Row>
+
+              <Grid.Row > <Button className='ui inverted button' size='small' onClick={this.toggleRequests} >Requests</Button><p className='text1' >Select a Friend: </p>
+                <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
+                <p className='text2'>Or Search Users: </p>
+                <SearchUsers  updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
+              </Grid.Row>
+
+              <Grid.Row className='borderfriends'>
+              </Grid.Row>
+            </Grid>
+          </div>
+>>>>>>> waiting room bug fixed
         </div>
-        );
-      }
+      );
     }
+  }
 }
 
 const Friends = connect(mapStateToProps)(ConnectedFriends);
