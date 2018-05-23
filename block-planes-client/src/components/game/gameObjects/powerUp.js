@@ -1,4 +1,4 @@
-import Particle from './Particle';
+import Particle from './particle';
 import { asteroidVertices, randomNumBetween } from './helpers';
 
 export default class PowerUp {
