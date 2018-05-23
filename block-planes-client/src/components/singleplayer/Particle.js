@@ -5,6 +5,7 @@ export default class Particle {
     this.radius = args.size;
     this.lifeSpan = args.lifeSpan;
     this.inertia = 0.98;
+    this.smokeColor = args.color;
   }
 
   destroy(){
@@ -31,7 +32,7 @@ export default class Particle {
     const context = state.context;
     context.save();
     context.translate(this.position.x, this.position.y);
-    context.fillStyle = '#e98afc';
+    context.fillStyle = this.smokeColor || '#ffffff';
     context.lineWidth = 2;
     context.beginPath();
     context.moveTo(0, -this.radius);

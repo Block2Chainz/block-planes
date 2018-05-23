@@ -1,6 +1,7 @@
 import Bullet from './Bullet';
 import Particle from './Particle';
 import { rotatePoint, randomNumBetween } from './helpers';
+import shipRenderer from '../game/gameObjects/shipRenderer.js';
 
 export default class Ship {
   constructor(args) {
@@ -20,6 +21,7 @@ export default class Ship {
     this.onDie = args.onDie;
     this.invincible = true;
     this.speedBoost = false;
+    this.fireRateBoost = false;
     this.color = '#f44242';
     this.glow = 50;
     this.shadowColor = '#fffa7c';
@@ -35,6 +37,33 @@ export default class Ship {
       makeVulnerable();
       console.log()
     }, 2000);
+
+    let attributes = shipRenderer(args.attr);
+    
+    
+    // ship characteristics
+    this.bodyColor = attributes.bodyColor;
+    this.wingShape = attributes.wingShape;
+    this.wingColor = attributes.wingColor;
+    this.tailShape = attributes.tailShape;
+    this.tailColor = attributes.tailColor;
+    this.cockpitShape = attributes.cockpitShape;
+    this.cockpitColor = attributes.cockpitColor;
+    this.speed = attributes.speed; // modify in arguments when called
+    this.inertia = attributes.inertia; // modify in arguments when called
+    this.shootingSpeed = attributes.shootingSpeed; // lower is better
+    this.smokeColor = attributes.smokeColor;    
+    this.ingame = args.ingame;
+    
+    this.img1 = new Image();
+    this.img1.src = `http://127.0.0.1:8887/bodies/body_${this.bodyColor}.png`;
+    this.img2 = new Image();
+    this.img2.src = `http://127.0.0.1:8887/wings/${this.wingShape}/wing_${this.wingShape}_${this.wingColor}.png`;
+    this.img3 = new Image();
+    this.img3.src = `http://127.0.0.1:8887/tails/${this.tailShape}/tail_${this.tailShape}_${this.tailColor}.png`;
+    this.img4 = new Image();
+    this.img4.src = `http://127.0.0.1:8887/cockpits/${this.cockpitShape}/cockpit_${this.cockpitShape}_${this.cockpitColor}.png`;
+    
   }
 
 
@@ -90,11 +119,11 @@ export default class Ship {
   speedPowerUpEffect() {
     console.log('speed PU starting!')
     let component = this;
-    let originalSpeed = this.speed;
-    let originalInertia = this.inertia;
     this.speedBoost = true;
-    this.speed = originalSpeed + 1.5;
-    this.inertia = originalInertia - 0.1;
+    console.log('speed before', this.speed);
+    this.speed += 1.5;
+    console.log('speed after', this.speed);
+    this.inertia -= 0.1;
     this.glow = 50;
     if (component.invincible === true) {
        component.shadowColor = '#68ff6d';
@@ -104,6 +133,25 @@ export default class Ship {
     setTimeout(function() {
       component.slowDown();
       console.log('speed PU ending!')
+    }, 10000);
+  }
+
+  fireRatePowerUpEffect() {
+    console.log('FR PU starting!')
+    let component = this;
+    this.fireRateBoost = true;
+    console.log('FR before', this.shootingSpeed);
+    this.shootingSpeed -= 200;
+    console.log('FR after', this.shootingSpeed);
+    this.glow = 50;
+    if (component.invincible === true) {
+       component.shadowColor = '#ffaa2a';
+    } else {
+      this.shadowColor = '#51c7ff';
+    }
+    setTimeout(function() {
+      component.normalFireRate();
+      console.log('FR PU ending!')
     }, 10000);
   }
 
@@ -121,8 +169,26 @@ export default class Ship {
   slowDown = () => {
     let component = this;
     this.speedBoost = false;
-    this.speed = 0.15;
-    this.inertia = 0.99;
+    console.log('speed before end', this.speed);
+    this.speed -= 1.5;
+    console.log('speed after end', this.speed);
+    this.inertia += 0.1;
+    if (this.invincible === true) {
+      console.log('changing shadow color to yellow', this.glow)
+      this.shadowColor = '#fffa7c';
+      console.log('changing shadow color to yellow', this.glow)
+    } else {
+      this.glow = 0;
+      this.shadowColor = '#fffa7c';
+    }
+  }
+
+  normalFireRate = () => {
+    let component = this;
+    this.fireRateBoost = false;
+    console.log('FR before end', this.shootingSpeed);
+    this.shootingSpeed += 200;
+    console.log('FR after end', this.shootingSpeed);
     if (this.invincible === true) {
       console.log('changing shadow color to yellow', this.glow)
       this.shadowColor = '#fffa7c';
@@ -138,7 +204,7 @@ export default class Ship {
     this.velocity.y -= Math.cos(-this.rotation*Math.PI/180) * this.speed;
 
     // Thruster particles
-    let posDelta = rotatePoint({x:0, y:-10}, {x:0,y:0}, (this.rotation-180) * Math.PI / 180);
+    let posDelta = rotatePoint({x:0, y:-35}, {x:0,y:0}, (this.rotation-180) * Math.PI / 180);
     const particle = new Particle({
       lifeSpan: randomNumBetween(20, 40),
       size: randomNumBetween(1, 3),
@@ -149,7 +215,8 @@ export default class Ship {
       velocity: {
         x: posDelta.x / randomNumBetween(3, 5),
         y: posDelta.y / randomNumBetween(3, 5)
-      }
+      },
+      color: this.smokeColor
     });
     this.create(particle, 'particles');
   }
@@ -165,7 +232,8 @@ export default class Ship {
     if(state.keys.right){
       this.rotate('RIGHT');
     }
-    if(state.keys.space && Date.now() - this.lastShot > 50){
+    if(state.keys.space && Date.now() - this.lastShot > this.shootingSpeed){
+      console.log('shooting speed', this.shootingSpeed);
       const bullet = new Bullet({ship: this});
       this.create(bullet, 'bullets');
       this.lastShot = Date.now();
@@ -195,21 +263,41 @@ export default class Ship {
     const context = state.context;
     context.save();
     context.translate(this.position.x, this.position.y);
-    context.rotate(this.rotation * Math.PI / 180);
-    context.strokeStyle = this.color;
-    context.fillStyle = '#000000';
-    context.lineWidth = 2;
-    context.shadowBlur = this.glow;
-    context.shadowColor = this.shadowColor;
-    context.beginPath();
-    context.moveTo(0, -15);
-    context.lineTo(30, 30);
-    context.lineTo(5, 7);
-    context.lineTo(-5, 7);
-    context.lineTo(-30, 30);
-    context.closePath();
-    context.fill();
-    context.stroke();
-    context.restore();
+    // context.rotate(this.rotation * Math.PI / 180);
+    context.rotate((this.rotation) * Math.PI / 180 + 0.78539816);
+
+    // context.strokeStyle = this.color;
+    // context.fillStyle = '#000000';
+    // context.lineWidth = 2;
+    // context.shadowBlur = this.glow;
+    // context.shadowColor = this.shadowColor;
+    // context.beginPath();
+    // context.moveTo(0, -15);
+    // context.lineTo(30, 30);
+    // context.lineTo(5, 7);
+    // context.lineTo(-5, 7);
+    // context.lineTo(-30, 30);
+    // context.closePath();
+    // context.fill();
+    // context.stroke();
+
+
+    // RENDER BODY
+        
+        context.drawImage(this.img1, -20, -20, 55, 55);
+        
+        // RENDER WINGS
+        
+        context.drawImage(this.img2, -20, -20, 55, 55);
+        
+        // RENDER TAIL
+        
+        context.drawImage(this.img3, -20, -20, 55, 55);
+        
+        // RENDER COCKPIT
+  
+        context.drawImage(this.img4, -20, -20, 55, 55);
+        
+        context.restore();
   }
 }

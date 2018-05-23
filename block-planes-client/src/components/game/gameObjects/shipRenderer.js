@@ -9,9 +9,9 @@ let shipRenderer = (attrString) => {
         tailColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'], 
         cockpitShape: ['01', '02', '03', '04', '05'], 
         cockpitColor: ['red', 'orange', 'green', 'blue', 'purple', 'white', 'brown', 'black'], 
-        speed: [0.8, 1, 1.5, 2], // how much movement it travels after each frame with a keydown,  
-        inertia: [.88, .93, .97, .99], // how quickly it slows down after releasing a key: 0.5 = immediately, 1 = never; 
-        shootingSpeed: [35, 75, 100, 150, 200, 250, 300], 
+        speed: [0.15, 0.18, 0.21, 0.24], // how much movement it travels after each frame with a keydown,  
+        inertia: [.975, .98, .985, .99], // how quickly it slows down after releasing a key: 0.5 = immediately, 1 = never; 
+        shootingSpeed: [180, 200, 220, 240, 260, 280, 300], 
         smokeColor: ['#ff9999', '#b3ff99', '#ffffb3', '#80ffdf', '#99d6ff', '#c299ff', '#ff80df', '#ffffff'], 
     }
 

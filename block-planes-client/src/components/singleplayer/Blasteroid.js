@@ -101,7 +101,7 @@ export default class Blasteroid {
     context.save();
     context.translate(this.position.x, this.position.y);
     context.rotate(this.rotation * Math.PI / 180);
-    context.strokeStyle = '#8426e0';
+    context.strokeStyle = '#ff7954';
     context.lineWidth = 2;
     context.beginPath();
     context.moveTo(0, -this.radius);

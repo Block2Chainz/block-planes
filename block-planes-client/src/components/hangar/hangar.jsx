@@ -87,6 +87,7 @@ class ConnectedHangar extends Component {
         let planeAttr;
         this.props.contract.planes(planeArray[i]).then((plane) => {
           planeAttr = plane[0].toNumber();
+          console.log('hangar sitch', [planeArray[i], planeAttr]);
           hangar.push([planeArray[i], planeAttr]);
           if (i === planeArray.length - 1) {
             this.props.storePlanes({ planes: hangar });

@@ -1,25 +1,22 @@
 import Particle from './Particle';
 import { asteroidVertices, randomNumBetween } from './helpers';
 
-export default class Fasteroid {
+export default class FireRatePowerUp {
   constructor(args) {
     this.position = args.position
     this.velocity = {
-      x: randomNumBetween(1, 2.5),
-      y: randomNumBetween(1, 2.5)
+      x: randomNumBetween(-10000, -10000),
+      y: randomNumBetween(-10000, -10000)
     }
     this.rotation = 0;
-    this.rotationSpeed = randomNumBetween(0, 2)
+    this.rotationSpeed = randomNumBetween(-10000, -10000)
     this.radius = args.size;
-    this.score = (80/this.radius)*6;
     this.create = args.create;
-    this.addScore = args.addScore;
     this.vertices = asteroidVertices(8, args.size)
   }
 
   destroy(){
     this.delete = true;
-    this.addScore(this.score);
 
     // Explode
     for (let i = 0; i < this.radius; i++) {
@@ -37,30 +34,9 @@ export default class Fasteroid {
       });
       this.create(particle, 'particles');
     }
-
-    // Break into smaller fasteroids
-    if(this.radius > 10){
-      for (let i = 0; i < 2; i++) {
-        let fasteroid = new Fasteroid({
-
-          size: this.radius/2,
-          position: {
-            x: randomNumBetween(-10, 20)+this.position.x,
-            y: randomNumBetween(-10, 20)+this.position.y
-          },
-          create: this.create.bind(this),
-          addScore: this.addScore.bind(this)
-        });
-        this.create(fasteroid, 'fasteroids');
-      }
-    }
   }
 
   render(state){
-    // Move
-    this.position.x += this.velocity.x;
-    this.position.y += this.velocity.y;
-
     // Rotation
     this.rotation += this.rotationSpeed;
     if (this.rotation >= 360) {
@@ -81,7 +57,7 @@ export default class Fasteroid {
     context.save();
     context.translate(this.position.x, this.position.y);
     context.rotate(this.rotation * Math.PI / 180);
-    context.strokeStyle = '#7fffff';
+    context.strokeStyle = '#ff3030';
     context.lineWidth = 2;
     context.beginPath();
     context.moveTo(0, -this.radius);

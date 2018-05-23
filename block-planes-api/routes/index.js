@@ -6,6 +6,7 @@ const search = require('../controllers/search');
 const friends = require('../controllers/friends');
 const messages = require('../controllers/messages');
 const scores = require('../controllers/scores');
+const game = require('../controllers/game');
 
 const leaderboard = require('../controllers/leaderboard');
 
@@ -32,6 +33,9 @@ router.get('/messages', messages.fetchMessages);
 router.post('/messages', messages.saveMessage);
 
 router.post('/scores', scores.postScores);
+router.get('/fetchHighScore', game.fetchHighScore);
+router.post('/addScore', game.addScoreToTotal);
+
 
 
 module.exports = router;
