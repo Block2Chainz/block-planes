@@ -38,7 +38,9 @@ class ConnectedFriends extends Component {
       friendState: '',
       friends: [],
       requests: [],
-      isRequestPage: false
+      isRequestPage: false,
+      highScore: '',
+      totalScore: ''
     };
     let component = this;
     this.updateFriendsPage = this.updateFriendsPage.bind(this);
@@ -48,6 +50,7 @@ class ConnectedFriends extends Component {
     this.fetchRequests = this.fetchRequests.bind(this);
     this.toggleRequests = this.toggleRequests.bind(this);
     this.friendRequestSentNotification = this.friendRequestSentNotification.bind(this);
+    this.fetchUserScores = this.fetchUserScores.bind(this);
     this.socket = Socketio('http://localhost:4225');
   }
 
@@ -215,7 +218,7 @@ class ConnectedFriends extends Component {
           component.setState({
             requests: response.data
           }, () => {
-            this.updateFriendState();
+            this.fetchUserScores();
           });
       })
       .catch(err => {
@@ -235,6 +238,28 @@ class ConnectedFriends extends Component {
       friendState: '',
       isRequestPage: true
     });
+  }
+
+  fetchUserScores() {
+    let component = this;
+    axios
+      .get('/fetchHighScore', {
+        params: {
+          id: component.state.friendId
+        }
+        })
+      .then(response => {
+        console.log('highscore', response);
+          component.setState({
+            highScore: response.data.high_score,
+            totalScore: response.data.total_points
+          }, () => {
+            this.updateFriendState();
+          });
+      })
+      .catch(err => {
+        console.log('Error from login', err);
+      });
   }
 
   render() {
@@ -325,9 +350,9 @@ class ConnectedFriends extends Component {
 
               <Grid.Column width={6} >
                 <p className='score2'>Total Score</p>
-                <p className='score2'>{this.state.totalPoints}</p>
+                <p className='score2'>{this.state.totalScore}</p>
                 <p className='score2'>High Score</p>
-                <p className='score2'>0</p>
+                <p className='score2'>{this.state.highScore}</p>
               </Grid.Column>
             </Grid.Row>
             <p className='hangar'>Hangar</p>

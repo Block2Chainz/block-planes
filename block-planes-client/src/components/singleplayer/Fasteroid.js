@@ -81,7 +81,7 @@ export default class Fasteroid {
     context.save();
     context.translate(this.position.x, this.position.y);
     context.rotate(this.rotation * Math.PI / 180);
-    context.strokeStyle = '#fff605';
+    context.strokeStyle = '#7fffff';
     context.lineWidth = 2;
     context.beginPath();
     context.moveTo(0, -this.radius);

@@ -28,8 +28,14 @@ class ConnectedProfile extends Component {
     super(props);
     this.state = {
       isCollection: true,
+      totalScore: '',
+      highScore: ''
     }
     this.handleDrop = this.handleDrop.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetchUserScores();
   }
 
   handleDrop(files) {
@@ -76,6 +82,26 @@ class ConnectedProfile extends Component {
     });
   }
 
+  fetchUserScores() {
+    let component = this;
+    axios
+      .get('/fetchHighScore', {
+        params: {
+          id: component.props.userId
+        }
+        })
+      .then(response => {
+        console.log('highscore', response);
+          component.setState({
+            highScore: response.data.high_score,
+            totalScore: response.data.total_points
+          });
+      })
+      .catch(err => {
+        console.log('Error from login', err);
+      });
+  }
+
     render() {
         return (
           <div className='profilebg'>
@@ -94,9 +120,9 @@ class ConnectedProfile extends Component {
                 </Grid.Column>
                 <Grid.Column className='profile-score-column' >
                   <p className='scoreprofile'>Total Score</p>
-                  <p className='scoreprofile'>{this.props.totalPoints}</p>
+                  <p className='scoreprofile'>{this.state.totalScore}</p>
                   <p className='scoreprofile'>High Score</p>
-                  <p className='scoreprofile'>0</p>
+                  <p className='scoreprofile'>{this.state.highScore}</p>
                 </Grid.Column>
               </Grid.Row>
                   <p className='hangar'>Hangar</p>
