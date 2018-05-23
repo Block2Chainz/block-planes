@@ -330,67 +330,21 @@ class ConnectedFriends extends Component {
               <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
               <p className='text2'>Or Search Users: </p>
               <SearchUsers updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
-              {/* <div className='addfriendbutton'>
-                <AddFriendButton className='addfriendbutton' friendState={this.state.friendState} addFriend={this.addFriend} />
-                <DeleteFriendButton className='deletefriendbutton' friendState={this.state.friendState} deleteFriend={this.deleteFriend} />
-<<<<<<< HEAD
-              </div>
-            </Grid.Row>
-
-            <Grid.Row>
-            </Grid.Row>
-
-            <Grid.Row className='userrow'>
-              <div className='profilepic' >
-                <Image src={this.state.profilePicture} size='medium' rounded />
-                <p className='joined'>Joined: {Moment(this.state.createdAt).format('MMMM Do YYYY')}</p>
-              </div>
-
-              <Grid.Column width={6} >
-                <p className='username2'>{this.state.username}</p>
-              </Grid.Column >
-
-              <Grid.Column width={6} >
-                <p className='score2'>Total Score</p>
-                <p className='score2'>{this.state.totalScore}</p>
-                <p className='score2'>High Score</p>
-                <p className='score2'>{this.state.highScore}</p>
-              </Grid.Column>
-            </Grid.Row>
-            <p className='hangar'>Hangar</p>
-
-            <Grid.Row>
-              <Hangar friend={this.state.friendId} />
-            </Grid.Row>
-          </Grid>
-        </div>
-      );
-    } else if (this.state.isRequestPage === true && this.state.requests.length) {
-      return (
-        <div >
-        <NotificationSystem ref="notificationSystem" />
-          <Grid>
-            <Grid.Row >
-            </Grid.Row>
-
-              <Grid.Row>
-=======
-              </div> */}
->>>>>>> move add or delete friend button to under friend username
-=======
+             
     render() {
       if (this.state.friendId) {
         return (
           <div className='friend-page-body'>
             <NotificationSystem ref="notificationSystem" />
             <Grid>
-              <Grid.Row className='friend-search-bar'> 
+              <Grid.Row className='friend-search-bar'>
+                <div className='center-content'>
                 <Button className='ui inverted button' size='small' onClick={this.toggleRequests} >Requests</Button>
                 <p className='text1' >Select a Friend: </p>
                 <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
                 <p className='text2'>Or Search Users: </p>
                 <SearchUsers updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
->>>>>>> adjust profile pic border
+                </div>
               </Grid.Row>
 
               <Grid.Row className='userrow'>
@@ -427,11 +381,13 @@ class ConnectedFriends extends Component {
           <NotificationSystem ref="notificationSystem" />
         <Grid>
           <Grid.Row className='friend-search-bar'> 
+          <div className='center-content'>
             <Button className='ui inverted button' size='small' onClick={this.toggleRequests} >Requests</Button>
           <p className='text1' >Select a Friend: </p>
           <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
           <p className='text2'>Or Search Users: </p>
             <SearchUsers  updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
+            </div>
           </Grid.Row>
           <div>
           <div className='inner'>
@@ -448,11 +404,13 @@ class ConnectedFriends extends Component {
           <div >
             <Grid>
               <Grid.Row className='friend-search-bar'>
+              <div className='center-content'>
                 <Button className='ui inverted button' size='small' onClick={this.toggleRequests} >Requests</Button>
                 <p className='text1' >Select a Friend: </p>
                   <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
                 <p className='text2'>Or Search Users: </p>
                 <SearchUsers updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
+                </div>
               </Grid.Row>
 
               <Grid.Row className='borderfriends'>
@@ -474,10 +432,12 @@ class ConnectedFriends extends Component {
           <div >
             <Grid >
               <Grid.Row className='friend-search-bar'>
+              <div className='center-content'>
               <Button className='ui inverted button' size='small' onClick={this.toggleRequests} >Requests</Button><p className='text1' >Select a Friend: </p>
                 <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
                 <p className='text2'>Or Search Users: </p>
                 <SearchUsers  updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
+                </div>
               </Grid.Row>
 
               <Grid.Row className='borderfriends'>
