@@ -379,19 +379,16 @@ class ConnectedFriends extends Component {
                   <Image src={this.state.profilePicture} size='medium' rounded />
                   <p className='joined'>Joined: {Moment(this.state.createdAt).format('MMMM Do YYYY')}</p>
                 </div>
-
                 <Grid.Column width={6} >
                   <p className='username2'>{this.state.username}</p>
                 </Grid.Column >
 
                 
-                <Grid.Column>
-                  <p className='score2'>Total Score</p>
-                </Grid.Column>
-                <Grid.Column>
-                  <p className='score2'>{this.state.totalPoints}</p>
-                  <p className='score2'>High Score</p>
-                  <p className='score2'>0</p>
+                <Grid.Column className='friend-score-column'>
+                  <p className='friend-profile-score'>Total Score</p>
+                  <p className='friend-profile-score'>{this.state.totalPoints}</p>
+                  <p className='friend-profile-score'>High Score</p>
+                  <p className='friend-profile-score'>0</p>
                 </Grid.Column>
               </Grid.Row>
                     <p className='hangar'>Hangar</p>

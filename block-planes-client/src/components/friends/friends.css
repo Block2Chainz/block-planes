@@ -118,3 +118,18 @@ margin-left: 3%;
   height: 100% !important;
     bottom: 0;
 }
+
+.friend-score-column {
+  width: 33% !important;
+  margin-left: auto;
+  margin-right: 5%;
+}
+
+.friend-profile-score {
+  padding-top: 3%;
+  font-family: 'Orbitron';
+  margin-left: 40%;
+  text-align: right;
+  font-size: 200%;
+  color: #fff;
+}
