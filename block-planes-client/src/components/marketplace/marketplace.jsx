@@ -224,7 +224,7 @@ class Marketplace extends Component {
               <div className='menu-form'>
                 <form onSubmit={(e) => this.buyPlane(e, plane)} className='buy-form'>
                   <div className='price-div'>
-                  <label className='price-label'>{plane[3] / 1000000000000000000}</label><img className='eth-symbol' src='https://openclipart.org/image/300px/svg_to_png/294014/ethereum-classic-logo.png'></img>
+                  <label className='price-label'>{plane[3] / 1000000000000000000}</label><img className='eth-symbol-buy' src='https://openclipart.org/image/300px/svg_to_png/294014/ethereum-classic-logo.png'></img>
                   </div>
                   <div>
                   <button className='buy-button'>Buy</button>
