@@ -194,7 +194,7 @@ class Marketplace extends Component {
                 <div className='form-div'>
                   <form  className='form-sell' onSubmit={(e) => this.sellPlane(e, plane)}>
                     <div className='sell-input-div'>
-                      <input type='text' name='price' className='sell-input' placeholder='Price for Sale'/>
+                      <input type='text' name='price' className='sell-input' placeholder='Price'/>
                     </div>
                     <div className='sell-buttons-div'>
                       <button className='sell-button'>{buttonLabel}</button>
@@ -245,6 +245,7 @@ class Marketplace extends Component {
         }
 
         return (
+          <div className='marketplace-full-body'>
             <div className="marketplace">
               <div>
               <p className="page-title">HANGAR</p>
@@ -266,6 +267,7 @@ class Marketplace extends Component {
                 </div>
               </div>
             </div>
+          </div>
         )
     }
 }
