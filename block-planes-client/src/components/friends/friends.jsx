@@ -279,22 +279,18 @@ class ConnectedFriends extends Component {
       );
     } else if (this.props.gameLanding && this.state.friendId) {
       return (
-        <div >
+        <div className='game-landing-friend-profile'>
           <NotificationSystem ref="notificationSystem" />
           <Grid>
             <Grid.Row >
             </Grid.Row>
 
-            <Grid.Row className='friend-search-bar'>
+            <Grid.Row>
             <div className='center-content'>
               <p className='text1' >Select a Friend: </p>
               <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)} />
             </div>
             </Grid.Row>
-
-            <Grid.Row className='borderfriends'>
-            </Grid.Row>
-
             <Grid.Row className='userrow'>
               <div className='profilepic' >
                 <Image width='75px' src={this.state.profilePicture} size='medium' rounded />

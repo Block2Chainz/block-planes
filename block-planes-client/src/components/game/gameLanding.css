@@ -14,10 +14,13 @@
 }
 
 .landing {
+    display: flex;
+    justify-content: center;
     text-align: center;
     margin: 0 auto;
     color: #fff;
     font-family: 'Orbitron';
+    width: 100%;
 }
 
 .landing-challenge {
@@ -59,4 +62,40 @@
     right: 20px;
     background-clip: red;
     color: red;
+}
+
+.center-friend {
+  width: 100%;
+  margin: auto;
+}
+
+.full-width {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.game-landing-body {
+  position: relative;
+}
+
+.game-landing-grid {
+  position: absolute;
+  top: 15px;
+}
+
+.game-landing-hangar {
+  margin-top: 5%;
+}
+
+.select-plane-div {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid white;
+}
+
+.select-plane-span {
+  font-size: 100%;
 }
