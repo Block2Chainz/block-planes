@@ -7,7 +7,6 @@ import {
     TOGGLE_CHAT_VISIBILITY,
     STORE_PLANES,
     SELECT_PLANE,
-    DESELECT_PLANE,
     SAVE_SOCKET,
 } from "../constants/action-types";
 
@@ -17,7 +16,7 @@ const initialState = {
     userAddress: '0x0',
     userPlanes: [],
     chatVisible: false,
-    selectedPlane: 1111111111111111,
+    selectedPlane: 50000071117,
     gameSocket: null,
 };
 
@@ -76,11 +75,6 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state, 
                 selectedPlane: action.payload,
-            };
-        case DESELECT_PLANE: 
-            return {
-                ...state, 
-                selectedPlane: null,
             };
         case SAVE_SOCKET: 
             return {

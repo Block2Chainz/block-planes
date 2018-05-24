@@ -34,7 +34,9 @@ class Game extends Component {
                 up    : false, 
                 space : false, 
             }, 
-            inGame: false
+            inGame: false,
+            scores: { 1: 0, 2: 0 },
+            lives: 0
         }
         this.ship = {};
         this.enemies = {};
@@ -47,8 +49,6 @@ class Game extends Component {
 
         this.powerUps = [];
         this.enemies = [];
-        this.scores = { 1: 0, 2: 0, };
-        this.lives = 0;
 /*{
     peers: {
         1: {ship},
@@ -110,9 +110,7 @@ class Game extends Component {
         if (e.keyCode === KEY.RIGHT || e.keyCode === KEY.D) keys.right = value;
         if (e.keyCode === KEY.UP || e.keyCode === KEY.W) keys.up = value;
         if (e.keyCode === KEY.SPACE) keys.space = value;
-        this.setState({
-            keys
-        });
+        this.setState({ keys });
     }
     
     powerUpHandler(payload) {
@@ -136,9 +134,13 @@ class Game extends Component {
         this.updateOMatic(payload.bullets[3], 'bullets', 3);
         this.updateOMatic(payload.powerUps, 'powerUps');
         this.updateOMatic(payload.enemies, 'enemies');
-        this.scores[1] = payload.scores[1];
-        this.scores[2] = payload.scores[2];
-        this.lives = payload.lives;
+        this.setState({
+            scores: {
+                1: payload.scores[1],
+                2: payload.scores[2]
+            }, 
+            lives: payload.lives
+        })
     }
     
     updateOMatic(pending, type, otherPlayer) {
@@ -356,9 +358,9 @@ class Game extends Component {
                 {endgame}
 
                 <span className='stats'>
-                    <div className="score lives" >Lives: {this.lives}</div>
-                    <div className="score current-score" >Your Score: { this.props.player === 1 ? this.scores[1] : this.scores[2] }</div>
-                    <div className="score top-score" >Friend Score: { this.props.player === 1 ? this.scores[2] : this.scores[1] }</div>
+                    <div className="score lives" >Lives: {this.state.lives}</div>
+                    <div className="score current-score" >Your Score: { this.props.player === 1 ? this.state.scores[1] : this.state.scores[2] }</div>
+                    <div className="score top-score" >Friend Score: { this.props.player === 1 ? this.state.scores[2] : this.state.scores[1] }</div>
                     <div className="barunderscore" ></div>
                 </span>
 

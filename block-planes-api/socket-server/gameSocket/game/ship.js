@@ -5,7 +5,6 @@ const { rotatePoint, randomNumBetween } = require('./helpers.js');
 
 const Ship = function (args, world) {
     this.id = null;
-    this.last_processed_input = null;
     this.world = world;
     this.attributes = typeof args === 'number' ? args : parseInt(args);
 
@@ -37,8 +36,7 @@ const Ship = function (args, world) {
     this.smokeColor = attributes.smokeColor || '#ffffff';
 
     this.invincible = true;
-    this.glow = 50;
-    this.shadowColor = 'white';
+    this.speedy = false;
 
     setTimeout(this.makeVulnerable.bind(this), 5000);
     this.powerUp = this.powerUp.bind(this);

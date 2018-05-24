@@ -55,16 +55,22 @@ const clientStart = ({ io, client, room, player }, payload) => {
 }
 
 const clientMove = ({ io, client, room, player }, positionData) => {
-    room.world.queue.updates.push(positionData);
-    io.sockets.in(room).emit('server_state', room.peers)
+    if (room.world) {
+        room.world.queue.updates.push(positionData);
+        io.sockets.in(room).emit('server_state', room.peers)
+    }
 }
 
 const clientShot = ({ io, client, room, player }, bulletData) => {
-    room.world.createBullet(bulletData);
+    if (room.world) {
+        room.world.createBullet(bulletData);
+    }
 }
 
 const clientParticle = ({ io, client, room, player }, particleData) => {
-    room.world.createParticle(particleData);
+    if (room.world) {
+        room.world.createParticle(particleData);
+    }
 }
 
 const clientShipGeneration = ({ io, client, room, player }, payload) => {
