@@ -55,7 +55,7 @@ class Marketplace extends Component {
         .then((instance) => {
         this.setState({contract : instance, userAddress : address});
         contract = instance;
-        instance.createRandomPlane({ from: this.web3.eth.accounts[0], value: this.web3.toWei(0.001, 'ether')}); 
+        // instance.createRandomPlane({ from: this.web3.eth.accounts[0], value: this.web3.toWei(0.001, 'ether')}); 
         return instance.getPlanesByOwner(address);
         }).then((planes) => {
           return planes.map((plane) => {
@@ -175,7 +175,7 @@ class Marketplace extends Component {
           return (
             <Grid.Column className='plane-column' key={plane[0]}>
             <div className='single-plane'>
-            <Plane key={plane[0]} plane={plane} />
+            <Plane key={plane[0]} plane={plane}/>
             <div className='plane-menu-sell'>
               <div className='plane-stats-div'>
                 <p className='plane-stats'>Speed: # <br/>Inertia: #<br/>Firing Rate: # </p>              
