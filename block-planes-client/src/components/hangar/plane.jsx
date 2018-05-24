@@ -157,7 +157,7 @@ class Plane extends Component {
       <div>
         {this.props.selected === 'highlight' ? 
           <div onClick={(e) => this.select(e)} width={16} className='plane blinking-border selected-plane-background' >
-          <canvas ref='canvas' width={150} height={150} />
+          <canvas ref='canvas' width={150} height={150} className='canvas-plane'/>
             <div>
               <p className='selected-plane-stats'>
                 Speed: {parseInt(JSON.stringify(this.props.plane[1]).slice(6, 7)) % 4} <br/>
@@ -169,7 +169,7 @@ class Plane extends Component {
           : 
           <div>
             <div onClick={(e) => this.select(e)} width={16} className='plane' >
-            <canvas ref='canvas' width={150} height={150} />
+            <canvas ref='canvas' width={150} height={150} className='canvas-plane'/>
             </div>
           </div>
         }

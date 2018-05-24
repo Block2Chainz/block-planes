@@ -16,9 +16,10 @@
 }
 
 .profilepic {
+    border-radius: 7px;
     margin-left: 3%;
-    border: 1px solid #ffffff;
-    width: 300px;
+    border: 7px solid #ffffff;
+    width: 302px;
 }
 
 .joined {
@@ -66,6 +67,15 @@
     text-align: right;
     font-size: 200%;
     color: #fff;
+}
+
+.scoreprofile-points {
+  padding-top: 3%;
+  font-family: 'Orbitron';
+  margin-left: 40%;
+  text-align: right;
+  font-size: 200%;
+  color: rgb(94, 203, 249);
 }
 
 .username-column {

@@ -79,18 +79,24 @@ class ConnectedGameLanding extends Component {
 
   render() {
     return (
-      <Grid >
-        <Grid.Row>
-        </Grid.Row>
-
-        <span className='landingPage'> Select a Plane </span>
-        <Hangar />
+      <div className='game-landing-body'>
+      <Grid className='game-landing-grid'>
+        <div className='game-landing-hangar'>
+          <div className='select-plane-div'>
+            <p className='select-plane-label'> Select a Plane </p>
+          </div>
+          <div>
+            <Hangar />
+          </div>
+        </div>
 
         {typeof (this.props.selectedPlane) !== 'number' ?
           <div></div> :
           <Grid.Row className='landing'>
-              <h3>Select a Friend</h3>
-              <Friends gameLanding={true} selectFriend={this.selectFriend.bind(this)} />
+              <div className='full-width'>
+              {/* <h3>Select a Friend</h3> */}
+              <Friends gameLanding={true} selectFriend={this.selectFriend.bind(this)} className='center-friend'/>
+              </div>
           </Grid.Row>
         }
 
@@ -109,6 +115,7 @@ class ConnectedGameLanding extends Component {
             <div></div>
         }
       </Grid>
+      </div>
     )
   }
 }
