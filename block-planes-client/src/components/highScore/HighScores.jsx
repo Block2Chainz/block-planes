@@ -57,7 +57,7 @@ class HighScores extends Component {
             </div>
             <div className="half-width">
               <div className="table-title">
-                <p>Weekly High Score</p>
+                <p>Top High Score</p>
               </div>
               <div className="center">
               <Table basic='very' celled collapsing className="hi-leaderboard">
@@ -100,7 +100,7 @@ class HighScores extends Component {
 
               <div className='half-width'>
                 <div className="table-title">
-                  <p>Weekly Top Score</p>
+                  <p>Top Total Score</p>
                 </div>
                 <div className="center">
                   <Table basic='very' celled collapsing className="hi-leaderboard">
