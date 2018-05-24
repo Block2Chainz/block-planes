@@ -117,13 +117,13 @@ class ConnectedHangar extends Component {
     }).catch((err) => {console.log('NO PLANES')});
   }
 
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   if (nextProps.userPlanes.length === 0 && this.props.userPlanes.length !== 0) {
-  //     return false;
-  //   } else {
-  //     return true;
-  //   }
-  // }
+  shouldComponentUpdate(nextProps, nextState) {
+    if (nextProps.userPlanes.length === 0 && this.props.userPlanes.length !== 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 
   highlight(plane) {
     if (!this.props.friend) {
