@@ -9,7 +9,6 @@ CREATE TABLE users (
   `id` INT AUTO_INCREMENT,
   `username` VARCHAR(255) NOT NULL,
   `password` VARCHAR(255) NOT NULL,
-  `full_name` VARCHAR(255) NOT NULL,
   `profile_picture` VARCHAR(255) NOT NULL,
   `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
   `total_points` INT NOT NULL DEFAULT 0,
