@@ -17,12 +17,12 @@ const pullData = new CronJob ( '10 * * * * *', function() {
 );
 
 const queryDb = () => {
-  db.query('SELECT username, id, profile_picture FROM users', (err, data) => {
+  db.query('SELECT username, total_points, high_score, profile_picture FROM users', (err, data) => {
     client.del('leaderboardHi');
     client.del('leaderboardTotal');
     for (let i = 0; i < data.length; i++) {
-      client.zadd('leaderboardHi', data[i].id, data[i].username + '___' + data[i].profile_picture);
-      client.zadd('leaderboardTotal', data[i].id, data[i].username + '___' + data[i].profile_picture);
+      client.zadd('leaderboardHi', data[i].high_score, data[i].username + '___' + data[i].profile_picture);
+      client.zadd('leaderboardTotal', data[i].total_points, data[i].username + '___' + data[i].profile_picture);
     }
   });
 };
