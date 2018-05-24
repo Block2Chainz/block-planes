@@ -25,7 +25,7 @@ CLIENT LISTENERS BELOW
 const clientp1Ready = ({ io, client, room, player }, { ship }) => {
     console.log('p1_ready heard', room, 'payload.ship: ', ship);
     if (room.world) {
-        room.world.connect(1, ship);
+        room.world.connect(1, ship, true, io, room);
         room.world.powerUpCountdown();
     } else {
         room.world = new World();
@@ -37,7 +37,7 @@ const clientp1Ready = ({ io, client, room, player }, { ship }) => {
 const clientp2Ready = ({ io, client, room, player}, { ship }) => {
     console.log('p2_ready heard', room, 'payload.ship: ', ship);
     if (room.world) {
-        room.world.connect(2, ship);
+        room.world.connect(2, ship, true, io, room);
         room.world.powerUpCountdown();
     } else {
         room.world = new World();
@@ -74,13 +74,20 @@ const clientParticle = ({ io, client, room, player }, particleData) => {
 }
 
 const clientShipGeneration = ({ io, client, room, player }, payload) => {
-    room.timer = setInterval( () => room.world.update(io, room), 1000 / 30 ); 
+    console.log('ship generated');
     serverShipGeneration({ io, client, room, player }, payload);
 }
 
-const clientDisconnect = ({ io, client, room, player }) => {
-    console.log('Client has disconnected');
-    clearInterval(room.timer);
+const clientRestart = ({ io, client, room, player }, payload) => {
+    console.log('restarting');
+    room.world.connect(false, false, true, io, room);
+}
+
+const clientDisconnect = ({ io, client, room, player }, payload) => {
+    console.log('Client has disconnected', room);
+    if (room && room.world && room.world.timer) {
+        clearInterval(room.world.timer);
+    }
     client.disconnect(true);
 }
 
@@ -94,6 +101,7 @@ const clientEmitters = {
     'shipGeneration': clientShipGeneration,
     'disconnect': clientDisconnect,
     'particle_generated': clientParticle,
+    'restart': clientRestart,
 };
 
 module.exports = clientEmitters;

@@ -14,7 +14,7 @@ const World = function () {
     this.bullets = []; 
     this.particles = [];
     this.powerUps = [];
-    this.lives = 10;
+    this.lives = 1;
     this.scores = { 1: 0, 2: 0 };
     
     this.width = 1700;
@@ -26,18 +26,34 @@ const World = function () {
 
     this.powerUps = [];
     this.powerUpType = 'speed';
+    this.timer = null;
+
+    this.gameOverSent = false;
 
     this.queue = new Queue();
 };
 
-World.prototype.connect = function (player, shipAttributes) {
+World.prototype.connect = function (player, shipAttributes, startTimer, io, room) {
     // Create a new peer for this connection.
-    this.peers[player] = new Ship(shipAttributes, this);
-    this.peers[player].id = player;
-    // Set peer's initial position
-    this.peers[player].position.x = player === 1 ? 750 : 800;
-    this.peers[player].position.y = 600;
-    checkCollisionsWith = checkCollisionsWith.bind(this);
+    if (player, shipAttributes) {
+        this.peers[player] = new Ship(shipAttributes, this);
+        this.peers[player].id = player;
+        // Set peer's initial position
+        this.peers[player].position.x = player === 1 ? 750 : 800;
+        this.peers[player].position.y = 600;
+        checkCollisionsWith = checkCollisionsWith.bind(this);
+    }
+
+    this.lives = 1;
+    this.scores = { 1: 0, 2: 0 }
+    this.gameOverSent = false;
+
+    if (startTimer) {
+        if (!this.timer || !this.timer._repeat) {
+            console.log('setting interval');
+            this.timer = setInterval(() => this.update(io, room), 1000 / 30);
+        }
+    }
     // this.powerUpCountdown();
 };
 
@@ -101,6 +117,10 @@ World.prototype.update = function (io, room) {
         this.generateEnemies();
         this.enemyCount++;
     }
+
+    if (this.lives === 0) {
+        this.gameOver(io.sockets, room.id);
+    }
     // check collisions 
     checkCollisionsWith(this.peers, this.powerUps, 'powerUps', io.sockets, room.id, this);
     checkCollisionsWith(this.peers, this.enemyBullets, 'enemyBullets', io.sockets, room.id, this);
@@ -149,7 +169,6 @@ World.prototype.buildPeerNetObject = function (peer_id) {
             y: this.peers[peer_id].position.y,
         },
         rotation: this.peers[peer_id].rotation,
-        last_processed_input: this.peers[peer_id].last_processed_input
     };
 
 };
@@ -292,5 +311,14 @@ World.prototype.respawnTimer = function (owner, socket, room) {
             position: { x: 750, y: 600, }, })
     }, 3000);
 };
+
+World.prototype.gameOver = function (socket, room) {
+    if (!this.gameOverSent) {
+        this.gameOverSent = true;
+        console.log('emitting GAMEOVER', this.timer);
+        clearInterval(this.timer);
+        socket.in(room).emit('game_over');
+    }
+}
 
 module.exports = World;

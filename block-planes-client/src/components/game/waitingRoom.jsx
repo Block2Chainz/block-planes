@@ -125,7 +125,7 @@ class ConnectedWaitingRoom extends Component {
                             <h3 id='text'>Game ID: </h3>
                             <h4 id='text'>{this.state.roomId}</h4>
                             <h1 id='text'>Please prepare yourself and press "READY" when you're good to go!</h1>
-                            <button disabled={ this.state.bool } onClick={() => this.ready()}>Ready</button>
+                            <button disabled={ this.state.bool } onClick={() => this.ready()}>{this.state.bool ? 'Waiting for Opponent' : 'Ready'}</button>
                             <h6 id='text'>{this.state.oppReady ? 'Opponent is ready' : 'Waiting for opponent to be ready'}<br/>
                                 {this.state.youReady ? 'You are ready' : ''}</h6>
                         </div>) : 

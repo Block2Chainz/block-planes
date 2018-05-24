@@ -87,7 +87,7 @@ class Game extends Component {
         socket.on('powered_up', payload => this.powerUpHandler(payload));
         socket.on('player_died', payload => this.playerDied(payload));
         socket.on('player_respawn', payload => this.respawn(payload));
-        socket.on('game_over', payload => this.gameOver(payload));
+        socket.on('game_over', () => this.gameOver());
         // start the game
         this.startGame();
     }
@@ -270,17 +270,14 @@ class Game extends Component {
     }
     
     startGame() {
-        this.setState({
-            inGame: true, 
-            currentScore: 0,
-        });
+        this.setState({ inGame: true, currentScore: 0, sentScores: false });
         const socket = this.props.socket;
         let ship1 = new Ship({
             id: 1,
             attr: this.props.p1_ship, 
             position: {
-                x: 350,
-                y: 225,
+                x: this.state.screen.width / 2 - 25,
+                y: this.state.screen.height / 2 - 25 ,
             }, 
             player: this.props.player,
             emitUpdate: this.emitUpdate.bind(this),
@@ -291,8 +288,8 @@ class Game extends Component {
             id: 2,
             attr: this.props.p2_ship,
             position: {
-                x: 375,
-                y: 225,
+                x: this.state.screen.width / 2 + 25,
+                y: this.state.screen.height / 2 + 25,
             }, 
             player: this.props.player,
             emitUpdate: this.emitUpdate.bind(this),
@@ -316,37 +313,50 @@ class Game extends Component {
         });
     }
 
+    restart() {
+        this.setState({ inGame: true, currentScore: 0, sentScores: false });
+        this.props.socket.emit('restart');
+        this.ship[1].ingame = true;
+        this.ship[2].ingame = true;
+        this.interval = setInterval(() => { this.update() }, 1000 / 60);
+    }
+
     respawn(payload) {
-        this.ship[payload.owner].position = { x: 325, y: 250 };
-        this.ship[payload.owner].targetPosition = { x: 325, y: 250 };
+        this.ship[payload.owner].position = { x: this.state.screen.width / 2, y: this.state.screen.height / 2 };
+        this.ship[payload.owner].targetPosition = { x: this.state.screen.width / 2, y: this.state.screen.height / 2 };
         this.ship[payload.owner].ingame = true;
         this.ship[payload.owner].delete = false;
         this.ship[payload.owner].powerUp({type: 'invincible'});
     }
 
     gameOver(payload) {
-        this.setState({ inGame: false });
         this.ship[1].ingame = false;
         this.ship[2].ingame = false;
+        clearInterval(this.interval);
         // send the score to the db
-        axios.post('/scores', { user: this.props.user, score: payload.score })
-        .then(response => {
-            console.log(response);
-        }).catch(err => {
-            console.log(err);
-        });
+        if (!this.state.sentScores) {
+            axios.post('/scores', { user: this.props.userId, score: this.props.player === 1 ? this.state.scores[1] : this.state.scores[2] })
+            .then(response => {
+                console.log(response);
+            }).catch(err => {
+                console.log(err);
+            });
+        }
+        this.setState({ inGame: false, sentScores: true });
     }
         
     render() {
         let endgame;
         let message;
         
+        console.log(this.state.inGame);
         if (!this.state.inGame) {
+
             endgame = (
                 <div className="endgame">
                 <p>Game over</p>
                 <button
-                    onClick={this.startGame.bind(this)}>
+                    onClick={this.restart.bind(this)}>
                     try again?
                 </button>
             </div>

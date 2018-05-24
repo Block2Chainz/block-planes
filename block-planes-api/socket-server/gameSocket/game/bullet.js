@@ -20,8 +20,8 @@ Bullet.prototype.update = function () {
     // Delete if it goes out of bounds
     if (this.position.x < 0 ||
         this.position.y < 0 ||
-        this.position.x > 1000 ||
-        this.position.y > 1000) {
+        this.position.x > 1700 ||
+        this.position.y > 1200) {
         this.destroy();
     }
 }
