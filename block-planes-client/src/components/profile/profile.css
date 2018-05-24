@@ -69,6 +69,15 @@
     color: #fff;
 }
 
+.scoreprofile-points {
+  padding-top: 3%;
+  font-family: 'Orbitron';
+  margin-left: 40%;
+  text-align: right;
+  font-size: 200%;
+  color: rgb(94, 203, 249);
+}
+
 .username-column {
   position: relative;
 }

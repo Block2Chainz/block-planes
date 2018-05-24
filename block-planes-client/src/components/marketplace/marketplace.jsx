@@ -248,7 +248,7 @@ class Marketplace extends Component {
           <div className='marketplace-full-body'>
             <div className="marketplace">
               <div>
-              <p className="page-title">HANGAR</p>
+              <p className="page-title">Hangar</p>
               </div>
               <div className='body-div'>
                 <div className='menu-div'>

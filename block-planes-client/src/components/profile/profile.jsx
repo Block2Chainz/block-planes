@@ -120,9 +120,9 @@ class ConnectedProfile extends Component {
                 </Grid.Column>
                 <Grid.Column className='profile-score-column' >
                   <p className='scoreprofile'>Total Score</p>
-                  <p className='scoreprofile'>{this.state.totalScore}</p>
+                  <p className='scoreprofile-points'>{this.state.totalScore}</p>
                   <p className='scoreprofile'>High Score</p>
-                  <p className='scoreprofile'>{this.state.highScore}</p>
+                  <p className='scoreprofile-points'>{this.state.highScore}</p>
                 </Grid.Column>
               </Grid.Row>
                 <p className='hangar-profile'>Hangar</p>
