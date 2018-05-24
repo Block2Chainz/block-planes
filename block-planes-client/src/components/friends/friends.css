@@ -115,10 +115,10 @@ margin-left: 3%;
   text-align: right;
   font-size: 200%;
   color: #fff;
+  margin-bottom: 0;
 }
 
 .friend-profile-points {
-  padding-top: 3%;
   font-family: 'Orbitron';
   margin-left: 40%;
   text-align: right;
