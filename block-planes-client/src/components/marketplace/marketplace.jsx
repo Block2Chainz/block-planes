@@ -178,7 +178,11 @@ class Marketplace extends Component {
             <Plane key={plane[0]} plane={plane}/>
             <div className='plane-menu-sell'>
               <div className='plane-stats-div'>
-                <p className='plane-stats'>Speed: # <br/>Inertia: #<br/>Firing Rate: # </p>              
+                <p className='plane-stats'>
+                  Speed: {parseInt(JSON.stringify(plane[1]).slice(6, 7)) % 4 + 1} <br/>
+                  Inertia: {parseInt(JSON.stringify(plane[1]).slice(7, 8)) % 3 + 1}<br/>
+                  Fire Rate: {parseInt(JSON.stringify(plane[1]).slice(8, 9)) % 7 + 1} 
+                </p>              
               </div>
               <div className='menu-sell-form'>
                 {(plane[2] === true) ? 
@@ -218,7 +222,12 @@ class Marketplace extends Component {
             <Plane key={plane[0]} plane={plane} />
             <div className='plane-menu'>
               <div className='plane-stats-div'>
-                  <p className='plane-stats'>Speed: # <br/>Inertia: #<br/>Firing Rate: # </p>              
+                  {console.log('what is plane[1]', typeof plane[1])}
+                  <p className='plane-stats'>
+                    Speed: {parseInt(JSON.stringify(plane[1]).slice(6, 7)) % 4 + 1} <br/>
+                    Inertia: {parseInt(JSON.stringify(plane[1]).slice(7, 8)) % 3 + 1}<br/>
+                    Fire Rate: {parseInt(JSON.stringify(plane[1]).slice(8, 9)) % 7 + 1} 
+                  </p>              
               </div>
               <br/>
               <div className='menu-form'>

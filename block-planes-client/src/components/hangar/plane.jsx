@@ -160,9 +160,9 @@ class Plane extends Component {
           <canvas ref='canvas' width={150} height={150} className='canvas-plane'/>
             <div>
               <p className='selected-plane-stats'>
-                Speed: {parseInt(JSON.stringify(this.props.plane[1]).slice(6, 7)) % 4} <br/>
-                Inertia: {parseInt(JSON.stringify(this.props.plane[1]).slice(7, 8)) % 3} <br />
-                Shooting Speed: {parseInt(JSON.stringify(this.props.plane[1]).slice(8, 9)) % 7}
+                Speed: {parseInt(JSON.stringify(this.props.plane[1]).slice(6, 7)) % 4 + 1} <br/>
+                Inertia: {parseInt(JSON.stringify(this.props.plane[1]).slice(7, 8)) % 3 + 1} <br />
+                Fire Rate: {parseInt(JSON.stringify(this.props.plane[1]).slice(8, 9)) % 7 + 1}
               </p>
             </div>
           </div>
