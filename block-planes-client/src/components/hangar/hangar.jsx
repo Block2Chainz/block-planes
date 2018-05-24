@@ -14,7 +14,6 @@ const mapDispatchToProps = dispatch => {
     logOut: () => dispatch(logOut()),
     storePlanes: user => dispatch(storePlanes(user)),
     selectPlane: plane => dispatch(selectPlane(plane)),
-    deselectPlane: () => dispatch(deselectPlane()),
   };
 };
 
@@ -107,11 +106,7 @@ class ConnectedHangar extends Component {
 
   highlight(plane) {
     if (!this.props.friend) {
-      if (this.props.selectedPlane === plane) {
-        this.props.deselectPlane()
-      } else {
-        this.props.selectPlane(plane)
-      }
+      this.props.selectPlane(plane)
     }
   }
 

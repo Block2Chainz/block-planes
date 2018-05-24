@@ -13,6 +13,13 @@ export default class Enemy {
         this.score = (80 / this.radius) * 5;
         this.delete = false;
         this.vertices = asteroidVertices(8, args.size);
+        this.masterImg = new Image();
+        this.blastImg = new Image();
+        this.fastImg = new Image();
+        this.masterImg.src = `http://127.0.0.1:8887/enemies/master.png`;
+        this.blastImg.src = `http://127.0.0.1:8887/enemies/blast.png`;
+        this.fastImg.src = `http://127.0.0.1:8887/enemies/fast.png`;
+        
     }
 
     destroy () {
@@ -41,27 +48,11 @@ export default class Enemy {
         context.translate(this.position.x, this.position.y);
         context.rotate(this.rotation * Math.PI / 180);
         if (this.type === 'master') {
-            let img = new Image();
-            img.src = `http://127.0.0.1:8887/enemies/master.png`;
-            context.drawImage(img, 0, 0, 75, 75);
+            context.drawImage(this.masterImg, -35, -35, 75, 75);
         } else if (this.type === 'blast') {
-            let img = new Image();
-            img.src = `http://127.0.0.1:8887/enemies/blast.png`;
-            context.drawImage(img, 0, 0, 75, 75);
+            context.drawImage(this.blastImg, -50, -50, 100, 100);
         } else if (this.type === 'fast') {
-            let img = new Image();
-            img.src = `http://127.0.0.1:8887/enemies/fast.png`;
-            context.drawImage(img, 0, 0, 35, 35);
-        } else if (this.type === 'normal') {
-            context.strokeStyle = '#fff';
-            context.lineWidth = 2;
-            context.beginPath();
-            context.moveTo(0, -this.radius);
-            for (let i = 1; i < this.vertices.length; i++) {
-                context.lineTo(this.vertices[i].x, this.vertices[i].y);
-            }
-            context.closePath();
-            context.stroke();
+            context.drawImage(this.fastImg, -15, -15, 35, 35);
         } else {
             context.strokeStyle = '#f1f1f1';
             context.lineWidth = 2;

@@ -7,7 +7,6 @@ import {
     TOGGLE_CHAT_VISIBILITY,
     STORE_PLANES,
     SELECT_PLANE,
-    DESELECT_PLANE,
     SAVE_SOCKET,
 } from "../constants/action-types";
 
@@ -38,10 +37,6 @@ export const toggleChatVisibility = (flag) => ({
 export const selectPlane = (plane) => ({
     type: SELECT_PLANE,
     payload: plane
-});
-
-export const deselectPlane = () => ({
-    type: DESELECT_PLANE,
 });
 
 export const saveSocket = (socket) => ({

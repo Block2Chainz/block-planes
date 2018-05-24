@@ -20,7 +20,7 @@ const Enemy = function (args, world) {
 
     if (args.type === 'normal') {
         // splits into smaller normal ones 
-        this.radius = args.size || 50;
+        this.radius = args.size || 80;
     } else if (args.type === 'fast') {
         // moves much faster, is smaller
         this.velocity = {
@@ -30,14 +30,15 @@ const Enemy = function (args, world) {
         this.radius = 35;
     } else if (args.type === 'blast') {
         // shoots and spins around
-        this.radius = 40;
+        this.radius = 75;
         this.rotationSpeed = 1.5;
         this.lastShot = 0;
+        this.health = 5;
     } else if (args.type === 'master') {
         // large and slow, but can shoot
         // on death splits into many small ones 
-        this.radius = 50;
-        this.health = 5;
+        this.radius = 75;
+        this.health = 10;
     }
     this.rotation = 0;
     this.score = (80 / this.radius) * 5;
@@ -45,7 +46,7 @@ const Enemy = function (args, world) {
 
 Enemy.prototype.takeDamage = function (owner) {
     this.health--;
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 7; i++) {
         const particle = new Particle({
             owner: 3,
             lifeSpan: randomNumBetween(60, 100),
@@ -68,7 +69,7 @@ Enemy.prototype.takeDamage = function (owner) {
 
 Enemy.prototype.destroy = function (owner) {
     if (owner !== undefined) {
-        this.world.scores[owner] += Math.round(this.score);
+        this.world.scores[owner] += Math.ceil(this.score);
     } 
     this.delete = true;
     // Explode
@@ -89,7 +90,7 @@ Enemy.prototype.destroy = function (owner) {
         this.world.createObject('particles', particle);
     }
 
-    if (this.type === 'normal' && this.radius > 15) {
+    if (this.type === 'normal' && this.radius > 35) {
         // Break into smaller enemies
         for (let i = 0; i < 2; i++) {
             let enemy = new Enemy({
@@ -118,7 +119,7 @@ Enemy.prototype.destroy = function (owner) {
 
 Enemy.prototype.update = function () {
     // shoot if you are a blast or master type 
-    if ((this.type === 'blast' || this.type === 'master') && Date.now() - this.lastShot > 2000) {
+    if ((this.type === 'blast' || this.type === 'master') && Date.now() - this.lastShot > 1500) {
         const bullet = new Bullet({ owner: 3, rotation: this.rotation, position: this.position });
         this.lastShot = Date.now();
         this.world.createObject('enemyBullets', bullet);
