@@ -66,7 +66,8 @@ const fetchFriends = (req, res) => {
                   image: friend.profile_picture,
                   totalPoints: friend.total_points,
                   createdAt: friend.created_at,
-                  index: i
+                  index: i,
+                  blockchainAddress: friend.blockchainAddress,
                 };
               }));
           }
@@ -87,7 +88,8 @@ const fetchFriendByUsername = (req, res) => {
         image: data[0].profile_picture,
         fullName: '',
         totalPoints: data[0].total_points,
-        createdAt: data[0].created_at
+        createdAt: data[0].created_at,
+        blockchainAddress: data[0].blockchainAddress,
       });
     }
   });
@@ -119,7 +121,7 @@ const fetchRequests = (req, res) => {
             friendId: request.request_by,
             sentAt: request.request_created_at,
             profilePicture: request.profile_picture,
-            username: request.username
+            username: request.username,
           };
         }));
     }
