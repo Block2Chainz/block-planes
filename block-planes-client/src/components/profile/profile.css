@@ -47,7 +47,6 @@
 .hangar {
     padding-top: 3%;
     font-family: 'Orbitron';
-    /* margin-left: 40%; */
     margin: auto;
     text-align: center;
     font-size: 400%;
@@ -67,10 +66,10 @@
     text-align: right;
     font-size: 200%;
     color: #fff;
+    margin-bottom: 0;
 }
 
 .scoreprofile-points {
-  padding-top: 3%;
   font-family: 'Orbitron';
   margin-left: 40%;
   text-align: right;

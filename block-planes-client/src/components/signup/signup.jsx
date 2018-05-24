@@ -116,8 +116,8 @@ class ConnectedSignup extends Component {
       <div>
         {(typeof web3 != 'undefined') ? (
           <div className='signup signupbg'>
-            <Grid>
-              <Form className='STARTING-FORM' onSubmit={this.createAccount} >
+            <Grid className='sign-up-grid'>
+              <Form className='sign-up-form' onSubmit={this.createAccount} >
                 <Grid.Row className='signuptext'>
                   <p className='splash'>Get Ready</p>
                   <div className='left-picture' >
