@@ -180,7 +180,7 @@ addNotification(event, notificationObj) {
           </Grid.Row>
           <Grid.Row className='searchbar'> <p className='text1' >Select a Friend: </p>
           <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
-          <p className='text2'>Or Search Users: </p>
+          <p className='text2'>Search Users: </p>
             <SearchUsers className='searchusersbar' updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
           </Grid.Row>
           <Grid.Row className='borderfriends'>
@@ -205,7 +205,7 @@ addNotification(event, notificationObj) {
           </Grid.Row>
           <Grid.Row className='searchbar'> <p className='text1' >Select a Friend: </p>
           <FriendsDropDown friends={this.state.friends} updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
-          <p className='text2'>Or Search Users: </p>
+          <p className='text2'>Search Users: </p>
             <SearchUsers className='searchusersbar' updateFriendsPage={(user) => this.updateFriendsPage(user)}/>
           </Grid.Row>
           <Grid.Row className='borderfriends'>
