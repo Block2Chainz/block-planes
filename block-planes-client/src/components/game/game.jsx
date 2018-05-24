@@ -24,8 +24,8 @@ class Game extends Component {
         super(props);
         this.state = {
             screen: {
-                width: 750,
-                height: 500,
+                width: 1700,
+                height: 1200,
                 ratio: window.devicePixelRadio || 1
             },
             keys: {
@@ -34,7 +34,9 @@ class Game extends Component {
                 up    : false, 
                 space : false, 
             }, 
-            inGame: false
+            inGame: false,
+            scores: { 1: 0, 2: 0 },
+            lives: 0
         }
         this.ship = {};
         this.enemies = {};
@@ -47,8 +49,6 @@ class Game extends Component {
 
         this.powerUps = [];
         this.enemies = [];
-        this.scores = { 1: 0, 2: 0, };
-        this.lives = 0;
 /*{
     peers: {
         1: {ship},
@@ -87,7 +87,7 @@ class Game extends Component {
         socket.on('powered_up', payload => this.powerUpHandler(payload));
         socket.on('player_died', payload => this.playerDied(payload));
         socket.on('player_respawn', payload => this.respawn(payload));
-        socket.on('game_over', payload => this.gameOver(payload));
+        socket.on('game_over', () => this.gameOver());
         // start the game
         this.startGame();
     }
@@ -110,9 +110,7 @@ class Game extends Component {
         if (e.keyCode === KEY.RIGHT || e.keyCode === KEY.D) keys.right = value;
         if (e.keyCode === KEY.UP || e.keyCode === KEY.W) keys.up = value;
         if (e.keyCode === KEY.SPACE) keys.space = value;
-        this.setState({
-            keys
-        });
+        this.setState({ keys });
     }
     
     powerUpHandler(payload) {
@@ -136,9 +134,13 @@ class Game extends Component {
         this.updateOMatic(payload.bullets[3], 'bullets', 3);
         this.updateOMatic(payload.powerUps, 'powerUps');
         this.updateOMatic(payload.enemies, 'enemies');
-        this.scores[1] = payload.scores[1];
-        this.scores[2] = payload.scores[2];
-        this.lives = payload.lives;
+        this.setState({
+            scores: {
+                1: payload.scores[1],
+                2: payload.scores[2]
+            }, 
+            lives: payload.lives
+        })
     }
     
     updateOMatic(pending, type, otherPlayer) {
@@ -268,17 +270,14 @@ class Game extends Component {
     }
     
     startGame() {
-        this.setState({
-            inGame: true, 
-            currentScore: 0,
-        });
+        this.setState({ inGame: true, currentScore: 0, sentScores: false });
         const socket = this.props.socket;
         let ship1 = new Ship({
             id: 1,
             attr: this.props.p1_ship, 
             position: {
-                x: 350,
-                y: 225,
+                x: this.state.screen.width / 2 - 25,
+                y: this.state.screen.height / 2 - 25 ,
             }, 
             player: this.props.player,
             emitUpdate: this.emitUpdate.bind(this),
@@ -289,8 +288,8 @@ class Game extends Component {
             id: 2,
             attr: this.props.p2_ship,
             position: {
-                x: 375,
-                y: 225,
+                x: this.state.screen.width / 2 + 25,
+                y: this.state.screen.height / 2 + 25,
             }, 
             player: this.props.player,
             emitUpdate: this.emitUpdate.bind(this),
@@ -314,37 +313,50 @@ class Game extends Component {
         });
     }
 
+    restart() {
+        this.setState({ inGame: true, currentScore: 0, sentScores: false });
+        this.props.socket.emit('restart');
+        this.ship[1].ingame = true;
+        this.ship[2].ingame = true;
+        this.interval = setInterval(() => { this.update() }, 1000 / 60);
+    }
+
     respawn(payload) {
-        this.ship[payload.owner].position = { x: 325, y: 250 };
-        this.ship[payload.owner].targetPosition = { x: 325, y: 250 };
+        this.ship[payload.owner].position = { x: this.state.screen.width / 2, y: this.state.screen.height / 2 };
+        this.ship[payload.owner].targetPosition = { x: this.state.screen.width / 2, y: this.state.screen.height / 2 };
         this.ship[payload.owner].ingame = true;
         this.ship[payload.owner].delete = false;
         this.ship[payload.owner].powerUp({type: 'invincible'});
     }
 
     gameOver(payload) {
-        this.setState({ inGame: false });
         this.ship[1].ingame = false;
         this.ship[2].ingame = false;
+        clearInterval(this.interval);
         // send the score to the db
-        axios.post('/scores', { user: this.props.user, score: payload.score })
-        .then(response => {
-            console.log(response);
-        }).catch(err => {
-            console.log(err);
-        });
+        if (!this.state.sentScores) {
+            axios.post('/scores', { user: this.props.userId, score: this.props.player === 1 ? this.state.scores[1] : this.state.scores[2] })
+            .then(response => {
+                console.log(response);
+            }).catch(err => {
+                console.log(err);
+            });
+        }
+        this.setState({ inGame: false, sentScores: true });
     }
         
     render() {
         let endgame;
         let message;
         
+        console.log(this.state.inGame);
         if (!this.state.inGame) {
+
             endgame = (
                 <div className="endgame">
                 <p>Game over</p>
                 <button
-                    onClick={this.startGame.bind(this)}>
+                    onClick={this.restart.bind(this)}>
                     try again?
                 </button>
             </div>
@@ -356,9 +368,9 @@ class Game extends Component {
                 {endgame}
 
                 <span className='stats'>
-                    <div className="score lives" >Lives: {this.lives}</div>
-                    <div className="score current-score" >Your Score: { this.props.player === 1 ? this.scores[1] : this.scores[2] }</div>
-                    <div className="score top-score" >Friend Score: { this.props.player === 1 ? this.scores[2] : this.scores[1] }</div>
+                    <div className="score lives" >Lives: {this.state.lives}</div>
+                    <div className="score current-score" >Your Score: { this.props.player === 1 ? this.state.scores[1] : this.state.scores[2] }</div>
+                    <div className="score top-score" >Friend Score: { this.props.player === 1 ? this.state.scores[2] : this.state.scores[1] }</div>
                     <div className="barunderscore" ></div>
                 </span>
 

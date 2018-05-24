@@ -11,8 +11,8 @@ const createAccount = (req, res) => {
       res.send(err);
     } else {
       if (!data.length) {
-        db.query(`INSERT INTO users (full_name, username, password, profile_picture, total_points, blockchainAddress) 
-                VALUES (?, ?, ?, ?, ?, ?) `, [req.body.fullName, req.body.newUsername, req.body.newPassword, req.body.profilePicture, 0, req.body.blockchainAddress], (err, data) => {
+        db.query(`INSERT INTO users (username, password, profile_picture, total_points, blockchainAddress) 
+                VALUES (?, ?, ?, ?, ?) `, [req.body.newUsername, req.body.newPassword, req.body.profilePicture, 0, req.body.blockchainAddress], (err, data) => {
             if (err) {
               res.send(err);
             } else {
@@ -23,7 +23,6 @@ const createAccount = (req, res) => {
                         const user = {
                           id: data[0].id,
                           username: data[0].username,
-                          fullName: data[0].full_name,
                           profilePicture: data[0].profile_picture,
                           totalPoints: data[0].total_points,
                           createdAt: data[0].created_at,
@@ -58,7 +57,6 @@ const signIn = (req, res) => {
               const user = {
                 id: data[0].id,
                 username: data[0].username,
-                fullName: data[0].full_name,
                 profilePicture: data[0].profile_picture,
                 totalPoints: data[0].total_points,
                 createdAt: data[0].created_at,
@@ -90,7 +88,6 @@ const updateToken = (req, res) => {
       const user = {
         id: data[0].id,
         username: data[0].username,
-        fullName: data[0].full_name,
         profilePicture: data[0].profile_picture,
         totalPoints: data[0].total_points,
         createdAt: data[0].created_at,

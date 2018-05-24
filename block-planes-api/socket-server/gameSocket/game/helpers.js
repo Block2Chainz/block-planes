@@ -71,14 +71,14 @@ module.exports.checkCollisionsWith = (items1, items2, type, socket, room, world)
 					// undefined - bullets and enemies
 					// your bullets kill the enemies, destroy the bullet, add your score
 					item1.destroy();
-					item2.destroy(item1.id);
+					item2.takeDamage(item1.owner);
 				} else if ((type === 'enemies' || type === 'enemyBullets') && !item1.invincible && !item1.delete) {
 					// enemyBullets - player and enemy bullets
 					// enemies - player and enemies
 					// destroy the player, destroy the item (enemy or bullet), emit player died event
 					item1.destroy();
 					if (type === 'enemies') item2.destroy(item1.id);
-					item2.destroy(item1.owner);
+					else item2.destroy();
 					socket.in(room).emit('player_died', { player: item1.id });
 					world.respawnTimer(item1.id, socket, room);
 				} else if (type === 'enemies' && item1.invincible === true) {

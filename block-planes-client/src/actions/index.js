@@ -6,8 +6,8 @@ import {
     STORE_USER_PLANES,
     TOGGLE_CHAT_VISIBILITY,
     STORE_PLANES,
+    STORE_FRIEND_PLANES,
     SELECT_PLANE,
-    DESELECT_PLANE,
     SAVE_SOCKET,
 } from "../constants/action-types";
 
@@ -40,11 +40,7 @@ export const selectPlane = (plane) => ({
     payload: plane
 });
 
-export const deselectPlane = () => ({
-    type: DESELECT_PLANE,
-});
-
 export const saveSocket = (socket) => ({
     type: SAVE_SOCKET, 
     payload: socket,
-})
+});

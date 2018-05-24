@@ -7,7 +7,6 @@ import {
     TOGGLE_CHAT_VISIBILITY,
     STORE_PLANES,
     SELECT_PLANE,
-    DESELECT_PLANE,
     SAVE_SOCKET,
 } from "../constants/action-types";
 
@@ -15,9 +14,9 @@ const initialState = {
     loggedIn: false,
     id: null,
     userAddress: '0x0',
-    userPlanes: [],
+    userPlanes: [ [999999, 50000071117] ],
     chatVisible: false,
-    selectedPlane: 1111111111111111,
+    selectedPlane: 50000071117,
     gameSocket: null,
 };
 
@@ -63,9 +62,11 @@ const rootReducer = (state = initialState, action) => {
                 userPlanes: action.payload.userPlanes,
             };
         case STORE_PLANES: 
+            let planes = [ [999999, 50000071117] ]
+            planes = planes.concat(action.payload.planes);
             return {
                 ...state,
-                userPlanes: action.payload.planes,
+                userPlanes: planes,
             };
         case TOGGLE_CHAT_VISIBILITY:
             return {
@@ -76,11 +77,6 @@ const rootReducer = (state = initialState, action) => {
             return {
                 ...state, 
                 selectedPlane: action.payload,
-            };
-        case DESELECT_PLANE: 
-            return {
-                ...state, 
-                selectedPlane: null,
             };
         case SAVE_SOCKET: 
             return {

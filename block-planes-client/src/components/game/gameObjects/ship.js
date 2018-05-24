@@ -46,6 +46,22 @@ export default class Ship {
         this.shootingSpeed = attributes.shootingSpeed; // lower is better
         this.smokeColor = attributes.smokeColor;    
         this.ingame = args.ingame
+        
+        this.invincibleGlow = new Image();
+        this.invincibleGlow.src = 'http://127.0.0.1:8887/yellow.png';
+        this.speedyGlow = new Image();
+        this.speedyGlow.src = 'http://127.0.0.1:8887/blue.png';
+        this.bothPowerUpsGlow = new Image();
+        this.bothPowerUpsGlow.src = 'http://127.0.0.1:8887/green.png';
+
+        this.img1 = new Image();
+        this.img1.src = `http://127.0.0.1:8887/bodies/body_${this.bodyColor}.png`;
+        this.img2 = new Image();
+        this.img2.src = `http://127.0.0.1:8887/wings/${this.wingShape}/wing_${this.wingShape}_${this.wingColor}.png`;
+        this.img3 = new Image();
+        this.img3.src = `http://127.0.0.1:8887/tails/${this.tailShape}/tail_${this.tailShape}_${this.tailColor}.png`;
+        this.img4 = new Image();
+        this.img4.src = `http://127.0.0.1:8887/cockpits/${this.cockpitShape}/cockpit_${this.cockpitShape}_${this.cockpitColor}.png`;
 
         setTimeout(this.makeVulnerable.bind(this), 3000);
     }
@@ -205,7 +221,7 @@ export default class Ship {
             } else {
                 // *** NOT YOU
                 // INTERPOLATE
-                if (this.targetPosition.x - this.position.x > 100 || this.targetPosition.x - this.position.x < -100) {
+                if (this.targetPosition.x - this.position.x > 250 || this.targetPosition.x - this.position.x < -250) {
                     // too much motion (likely going off screen) - don't interpolate
                     this.position.x = this.targetPosition.x;
                 } else {
@@ -213,7 +229,7 @@ export default class Ship {
                     this.position.x += (this.targetPosition.x - this.position.x) * 0.16;
                 }
 
-                if (this.targetPosition.y - this.position.y > 100 || this.targetPosition.y - this.position.y < -100) {
+                if (this.targetPosition.y - this.position.y > 250 || this.targetPosition.y - this.position.y < -250) {
                     this.position.y = this.targetPosition.y;
                 } else {
                     this.position.y += (this.targetPosition.y - this.position.y) * 0.16;
@@ -233,33 +249,21 @@ export default class Ship {
             if ((this.invincible === true || this.speedy === true ) && this.ingame) {
                 let img0 = new Image();
                 if (this.invincible && !this.speedy) {
-                    img0.src = `http://127.0.0.1:8887/yellow.png`;
+                    context.drawImage(this.invincibleGlow, -20, -20, 55, 55);
                 } else if (this.speedy && !this.invincible) {
-                    img0.src = `http://127.0.0.1:8887/blue.png`;
+                    context.drawImage(this.speedyGlow, -20, -20, 55, 55);
                 } else if (this.speedy && this.invincible) {
-                    img0.src = `http://127.0.0.1:8887/green.png`;
+                    context.drawImage(this.bothPowerUpsGlow, -20, -20, 55, 55);
                 }
-                context.drawImage(img0, -20, -20, 55, 55);
             }
             // RENDER BODY
-            let img1 = new Image();
-            img1.src = `http://127.0.0.1:8887/bodies/body_${this.bodyColor}.png`;
-            context.drawImage(img1, -20, -20, 55, 55);
+            context.drawImage(this.img1, -20, -20, 55, 55);
             // RENDER WINGS
-            let img2 = new Image();
-            img2.src = `http://127.0.0.1:8887/wings/${this.wingShape}/wing_${this.wingShape}_${this.wingColor}.png`;
-            context.drawImage(img2, -20, -20, 55, 55);
+            context.drawImage(this.img2, -20, -20, 55, 55);
             // RENDER TAIL
-            let img3 = new Image();
-            img3.src = `http://127.0.0.1:8887/tails/${this.tailShape}/tail_${this.tailShape}_${this.tailColor}.png`;
-            context.drawImage(img3, -20, -20, 55, 55);
+            context.drawImage(this.img3, -20, -20, 55, 55);
             // RENDER COCKPIT
-            let img4 = new Image();
-            img4.src = `http://127.0.0.1:8887/cockpits/${this.cockpitShape}/cockpit_${this.cockpitShape}_${this.cockpitColor}.png`;
-            context.drawImage(img4, -20, -20, 55, 55);
-
-            // context.shadowBlur = this.glow;
-            // context.shadowColor = this.shadowColor;
+            context.drawImage(this.img4, -20, -20, 55, 55);
             context.restore();
         }
     }

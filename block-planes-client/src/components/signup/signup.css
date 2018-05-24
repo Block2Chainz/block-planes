@@ -53,3 +53,8 @@
 .signupbg {
   background-color: black;
 }
+
+.signUpNotice {
+  /* font-family: 'Courier New', Courier, monospace; */
+  font-size: 13px;
+}

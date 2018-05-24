@@ -12,6 +12,4 @@ export const STORE_PLANES = "STORE_PLANES";
 
 export const SELECT_PLANE = "SELECT_PLANE";
 
-export const DESELECT_PLANE = "DESELECT_PLANE";
-
 export const SAVE_SOCKET = "SAVE_SOCKET";
