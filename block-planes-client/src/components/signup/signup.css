@@ -58,3 +58,8 @@
   /* font-family: 'Courier New', Courier, monospace; */
   font-size: 13px;
 }
+
+.sign-up-grid {
+  position: absolute;
+  top: 30px;
+}
