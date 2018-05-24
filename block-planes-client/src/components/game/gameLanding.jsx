@@ -44,7 +44,6 @@ class ConnectedGameLanding extends Component {
   componentDidMount() {
     let component = this;
     this.notificationSystem = this.refs.notificationSystem;
-    console.log('location',component.props.location);
     // this.socket.on('returnfriendRequestSent', function (request) {
     //   if ((component.props.userId === request.recipientId) && (component.state.isRequestPage !== true)) {
     //     component.friendRequestSentNotification(event, request);
