@@ -55,7 +55,7 @@ class Marketplace extends Component {
         .then((instance) => {
         this.setState({contract : instance, userAddress : address});
         contract = instance;
-        instance.createRandomPlane({ from: this.web3.eth.accounts[0], value: this.web3.toWei(0.001, 'ether')}); 
+        // instance.createRandomPlane({ from: this.web3.eth.accounts[0], value: this.web3.toWei(0.001, 'ether')}); 
         return instance.getPlanesByOwner(address);
         }).then((planes) => {
           return planes.map((plane) => {

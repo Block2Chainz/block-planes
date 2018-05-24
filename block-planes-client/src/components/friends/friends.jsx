@@ -40,7 +40,8 @@ class ConnectedFriends extends Component {
       requests: [],
       isRequestPage: false,
       highScore: '',
-      totalScore: ''
+      totalScore: '',
+      blockchainAddress: '',
     };
     let component = this;
     this.updateFriendsPage = this.updateFriendsPage.bind(this);
@@ -102,6 +103,7 @@ class ConnectedFriends extends Component {
     if (!user) {
       this.fetchFriends();
     } else {
+      console.log('USER', user);
       this.setState({
         friendId: user.id,
         username: user.title,
@@ -109,6 +111,7 @@ class ConnectedFriends extends Component {
         fullName: '',
         totalPoints: user.totalPoints,
         createdAt: user.createdAt,
+        blockchainAddress: user.blockchainAddress,
         isRequestPage: false
       }, () => {
         this.fetchFriends();
@@ -318,6 +321,7 @@ class ConnectedFriends extends Component {
         </div>
       );
     } else if (this.state.friendId) {
+      console.log('*******************RENDERING', this.state.blockchainAddress)
       return (
         <div >
         <NotificationSystem ref="notificationSystem" />
@@ -358,7 +362,7 @@ class ConnectedFriends extends Component {
             <p className='hangar'>Hangar</p>
 
             <Grid.Row>
-              <Hangar friend={this.state.friendId} />
+              <Hangar friend={this.state.blockchainAddress} />
             </Grid.Row>
           </Grid>
         </div>

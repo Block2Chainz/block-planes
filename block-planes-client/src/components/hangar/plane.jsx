@@ -155,7 +155,7 @@ class Plane extends Component {
   render() {
     return (
       <div>
-        {this.props.selected === 'highlight' ? 
+        {this.props.selected === true ? 
           <div onClick={(e) => this.select(e)} width={16} className='plane blinking-border selected-plane-background' >
           <canvas ref='canvas' width={150} height={150} />
             <div>
