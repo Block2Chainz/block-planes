@@ -171,13 +171,15 @@ margin-left: 3%;
 }
 
 .hangar-profile {
-  padding-top: 3%;
   font-family: 'Orbitron';
   /* margin-left: 40%; */
   margin: auto;
   text-align: center;
   font-size: 400%;
   color: #fff;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  height: 100%;
 }
 
 /* .game-landing-friend-profile {
