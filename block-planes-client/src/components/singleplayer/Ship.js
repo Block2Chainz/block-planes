@@ -111,7 +111,7 @@ export default class Ship {
     }
   }
 
-  invincibilityPowerUpEffect() {
+  invincibilityPowerUpEffect(duration) {
     let component = this;
     this.invincible = true;
     if (this.speedBoost === true) {
@@ -122,13 +122,13 @@ export default class Ship {
     }
     setTimeout(function() {
       component.makeVulnerable();
-    }, 5000);
+    }, duration);
   }
 
   speedPowerUpEffect() {
     let component = this;
     this.speedBoost = true;
-    this.speed += 1.5;
+    this.speed += 1;
     this.inertia -= 0.1;
     this.glow = 50;
     if (component.invincible === true) {
@@ -168,7 +168,7 @@ export default class Ship {
   slowDown = () => {
     let component = this;
     this.speedBoost = false;
-    this.speed -= 1.5;
+    this.speed -= 1;
     this.inertia += 0.1;
     if (this.invincible === true) {
       this.shadowColor = '#fffa7c';

@@ -87,15 +87,16 @@ class ConnectedHome extends Component {
                 <p className='secondhalfpara'>
                   <br/><br/>If you’re reading this, the world needs your help.
                   <br/><br/>That’s right, the WORLD.
-                  <br/><br/>The terrorist organization known as evilGroup.name is attempting to destroy life as we know it…
+                  <br/><br/>As a species, we always dreamed of making contact beyond the stars- to find out if we are truly alone in this vast universe.
+                  <br/><br/>Turns out that was humanity's biggest mistake.
+                  <br/><br/>Our bad.
+                  <br/><br/>Flash forward to right now.
+                  <br/><br/>Beings from another world are converging on our little, blue planet with plans to destroy life as we know it…
                   <br/><br/>...and you know, in general. 
-                  <br/><br/>They've stolen a high-powered, long-range, super-awesome laser canon capable of annihilating small celestial bodies.
-                  <br/><br/>It's code name?
-                  <br/><br/>MOON DESTROYER.
-                  <br/><br/>You can guess what they're trying to achieve here.
                   <br/><br/>That’s why BlockPlanes needs your help. 
-                  <br/><br/>We're suppling any able bodied pilot with the means to deal with the worse case scenario.
-                  <br/><br/>Read: Giant chunks of flaming space rock hurtling towards our little, blue planet.
+                  <br/><br/>We're suppling any able bodied pilot with the means to fight back.
+                  <br/><br/>Because if we lose this one, it'll mean the complete and utter eradication of all humanity.
+                  <br/><br/>No pressure or anything.
                   <br/><br/>So what do you say, hero?
                   <br/><br/>We have the PLANES. Do you have the GUTS?
                 </p>

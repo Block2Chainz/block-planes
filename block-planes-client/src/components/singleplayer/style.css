@@ -71,6 +71,7 @@ body {
 }
 
 .buttongame{
+  font-family: 'Orbitron' !important;
   border: 4px solid #ffffff;
   background-color: transparent;
   color: #ffffff;

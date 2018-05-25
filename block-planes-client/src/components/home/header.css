@@ -266,3 +266,7 @@
 .fourthportion {
   top: 300%;
 }
+
+button {
+  font-family: 'Orbitron' !important;
+}
