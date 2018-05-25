@@ -51,16 +51,17 @@ class ConnectedSinglePlayer extends Component {
         down  : 0,
         space : 0,
       },
-      asteroidCount: 0,
+      asteroidCount: 1,
       fasteroidCount: 0,
       masteroidCount: 1,
-      blasteroidCount: 0,
+      blasteroidCount: 1,
       currentScore: 0,
-      lives: 5,
+      lives: 10,
       topScore: localStorage['topscore'] || 0,
-      inGame: false,
+      inGame: true,
       highScore: '',
-      ship: ''
+      ship: '',
+      starting: true
     }
     this.ship = [];
     this.asteroids = [];
@@ -73,6 +74,9 @@ class ConnectedSinglePlayer extends Component {
     this.invincibilityPowerUps = [];
     this.speedPowerUps = [];
     this.fireRatePowerUps = [];
+
+    this.background = new Image();
+    this.background.src = `http://127.0.0.1:8887/background.png`;
   }
 
   handleResize(value, e){
@@ -104,7 +108,7 @@ class ConnectedSinglePlayer extends Component {
 
     const context = this.refs.canvas.getContext('2d');
     this.setState({ context: context });
-    this.startGame();
+    // this.startGame();
     requestAnimationFrame(() => {this.update()});
   }
   
@@ -118,7 +122,8 @@ class ConnectedSinglePlayer extends Component {
     const context = this.state.context;
     const keys = this.state.keys;
     const ship = this.ship[0];
-    
+
+    context.drawImage(this.background, 0, 0);
     context.save();
     context.scale(this.state.screen.ratio, this.state.screen.ratio);
     
@@ -169,6 +174,7 @@ class ConnectedSinglePlayer extends Component {
 
   nextStage() {
     let component = this;
+    this.ship[0].invincibilityPowerUpEffect(1000);
     const randomNum = Math.floor(Math.random() * (2 - 0 + 1) + 0);
     const randomAsteroidType = ['asteroid', 'blasteroid', 'masteroid'][randomNum] + 'Count';
     if (randomNum === 0) {
@@ -179,7 +185,7 @@ class ConnectedSinglePlayer extends Component {
       });
     } else if (randomNum === 1) {
       component.setState({
-        [randomAsteroidType]: component.state[randomAsteroidType] + 2
+        [randomAsteroidType]: component.state[randomAsteroidType] + 1
       }, function() {
         component.generateEnemies();
       });
@@ -213,13 +219,14 @@ class ConnectedSinglePlayer extends Component {
     let component = this;
     this.setState({
       inGame: true,
+      starting: false,
       currentScore: 0,
-      asteroidCount: 0,
+      asteroidCount: 1,
       fasteroidCount: 0,
       masteroidCount: 1,
-      blasteroidCount: 0,
+      blasteroidCount: 1,
       currentScore: 0,
-      lives: 5
+      lives: 10
     }, function () {
       component.makeShip();
       this.asteroids = [];
@@ -232,6 +239,7 @@ class ConnectedSinglePlayer extends Component {
       this.bullets = [];
       this.blasteroidBullets = [];
       this.particles = [];
+
       this.generateAsteroids(this.state.asteroidCount);
       this.generateFasteroids(this.state.fasteroidCount);
       this.generateMasteroids(this.state.masteroidCount);
@@ -275,14 +283,6 @@ class ConnectedSinglePlayer extends Component {
     });
 
     this.addScoreToTotal();
-
-    // Replace top score
-    // if(this.state.currentScore > this.state.topScore){
-    //   this.setState({
-    //     topScore: this.state.currentScore,
-    //   });
-    //   localStorage['topscore'] = this.state.currentScore;
-    // }
   }
 
   generateAsteroids(howMany){
@@ -362,10 +362,11 @@ class ConnectedSinglePlayer extends Component {
     let ship = this.ship[0];
     for (let i = 0; i < 1; i++) {
       let invincibilityPowerUp = new InvincibilityPowerUp({
-        size: 20,
+        size: 30,
+        offset: -30,
         position: {
-          x: randomNumBetweenExcluding(0, this.state.screen.width, ship.position.x-60, ship.position.x+60),
-          y: randomNumBetweenExcluding(0, this.state.screen.height, ship.position.y-60, ship.position.y+60)
+          x: randomNumBetweenExcluding(0, this.state.screen.width, ship.position.x-40, ship.position.x+40),
+          y: randomNumBetweenExcluding(0, this.state.screen.height, ship.position.y-40, ship.position.y+40)
         },
         create: this.createObject.bind(this)
       });
@@ -375,11 +376,11 @@ class ConnectedSinglePlayer extends Component {
 
   invincibilityPowerUpCountdown() {
       let component = this;
-      let randomNumber = randomNumBetween(10000, 20000)
+      let randomNumber = randomNumBetween(5000, 30000)
       setTimeout(function() {
-        if (component.ship.length) {
+        if (component.ship.length && !component.invincibilityPowerUps.length) {
           component.generateInvincibilityPowerUp();
-        } else if (component.state.inGame) {
+        } else if (component.state.inGame && !component.invincibilityPowerUps.length) {
           setTimeout(function() {
             component.generateInvincibilityPowerUp();
           }, 3000)
@@ -392,10 +393,11 @@ class ConnectedSinglePlayer extends Component {
     let ship = this.ship[0];
     for (let i = 0; i < 1; i++) {
       let speedPowerUp = new SpeedPowerUp({
-        size: 20,
+        size: 30,
+        offset: -30,
         position: {
-          x: randomNumBetweenExcluding(0, this.state.screen.width, ship.position.x-60, ship.position.x+60),
-          y: randomNumBetweenExcluding(0, this.state.screen.height, ship.position.y-60, ship.position.y+60)
+          x: randomNumBetweenExcluding(0, this.state.screen.width, ship.position.x-40, ship.position.x+40),
+          y: randomNumBetweenExcluding(0, this.state.screen.height, ship.position.y-40, ship.position.y+40)
         },
         create: this.createObject.bind(this)
       });
@@ -405,11 +407,11 @@ class ConnectedSinglePlayer extends Component {
 
   speedPowerUpCountdown() {
       let component = this;
-      let randomNumber = randomNumBetween(10000, 20000)
+      let randomNumber = randomNumBetween(5000, 30000)
       setTimeout(function() {
-        if (component.ship.length) {
+        if (component.ship.length && !component.speedPowerUps.length) {
           component.generateSpeedPowerUp();
-        } else if (component.state.inGame) {
+        } else if (component.state.inGame && !component.speedPowerUps.length) {
           setTimeout(function() {
             component.generateSpeedPowerUp();
           }, 3000)
@@ -422,10 +424,11 @@ class ConnectedSinglePlayer extends Component {
     let ship = this.ship[0];
     for (let i = 0; i < 1; i++) {
       let fireRatePowerUp = new FireRatePowerUp({
-        size: 20,
+        size: 30,
+        offset: -30,
         position: {
-          x: randomNumBetweenExcluding(0, this.state.screen.width, ship.position.x-60, ship.position.x+60),
-          y: randomNumBetweenExcluding(0, this.state.screen.height, ship.position.y-60, ship.position.y+60)
+          x: randomNumBetweenExcluding(0, this.state.screen.width, ship.position.x-40, ship.position.x+40),
+          y: randomNumBetweenExcluding(0, this.state.screen.height, ship.position.y-40, ship.position.y+40)
         },
         create: this.createObject.bind(this)
       });
@@ -435,11 +438,11 @@ class ConnectedSinglePlayer extends Component {
 
   fireRatePowerUpCountdown() {
       let component = this;
-      let randomNumber = randomNumBetween(10000, 20000)
+      let randomNumber = randomNumBetween(5000, 30000)
       setTimeout(function() {
-        if (component.ship.length) {
+        if (component.ship.length && !component.fireRatePowerUps.length) {
           component.generateFireRatePowerUp();
-        } else if (component.state.inGame) {
+        } else if (component.state.inGame && !component.fireRatePowerUps.length) {
           setTimeout(function() {
             component.generateFireRatePowerUp();
           }, 3000)
@@ -473,7 +476,7 @@ class ConnectedSinglePlayer extends Component {
         var item2 = items2[b];
         if(this.checkCollision(item1, item2)){
           if (items2 === this.invincibilityPowerUps) {
-            item1.invincibilityPowerUpEffect();
+            item1.invincibilityPowerUpEffect(5000);
             item2.destroy();
             this.invincibilityPowerUpCountdown();
           } else if (items2 === this.speedPowerUps) {
@@ -560,6 +563,18 @@ class ConnectedSinglePlayer extends Component {
     } else {
       message = 'Mission Complete!';
       message2 = 'Score: ' + this.state.currentScore;
+    }
+
+    if(this.state.starting){
+      endgame = (
+        <div className="endgame">
+          <p>Ready?</p>
+          <button className='buttongame'
+            onClick={ this.startGame.bind(this) }>
+            Start!
+          </button>
+        </div>
+      )
     }
 
     if(!this.state.inGame){

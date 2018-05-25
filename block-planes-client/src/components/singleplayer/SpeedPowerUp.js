@@ -9,10 +9,13 @@ export default class SpeedPowerUp {
       y: randomNumBetween(-10000, -10000)
     }
     this.rotation = 0;
-    this.rotationSpeed = randomNumBetween(-10000, -10000)
+    this.rotationSpeed = 1;
     this.radius = args.size;
+    this.offset = args.offset;
     this.create = args.create;
-    this.vertices = asteroidVertices(8, args.size)
+    this.vertices = asteroidVertices(8, args.size);
+    this.img1 = new Image();
+    this.img1.src = `http://127.0.0.1:8887/speedPowerUp.png`;
   }
 
   destroy(){
@@ -57,15 +60,7 @@ export default class SpeedPowerUp {
     context.save();
     context.translate(this.position.x, this.position.y);
     context.rotate(this.rotation * Math.PI / 180);
-    context.strokeStyle = '#51c7ff';
-    context.lineWidth = 2;
-    context.beginPath();
-    context.moveTo(0, -this.radius);
-    for (let i = 1; i < this.vertices.length; i++) {
-      context.lineTo(this.vertices[i].x, this.vertices[i].y);
-    }
-    context.closePath();
-    context.stroke();
+    context.drawImage(this.img1, this.offset, this.offset, (this.radius*1.75), (this.radius*1.75));
     context.restore();
   }
 }
