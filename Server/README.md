@@ -1,39 +1,36 @@
 # Introduction
-BlockPlanes is a top-down aerial shooter with unique, randomly-generated, player-owned planes that can be bought, sold, and shown off. The plane attributes will be stored in an Ethereum smart contract as an ERC-721 token. It is also a full social platform with live-chat, friends, and notifications. Play single player, against your friends, or against a random opponent. 
-
-*** Note: this is still a work in progress and full functionality has not been completed *** 
+BlockPlanes is a top-down aerial shooter with unique, randomly-generated, player-owned planes that can be bought, sold, and shown off. The plane attributes are stored in an Ethereum smart contract as non-fungible collectible token. It is also a full social platform with live-chat, friends, notifications, and leaderboards. Play single player or against your friends. 
 
 ## Get Started
-You will need Truffle installed, along with Ganache. 
+You will need Truffle installed, along with Ganache.
 
 ### Install 
-In the root directory:
+In the server directory:
 ```bash
 npm install
 ```
-In the client directory: 
+In the gamesocket directory: 
 ```bash
 npm install
 ```
 
 ### Setup Environment
-In the solidity folder, migrate the contract, and purchase a random plane (you need ganache running): 
+In the solidity folder/blockplanes, migrate the contract: 
 ```bash
 truffle console
 migrate
-BlockPlanes.deployed().then(function(i) {inst = i})
-inst.createRandomPlane({from: web3.eth.accounts[0], value: web3.toWei(0.001, 'ether')})
 ```
-Seed your mySQL db with the schema.db file in the server folder.
 
 ### Start the app
-From the client folder: 
-```bash
-npm run build
-```
-From the root directory: 
+From the server folder: 
 ```bash
 npm run start
-npm run chatSocket
-npm run gameSocket
 ```
+From the gamesocket directory: 
+```bash
+npm run start
+```
+### Deployed 
+You can skip all of that and see it in action here: 
+
+<a href=#>insert link</a>
