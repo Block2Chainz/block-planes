@@ -12,11 +12,14 @@ export default class Blasteroid {
     this.rotation = 0;
     this.rotationSpeed = randomNumBetween(-1, 1)
     this.radius = args.size;
+    this.offset = args.offset;
     this.score = (80/this.radius)*5;
     this.create = args.create;
     this.addScore = args.addScore;
     this.vertices = asteroidVertices(8, args.size);
     this.lastShot = 0;
+    this.img1 = new Image();
+    this.img1.src = `http://127.0.0.1:8887/enemies/blast.png`;
   }
 
   destroy(){
@@ -41,11 +44,12 @@ export default class Blasteroid {
     }
 
     // Break into smaller blasteroids
-    if(this.radius > 10){
-      for (let i = 0; i < 2; i++) {
+    if(this.radius > 20){
+      for (let i = 0; i < 3; i++) {
         let blasteroid = new Blasteroid({
 
           size: this.radius/2,
+          offset: this.offset/2,
           position: {
             x: randomNumBetween(-10, 20)+this.position.x,
             y: randomNumBetween(-10, 20)+this.position.y
@@ -91,15 +95,7 @@ export default class Blasteroid {
     context.save();
     context.translate(this.position.x, this.position.y);
     context.rotate(this.rotation * Math.PI / 180);
-    context.strokeStyle = '#ff7954';
-    context.lineWidth = 2;
-    context.beginPath();
-    context.moveTo(0, -this.radius);
-    for (let i = 1; i < this.vertices.length; i++) {
-      context.lineTo(this.vertices[i].x, this.vertices[i].y);
-    }
-    context.closePath();
-    context.stroke();
+    context.drawImage(this.img1, this.offset, this.offset, (this.radius*1.75), (this.radius*1.75));
     context.restore();
   }
 }

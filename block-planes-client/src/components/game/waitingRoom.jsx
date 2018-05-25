@@ -86,6 +86,7 @@ class ConnectedWaitingRoom extends Component {
                 this.enableButton();
             }
         });
+        console.log('waiting room state', this.state);
     }
 
     enableButton() {

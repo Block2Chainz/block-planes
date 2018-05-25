@@ -252,7 +252,6 @@ class ConnectedFriends extends Component {
         }
         })
       .then(response => {
-        console.log('highscore', response);
           component.setState({
             highScore: response.data.high_score,
             totalScore: response.data.total_points

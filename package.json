@@ -48,6 +48,7 @@
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "react-scroll": "^1.7.9",
+    "react-sound": "^1.2.0",
     "redis": "^2.8.0",
     "redis-cli": "^1.0.2",
     "redis-server": "^1.2.0",

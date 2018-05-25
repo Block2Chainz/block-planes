@@ -1,20 +1,25 @@
 import Particle from './Particle';
 import { asteroidVertices, randomNumBetween } from './helpers';
+import Fasteroid from './Fasteroid';
 
 export default class Masteroid {
   constructor(args) {
     this.position = args.position
     this.velocity = {
-      x: randomNumBetween(-2.5, 0.5),
-      y: randomNumBetween(-2.5, 0.5)
+      x: randomNumBetween(0.5, 1.5),
+      y: randomNumBetween(0.5, 1.5)
     }
     this.rotation = 0;
-    this.rotationSpeed = randomNumBetween(-2, 0)
+    this.rotationSpeed = randomNumBetween(-2, -1)
     this.radius = args.size;
-    this.score = (80/this.radius)*6;
+    this.offset = args.offset;
+    this.health = 10;
+    this.score = Math.floor((80/this.radius)*6);
     this.create = args.create;
     this.addScore = args.addScore;
-    this.vertices = asteroidVertices(8, args.size)
+    this.vertices = asteroidVertices(8, args.size);
+    this.img1 = new Image();
+    this.img1.src = `http://127.0.0.1:8887/enemies/master.png`;
   }
 
   destroy(){
@@ -24,7 +29,7 @@ export default class Masteroid {
     // Explode
     for (let i = 0; i < this.radius; i++) {
       const particle = new Particle({
-        lifeSpan: randomNumBetween(60, 100),
+        lifeSpan: randomNumBetween(600, 1000),
         size: randomNumBetween(1, 3),
         position: {
           x: this.position.x + randomNumBetween(-this.radius/4, this.radius/4),
@@ -40,10 +45,11 @@ export default class Masteroid {
 
     // Break into smaller masteroids
     if(this.radius > 10){
-      for (let i = 0; i < 2; i++) {
-        let masteroid = new Masteroid({
+      for (let i = 0; i < 5; i++) {
+        let fasteroid = new Fasteroid({
 
-          size: this.radius/2,
+          size: this.radius/3,
+          offset: this.offset/3,
           position: {
             x: randomNumBetween(-10, 20)+this.position.x,
             y: randomNumBetween(-10, 20)+this.position.y
@@ -51,10 +57,28 @@ export default class Masteroid {
           create: this.create.bind(this),
           addScore: this.addScore.bind(this)
         });
-        this.create(masteroid, 'masteroids');
+        this.create(fasteroid, 'fasteroids');
       }
     }
   }
+
+  particleEffect() {
+    for (let i = 0; i < this.radius; i++) {
+      const particle = new Particle({
+        lifeSpan: randomNumBetween(600, 1000),
+        size: randomNumBetween(1, 3),
+        position: {
+          x: this.position.x + randomNumBetween(-this.radius/4, this.radius/4),
+          y: this.position.y + randomNumBetween(-this.radius/4, this.radius/4)
+        },
+        velocity: {
+          x: randomNumBetween(-1.5, 1.5),
+          y: randomNumBetween(-1.5, 1.5)
+        }
+      });
+      this.create(particle, 'particles');
+  }
+}
 
   render(state){
     // Move
@@ -81,15 +105,7 @@ export default class Masteroid {
     context.save();
     context.translate(this.position.x, this.position.y);
     context.rotate(this.rotation * Math.PI / 180);
-    context.strokeStyle = '#b075ff';
-    context.lineWidth = 2;
-    context.beginPath();
-    context.moveTo(0, -this.radius);
-    for (let i = 1; i < this.vertices.length; i++) {
-      context.lineTo(this.vertices[i].x, this.vertices[i].y);
-    }
-    context.closePath();
-    context.stroke();
+    context.drawImage(this.img1, this.offset, this.offset, (this.radius*1.75), (this.radius*1.75));
     context.restore();
   }
 }

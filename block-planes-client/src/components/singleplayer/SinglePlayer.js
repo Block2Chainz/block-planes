@@ -51,9 +51,9 @@ class ConnectedSinglePlayer extends Component {
         down  : 0,
         space : 0,
       },
-      asteroidCount: 1,
+      asteroidCount: 0,
       fasteroidCount: 0,
-      masteroidCount: 0,
+      masteroidCount: 1,
       blasteroidCount: 0,
       currentScore: 0,
       lives: 5,
@@ -169,22 +169,41 @@ class ConnectedSinglePlayer extends Component {
 
   nextStage() {
     let component = this;
-    const randomNum = Math.floor(Math.random() * (3 - 0 + 1) + 0);
-    const randomAsteroidType = ['asteroid', 'fasteroid', 'masteroid', 'blasteroid'][randomNum] + 'Count';
-    component.setState({
-      [randomAsteroidType]: component.state[randomAsteroidType] + 1
-    }, function() {
-      component.generateAsteroids(component.state.asteroidCount);
-      component.generateFasteroids(component.state.fasteroidCount);
-      component.generateMasteroids(component.state.masteroidCount);
-      component.generateBlasteroids(component.state.blasteroidCount);
-    });
+    const randomNum = Math.floor(Math.random() * (2 - 0 + 1) + 0);
+    const randomAsteroidType = ['asteroid', 'blasteroid', 'masteroid'][randomNum] + 'Count';
+    if (randomNum === 0) {
+      component.setState({
+        [randomAsteroidType]: component.state[randomAsteroidType] + 1
+      }, function() {
+        component.generateEnemies();
+      });
+    } else if (randomNum === 1) {
+      component.setState({
+        [randomAsteroidType]: component.state[randomAsteroidType] + 2
+      }, function() {
+        component.generateEnemies();
+      });
+    } else if(randomNum === 2) {
+      component.setState({
+        [randomAsteroidType]: component.state[randomAsteroidType] + 1
+      }, function() {
+        component.generateEnemies();
+      });
+    }
+  }
+
+  generateEnemies() {
+    let component = this;
+    component.generateAsteroids(component.state.asteroidCount);
+    component.generateFasteroids(component.state.fasteroidCount);
+    component.generateMasteroids(component.state.masteroidCount);
+    component.generateBlasteroids(component.state.blasteroidCount);
   }
 
   addScore(points){
     if(this.state.inGame){
       this.setState({
-        currentScore: this.state.currentScore + points,
+        currentScore: Math.floor(this.state.currentScore + points),
       });
     }
   }
@@ -195,9 +214,9 @@ class ConnectedSinglePlayer extends Component {
     this.setState({
       inGame: true,
       currentScore: 0,
-      asteroidCount: 1,
+      asteroidCount: 0,
       fasteroidCount: 0,
-      masteroidCount: 0,
+      masteroidCount: 1,
       blasteroidCount: 0,
       currentScore: 0,
       lives: 5
@@ -272,6 +291,7 @@ class ConnectedSinglePlayer extends Component {
     for (let i = 0; i < howMany; i++) {
       let asteroid = new Asteroid({
         size: 80,
+        offset: -50,
         position: {
           x: randomNumBetweenExcluding(0, this.state.screen.width, ship.position.x-60, ship.position.x+60),
           y: randomNumBetweenExcluding(0, this.state.screen.height, ship.position.y-60, ship.position.y+60)
@@ -288,7 +308,8 @@ class ConnectedSinglePlayer extends Component {
     let ship = this.ship[0];
     for (let i = 0; i < howMany; i++) {
       let fasteroid = new Fasteroid({
-        size: 40,
+        size: 30,
+        offset: -75/4,
         position: {
           x: randomNumBetweenExcluding(0, this.state.screen.width, ship.position.x-60, ship.position.x+60),
           y: randomNumBetweenExcluding(0, this.state.screen.height, ship.position.y-60, ship.position.y+60)
@@ -305,7 +326,8 @@ class ConnectedSinglePlayer extends Component {
     let ship = this.ship[0];
     for (let i = 0; i < howMany; i++) {
       let masteroid = new Masteroid({
-        size: 120,
+        size: 100,
+        offset: -70,
         position: {
           x: randomNumBetweenExcluding(0, this.state.screen.width, ship.position.x-60, ship.position.x+60),
           y: randomNumBetweenExcluding(0, this.state.screen.height, ship.position.y-60, ship.position.y+60)
@@ -323,6 +345,7 @@ class ConnectedSinglePlayer extends Component {
     for (let i = 0; i < howMany; i++) {
       let blasteroid = new Blasteroid({
         size: 40,
+        offset: -25,
         position: {
           x: randomNumBetweenExcluding(0, this.state.screen.width, ship.position.x-60, ship.position.x+60),
           y: randomNumBetweenExcluding(0, this.state.screen.height, ship.position.y-60, ship.position.y+60)
@@ -461,6 +484,15 @@ class ConnectedSinglePlayer extends Component {
             item1.fireRatePowerUpEffect();
             item2.destroy();
             this.fireRatePowerUpCountdown();
+          } else if (items2 === this.masteroids) {
+            item1.destroy();
+            // item2.particleEffect();
+            item2.health--;
+            if (item2.health <= 0) {
+              // item2.particleEffect();
+              item1.destroy();
+              item2.destroy();
+            }
           } else {
           item1.destroy();
           item2.destroy();
