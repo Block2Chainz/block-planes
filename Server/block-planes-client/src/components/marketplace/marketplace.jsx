@@ -239,7 +239,6 @@ class ConnectedMarketplace extends Component {
             <Plane key={plane[0]} plane={plane} />
             <div className='plane-menu'>
               <div className='plane-stats-div'>
-                  {console.log('what is plane[1]', typeof plane[1])}
                   <p className='plane-stats'>
                     Speed: {parseInt(JSON.stringify(plane[1]).slice(6, 7)) % 4 + 1} <br/>
                     Inertia: {parseInt(JSON.stringify(plane[1]).slice(7, 8)) % 3 + 1}<br/>

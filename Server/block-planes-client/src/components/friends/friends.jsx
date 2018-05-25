@@ -103,7 +103,6 @@ class ConnectedFriends extends Component {
     if (!user) {
       this.fetchFriends();
     } else {
-      console.log('USER', user);
       this.setState({
         friendId: user.id,
         username: user.title,

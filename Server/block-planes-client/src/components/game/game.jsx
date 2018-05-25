@@ -349,7 +349,6 @@ class Game extends Component {
         let endgame;
         let message;
         
-        console.log(this.state.inGame);
         if (!this.state.inGame) {
 
             endgame = (
