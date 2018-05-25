@@ -71,6 +71,10 @@ class ConnectedHome extends Component {
                   <Image src='https://i.imgur.com/MBsbBkv.png' size='massive' rounded />
                 </div>
               </Grid.Column>
+<<<<<<< HEAD:block-planes-client/src/components/home/home.jsx
+=======
+
+>>>>>>> modified folder layout:Server/block-planes-client/src/components/home/home.jsx
             </Grid>
 
             <Grid className='homeSection secondportion'>
