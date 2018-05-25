@@ -1,5 +1,4 @@
 // require('dotenv').config();
-
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const webpack = require('webpack');
@@ -18,9 +17,9 @@ const options = {
 
 
 module.exports = {
-    entry: ['babel-polyfill', './src/index.jsx'],
+    entry: ['babel-polyfill', './block-planes-client/src/index.jsx'],
     output: {
-        filename: './public/bundle.js'
+        filename: './block-planes-client/public/bundle.js'
     },
     watch: true,
     devtool: options.devTool,

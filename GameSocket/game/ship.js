@@ -1,4 +1,4 @@
-const Bullet = require('./Bullet.js');
+const Bullet = require('./bullet.js');
 const Particle = require('./particle.js');
 const shipRenderer = require('./shipRenderer.js');
 const { rotatePoint, randomNumBetween } = require('./helpers.js');

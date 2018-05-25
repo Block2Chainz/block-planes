@@ -1,4 +1,4 @@
-const Particle = require('./Particle') ;
+const Particle = require('./particle') ;
 const { asteroidVertices, randomNumBetween, randomNumBetweenExcludingTwoRanges } = require('./helpers') ;
 
 const InvincibilityPowerUp = function(world) {

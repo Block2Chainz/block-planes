@@ -1,4 +1,4 @@
-const Bullet = require('./Bullet.js');
+const Bullet = require('./bullet.js');
 const Particle = require('./particle.js');
 const { asteroidVertices, randomNumBetween, randomNumBetweenExcluding, randomNumBetweenExcludingTwoRanges } = require('./helpers.js');
 

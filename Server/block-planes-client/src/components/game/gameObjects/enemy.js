@@ -16,9 +16,11 @@ export default class Enemy {
         this.masterImg = new Image();
         this.blastImg = new Image();
         this.fastImg = new Image();
+        this.normalImg = new Image();
         this.masterImg.src = `https://s3-us-west-1.amazonaws.com/blockplanes/enemies/master.png`;
         this.blastImg.src = `https://s3-us-west-1.amazonaws.com/blockplanes/enemies/blast.png`;
         this.fastImg.src = `https://s3-us-west-1.amazonaws.com/blockplanes/enemies/fast.png`;
+        this.normalImg.src = `https://s3-us-west-1.amazonaws.com/blockplanes/enemies/asteroid.png`;
         
     }
 
@@ -53,6 +55,8 @@ export default class Enemy {
             context.drawImage(this.blastImg, -50, -50, 100, 100);
         } else if (this.type === 'fast') {
             context.drawImage(this.fastImg, -15, -15, 35, 35);
+        } else if (this.type === 'normal') {
+            context.drawImage(this.normalImg, -this.radius/2, -this.radius/2, this.radius, this.radius);
         } else {
             context.strokeStyle = '#f1f1f1';
             context.lineWidth = 2;

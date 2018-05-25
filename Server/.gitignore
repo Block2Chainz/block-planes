@@ -1,4 +1,12 @@
-# See https://help.github.com/ignore-files/ for more about ignoring files.
+node_modules
+package-lock.json
+/client/package-lock.json
+bundle.js
+bundle.js.map
+build
+
+# dotenv environment variables file
+.env
 
 # dependencies
 /node_modules
@@ -17,7 +25,9 @@ bundle.js.map
 .env
 
 # production
-/build
+/build/
+/build/contracts/
+/build/contracts
 /public/bundle.js
 /public/bundle.js.map
 
@@ -29,7 +39,5 @@ bundle.js.map
 .env.production.local
 
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 build/

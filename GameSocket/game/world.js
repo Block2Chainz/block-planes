@@ -6,8 +6,8 @@ const Bullet = require('./bullet.js');
 const Particle = require('./particle.js');
 const Enemy = require('./enemy.js');
 
-const InvincibilityPowerUp = require('./invincibilityPowerUp.js');
-const SpeedPowerUp = require('./speedPowerUp.js');
+const InvincibilityPowerUp = require('./InvincibilityPowerUp.js');
+const SpeedPowerUp = require('./SpeedPowerUp.js');
 
 const World = function () {
     this.peers = new Object;
@@ -44,7 +44,7 @@ World.prototype.connect = function (player, shipAttributes, startTimer, io, room
         checkCollisionsWith = checkCollisionsWith.bind(this);
     }
 
-    this.lives = 1;
+    this.lives = 10;
     this.scores = { 1: 0, 2: 0 }
     this.gameOverSent = false;
 

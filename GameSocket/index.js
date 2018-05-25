@@ -1,3 +1,4 @@
+require('dotenv').config();
 const http = require('http');
 const SocketIo = require('socket.io');
 const Rooms = require('./rooms');
@@ -24,5 +25,4 @@ io.on('connection', (client) => {
 });
 
 
-const PORT = 2345;
-server.listen(PORT, () => console.log(`socket server listening on port ${PORT}`));
+server.listen(process.env.PORT, () => console.log(`socket server listening on port ${process.env.PORT}`));

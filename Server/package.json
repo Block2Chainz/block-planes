@@ -1,21 +1,46 @@
 {
   "name": "block-planes",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "description": "Blockchain-integrated top scrolling shooter with unique plane avatars.",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build | npm run startServer | npm run chatSocket",
+    "startServer": "node ./block-planes-api/rest-server/index.js",
+    "chatSocket": "node ./block-planes-api/chat-server/index.js",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Block2Chainz/block-planes.git"
+  },
+  "author": "Sean Malone, Joseph Nguyen, Nick Vrdoljak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Block2Chainz/block-planes/issues"
+  },
+  "homepage": "https://github.com/Block2Chainz/block-planes#readme",
   "dependencies": {
     "autoprefixer": "^7.2.4",
     "axios": "^0.18.0",
     "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "cookie-parser": "^1.4.3",
     "cookie-session": "^2.0.0-beta.3",
+    "cron": "^1.3.0",
     "dotenv": "^4.0.0",
     "express": "^4.16.3",
+    "http": "0.0.0",
+    "image-webpack-loader": "^4.2.0",
     "jsonwebtoken": "^8.2.1",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.10",
     "moment": "^2.22.1",
+    "mysql": "^2.15.0",
+    "node-cron": "^1.2.1",
+    "nodemon": "^1.17.4",
     "node-sass": "^4.9.0",
+    "path": "^0.12.7",
     "randomstring": "^1.1.5",
     "react": "^16.2.0",
     "react-chat-box": "^1.0.2",
@@ -29,12 +54,14 @@
     "react-scroll": "^1.7.9",
     "react-sound": "^1.2.0",
     "react-test-renderer": "^16.3.2",
+    "redis": "^2.8.0",
+    "redis-cli": "^1.0.2",
+    "redis-server": "^1.2.0",
     "redux": "^4.0.0",
     "semantic-ui-react": "^0.80.0",
-    "socket.io-client": "^2.0.4"
-  },
-  "scripts": {
-    "build": "webpack"
+    "socket.io": "^2.1.0",
+    "socket.io-client": "^2.0.4",
+    "truffle-contract": "^3.0.5"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
