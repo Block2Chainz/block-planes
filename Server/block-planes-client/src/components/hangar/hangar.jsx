@@ -112,17 +112,14 @@ class ConnectedHangar extends Component {
  
         this.props.contract.getPlanesByOwner(user, (error, result) => {
           if (!error) {
-            console.log(result, 'result');
             let planeArray = result.map((plane) => {
               return plane.toNumber();
             });
-            console.log('planeArray', planeArray);
             let hangar = [];
             for (let i = 0; i < planeArray.length; i++) {
               let planeAttr;
               let planePrice;
               this.props.contract.planes(planeArray[i], (err, plane) => {
-                console.log(plane,'asdfasf')
                 if (err) console.log('err');
                 else {
                   planeAttr = plane[0].toNumber();

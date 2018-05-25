@@ -162,7 +162,6 @@ class ConnectedFriends extends Component {
         this.setState({
           friendState: 'pending'
         });
-        console.log('friend state pending', this.state);
         this.forceUpdate();
       })
       .catch(err => {
