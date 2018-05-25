@@ -22,6 +22,7 @@ class Plane extends Component {
         height: window.innerHeight,
         ratio: window.devicePixelRadio || 1
       },
+      context: null
     }
     this.ship = [];
     this.particles = [];
@@ -42,29 +43,31 @@ class Plane extends Component {
     // for updating the new positions of everything
     // pull up the canvas
     // this.state.context = this.refs.canvas.getContext('2d')
-    const context = this.state.context;
-    const ship = this.ship[0];
-
-    // ship.accelerate();
-    // store canvas state on the stack
-    context.save();
-    
-    // if (this.props.selected === 'highlight') {
-    //   context.fillStyle = '#8b0000';
-    //   context.fillRect(0, 0, 150, 150);
-    // }
-    // resize the field if the window has been resized
-    // context.scale(this.state.screen.ratio, this.state.screen.ratio);
-    
-    // remove or render
-    this.updateObjects(this.particles, 'particles');
-    this.updateObjects(this.ship, 'ship');
-
-    // pop the top state off the stack, restore context
-    context.restore();
-
-    // set up next frame 
-    requestAnimationFrame(() => { this.update() });
+    if (this.state.context) {
+      const context = this.state.context;
+      const ship = this.ship[0];
+  
+      // ship.accelerate();
+      // store canvas state on the stack
+      context.save();
+      
+      // if (this.props.selected === 'highlight') {
+      //   context.fillStyle = '#8b0000';
+      //   context.fillRect(0, 0, 150, 150);
+      // }
+      // resize the field if the window has been resized
+      // context.scale(this.state.screen.ratio, this.state.screen.ratio);
+      
+      // remove or render
+      this.updateObjects(this.particles, 'particles');
+      this.updateObjects(this.ship, 'ship');
+  
+      // pop the top state off the stack, restore context
+      context.restore();
+  
+      // set up next frame 
+      requestAnimationFrame(() => { this.update() });
+    }
   }
 
   startGame() {

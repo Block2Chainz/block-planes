@@ -90,6 +90,10 @@ class ConnectedHome extends Component {
                   <br/><br/>Flash forward to right now.
                   <br/><br/>Beings from another world are converging on our little, blue planet with plans to destroy life as we know it…
                   <br/><br/>...and you know, in general. 
+                  <br/><br/>They've stolen a high-powered, long-range, super-awesome laser canon capable of annihilating small celestial bodies.
+                  <br/><br/>Its code name?
+                  <br/><br/>MOON DESTROYER.
+                  <br/><br/>You can guess what they're trying to achieve here.
                   <br/><br/>That’s why BlockPlanes needs your help. 
                   <br/><br/>We're suppling any able bodied pilot with the means to fight back.
                   <br/><br/>Because if we lose this one, it'll mean the complete and utter eradication of all humanity.
