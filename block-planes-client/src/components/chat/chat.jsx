@@ -43,7 +43,7 @@ class ConnectedChat extends Component {
     this.fetchMessages = this.fetchMessages.bind(this);
     this.fetchFriendByUsername = this.fetchFriendByUsername.bind(this);
     this.addNotification = this.addNotification.bind(this);
-    this.socket = Socketio('http://localhost:4225');
+    this.socket = Socketio('http://ec2-52-53-167-183.us-west-1.compute.amazonaws.com:2345');
   }
 
   notificationSystem = null;

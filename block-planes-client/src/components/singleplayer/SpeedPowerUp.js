@@ -15,7 +15,7 @@ export default class SpeedPowerUp {
     this.create = args.create;
     this.vertices = asteroidVertices(8, args.size);
     this.img1 = new Image();
-    this.img1.src = `http://127.0.0.1:8887/speedPowerUp.png`;
+    this.img1.src = `https://s3-us-west-1.amazonaws.com/blockplanes/speedPowerUp.png`;
   }
 
   destroy(){

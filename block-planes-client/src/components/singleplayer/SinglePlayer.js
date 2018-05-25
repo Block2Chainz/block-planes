@@ -76,7 +76,7 @@ class ConnectedSinglePlayer extends Component {
     this.fireRatePowerUps = [];
 
     this.background = new Image();
-    this.background.src = `http://127.0.0.1:8887/background.png`;
+    this.background.src = `https://s3-us-west-1.amazonaws.com/blockplanes/background.png`;
   }
 
   handleResize(value, e){

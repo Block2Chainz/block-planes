@@ -20,7 +20,7 @@ class ConnectedHome extends Component {
            notificationSystem: this.refs.notificationSystem
        };
        this.addNotification = this.addNotification.bind(this);
-       this.socket = Socketio('http://localhost:4225');
+    this.socket = Socketio('http://ec2-52-53-167-183.us-west-1.compute.amazonaws.com:2345');
     }
 
     notificationSystem = null;
@@ -71,9 +71,6 @@ class ConnectedHome extends Component {
                   <Image src='https://i.imgur.com/MBsbBkv.png' size='massive' rounded />
                 </div>
               </Grid.Column>
-
-              <Grid.Row><img src='http://localhost:8887/chevron.png' width='20px'/></Grid.Row>
-
             </Grid>
 
             <Grid className='homeSection secondportion'>
@@ -140,15 +137,15 @@ class ConnectedHome extends Component {
               <Grid.Row className='thirdpara'>
                 <Grid.Column width={5}>
                   <p className='thirdpara'>Sean Malone</p><br/>
-                  <a href='#'><img width='150px' src='http://localhost:8887/profile.png'/></a>
+                  <a href='#'><img width='150px' src='https://s3-us-west-1.amazonaws.com/blockplanes/profile.png'/></a>
                 </Grid.Column>
                 <Grid.Column width={6}>
                   <p className='thirdpara'>Joseph Nguyen</p><br/>
-                  <a href='#'><img width='150px' src='http://localhost:8887/profile.png'/></a>
+                  <a href='#'><img width='150px' src='https://s3-us-west-1.amazonaws.com/blockplanes/profile.png'/></a>
                 </Grid.Column>
                 <Grid.Column width={5}>
                   <p className='thirdpara'>Nick Vrdoljak</p><br/>
-                  <a href='https://www.linkedin.com/in/nicholas-vrdoljak-52111453/'><img width='150px' src='http://localhost:8887/profile.png'/></a>
+                  <a href='https://www.linkedin.com/in/nicholas-vrdoljak-52111453/'><img width='150px' src='https://s3-us-west-1.amazonaws.com/blockplanes/profile.png'/></a>
                 </Grid.Column>
               </Grid.Row>
 

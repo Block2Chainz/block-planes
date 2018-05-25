@@ -444,7 +444,7 @@ class ConnectedApp extends Component {
     }
     this.logout = this.logout.bind(this);
     this.tokenLogin = this.tokenLogin.bind(this);
-    this.socket = Socketio('http://localhost:4225');
+    this.socket = Socketio('http://ec2-52-53-167-183.us-west-1.compute.amazonaws.com:2345');
 
     if (typeof web3 != 'undefined') {
       this.web3Provider = web3.currentProvider;

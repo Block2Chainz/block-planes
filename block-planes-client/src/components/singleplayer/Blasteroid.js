@@ -19,7 +19,7 @@ export default class Blasteroid {
     this.vertices = asteroidVertices(8, args.size);
     this.lastShot = 0;
     this.img1 = new Image();
-    this.img1.src = `http://127.0.0.1:8887/enemies/blast.png`;
+    this.img1.src = `https://s3-us-west-1.amazonaws.com/blockplanes/enemies/blast.png`;
   }
 
   destroy(){

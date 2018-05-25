@@ -48,20 +48,20 @@ export default class Ship {
         this.ingame = args.ingame
         
         this.invincibleGlow = new Image();
-        this.invincibleGlow.src = 'http://127.0.0.1:8887/yellow.png';
+        this.invincibleGlow.src = 'https://s3-us-west-1.amazonaws.com/blockplanes/yellow.png';
         this.speedyGlow = new Image();
-        this.speedyGlow.src = 'http://127.0.0.1:8887/blue.png';
+        this.speedyGlow.src = 'https://s3-us-west-1.amazonaws.com/blockplanes/blue.png';
         this.bothPowerUpsGlow = new Image();
-        this.bothPowerUpsGlow.src = 'http://127.0.0.1:8887/green.png';
+        this.bothPowerUpsGlow.src = 'https://s3-us-west-1.amazonaws.com/blockplanes/green.png';
 
         this.img1 = new Image();
-        this.img1.src = `http://127.0.0.1:8887/bodies/body_${this.bodyColor}.png`;
+        this.img1.src = `https://s3-us-west-1.amazonaws.com/blockplanes/bodies/body_${this.bodyColor}.png`;
         this.img2 = new Image();
-        this.img2.src = `http://127.0.0.1:8887/wings/${this.wingShape}/wing_${this.wingShape}_${this.wingColor}.png`;
+        this.img2.src = `https://s3-us-west-1.amazonaws.com/blockplanes/wings/${this.wingShape}/wing_${this.wingShape}_${this.wingColor}.png`;
         this.img3 = new Image();
-        this.img3.src = `http://127.0.0.1:8887/tails/${this.tailShape}/tail_${this.tailShape}_${this.tailColor}.png`;
+        this.img3.src = `https://s3-us-west-1.amazonaws.com/blockplanes/tails/${this.tailShape}/tail_${this.tailShape}_${this.tailColor}.png`;
         this.img4 = new Image();
-        this.img4.src = `http://127.0.0.1:8887/cockpits/${this.cockpitShape}/cockpit_${this.cockpitShape}_${this.cockpitColor}.png`;
+        this.img4.src = `https://s3-us-west-1.amazonaws.com/blockplanes/cockpits/${this.cockpitShape}/cockpit_${this.cockpitShape}_${this.cockpitColor}.png`;
 
         setTimeout(this.makeVulnerable.bind(this), 3000);
     }

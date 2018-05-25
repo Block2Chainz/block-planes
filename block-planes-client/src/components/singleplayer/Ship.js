@@ -51,29 +51,29 @@ export default class Ship {
     this.ingame = args.ingame;
 
     this.glow1 = new Image();
-    this.glow1.src = `http://127.0.0.1:8887/yellow.png`;
+    this.glow1.src = `https://s3-us-west-1.amazonaws.com/blockplanes/yellow.png`;
     this.glow2 = new Image();
-    this.glow2.src = `http://127.0.0.1:8887/blue.png`;
+    this.glow2.src = `https://s3-us-west-1.amazonaws.com/blockplanes/blue.png`;
     this.glow3 = new Image();
-    this.glow3.src = `http://127.0.0.1:8887/red.png`;
+    this.glow3.src = `https://s3-us-west-1.amazonaws.com/blockplanes/red.png`;
     this.glow4 = new Image();
-    this.glow4.src = `http://127.0.0.1:8887/green.png`;
+    this.glow4.src = `https://s3-us-west-1.amazonaws.com/blockplanes/green.png`;
     this.glow5 = new Image();
-    this.glow5.src = `http://127.0.0.1:8887/orange.png`;
+    this.glow5.src = `https://s3-us-west-1.amazonaws.com/blockplanes/orange.png`;
     this.glow6 = new Image();
-    this.glow6.src = `http://127.0.0.1:8887/purple.png`;
+    this.glow6.src = `https://s3-us-west-1.amazonaws.com/blockplanes/purple.png`;
     this.glow7 = new Image();
-    this.glow7.src = `http://127.0.0.1:8887/rainbow.png`;
+    this.glow7.src = `https://s3-us-west-1.amazonaws.com/blockplanes/rainbow.png`;
 
     
     this.img1 = new Image();
-    this.img1.src = `http://127.0.0.1:8887/bodies/body_${this.bodyColor}.png`;
+    this.img1.src = `https://s3-us-west-1.amazonaws.com/blockplanes/bodies/body_${this.bodyColor}.png`;
     this.img2 = new Image();
-    this.img2.src = `http://127.0.0.1:8887/wings/${this.wingShape}/wing_${this.wingShape}_${this.wingColor}.png`;
+    this.img2.src = `https://s3-us-west-1.amazonaws.com/blockplanes/wings/${this.wingShape}/wing_${this.wingShape}_${this.wingColor}.png`;
     this.img3 = new Image();
-    this.img3.src = `http://127.0.0.1:8887/tails/${this.tailShape}/tail_${this.tailShape}_${this.tailColor}.png`;
+    this.img3.src = `https://s3-us-west-1.amazonaws.com/blockplanes/tails/${this.tailShape}/tail_${this.tailShape}_${this.tailColor}.png`;
     this.img4 = new Image();
-    this.img4.src = `http://127.0.0.1:8887/cockpits/${this.cockpitShape}/cockpit_${this.cockpitShape}_${this.cockpitColor}.png`;
+    this.img4.src = `https://s3-us-west-1.amazonaws.com/blockplanes/cockpits/${this.cockpitShape}/cockpit_${this.cockpitShape}_${this.cockpitColor}.png`;
     
   }
 

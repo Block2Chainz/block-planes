@@ -42,8 +42,8 @@ export default class PowerUp {
         context.save();
         context.translate(this.position.x, this.position.y);
         let img = new Image();
-        if (this.type === 'invincible') img.src = `http://127.0.0.1:8887/yellow.png`;
-        if (this.type === 'speed') img.src = `http://127.0.0.1:8887/blue.png`;
+        if (this.type === 'invincible') img.src = `https://s3-us-west-1.amazonaws.com/blockplanes/yellow.png`;
+        if (this.type === 'speed') img.src = `https://s3-us-west-1.amazonaws.com/blockplanes/blue.png`;
         context.drawImage(img, -20, -20, 75, 75);
         // context.rotate(this.rotation * Math.PI / 180);
         // if (this.type === 'invincible') {

@@ -17,7 +17,7 @@ export default class Asteroid {
     this.addScore = args.addScore;
     this.vertices = asteroidVertices(8, args.size)
     this.img1 = new Image();
-    this.img1.src = `http://127.0.0.1:8887/enemies/asteroid.png`;
+    this.img1.src = `https://s3-us-west-1.amazonaws.com/blockplanes/enemies/asteroid.png`;
   }
 
   destroy(){

@@ -16,9 +16,9 @@ export default class Enemy {
         this.masterImg = new Image();
         this.blastImg = new Image();
         this.fastImg = new Image();
-        this.masterImg.src = `http://127.0.0.1:8887/enemies/master.png`;
-        this.blastImg.src = `http://127.0.0.1:8887/enemies/blast.png`;
-        this.fastImg.src = `http://127.0.0.1:8887/enemies/fast.png`;
+        this.masterImg.src = `https://s3-us-west-1.amazonaws.com/blockplanes/enemies/master.png`;
+        this.blastImg.src = `https://s3-us-west-1.amazonaws.com/blockplanes/enemies/blast.png`;
+        this.fastImg.src = `https://s3-us-west-1.amazonaws.com/blockplanes/enemies/fast.png`;
         
     }
 
