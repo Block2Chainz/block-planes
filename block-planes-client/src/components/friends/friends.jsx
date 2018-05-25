@@ -164,6 +164,7 @@ class ConnectedFriends extends Component {
           friendState: 'pending'
         });
         console.log('friend state pending', this.state);
+        this.forceUpdate();
       })
       .catch(err => {
         console.log('Error from handleCreateAccount', err);
