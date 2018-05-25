@@ -73,6 +73,7 @@ class ConnectedFriends extends Component {
     if (component.props.location.state) {
       component.toggleRequests();
     }
+    console.log('state', this.state);
   }
 
   friendRequestSentNotification(event, notificationObj) {
@@ -103,7 +104,6 @@ class ConnectedFriends extends Component {
     if (!user) {
       this.fetchFriends();
     } else {
-      console.log('USER', user);
       this.setState({
         friendId: user.id,
         username: user.title,

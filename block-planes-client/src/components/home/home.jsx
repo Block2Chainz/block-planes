@@ -68,7 +68,7 @@ class ConnectedHome extends Component {
 
               <Grid.Column width={8} className='left-side-Login' >
                 <div className='left-picture' >
-                  <Image src='https://i.imgur.com/MBsbBkv.png' size='massive' rounded />
+                  <Image src='http://127.0.0.1:8887/frontPage.png' size='massive' rounded />
                 </div>
               </Grid.Column>
 
@@ -105,6 +105,28 @@ class ConnectedHome extends Component {
               {/* <Grid.Row className='signupbuttonhome'>
                 <Link to='/signup'><Button className='ui inverted button' size='massive' >Sign Up</Button></Link>
               </Grid.Row> */}
+              <span className='thirdline'></span> 
+
+              <Grid.Row>
+                <p className='thirdtext'>Enemies</p>
+              </Grid.Row>
+
+              <Grid.Row className='thirdpara'>
+                <Grid.Column width={4}>
+                  <p className='thirdpara'>Asteroid</p><br/>
+                  <img width='150px' src='http://127.0.0.1:8887/enemies/asteroid.png'/>
+                </Grid.Column>
+                <Grid.Column width={4}>
+                  <p className='thirdpara'>Spike</p><br/>
+                  <img width='150px' src='http://127.0.0.1:8887/enemies/blast.png'/>                </Grid.Column>
+                <Grid.Column width={4}>
+                  <p className='thirdpara'>MotherShip</p><br/>
+                  <img width='150px' src='http://127.0.0.1:8887/enemies/master.png'/>                </Grid.Column>
+                <Grid.Column width={4}>
+                  <p className='thirdpara'>Flyer</p><br/>
+                  <img width='150px' src='http://127.0.0.1:8887/enemies/fast.png'/>                </Grid.Column>
+              </Grid.Row>
+
 
             </Grid>
 

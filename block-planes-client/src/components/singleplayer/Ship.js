@@ -18,6 +18,7 @@ export default class Ship {
     this.create = args.create;
     this.onDie = args.onDie;
     this.invincible = true;
+    this.invincibleCount = 0;
     this.speedBoost = false;
     this.fireRateBoost = false;
     this.color = '#f44242';
@@ -113,6 +114,7 @@ export default class Ship {
 
   invincibilityPowerUpEffect(duration) {
     let component = this;
+    this.invincibleCount++;
     this.invincible = true;
     if (this.speedBoost === true) {
       component.shadowColor = '#68ff6d';
@@ -121,7 +123,10 @@ export default class Ship {
       this.glow = 50;
     }
     setTimeout(function() {
-      component.makeVulnerable();
+      component.invincibleCount--;
+      if (component.invincibleCount === 0) {
+        component.makeVulnerable();
+      }
     }, duration);
   }
 
