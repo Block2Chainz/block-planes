@@ -97,7 +97,7 @@ module.exports = {
     plugins: [
         new webpack.DefinePlugin({
             'process.env': {
-                'http://ec2-52-53-167-24.us-west-1.compute.amazonaws.com:2345': process.env.REACT_APP_SOCKET_SERVER_URL,
+                'ec2-52-53-167-183.us-west-1.compute.amazonaws.com:2345': process.env.REACT_APP_SOCKET_SERVER_URL,
                 // 'BAR': process.env.REACT_APP_GAME_SERVER_URL
             }
         })
