@@ -164,6 +164,7 @@ class ConnectedFriends extends Component {
           friendState: 'pending'
         });
         console.log('friend state pending', this.state);
+        this.forceUpdate();
       })
       .catch(err => {
         console.log('Error from handleCreateAccount', err);
@@ -239,7 +240,8 @@ class ConnectedFriends extends Component {
       totalPoints: '',
       createdAt: '',
       friendState: '',
-      isRequestPage: true
+      isRequestPage: true,
+      blockchainAddress: ''
     });
   }
 
@@ -311,6 +313,7 @@ class ConnectedFriends extends Component {
         </div>
       );
     } else if (this.state.friendId) {
+      console.log('hitting inside friend update page')
       return (
         <div className='friend-page-body'>
         <NotificationSystem ref="notificationSystem" />
@@ -356,6 +359,7 @@ class ConnectedFriends extends Component {
             </Grid.Row>
               <p className='hangar-profile'>Hangar</p>
             <Grid.Row>
+              {console.log('friend blockchain', this.state.blockchainAddress)}
               <Hangar friend={this.state.blockchainAddress} />
             </Grid.Row>
           </Grid>

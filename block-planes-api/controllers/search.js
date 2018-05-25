@@ -12,7 +12,8 @@ const fetchUsers = (req, res) => {
             title: user.username,
             createdAt: user.created_at,
             totalPoints: user.total_points,
-            image: user.profile_picture
+            image: user.profile_picture,
+            blockchainAddress: user.blockchainAddress
           };
         })
       );

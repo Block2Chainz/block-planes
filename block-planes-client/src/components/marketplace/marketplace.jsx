@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
 import './marketplace.css';
 import cryptoplanes from '../../../../block-planes-solidity/BlockPlanes/build/contracts/PlaneOwnership.json';
-import TruffleContract from 'truffle-contract';
 import Web3 from 'web3';
 import Plane from '../hangar/plane.jsx';
 import { Pagination, Grid, Button, Icon, Label, Input, Menu, Segment } from 'semantic-ui-react';
 import 'bluebird';
+import { connect } from "react-redux";
 
+const mapStateToProps = state => {
+  return {
+    contract: state.contract, 
+  };
+};
 
-class Marketplace extends Component {
+class ConnectedMarketplace extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -34,8 +39,8 @@ class Marketplace extends Component {
         }
     
         this.web3 = new Web3(this.web3Provider);
-        this.blockplanes = TruffleContract(cryptoplanes);
-        this.blockplanes.setProvider(this.web3Provider);
+        web3.eth.defaultAccount = web3.eth.accounts[0]
+        // personal.unlockAccount(web3.eth.defaultAccount);
     }
 
     componentDidMount() {
@@ -44,38 +49,45 @@ class Marketplace extends Component {
     }
 
     getPlanesByOwner() {
-      let userAddress, contract;
+      let userAddress;
       let planesForSale = [];
       let planesWithAttr = [];
-      this.web3.eth.getCoinbase((err, address) => {
+      this.web3.eth.getAccounts((err, address) => {
+        // console.log('flag50', address, this.props.contract.getPlanesByOwner(address[0]));
         // storing the user blockchain address*****
-        userAddress = address;
+        userAddress = address[0];
         // get the contract instance
-        this.blockplanes.deployed()
-        .then((instance) => {
-        this.setState({contract : instance, userAddress : address});
-        contract = instance;
-        // instance.createRandomPlane({ from: this.web3.eth.accounts[0], value: this.web3.toWei(0.001, 'ether')}); 
-        return instance.getPlanesByOwner(address);
-        }).then((planes) => {
-          return planes.map((plane) => {
-            return plane.toNumber();
-          });
-        }).then((planeArray) => {
-          let hangar = [];
-          for (let i = 0; i < planeArray.length; i++) {
-            let planeAttr;
-            let planePrice;
-            contract.planes(planeArray[i]).then((plane) => {
-              planeAttr = plane[0].toNumber();
-              planePrice = plane[2].toNumber();
-              hangar.push([planeArray[i], planeAttr, plane[1], planePrice]);
-              if (i === planeArray.length - 1) {
-                this.setState({yourPlanes : hangar});
-              }
+        this.setState({userAddress : address[0]});
+        // this.props.contract.createRandomPlane({ from: this.web3.eth.accounts[0], value: this.web3.toWei(0.001, 'ether')}, (error, success) => {
+        //   console.log(error,success);
+        // });
+        
+        this.props.contract.getPlanesByOwner(address[0], (error, result) => {
+          if (!error) {
+            let planeArray = result.map((plane) => {
+              return plane.toNumber();
             });
+            console.log('planeArray', planeArray)
+            let hangar = [];
+            for (let i = 0; i < planeArray.length; i++) {
+              let planeAttr;
+              let planePrice;
+              this.props.contract.planes(planeArray[i], (err, plane) => {
+                if (err) console.log('err');
+                else {
+                  planeAttr = plane[0].toNumber();
+                  planePrice = plane[2].toNumber();
+                  hangar.push([planeArray[i], planeAttr, plane[1], planePrice]);
+                  if (i === planeArray.length - 1) {
+                    this.setState({yourPlanes : hangar});
+                  }
+                }
+              })
+            }
+          } else {
+            console.log(err);
           }
-        });
+        })        
       });
     }
 
@@ -83,56 +95,60 @@ class Marketplace extends Component {
       let userAddress, contract;
       let planesForSale = [];
       let planesWithAttr = [];
-      this.web3.eth.getCoinbase((err, address) => {
-        // storing the user blockchain address*****
-        userAddress = address;
-        // get the contract instance
-        this.blockplanes.deployed()
-        .then((instance) => {
-        // this.setState({contract : instance, userAddress : address});
-        contract = instance;
-        // instance.createRandomPlane({ from: this.web3.eth.accounts[0], value: this.web3.toWei(0.001, 'ether')});
-        return instance.getPlanesForSale();
-        }).then((planes) => {
-          return planes.map((plane) => {
+    this.web3.eth.getAccounts((err, address) => {
+      // console.log('flag50', address, this.props.contract.getPlanesByOwner(address[0]));
+      // storing the user blockchain address*****
+      userAddress = address[0];
+      // get the contract instance
+      this.setState({userAddress : address[0]});      
+      this.props.contract.getPlanesForSale((error, result) => {
+        if (!error) {
+          let planeArray = result.map((plane) => {
             return plane.toNumber();
           });
-        }).then((planeArray) => {
-          if (planeArray.length === 0) {
-            this.setState({planesOnSale : []});
-          }
+          console.log('planeArray', planeArray)
           let hangar = [];
           for (let i = 0; i < planeArray.length; i++) {
             let planeAttr;
             let planePrice;
-            contract.planes(planeArray[i]).then((plane) => {
-              contract.getPlanePrice(planeArray[i]).then((price) => {
-                planePrice = price.toNumber()
+            this.props.contract.planes(planeArray[i], (err, plane) => {
+              if (err) console.log('err');
+              else {
                 planeAttr = plane[0].toNumber();
+                planePrice = plane[2].toNumber();
                 hangar.push([planeArray[i], planeAttr, plane[1], planePrice]);
                 if (i === planeArray.length - 1) {
                   this.setState({planesOnSale : hangar});
                 }
-              });
-            });
+              }
+            })
           }
-        });
-      });
+        } else {
+          console.log(err);
+        }
+      })        
+    });
     }
 
     sellPlane(event, planeInfo) {
       event.preventDefault();
-      this.state.contract.sellPlane(planeInfo[0], parseInt(event.target.price.value) * 1000000000000000000, { from: this.web3.eth.accounts[0]});
+      this.props.contract.sellPlane(planeInfo[0], parseInt(event.target.price.value) * 1000000000000000000, { from: this.web3.eth.accounts[0]},(error, success) => {
+        console.log(error, success);
+      });
     }
 
     unlistPlane(planeInfo) {
-      this.state.contract.unlistPlane(planeInfo[0], { from: this.web3.eth.accounts[0]});
+      this.props.contract.unlistPlane(planeInfo[0], { from: this.web3.eth.accounts[0]}, (error, success) => {
+        console.log(error, success);
+      });
     }
 
     buyPlane(event, planeInfo) {
       event.preventDefault();      
       let etherAmt = planeInfo[3] / 1000000000000000000;
-      this.state.contract.buyPlane(planeInfo[0], { from: this.web3.eth.accounts[0], value: this.web3.toWei(etherAmt, 'ether')});      
+      this.props.contract.buyPlane(planeInfo[0], { from: this.web3.eth.accounts[0], value: this.web3.toWei(etherAmt, 'ether')},(error, success) => {
+        console.log(error, success);
+      });      
     }
 
     pageChange(e, { activePage }) {
@@ -154,6 +170,7 @@ class Marketplace extends Component {
     }
 
     render() {
+        console.log(this.state.yourPlanes);
         const { yourPlanes, currentPage, planesPerPage, planesOnSale, currentTab } = this.state;
         const pageNumbers = [];
 
@@ -280,5 +297,7 @@ class Marketplace extends Component {
         )
     }
 }
+
+const Marketplace = connect(mapStateToProps)(ConnectedMarketplace);
 
 export default Marketplace;
