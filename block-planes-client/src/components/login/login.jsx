@@ -109,7 +109,7 @@ class ConnectedLogin extends Component {
                     <Grid.Row className='signuptext'>
                       <p className='splash'>Good, You're Back</p>
                       <div className='mid-picture' >
-                        <Image src='https://i.imgur.com/VNZZjii.png' size='medium' rounded />
+                        <Image src='https://i.imgur.com/t0D0hIL.png' size='medium' rounded />
                       </div>
                     </Grid.Row>
 

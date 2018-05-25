@@ -9,12 +9,15 @@ export default class Asteroid {
       y: randomNumBetween(-1.5, 1.5)
     }
     this.rotation = 0;
-    this.rotationSpeed = randomNumBetween(-1, 1)
+    this.rotationSpeed = randomNumBetween(-1, 0)
     this.radius = args.size;
+    this.offset = args.offset;
     this.score = (80/this.radius)*5;
     this.create = args.create;
     this.addScore = args.addScore;
     this.vertices = asteroidVertices(8, args.size)
+    this.img1 = new Image();
+    this.img1.src = `http://127.0.0.1:8887/enemies/asteroid.png`;
   }
 
   destroy(){
@@ -39,11 +42,12 @@ export default class Asteroid {
     }
 
     // Break into smaller asteroids
-    if(this.radius > 10){
+    if(this.radius > 20){
       for (let i = 0; i < 2; i++) {
         let asteroid = new Asteroid({
 
           size: this.radius/2,
+          offset: this.offset/2,
           position: {
             x: randomNumBetween(-10, 20)+this.position.x,
             y: randomNumBetween(-10, 20)+this.position.y
@@ -81,15 +85,7 @@ export default class Asteroid {
     context.save();
     context.translate(this.position.x, this.position.y);
     context.rotate(this.rotation * Math.PI / 180);
-    context.strokeStyle = '#FFF';
-    context.lineWidth = 2;
-    context.beginPath();
-    context.moveTo(0, -this.radius);
-    for (let i = 1; i < this.vertices.length; i++) {
-      context.lineTo(this.vertices[i].x, this.vertices[i].y);
-    }
-    context.closePath();
-    context.stroke();
+    context.drawImage(this.img1, this.offset, this.offset, (this.radius*1.75), (this.radius*1.75));
     context.restore();
   }
 }

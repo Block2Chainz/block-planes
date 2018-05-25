@@ -13,8 +13,6 @@ export default class Ship {
     this.component = this;
     this.rotation = 0;
     this.rotationSpeed = 6;
-    this.speed = 0.15;
-    this.inertia = 0.99;
     this.radius = 20;
     this.lastShot = 0;
     this.create = args.create;
@@ -51,6 +49,22 @@ export default class Ship {
     this.shootingSpeed = attributes.shootingSpeed; // lower is better
     this.smokeColor = attributes.smokeColor;    
     this.ingame = args.ingame;
+
+    this.glow1 = new Image();
+    this.glow1.src = `http://127.0.0.1:8887/yellow.png`;
+    this.glow2 = new Image();
+    this.glow2.src = `http://127.0.0.1:8887/blue.png`;
+    this.glow3 = new Image();
+    this.glow3.src = `http://127.0.0.1:8887/red.png`;
+    this.glow4 = new Image();
+    this.glow4.src = `http://127.0.0.1:8887/green.png`;
+    this.glow5 = new Image();
+    this.glow5.src = `http://127.0.0.1:8887/orange.png`;
+    this.glow6 = new Image();
+    this.glow6.src = `http://127.0.0.1:8887/purple.png`;
+    this.glow7 = new Image();
+    this.glow7.src = `http://127.0.0.1:8887/rainbow.png`;
+
     
     this.img1 = new Image();
     this.img1.src = `http://127.0.0.1:8887/bodies/body_${this.bodyColor}.png`;
@@ -240,6 +254,22 @@ export default class Ship {
     context.save();
     context.translate(this.position.x, this.position.y);
     context.rotate((this.rotation) * Math.PI / 180 + 0.78539816);
+
+      if (this.invincible && !this.speedBoost && !this.fireRateBoost) {
+        context.drawImage(this.glow1, -20, -20, 55, 55);
+      } else if (!this.invincible && this.speedBoost && !this.fireRateBoost) {
+        context.drawImage(this.glow2, -20, -20, 55, 55);
+      } else if (!this.invincible && !this.speedBoost && this.fireRateBoost) {
+        context.drawImage(this.glow3, -20, -20, 55, 55);
+      } else if (this.invincible && this.speedBoost && !this.fireRateBoost) {
+        context.drawImage(this.glow4, -20, -20, 55, 55);
+      } else if (this.invincible && !this.speedBoost && this.fireRateBoost) {
+        context.drawImage(this.glow5, -20, -20, 55, 55);
+      } else if (!this.invincible && this.speedBoost && this.fireRateBoost) {
+        context.drawImage(this.glow6, -20, -20, 55, 55);
+      } else if (this.invincible && this.speedBoost && this.fireRateBoost) {
+        context.drawImage(this.glow7, -20, -20, 55, 55);
+      }
 
     // RENDER BODY
         

@@ -123,6 +123,7 @@ class ConnectedHeader extends Component {
   }
 
   gameInviteNotification(event, notificationObj) {
+    let component = this;
     event.preventDefault();
     this.notificationSystem.addNotification({
       title: 'Game Invite from ' + notificationObj.username,

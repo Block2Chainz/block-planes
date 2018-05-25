@@ -121,7 +121,7 @@ class ConnectedSignup extends Component {
                 <Grid.Row className='signuptext'>
                   <p className='splash'>Get Ready</p>
                   <div className='left-picture' >
-                    <Image src='https://i.imgur.com/ZfNDUvX.png' size='medium' rounded />
+                    <Image src='https://i.imgur.com/t0D0hIL.png' size='medium' rounded />
                   </div>
                 </Grid.Row>
                 <Grid.Row className='signuptext'>

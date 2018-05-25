@@ -37,7 +37,7 @@ export default class BlasteroidBullet {
     context.save();
     context.translate(this.position.x, this.position.y);
     context.rotate(this.rotation * Math.PI / 180);
-    context.fillStyle = '#ff7954';
+    context.fillStyle = '#c23fff';
     context.lineWidth = 0,5;
     context.beginPath();
     context.arc(0, 0, 2, 0, 2 * Math.PI);

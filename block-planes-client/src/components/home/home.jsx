@@ -68,7 +68,7 @@ class ConnectedHome extends Component {
 
               <Grid.Column width={8} className='left-side-Login' >
                 <div className='left-picture' >
-                  <Image src='https://i.imgur.com/wjtMMUC.png' size='huge' rounded />
+                  <Image src='https://i.imgur.com/MBsbBkv.png' size='massive' rounded />
                 </div>
               </Grid.Column>
 
@@ -86,13 +86,18 @@ class ConnectedHome extends Component {
               <Grid.Row className='secondhalfpara2'>
                 <p className='secondhalfpara'>
                   <br/><br/>If you’re reading this, the world needs your help.
-                  <br/><br/>That’s right, the <strong>WORLD</strong>.
-                  <br/><br/>The terrorist organization known as <strong>EVILGROUP.NAME</strong> is mobilizing an air force to destroy life as we know it…
-                  <br/><br/>and, you know, in general. 
-                  <br/><br/>That’s why we started <strong>BLOCKPLANES</strong>. 
-                  <br/><br/>To supply any able bodied pilot with the means to take down these monsters.
-                  <br/><br/>So what do you say?
-                  <br/><br/>We have the <strong>PLANES</strong>. Do you have the <strong>GUTS?</strong>
+                  <br/><br/>That’s right, the WORLD.
+                  <br/><br/>The terrorist organization known as evilGroup.name is attempting to destroy life as we know it…
+                  <br/><br/>...and you know, in general. 
+                  <br/><br/>They've stolen a high-powered, long-range, super-awesome laser canon capable of annihilating small celestial bodies.
+                  <br/><br/>It's code name?
+                  <br/><br/>MOON DESTROYER.
+                  <br/><br/>You can guess what they're trying to achieve here.
+                  <br/><br/>That’s why BlockPlanes needs your help. 
+                  <br/><br/>We're suppling any able bodied pilot with the means to deal with the worse case scenario.
+                  <br/><br/>Read: Giant chunks of flaming space rock hurtling towards our little, blue planet.
+                  <br/><br/>So what do you say, hero?
+                  <br/><br/>We have the PLANES. Do you have the GUTS?
                 </p>
               </Grid.Row>
 

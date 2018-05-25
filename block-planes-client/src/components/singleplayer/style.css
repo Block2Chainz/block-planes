@@ -29,16 +29,19 @@ body {
 .lives {
   font-family: 'Orbitron';
   left: 10%;
+  width: auto;
 }
 
 .current-score {
   font-family: 'Orbitron';
-  left: 30%;
+  left: 45%;
+  width: auto;
 }
 
 .top-score {
   font-family: 'Orbitron';
-  left: 50%;
+  left: 75%;
+  width: auto;
 }
 
 .stats {
