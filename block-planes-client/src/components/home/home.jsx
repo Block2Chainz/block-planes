@@ -71,6 +71,12 @@ class ConnectedHome extends Component {
                   <Image src='https://i.imgur.com/MBsbBkv.png' size='massive' rounded />
                 </div>
               </Grid.Column>
+<<<<<<< HEAD
+=======
+
+              <Grid.Row><img src='https://s3-us-west-1.amazonaws.com/blockplanes/chevron.png' width='20px'/></Grid.Row>
+
+>>>>>>> deployment
             </Grid>
 
             <Grid className='homeSection secondportion'>
