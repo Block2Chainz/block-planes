@@ -19,7 +19,8 @@ const mapStateToProps = state => {
         totalPoints: state.totalPoints,
         createdAt: state.createdAt,
         tokenLogin: state.tokenLogin,
-        userAddress: state.userAddress
+        userAddress: state.userAddress,
+        contract: state.contract
     };
 };
 
@@ -29,13 +30,14 @@ class ConnectedProfile extends Component {
     this.state = {
       isCollection: true,
       totalScore: '',
-      highScore: ''
+      highScore: '',
     }
     this.handleDrop = this.handleDrop.bind(this);
   }
-
+  
   componentDidMount() {
     this.fetchUserScores();
+    console.log('inside profile')
   }
 
   handleDrop(files) {
@@ -101,6 +103,12 @@ class ConnectedProfile extends Component {
       });
   }
 
+  handleBuyPlane() {
+    this.props.contract.createRandomPlane({ from: window.web3.eth.accounts[0], value: window.web3.toWei(0.001, 'ether')}, (error, success) => {
+      console.log(error,success);
+    });
+  }
+
     render() {
         return (
           <div className='profilebg'>
@@ -122,6 +130,9 @@ class ConnectedProfile extends Component {
                   <p className='scoreprofile-points'>{this.state.totalScore}</p>
                   <p className='scoreprofile'>High Score</p>
                   <p className='scoreprofile-points'>{this.state.highScore}</p>
+                  <div>
+                    <Button className='buy-plane' onClick={this.handleBuyPlane.bind(this)}>Buy Plane!</Button>
+                  </div>
                 </Grid.Column>
               </Grid.Row>
                 <p className='hangar-profile'>Hangar</p>

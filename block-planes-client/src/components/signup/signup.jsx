@@ -38,8 +38,6 @@ class ConnectedSignup extends Component {
       this.web3Provider = web3.currentProvider
       this.web3 = new Web3(this.web3Provider)
   
-      this.blockplanes = TruffleContract(cryptoPlanes)
-      this.blockplanes.setProvider(this.web3Provider)
     } else {
       alert('This site needs a web3 provider(MetaMask) to run properly. Please install one and refresh!');
     }
@@ -47,8 +45,8 @@ class ConnectedSignup extends Component {
 
   componentDidMount() {
     if (!this.state.blockAccount && typeof web3 != 'undefined') {
-      this.web3.eth.getCoinbase((err, account) => {
-        this.setState({ blockAccount : account });
+      this.web3.eth.getAccounts((err, account) => {
+        this.setState({ blockAccount : account[0] });
       });
     }
   }
@@ -100,8 +98,8 @@ class ConnectedSignup extends Component {
   }
 
   refresh() {
-    this.web3.eth.getCoinbase((err, account) => {
-      this.setState({ blockAccount: account });
+    this.web3.eth.getAccounts((err, account) => {
+      this.setState({ blockAccount: account[0] });
     });
   }
 

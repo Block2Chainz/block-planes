@@ -43,16 +43,17 @@ class ConnectedLogin extends Component {
 
   componentDidMount() {
     if (!this.state.blockAccount && typeof web3 != 'undefined') {
-      this.web3.eth.getCoinbase((err, account) => {
-        this.setState({ blockAccount : account });
+      this.web3.eth.getAccounts((err, account) => {
+        this.setState({ blockAccount : account[0] });
       });
     }
   }
 
   refresh() {
-    this.web3.eth.getCoinbase((err, account) => {
-      this.setState({ blockAccount: account });
+    this.web3.eth.getAccounts((err, account) => {
+      this.setState({ blockAccount: account[0] });
     });
+  
   }
 
   storeUserInfoInState(e) {
