@@ -9,4 +9,4 @@ You will need the <a href='https://metamask.io'>MetaMask extension</a> installed
 You can obtain free test ether from a <a href='http://faucet.ropsten.be:3001'>Ropsten faucet</a>. 
 
 ## Visit the Site
-<a href='http://ec2-13-57-209-229.us-west-1.compute.amazonaws.com:1234'> Link Here</a>
+<a href='www.blockplanes.net'>www.blockplanes.net</a>
