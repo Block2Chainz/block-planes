@@ -17,7 +17,7 @@ class ConnectedRequest extends React.Component {
     super(props);
     this.acceptRequest = this.acceptRequest.bind(this);
     this.declineRequest = this.declineRequest.bind(this);
-    this.socket = Socketio('http://ec2-52-53-167-183.us-west-1.compute.amazonaws.com:2345');
+    this.socket = Socketio('http://ec2-13-57-209-229.us-west-1.compute.amazonaws.com:2345');
   }
 
   acceptRequest() {

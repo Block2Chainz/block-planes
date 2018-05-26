@@ -94,22 +94,23 @@ module.exports = {
             }
         ]
     }, 
-    plugins: [
-        new webpack.DefinePlugin({
-            'process.env': {
-                'ec2-52-53-167-183.us-west-1.compute.amazonaws.com:2345': process.env.REACT_APP_SOCKET_SERVER_URL,
-                // 'BAR': process.env.REACT_APP_GAME_SERVER_URL
-            }
-        })
-        //   new ExtractTextPlugin('./client/styles/main.css', {
-        //     allChunks: true
-        //   }),
-        // new OptimizeCssAssetsPlugin({
-        //   assetNameRegExp: /\.optimize\.css$/g,
-        //   cssProcessor: require('cssnano'),
-        //   cssProcessorOptions: { discardComments: { removeAll: true } },
-        //   canPrint: true
-        // }),
-    ]
 }
 
+
+// plugins: [
+//     new webpack.DefinePlugin({
+//         'process.env': {
+//             'http://ec2-13-57-209-229.us-west-1.compute.amazonaws.com:2345': process.env.REACT_APP_SOCKET_SERVER_URL,
+//             // 'BAR': process.env.REACT_APP_GAME_SERVER_URL
+//         }
+//     })
+//     //   new ExtractTextPlugin('./client/styles/main.css', {
+//     //     allChunks: true
+//     //   }),
+//     // new OptimizeCssAssetsPlugin({
+//     //   assetNameRegExp: /\.optimize\.css$/g,
+//     //   cssProcessor: require('cssnano'),
+//     //   cssProcessorOptions: { discardComments: { removeAll: true } },
+//     //   canPrint: true
+//     // }),
+// ]

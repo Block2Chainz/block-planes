@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run build | npm run startServer | npm run chatSocket",
-    "startServer": "node ./block-planes-api/rest-server/index.js",
-    "chatSocket": "node ./block-planes-api/chat-server/index.js",
+    "startServer": "nodemon ./block-planes-api/rest-server/index.js",
+    "chatSocket": "nodemon ./block-planes-api/chat-server/index.js",
     "build": "webpack"
   },
   "repository": {

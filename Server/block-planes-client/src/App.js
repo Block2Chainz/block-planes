@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
+import React, {  Component} from 'react';
 import {  BrowserRouter} from 'react-router-dom';
 import axios from 'axios';
-import { connect } from "react-redux";
-import { logIn, logOut, storeContract } from "./actions/index"
+import {  connect} from "react-redux";
+import {  logIn,  logOut,  storeContract} from "./actions/index"
 import Header from './components/home/header.jsx';
-
 import Web3 from 'web3';
-
 import Main from './components/main/main.jsx';
 import './App.css';
 import jwtDecode from 'jwt-decode';
@@ -19,7 +17,6 @@ const mapDispatchToProps = dispatch => {
     storeContract: contract => dispatch(storeContract(contract))
   };
 };
-
 const mapStateToProps = state => {
   return {
     id: state.id,
@@ -32,9 +29,7 @@ const mapStateToProps = state => {
     blockchainAddress: state.blockchainAddress,
   };
 };
-
 // use this.props.logIn(user) and this.props.logOut() instead of setState
-
 class ConnectedApp extends Component {
   constructor() {
     super();
@@ -439,20 +434,18 @@ class ConnectedApp extends Component {
         "type": "function"
       }
     ]);
-    this.state ={
+    this.state = {
       contractInstance: MyContract.at('5d274da173763dcfdd3d692a8992ad333da80a4e'),
     }
     this.logout = this.logout.bind(this);
     this.tokenLogin = this.tokenLogin.bind(this);
-    this.socket = Socketio('http://ec2-52-53-167-183.us-west-1.compute.amazonaws.com:2345');
-
+    this.socket = Socketio('http://ec2-13-57-209-229.us-west-1.compute.amazonaws.com:2345');
     if (typeof web3 != 'undefined') {
       this.web3Provider = web3.currentProvider;
     } else {
       this.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
     }
   }
-
   componentDidMount() {
     
     this.tokenLogin();
@@ -461,14 +454,12 @@ class ConnectedApp extends Component {
     //   
     // });
   }
-
   tokenLogin() {
     // checks that MetaMask is installed ***
     if (typeof web3 !== 'undefined') {
       this.web3 = new Web3(this.web3Provider);
-      console.log('checking flag1', this.state.contractInstance);
+      console.log('checking flag1', this.state);
       this.props.storeContract(this.state.contractInstance);
-
       // check for a token in storage
       if (sessionStorage.getItem('jwtToken')) {
         axios.get('/signInToken', {
@@ -478,8 +469,8 @@ class ConnectedApp extends Component {
         }).then(response => {
           // compares the blockchain address stored on the token with the one you are logged in with
           window.web3.eth.getAccounts((err, account) => {
-            console.log('heyyy', account);        
-            if(account[0] === response.data.user.blockchainAddress) {
+            console.log('heyyy', account);
+            if (account[0] === response.data.user.blockchainAddress) {
               // if they match, then save the login information
               this.props.logIn({
                 // this gets the data off of the jwt token and saves it into state
@@ -507,24 +498,18 @@ class ConnectedApp extends Component {
       alert('This site needs a web3 provider(MetaMask) to run properly. Please make sure metamask is installed!');
     }
   }
-
   logout() {
     sessionStorage.removeItem('jwtToken');
     this.props.logOut();
   }
-
   render() {
     var component = this;
-    return (
-      <div className="App">
-        <BrowserRouter>
-          <Header logout={this.logout} tokenLogin={this.tokenLogin}/>
-        </BrowserRouter>
-      </div>
+    return ( <div className = "App" >
+      <BrowserRouter >
+      <Header logout = { this.logout } tokenLogin = { this.tokenLogin }      /> 
+      </BrowserRouter> </div>
     );
   }
 }
-
 const App = connect(mapStateToProps, mapDispatchToProps)(ConnectedApp);
-
 export default App;

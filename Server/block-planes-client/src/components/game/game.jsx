@@ -71,6 +71,8 @@ class Game extends Component {
     }
 }*/
         this.savedMoves = [];
+        this.background = new Image();
+        this.background.src = `https://s3-us-west-1.amazonaws.com/blockplanes/background.png`;
     }
 
     componentDidMount() {
@@ -202,6 +204,7 @@ class Game extends Component {
         const context = this.state.context;
         context.save();
         context.scale(this.state.screen.ratio, this.state.screen.ratio);
+        context.drawImage(this.background, 0, 0);
         // add motion trails
         context.fillStyle = '#000';
         context.globalAlpha = 0.4;
