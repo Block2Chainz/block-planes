@@ -1,0 +1,8 @@
+{
+  "apps" : [{
+    "name": "Game socket server",
+    "script": "npm",
+    "args": "start",
+    "cwd": "/home/ubuntu/GameSocket"
+  }]
+}

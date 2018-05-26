@@ -1,0 +1,28 @@
+{
+  "name": "block-planes-game-socket",
+  "version": "1.0.0",
+  "description": "Blockchain-integrated top scrolling shooter with unique plane avatars.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Block2Chainz/block-planes.git"
+  },
+  "author": "Sean Malone, Joseph Nguyen, Nick Vrdoljak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Block2Chainz/block-planes/issues"
+  },
+  "homepage": "https://github.com/Block2Chainz/block-planes#readme",
+  "dependencies": {
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "http": "0.0.0",
+    "lodash": "^4.17.10",
+    "nodemon": "^1.17.4",
+    "path": "^0.12.7",
+    "socket.io": "^2.1.0"
+  }
+}

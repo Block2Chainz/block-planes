@@ -1,0 +1,90 @@
+.userrowprofile {
+    display: flex;
+    margin-top: 5%;
+    padding-top: 1.5%;
+    padding-left: 3%;
+    background-color: #000000;
+    position: relative;
+    width: 100%;
+    border-bottom: 1px solid #ffffff;
+    color: #fff;
+    text-align: center;
+    font-family: 'Orbitron';
+    height: 40%;
+    width: 100% !important;
+    padding-left: 5%;
+}
+.profilepic {
+    border-radius: 7px;
+    margin-left: 3%;
+    border: 7px solid #ffffff;
+    width: 302px;
+}
+.joined {
+    text-align: center;
+    font-size: 120%;
+}
+.usernameprofile {
+  position: absolute;
+    color: white;
+    font-size: 500%;
+    margin-left: 3%;
+    text-align: left;
+    max-width: 100%;
+    top: 60%;
+}
+.points {
+    padding-top: 5%;
+    margin-right: 3%;
+    font-size: 500%;
+    text-align: right;
+}
+.hangar {
+    padding-top: 3%;
+    font-family: 'Orbitron';
+    margin: auto;
+    text-align: center;
+    font-size: 400%;
+    color: #fff;
+}
+.dropzone {
+    width: 300px;
+    height: 300px;
+    border: 0px;
+}
+.scoreprofile {
+    padding-top: 3%;
+    font-family: 'Orbitron';
+    margin-left: 40%;
+    text-align: right;
+    font-size: 200%;
+    color: #fff;
+    margin-bottom: 0;
+}
+.scoreprofile-points {
+  font-family: 'Orbitron';
+  margin-left: 40%;
+  text-align: right;
+  font-size: 200%;
+  color: rgb(94, 203, 249);
+}
+.username-column {
+  position: relative;
+}
+.profile-pic-column {
+  width: 350px !important;
+  margin-left: 5%;
+}
+.profile-grid {
+  position: absolute;
+  margin: auto;
+  width: 100%;
+}
+.profile-score-column {
+  width: 33% !important;
+  margin-left: auto;
+  margin-right: 5%;
+}
+.buy-plane {
+  float: right;
+}
