@@ -10,7 +10,6 @@ import TruffleContract from 'truffle-contract'
 import cryptoPlanes from '../../../../block-planes-solidity/BlockPlanes/build/contracts/BlockPlanes.json';
 import Hangar from '../hangar/hangar.jsx';
 import './profile.css';
-
 const mapStateToProps = state => {
     return { 
         userId: state.id,
@@ -23,7 +22,6 @@ const mapStateToProps = state => {
         contract: state.contract
     };
 };
-
 class ConnectedProfile extends Component {
   constructor(props) {
     super(props);
@@ -39,7 +37,6 @@ class ConnectedProfile extends Component {
     this.fetchUserScores();
     console.log('inside profile')
   }
-
   handleDrop(files) {
     const handleThis = this;
     const uploaders = files.map(file => {
@@ -49,7 +46,6 @@ class ConnectedProfile extends Component {
       formData.append('upload_preset', 'qsfgq2uy'); // Replace the preset name with your own
       formData.append('api_key', '482543561232562'); // Replace API key with your own Cloudinary key
       formData.append('timestamp', (Date.now() / 1000) | 0);
-
       // Make an AJAX upload request using Axios (replace Cloudinary URL below with your own)
       return axios.post('https://api.cloudinary.com/v1_1/ushanka/image/upload', formData, {
         headers: { 'X-Requested-With': 'XMLHttpRequest' },
@@ -83,7 +79,6 @@ class ConnectedProfile extends Component {
       })
     });
   }
-
   fetchUserScores() {
     let component = this;
     axios
@@ -102,13 +97,11 @@ class ConnectedProfile extends Component {
         console.log('Error from login', err);
       });
   }
-
   handleBuyPlane() {
     this.props.contract.createRandomPlane({ from: window.web3.eth.accounts[0], value: window.web3.toWei(0.001, 'ether')}, (error, success) => {
       console.log(error,success);
     });
   }
-
     render() {
         return (
           <div className='profilebg'>
@@ -130,9 +123,7 @@ class ConnectedProfile extends Component {
                   <p className='scoreprofile-points'>{this.state.totalScore}</p>
                   <p className='scoreprofile'>High Score</p>
                   <p className='scoreprofile-points'>{this.state.highScore}</p>
-                  <div>
                     <Button className='buy-plane' onClick={this.handleBuyPlane.bind(this)}>Buy Plane!</Button>
-                  </div>
                 </Grid.Column>
               </Grid.Row>
                 <p className='hangar-profile'>Hangar</p>
@@ -144,7 +135,5 @@ class ConnectedProfile extends Component {
         );
     }
 }
-
 const Profile = connect(mapStateToProps)(ConnectedProfile);
-
 export default Profile;

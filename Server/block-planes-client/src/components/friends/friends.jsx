@@ -103,6 +103,7 @@ class ConnectedFriends extends Component {
     if (!user) {
       this.fetchFriends();
     } else {
+      console.log('USER', user);
       this.setState({
         friendId: user.id,
         username: user.title,
@@ -162,6 +163,7 @@ class ConnectedFriends extends Component {
         this.setState({
           friendState: 'pending'
         });
+        console.log('friend state pending', this.state);
         this.forceUpdate();
       })
       .catch(err => {
