@@ -21,5 +21,5 @@ io.on('connection', (socket) => {
       });
 });
 
-const PORT = process.env.CHAT_PORT || 4225;
+const PORT = process.env.CHAT_PORT || 9998;
 server.listen(PORT, () => console.log(`socket server listening on port ${PORT}`));

@@ -44,7 +44,7 @@ class ConnectedLogin extends Component {
   componentDidMount() {
     if (!this.state.blockAccount && typeof web3 != 'undefined') {
       this.web3.eth.getAccounts((err, account) => {
-        this.setState({ blockAccount : account[0] });
+        this.setState({ blockAccount: account[0] });
       });
     }
   }
@@ -74,6 +74,8 @@ class ConnectedLogin extends Component {
       alert('Please enter a username!');
     } else if (!this.state.password) {
       alert('Please enter a password!');
+    } else if (!this.state.blockAccount) {
+      alert('Please sign into your Metamask account');
     } else {
       axios
       // sending the typed username and password, along with the user blockchain address from metamask

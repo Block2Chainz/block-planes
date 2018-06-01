@@ -64,6 +64,8 @@ class ConnectedSignup extends Component {
       alert('Please enter a username!');
     } else if (!this.state.newPassword) {
       alert('Please enter a password!');
+    } else if (!this.state.blockAccount) {
+      alert('Please sign into your MetaMask account!');
     } else {
       bcrypt.genSaltAsync(10)
         .then(salt => {

@@ -119,12 +119,12 @@ class ConnectedHome extends Component {
               <Grid.Row className='thirdpara'>
                 <p className='thirdpara'>
                   <br/><br/>BlockPlanes are an <a href='http://erc721.org'>ERC-721</a> <strong>crypto-collectible</strong>.
-                  <br/><br/>You are also able to take your planes and fly them in an <strong>action-packed</strong> aerial shooter.
-                  <br/><br/>The randomized planes you purchase are uniquely yours, and only yours. You can purchase a brand new randomly-generated plane, 
-                  <br/>or you can buy and sell planes on the BlockPlanes marketplace.
-                  <br/><br/>The planes are generated dynamically, based on a 16 digit integer that is stored on the blockchain.
+                  <br/><br/>You are able to buy and sell unique, randomly generated planes and fly them in an <strong>action-packed</strong> aerial shooter.
+                  <br/>You can buy a randomized plane or you can buy (and sell) particular planes on the BlockPlanes marketplace.
+                  <br/><br/>The planes are generated dynamically, based on data that is stored on the blockchain.
                   <br/><br/>There are over *64*-Million possible planes to collect.
-                  <br/><br/>All transactions are conducted on the Ethereum blockchain, and your data is handled securely through the MetaMask extension.
+                  <br/><br/>All transactions are conducted on the Ethereum blockchain, and your data is handled securely through the MetaMask extension. 
+                  <br/><br/>We never see your private wallet information.
                   <br/><br/><small>No purchase necessary to play, but a MetaMask account is required. Get it free <a href='https://metamask.io'>here</a>.</small>
                 </p>
               </Grid.Row>
@@ -161,6 +161,7 @@ class ConnectedHome extends Component {
 
               <Grid.Row className='thirdpara'>
                 <p className='thirdpara'>
+                ...TBD...
                 <br/><br/><br/><br/>
                 </p>
               </Grid.Row>
