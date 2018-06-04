@@ -35,7 +35,6 @@ class ConnectedProfile extends Component {
   
   componentDidMount() {
     this.fetchUserScores();
-    console.log('inside profile')
   }
   handleDrop(files) {
     const handleThis = this;
