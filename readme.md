@@ -43,6 +43,13 @@ This necessitated a design decision with some tradeoffs:
     
 Due to the above pros and cons, we decided to go with number 2. It increases the initial complexity for the user, but decreases overall inconsistencies. Furthermore, in a real-use scenario, someone who is actually interested in a blockchain enabled game will already have MetaMask installed or will be well aware of how it works.
 
+## How to check out the Multiplayer game
+You can have a friend sign up and invite you to a game. 
+
+Alternatively you can open an incognito tab, create another player, and invite them to a game. 
+
+And finally, you can always contact me and I will be happy log on and play with you (vrdoljaknicholas@gmail.com).
+
 ## How it was built
 The BlockPlanes front-end was built using React/Redux/React-Router. 
 
