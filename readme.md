@@ -1,5 +1,5 @@
 # Introduction
-BlockPlanes is a top-down aerial shooter with unique, randomly-generated, player-owned planes that can be bought, sold, and shown off. The plane attributes are stored in an Ethereum smart contract as an ERC-721 token. It is also a full social platform with live-chat, friends, and notifications. Play single player, against your friends, or against a random opponent. 
+BlockPlanes is a top-down aerial shooter with unique, randomly-generated, player-owned planes that can be bought, sold, and shown off. The plane attributes are stored in an Ethereum smart contract as an ERC-721 token. It is also a full social platform with live-chat, friends, and notifications. Play single player or against your friends. 
 
 ## Get Started
 You will need the <a href='https://metamask.io'>MetaMask extension</a> installed to access the site. To purchase planes, please connect to the Ropsten test network in Metamask, see screenshot below:
@@ -24,7 +24,7 @@ This necessitated a design decision with some tradeoffs:
   
 -Cons: 
 
-   - If a user has multiple wallet addresses that they have used to purchase planes, they will not be able to see or use all of their planes at the same time, harming the user experience due to the inconsistency in the user's hangar.
+   - If a user has multiple wallet addresses that they have used to purchase planes, we either will have to store each account to be able to retrieve all of their planes, or they will not be able to see or use all of their planes at the same time. This either increases our database schema complexity, or harms the user experience due to the inconsistency in the user's hangar.
    - If a user is not logged into their wallet account, they will not be able to use the main feature of our site anyway, since it relies on you having planes in your Hangar so you can play with them.
    - Because you are able to view your friend's hangar regardless of them being logged in, we would have to store each MetaMask account for a user to the db, increasing the complexity of our database as well as the queries. 
     
