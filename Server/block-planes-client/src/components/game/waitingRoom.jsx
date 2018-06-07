@@ -1,3 +1,4 @@
+import { } from 'dotenv/config'
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Redirect } from 'react-router-dom';
@@ -35,7 +36,7 @@ class ConnectedWaitingRoom extends Component {
         // checks if a room exists in props already
         let player = this.props.location.state.player;
         let roomId = this.props.location.state.roomId;
-        let socket = io.connect('http://ec2-54-183-240-50.us-west-1.compute.amazonaws.com:2345', {
+        let socket = io.connect(process.env.REACT_APP_GAME_PORT, {
             query: {
                 // if there is no room in props, we created the game, so we will use the random room string
                 roomId,

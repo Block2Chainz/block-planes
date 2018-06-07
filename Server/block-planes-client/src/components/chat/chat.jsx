@@ -1,3 +1,4 @@
+import { } from 'dotenv/config'
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { Image, Form, Grid, Button } from 'semantic-ui-react';
@@ -43,7 +44,7 @@ class ConnectedChat extends Component {
     this.fetchMessages = this.fetchMessages.bind(this);
     this.fetchFriendByUsername = this.fetchFriendByUsername.bind(this);
     this.addNotification = this.addNotification.bind(this);
-    this.socket = Socketio('http://ec2-13-57-209-229.us-west-1.compute.amazonaws.com:2345');
+    this.socket = Socketio(process.env.REACT_APP_CHAT_PORT);
   }
 
   notificationSystem = null;

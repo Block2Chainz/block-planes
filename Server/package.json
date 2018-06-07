@@ -14,6 +14,10 @@
   },
   "author": "Sean Malone, Joseph Nguyen, Nick Vrdoljak",
   "license": "ISC",
+  "node": {
+    "fs": "empty",
+    "child_process": "empty"
+  },
   "bugs": {
     "url": "https://github.com/Block2Chainz/block-planes/issues"
   },

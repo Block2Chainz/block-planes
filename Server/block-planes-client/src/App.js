@@ -1,4 +1,5 @@
-import React, {  Component} from 'react';
+import {} from 'dotenv/config'
+import React, { Component } from 'react';
 import { BrowserRouter} from 'react-router-dom';
 import axios from 'axios';
 import { connect} from "react-redux";
@@ -53,7 +54,8 @@ class ConnectedApp extends Component {
 
     this.logout = this.logout.bind(this);
     this.tokenLogin = this.tokenLogin.bind(this);
-    this.socket = Socketio('http://ec2-13-57-209-229.us-west-1.compute.amazonaws.com:2345');
+    console.log('process.env', process.env.REACT_APP_CHAT_PORT)
+    this.socket = Socketio(process.env.REACT_APP_CHAT_PORT);
     if (typeof web3 != 'undefined') {
       this.web3Provider = web3.currentProvider;
     } else {

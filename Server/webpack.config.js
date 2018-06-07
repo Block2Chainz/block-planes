@@ -23,6 +23,9 @@ module.exports = {
     },
     watch: false,
     devtool: options.devTool,
+    node: {
+        fs: "empty"
+    },
     module: {
         loaders: [
             {
@@ -93,24 +96,19 @@ module.exports = {
                 ],
             }
         ]
-    }, 
+    },
+    plugins: [
+        new webpack.EnvironmentPlugin({
+            REACT_APP_CHAT_PORT: 'http://ec2-54-183-240-50.us-west-1.compute.amazonaws.com:3456', 
+            REACT_APP_GAME_PORT: 'http://ec2-54-183-240-50.us-west-1.compute.amazonaws.com:2345'
+        })
+    ]
 }
 
 
-// plugins: [
-//     new webpack.DefinePlugin({
-//         'process.env': {
-//             'http://ec2-13-57-209-229.us-west-1.compute.amazonaws.com:2345': process.env.REACT_APP_SOCKET_SERVER_URL,
-//             // 'BAR': process.env.REACT_APP_GAME_SERVER_URL
-//         }
-//     })
-//     //   new ExtractTextPlugin('./client/styles/main.css', {
-//     //     allChunks: true
-//     //   }),
-//     // new OptimizeCssAssetsPlugin({
-//     //   assetNameRegExp: /\.optimize\.css$/g,
-//     //   cssProcessor: require('cssnano'),
-//     //   cssProcessorOptions: { discardComments: { removeAll: true } },
-//     //   canPrint: true
-//     // }),
-// ]
+// new webpack.DefinePlugin({
+//     'process.env': {
+//         'http://ec2-54-183-240-50.us-west-1.compute.amazonaws.com:3456': process.env.REACT_APP_CHAT_PORT,
+//         'http://ec2-54-183-240-50.us-west-1.compute.amazonaws.com:2345': process.env.REACT_APP_GAME_PORT
+//     }
+// })
