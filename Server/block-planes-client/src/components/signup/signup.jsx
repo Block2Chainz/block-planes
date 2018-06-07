@@ -80,7 +80,6 @@ class ConnectedSignup extends Component {
               axios
                 .post('/newAccount', newUserInfo)
                 .then(response => {
-                  console.log(response.data);
                   if (response.data === 'exists') {
                     alert('Sorry, that username already belongs to another pilot.');
                   } else if (response.data.user.id) {
@@ -129,7 +128,7 @@ class ConnectedSignup extends Component {
                 <p className='metamaskstring' >{this.state.blockAccount} {' '}
                   <a href='#' onClick={() => this.refresh()}><img width={'20px'} src="https://www.materialui.co/materialIcons/navigation/refresh_white_192x192.png" /></a>
                 </p>
-                <p className='signUpNotice'> (Note: you will need to be signed into the same MetaMast account to access this profile)</p>
+                <p className='signUpNotice'> (Note: you will need to be signed into the same MetaMask account to access this profile)</p>
 
                 <Grid.Row className='new-username-password'>
                   <Form.Group>

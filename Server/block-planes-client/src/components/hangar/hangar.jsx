@@ -42,8 +42,6 @@ class ConnectedHangar extends Component {
     }
 
     this.web3 = new Web3(this.web3Provider);
-    // this.blockplanes = TruffleContract(cryptoPlanes);
-    // this.props.contract.setProvider(this.web3Provider);
 }
 
   componentWillReceiveProps(next) {
@@ -64,8 +62,6 @@ class ConnectedHangar extends Component {
 
 
   componentDidMount() {
-    // clear out any selected plane if 
-    // this.props.deselectPlane();
     // checks if a friend ID was passed in as props
     if (this.props.friend && this.state.friendPlanes.length <= 1) {
       // if so - fetches that user's planes and renders
@@ -88,23 +84,9 @@ class ConnectedHangar extends Component {
         }, 500);
       });
     }
-  //   this.props.contractInstance.createRandomPlane({
-  //     gas: 300000,
-  //     from: window.web3.eth.accounts[0],
-  //     value: window.web3.toWei(0.001, 'ether')
-  //  }, (error, result) => {
-  //    if (result) {
-  //      console.log("successful woohoo");
-  //    }
-  //    if (error) {
-  //     console.log('unsuccessful wahhhh');               
-  //    }
-  //     // Result is the transaction address of that function
-  //  })
   }
 
   fetchPlanes(user) {
-    console.log('what is user:', user);
     let userAddress;
       
       let planesForSale = [];
@@ -157,7 +139,6 @@ class ConnectedHangar extends Component {
   }
 
   render() {
-    console.log('inside hangar: ', this.props.friend);
     let planes;
     if (this.props.friend) {
       planes = this.state.friendPlanes;

@@ -1,3 +1,4 @@
+import { } from 'dotenv/config'
 import React, { Component } from 'react';
 import { Link, Redirect, withRouter } from 'react-router-dom';
 import { connect } from "react-redux";
@@ -30,7 +31,7 @@ class ConnectedHeader extends Component {
     let component = this;
     this.addNotification = this.addNotification.bind(this);
     this.toggleMenu = this.toggleMenu.bind(this);
-    this.socket = Socketio('http://ec2-13-57-209-229.us-west-1.compute.amazonaws.com:2345');
+    this.socket = Socketio(process.env.REACT_APP_CHAT_PORT);
     document.body.addEventListener('click', function(event) {
       component.toggleMenu();
     }); 

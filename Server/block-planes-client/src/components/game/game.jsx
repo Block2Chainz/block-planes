@@ -340,7 +340,7 @@ class Game extends Component {
         if (!this.state.sentScores) {
             axios.post('/scores', { user: this.props.userId, score: this.props.player === 1 ? this.state.scores[1] : this.state.scores[2] })
             .then(response => {
-                console.log(response);
+                console.log('success');
             }).catch(err => {
                 console.log(err);
             });

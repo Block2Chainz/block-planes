@@ -1,3 +1,4 @@
+import { } from 'dotenv/config'
 import React from 'react';
 import axios from 'axios';
 import Socketio from 'socket.io-client';
@@ -9,7 +10,7 @@ class MessageInput extends React.Component {
     this.state = {
       content: ''
     };
-    this.socket = Socketio('http://ec2-13-57-209-229.us-west-1.compute.amazonaws.com:2345');
+    this.socket = Socketio(process.env.REACT_APP_CHAT_PORT);
     this.onChangeMessage = this.onChangeMessage.bind(this);
     this.submitMessage = this.submitMessage.bind(this);
   }

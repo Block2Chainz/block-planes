@@ -53,21 +53,16 @@ class ConnectedMarketplace extends Component {
       let planesForSale = [];
       let planesWithAttr = [];
       this.web3.eth.getAccounts((err, address) => {
-        // console.log('flag50', address, this.props.contract.getPlanesByOwner(address[0]));
         // storing the user blockchain address*****
         userAddress = address[0];
         // get the contract instance
         this.setState({userAddress : address[0]});
-        // this.props.contract.createRandomPlane({ from: this.web3.eth.accounts[0], value: this.web3.toWei(0.001, 'ether')}, (error, success) => {
-        //   console.log(error,success);
-        // });
         
         this.props.contract.getPlanesByOwner(address[0], (error, result) => {
           if (!error) {
             let planeArray = result.map((plane) => {
               return plane.toNumber();
             });
-            console.log('planeArray', planeArray)
             let hangar = [];
             for (let i = 0; i < planeArray.length; i++) {
               let planeAttr;
@@ -96,7 +91,6 @@ class ConnectedMarketplace extends Component {
       let planesForSale = [];
       let planesWithAttr = [];
     this.web3.eth.getAccounts((err, address) => {
-      // console.log('flag50', address, this.props.contract.getPlanesByOwner(address[0]));
       // storing the user blockchain address*****
       userAddress = address[0];
       // get the contract instance
@@ -106,7 +100,6 @@ class ConnectedMarketplace extends Component {
           let planeArray = result.map((plane) => {
             return plane.toNumber();
           });
-          console.log('planeArray', planeArray)
           let hangar = [];
           for (let i = 0; i < planeArray.length; i++) {
             let planeAttr;
@@ -170,7 +163,6 @@ class ConnectedMarketplace extends Component {
     }
 
     render() {
-        console.log(this.state.yourPlanes);
         const { yourPlanes, currentPage, planesPerPage, planesOnSale, currentTab } = this.state;
         const pageNumbers = [];
 
