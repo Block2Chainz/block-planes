@@ -21,7 +21,7 @@ module.exports = {
     output: {
         filename: './block-planes-client/public/bundle.js'
     },
-    watch: true,
+    watch: false,
     devtool: options.devTool,
     module: {
         loaders: [

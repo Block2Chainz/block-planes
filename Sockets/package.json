@@ -4,7 +4,8 @@
   "description": "Blockchain-integrated top scrolling shooter with unique plane avatars.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js | npm run chat",
+    "chat": "nodemon ./chat-server/index.js"
   },
   "repository": {
     "type": "git",
