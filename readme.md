@@ -1,5 +1,5 @@
 # Introduction
-BlockPlanes is a top-down aerial shooter with unique, randomly-generated, player-owned planes that can be bought, sold, and shown off. The plane attributes are stored in an Ethereum smart contract as an ERC-721 token. It is also a full social platform with live-chat, friends, and notifications. Play single player or against your friends. 
+BlockPlanes is a top-down aerial shooter with unique, randomly-generated, player-owned planes that can be bought, sold, and shown off. The plane attributes are stored in an Ethereum smart contract as an ERC-721 token. It is also a full social platform with live-chat, friends, and notifications. Play single player or against your friends. This repo contains over 10,000 lines of code.
 
 ## Get Started
 You will need the <a href='https://metamask.io'>MetaMask extension</a> installed to access the site. To purchase planes, please connect to the Ropsten test network in Metamask, see screenshot below:
