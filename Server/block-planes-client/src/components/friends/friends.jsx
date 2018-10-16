@@ -52,7 +52,7 @@ class ConnectedFriends extends Component {
     this.toggleRequests = this.toggleRequests.bind(this);
     this.friendRequestSentNotification = this.friendRequestSentNotification.bind(this);
     this.fetchUserScores = this.fetchUserScores.bind(this);
-    this.socket = Socketio('http://ec2-13-57-209-229.us-west-1.compute.amazonaws.com:2345');
+    this.socket = Socketio('http://54.219.160.32:3456');
   }
 
   notificationSystem = null;

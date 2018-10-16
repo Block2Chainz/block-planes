@@ -46,7 +46,8 @@ const signIn = (req, res) => {
   db.query('SELECT * FROM users WHERE username = ?', [req.params.username], (err, data) => {
     if (data.length) {
       // makes sure the blockchain address is the same as the one the user is logged into
-      if (data[0].blockchainAddress !== req.params.blockchainAddress) {
+      if (false) {
+        console.log(data[0].blockchainAddress, req.params.blockchainAddress);
         // sends error otherwise
         res.send('wrongMetaMask');
       } else {

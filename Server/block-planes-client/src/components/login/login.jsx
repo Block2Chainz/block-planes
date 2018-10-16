@@ -37,7 +37,7 @@ class ConnectedLogin extends Component {
       this.blockplanes = TruffleContract(cryptoPlanes)
       this.blockplanes.setProvider(this.web3Provider)
     } else {
-      alert('This site needs a web3 provider(MetaMask) to run properly. Please install one and refresh!');
+      alert('This site needs a web3 provider(MetaMask) for full functionality. Please install one and refresh!');
     }
   }
 
@@ -50,10 +50,11 @@ class ConnectedLogin extends Component {
   }
 
   refresh() {
-    this.web3.eth.getAccounts((err, account) => {
-      this.setState({ blockAccount: account[0] });
-    });
-  
+    if(this.web3 != undefined){
+      this.web3.eth.getAccounts((err, account) => {
+        this.setState({ blockAccount: account[0] });
+      });
+    }
   }
 
   storeUserInfoInState(e) {
@@ -101,7 +102,6 @@ class ConnectedLogin extends Component {
         );
       }
         return (
-          (typeof web3 != 'undefined') ? (
             <div className='login'>
               <Grid>
 
@@ -144,9 +144,7 @@ class ConnectedLogin extends Component {
                   </Form>
 
               </Grid>
-            </div>) : (
-            <img src="https://safetymanagementgroup.com/wp-content/uploads/2017/07/Oopsbutton.jpg"/>                
-            )
+            </div>
         );
     }
 }

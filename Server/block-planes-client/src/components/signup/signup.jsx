@@ -38,8 +38,6 @@ class ConnectedSignup extends Component {
       this.web3Provider = web3.currentProvider
       this.web3 = new Web3(this.web3Provider)
   
-    } else {
-      alert('This site needs a web3 provider(MetaMask) to run properly. Please install one and refresh!');
     }
   }
 
@@ -112,7 +110,6 @@ class ConnectedSignup extends Component {
     }
     return (
       <div>
-        {(typeof web3 != 'undefined') ? (
           <div className='signup signupbg'>
             <Grid className='sign-up-grid'>
               <Form className='sign-up-form' onSubmit={this.createAccount} >
@@ -148,9 +145,7 @@ class ConnectedSignup extends Component {
                 </Grid.Row>
               </Form>
             </Grid>
-          </div>) : (
-            <img src="https://safetymanagementgroup.com/wp-content/uploads/2017/07/Oopsbutton.jpg"/>
-          )}
+          </div>
       </div>
     );
   }

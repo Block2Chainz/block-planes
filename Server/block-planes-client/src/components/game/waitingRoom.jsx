@@ -49,7 +49,7 @@ class ConnectedWaitingRoom extends Component {
         // }
         let player = this.props.location.state.player;
         let roomId = this.props.location.state.roomId;
-        let socket = io.connect('http://ec2-54-183-240-50.us-west-1.compute.amazonaws.com:2345', {
+        let socket = io.connect('http://54.219.160.32:2345', {
             query: {
                 // if there is no room in props, we created the game, so we will use the random room string
                 roomId,

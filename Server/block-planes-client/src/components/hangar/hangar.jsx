@@ -37,11 +37,11 @@ class ConnectedHangar extends Component {
 
     if (typeof web3 != 'undefined') {
       this.web3Provider = web3.currentProvider;
+      this.web3 = new Web3(this.web3Provider);
     } else {
-      this.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
+      // this.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
     }
 
-    this.web3 = new Web3(this.web3Provider);
     // this.blockplanes = TruffleContract(cryptoPlanes);
     // this.props.contract.setProvider(this.web3Provider);
 }
@@ -71,74 +71,63 @@ class ConnectedHangar extends Component {
       // if so - fetches that user's planes and renders
       this.fetchPlanes(this.props.friend);
     } else {
-      // no friend ID was passed in, 
-      window.web3.eth.getAccounts((err, acct) => {
-        // place within a setTimeout, so that the App.js has time to decode the JWT and put the address into the store
-        setTimeout(() => {
-          // makes sure you are still signed into the metamask account that is associated with your account in our DB 
-          if (this.props.userAddress !== acct[0]) {
-            // this means you signed into a different metamask account, so it signs you out 
-            alert('Please make sure you are signed in with the correct MetaMask Account!');
-            sessionStorage.removeItem('jwtToken');
-            this.props.logOut();
-          } else {
-            // fetches your planes and renders
-            this.fetchPlanes(this.props.userAddress);
-          }
-        }, 500);
-      });
+      if(window.web3){
+        // no friend ID was passed in, 
+        window.web3.eth.getAccounts((err, acct) => {
+          // place within a setTimeout, so that the App.js has time to decode the JWT and put the address into the store
+          setTimeout(() => {
+            // makes sure you are still signed into the metamask account that is associated with your account in our DB 
+            if (this.props.userAddress !== acct[0]) {
+              // this means you signed into a different metamask account, so it signs you out 
+              alert('Please make sure you are signed in with the correct MetaMask Account!');
+              sessionStorage.removeItem('jwtToken');
+              this.props.logOut();
+            } else {
+              // fetches your planes and renders
+              this.fetchPlanes(this.props.userAddress);
+            }
+          }, 500);
+        });
+      }
     }
-  //   this.props.contractInstance.createRandomPlane({
-  //     gas: 300000,
-  //     from: window.web3.eth.accounts[0],
-  //     value: window.web3.toWei(0.001, 'ether')
-  //  }, (error, result) => {
-  //    if (result) {
-  //      console.log("successful woohoo");
-  //    }
-  //    if (error) {
-  //     console.log('unsuccessful wahhhh');               
-  //    }
-  //     // Result is the transaction address of that function
-  //  })
   }
 
   fetchPlanes(user) {
     console.log('what is user:', user);
     let userAddress;
-      
-      let planesForSale = [];
-      let planesWithAttr = [];
- 
-        this.props.contract.getPlanesByOwner(user, (error, result) => {
-          if (!error) {
-            let planeArray = result.map((plane) => {
-              return plane.toNumber();
-            });
-            let hangar = [];
-            for (let i = 0; i < planeArray.length; i++) {
-              let planeAttr;
-              let planePrice;
-              this.props.contract.planes(planeArray[i], (err, plane) => {
-                if (err) console.log('err');
-                else {
-                  planeAttr = plane[0].toNumber();
-                  hangar.push([planeArray[i], planeAttr]);
-                  if (i === planeArray.length - 1) {
-                    if (this.props.friend) {
-                      this.setState({friendPlanes: this.state.friendPlanes.concat(hangar)});
-                    } else {
-                      this.props.storePlanes({ planes: hangar });
-                    }
-        
-                  }
+    
+    let planesForSale = [];
+    let planesWithAttr = [];
+
+    this.props.contract.getPlanesByOwner(user, (error, result) => {
+      if (!error) {
+        let planeArray = result.map((plane) => {
+          return plane.toNumber();
+        });
+        let hangar = [];
+        for (let i = 0; i < planeArray.length; i++) {
+          let planeAttr;
+          let planePrice;
+          this.props.contract.planes(planeArray[i], (err, plane) => {
+            if (err) console.log('err');
+            else {
+              planeAttr = plane[0].toNumber();
+              hangar.push([planeArray[i], planeAttr]);
+              if (i === planeArray.length - 1) {
+                if (this.props.friend) {
+                  this.setState({friendPlanes: this.state.friendPlanes.concat(hangar)});
+                } else {
+                  this.props.storePlanes({ planes: hangar });
                 }
-              });
+    
+              }
             }
-          } else {
-            console.log(err);
-          }
-        });     
+          });
+        }
+      } else {
+        console.log(err);
+      }
+    });     
 
   }
 
@@ -164,8 +153,6 @@ class ConnectedHangar extends Component {
     } else {
       planes = this.props.userPlanes;
     }
-
- 
       return (
         <div className='center-content'>
           <br/>

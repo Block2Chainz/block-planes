@@ -98,9 +98,13 @@ class ConnectedProfile extends Component {
       });
   }
   handleBuyPlane() {
-    this.props.contract.createRandomPlane({ from: window.web3.eth.accounts[0], value: window.web3.toWei(0.001, 'ether')}, (error, success) => {
-      console.log(error,success);
-    });
+    if(window.web3 != undefined){
+      this.props.contract.createRandomPlane({ from: window.web3.eth.accounts[0], value: window.web3.toWei(0.001, 'ether')}, (error, success) => {
+        console.log(error,success);
+      });
+    } else{
+      alert('You cannot purchase planes without being logged into Metamask');
+    }
   }
     render() {
         return (

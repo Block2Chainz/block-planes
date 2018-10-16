@@ -20,7 +20,7 @@ class ConnectedHome extends Component {
            notificationSystem: this.refs.notificationSystem
        };
        this.addNotification = this.addNotification.bind(this);
-    this.socket = Socketio('http://ec2-13-57-209-229.us-west-1.compute.amazonaws.com:2345');
+    this.socket = Socketio('http://54.219.160.32:3456');
     }
 
     notificationSystem = null;
