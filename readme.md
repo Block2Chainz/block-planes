@@ -6,7 +6,7 @@ You will need the <a href='https://metamask.io'>MetaMask extension</a> installed
 
 <img size='tiny' src='http://res.cloudinary.com/dkkgoc7cc/image/upload/v1527350272/Screenshot_1.png'/>
 
-You can obtain free test ether from a <a href='http://faucet.ropsten.be:3001'>Ropsten faucet</a>. 
+You can obtain free test ether from a <a href='https://faucet.ropsten.be/'>Ropsten faucet</a>. 
 
 ## Visit the Site
 www.blockplanes.net
